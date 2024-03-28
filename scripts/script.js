@@ -2,6 +2,13 @@ dontShoot = false;
 spinning = false;
 prevX = 0;
 
+
+window.onload = function() {
+    if(document.getElementById("content-container").children.length != 4) {
+        window.location.reload();
+    }
+}
+
 function movePlayer() {
     //get the x position of the mouse
     var x = event.clientX;
