@@ -83,7 +83,7 @@ function moveGames(perc){
     var mov = (perc - MIN_PAC_HEIGHT) / 1.934;
     
     //set the new position
-    element.style.cssText = "transform: translateY(-" + mov + "%);";
+    element.style.cssText = "transform: translateY(-" + mov + "vw);";
 
 
     delete element;

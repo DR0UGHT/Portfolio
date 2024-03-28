@@ -19,10 +19,16 @@ function scrollWindow(up){
     //set the new css for hev
     hevNum.innerHTML = Math.round(limit);
     hevImg.style.cssText = "clip-path: inset(0% 0% " + (limit) + "% 0%);";
-    bg.style.cssText = "transform: translateY(" + (limit - 100) + "vh)";
+    // bg.style.cssText = "transform: translateY(" + (limit - 100) + "%)";
+    bg.style.cssText = "transform: translateY(" + lerp(-70, 0, (limit / 100)) + "vw)";
+
     //clean up
     delete limit;
     delete hevNum;
     delete hevImg;
     delete bg;
+}
+
+function lerp(a, b, t){
+    return a + (b - a) * t;
 }

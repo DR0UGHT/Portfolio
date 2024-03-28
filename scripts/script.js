@@ -29,11 +29,6 @@ function movePlayer() {
 function shootBullet() {
     //if the player is spinning or the player is not allowed to shoot, return
     if(spinning || dontShoot) return;
-
-    //if the last bullet on the document has a style.top of greater than 80%, return
-    if (document.getElementById("player").children.length > 1 && parseInt(document.getElementById("player").lastChild.style.top) > 75) {
-        return;
-    }
     
     //get the max x and y
     maxX = document.getElementsByClassName("background")[0].clientWidth;
@@ -217,7 +212,7 @@ function DamageButton(buttonName) {
         timeGone = 0;
         var buttonInterval = setInterval(function() {   
             timeGone += 0.015;       
-            if (timeGone >= 2.0) {
+            if (timeGone >= 1) {
                 clearInterval(buttonInterval);
                 
                 window.location.href = goToPage;
