@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<script src="./scripts/scriptGames.js"></script>
+<html style="background-color: black;">
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css"onload="checkScrollWheel()">
+    </head>
+
+
+    <div class="background" id="gamesbg"></div>
+    <button class="goHome" onclick="window.location.href='index.html'"></button>
+    <h1 class="portfolio" id="portfolio-games">Liam Carroll's<br> Game Design Portfolio</h1>
+ 
+    <img class="pacman" id="pacman">
+    <div class="pacman-pellets">
+        <img class="pellet" id="pellet1">
+        <img class="pellet" id="pellet2">
+        <img class="pellet" id="pellet3">
+        <img class="pellet" id="pellet4">
+        <img class="pellet" id="pellet5">
+        <img class="pellet" id="pellet6">
+        <img class="pellet" id="pellet7">
+        <img class="pellet" id="pellet8">
+        <img class="pellet" id="pellet9">
+        <img class="pellet" id="pellet10">
+        <img class="pellet" id="pellet11">
+        <img class="pellet" id="pellet12">
+        <img class="pellet" id="pellet13">
+        <img class="pellet" id="pellet14">
+        <img class="pellet" id="pellet15">
+        <img class="pellet" id="pellet16">
+        <img class="pellet" id="pellet17">
+        <img class="pellet" id="pellet18">
+        <img class="pellet" id="pellet19">
+        <img class="pellet" id="pellet20">
+    </div>
+    <body class="body">
+        <div class="Games">
+            <div class="GamePanel">
+                <img class="game" id="glizzyGobblerNES">
+                <button class="openOnSteam" id="ggSteam" onclick="window.open('https://store.steampowered.com/app/1102140/Glizzy_Gobbler/', '_blank')"></button> 
+                <div class="info">
+                    <p class="infoPanel" id="ggBuild">Build Date</p>
+                    <p class="infoText" id="ggBuildDate">03-31-21</p>
+
+                    <p class="infoPanel" id="ggEngine">Engine</p>
+                    <p class="infoText" id="ggEngineType">Unity</p>
+
+                    <p class="infoPanel" id="ggLanguage">Language</p>
+                    <p class="infoText" id="ggLanguageType">C#</p>
+
+                    <p class="infoPanel" id="ggLevel">Level Count</p>
+                    <p class="infoText" id="ggLevelType">2</p>
+
+                    <p class="infoPanel" id="ggCore">Core Dynamic</p>
+                    <p class="infoText" id="ggCoreType">Story & Freeplay</p>
+                </div>
+
+                <div class = "GameDescription" id = "ggDescription">
+                    <p class="gameDescriptionText" id="ggDescriptionText">"Made for meat-lovers! Roll, devour and grow your glizzy to take your revenge on the humans who have eaten your kind. Unlock skills and achievements along your path to human destruction. But be careful, the dogs are on the hunt!"</p>
+                </div>
+                <div class="slideshow">
+                    <div class="main-cell"></div>
+                    <div class="main-photo" id="ggPicture"></div>
+                    <div class="main-video">
+                        <video id="ggVideo" width="100%" height="100%" style="visibility: hidden;"controls>
+                            <source src="images/gg8.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <div class="picture-cell">
+                        <div class="imageButton" id="b1" onclick="SetGlizzyPhoto('b1')"></div>
+                        <div class="imageButton" id="b2" onclick="SetGlizzyPhoto('b2')"></div>
+                        <div class="imageButton" id="b3" onclick="SetGlizzyPhoto('b3')"></div>
+                        <div class="imageButton" id="b4" onclick="SetGlizzyPhoto('b4')"></div>
+                        <div class="imageButton" id="b5" onclick="SetGlizzyPhoto('b5')"></div>
+                        <div class="imageButton" id="b6" onclick="SetGlizzyPhoto('b6')"></div>
+                        <div class="imageButton" id="b7" onclick="SetGlizzyPhoto('b7')"></div>
+                        <div class="imageButton" id="b8" onclick="SetGlizzyPhoto('b8')"></div>
+                        <div class="imageButton" id="b9" onclick="SetGlizzyPhoto('b9')"></div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="GamePanel">
+                <img class="game" id="sirBallUpNES">
+                <button class="openOnSteam" id="ggSteam" onclick="window.open('https://store.steampowered.com/app/1885700/Sir_BallUp/', '_blank')"></button> 
+                <div class="infosbu">
+                    <p class="infoPanel" id="ggBuild">Build Date</p>
+                    <p class="infoText" id="ggBuildDate">06-06-23</p>
+
+                    <p class="infoPanel" id="ggEngine">Engine</p>
+                    <p class="infoText" id="ggEngineType">Unity</p>
+
+                    <p class="infoPanel" id="ggLanguage">Language</p>
+                    <p class="infoText" id="ggLanguageType">C#</p>
+
+                    <p class="infoPanel" id="ggLevel">Level Count</p>
+                    <p class="infoText" id="ggLevelType">5</p>
+
+                    <p class="infoPanel" id="ggCore">Core Dynamic</p>
+                    <p class="infoText" id="sbuCoreType">Puzzle  &  Challange</p>
+                </div>
+
+                <div class = "GameDescription" id = "sbuDescription">
+                    <p class="gameDescriptionText" id=sbuDescriptionText">"Unrightfully imprisoned by his father, Sir. Ball-Up ventures up to confront his father and retake the throne which is rightfully his. A hardcore aimed adventure, join Sir. Ball-Up in his quest for repentance."</p>
+                </div>
+                <div class="slideshowsbu">
+                    <div class="main-cell"></div>
+                    <div class="main-photo" id="sbuPicture"></div>
+                    <div class="main-video">
+                        <video id="sbuVideo" width="100%" height="100%" style="visibility: hidden;"controls>
+                            <source src="images/sbu7.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <div class="picture-cell-sbu">
+                        <div class="imageButton" id="sbub1" onclick="SetSBUPhoto('b1')"></div>
+                        <div class="imageButton" id="sbub2" onclick="SetSBUPhoto('b2')"></div>
+                        <div class="imageButton" id="sbub3" onclick="SetSBUPhoto('b3')"></div>
+                        <div class="imageButton" id="sbub4" onclick="SetSBUPhoto('b4')"></div>
+                        <div class="imageButton" id="sbub5" onclick="SetSBUPhoto('b5')"></div>
+                        <div class="imageButton" id="sbub6" onclick="SetSBUPhoto('b6')"></div>
+                        <div class="imageButton" id="sbub7" onclick="SetSBUPhoto('b7')"></div>
+                        <div class="imageButton" id="sbub7" style="visibility: hidden;"></div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

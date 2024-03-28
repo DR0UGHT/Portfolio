@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<script src="./scripts/scriptSkills.js"></script>
+<html style="background-color: black;">
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css"onload="checkScrollWheel()">
+    </head>
+
+
+    <div class="background" id = "skillsbg"></div>
+    <button class="goHome-about" onclick="window.location.href='index.html'"></button>
+    <h1 class="portfolio" id="portfolio-about">Liam Carroll's<br> Game Design Portfolio</h1>
+
+    <!-- botom right corner of the screen -->
+    <div id="reAmmo">
+        <img id="reAmmoImg">
+        <b id="reAmmoNum1"><b>10</b></b>
+        <b id="reAmmoNumm"><b> /</b></b>
+        <b id="reAmmoNum2">29</b>
+    </div>
+
+    <body class="body">
+        <div id="skillBG">
+            <!-- big title for skills -->
+            <h1 id="skillsProgramingLanguages">Below are my self-evaluated skill levels.</h1>
+            
+            <!-- vertical scroll bar to scroll down -->
+            <input type="range" id="skillScroll" class="skillScroll" min="0" max="100" value="100" oninput="moveStuff()"></input>
+            
+            <!-- skill sub titles -->
+            <!-- these are the sub titles for the different categories of skills -->
+            <div id="skillContainerMask">
+                <div id="skillContainer">
+                    <h1 class="skillSub" id="skillsTools">Programing Languages</h1>
+                    <div class="slidecontainer">
+                        <div class="sliderHolder" id="s1">
+                            <p class="sliderText" id = "80">C++</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="s2">
+                            <p class="sliderText">C#</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="s3">
+                            <p class="sliderText">Java</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="s4">
+                            <p class="sliderText">Python</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="s5">
+                            <p class="sliderText">JavaScript</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="s6">
+                            <p class="sliderText">C</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+                        
+                        <div class="sliderHolder" id="s7">
+                            <p class="sliderText">HTML</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="s8">
+                            <p class="sliderText">CSS</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="s9">
+                            <p class="sliderText">Haskell</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+
+                    </div>
+                    <h1 class="skillSub" id="skillsTools">Tools</h1>
+
+                        <div class="sliderHolder" id="st1">
+                            <p class="sliderText">Visual Studio</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st2">
+                            <p class="sliderText">Git</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st3">
+                            <p class="sliderText">CMake</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st4">
+                            <p class="sliderText">InteliJ</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st5.5">
+                            <p class="sliderText">Gimp2.0</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st5">
+                            <p class="sliderText">Mixamo</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st6">
+                            <p class="sliderText">Eclips</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st7">
+                            <p class="sliderText">Blender</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st8">
+                            <p class="sliderText">GameBench</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                        <div class="sliderHolder" id="st9">
+                            <p class="sliderText">SpeedTree</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+
+                    <h1 class="skillSub" id="skillsEngines">Engines</h1>
+
+                    <div class="sliderHolder" id="se1">
+                        <p class="sliderText">Unity</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="se2">
+                        <p class="sliderText">Unreal Engine 4</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="se3">
+                        <p class="sliderText">Unreal Engine 5</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="se4">
+                        <p class="sliderText">GameMaker Studio</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="se6">
+                        <p class="sliderText">Godot</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <h1 class="skillSub" id="skillsGameDev">Game Development</h1>
+
+                    <div class="sliderHolder" id="gd1">
+                        <p class="sliderText">Visual Scripting</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="gd2">
+                        <p class="sliderText">OpenGL</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="gd3">
+                        <p class="sliderText">Optimization</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="gd4">
+                        <p class="sliderText">Level Design</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="gd5">
+                        <p class="sliderText">AI</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+
+                    <div class="sliderHolder" id="gd6">
+                        <p class="sliderText">3D Modeling</p>
+                        <img class="slid" name="slid"></img>
+                        <p name="sliderVal" class="sliderVal">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
