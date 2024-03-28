@@ -41,6 +41,9 @@ var sliders = {
 };
 
 window.onload = function() {
+    for(var key in sliders){
+        document.getElementById(sliders[key].name).children.namedItem("slid").style.content = "url('images/sliderBar.png')";
+    }
     Test();
 };
 
