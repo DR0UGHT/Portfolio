@@ -13,10 +13,14 @@
     </div>
     <body class="body">
         <div id="header" onclick="shootBullet()">
-            <h1 class="underline-animation" onclick="shootBullet()">Liam Carroll</h1>
+            <div class="nameHolder">
+                <h1 class="underline-animation" onclick="shootBullet()">Liam Carroll</h1>
+                <div id="underliner"></div>
+            </div>
             <div class = "profile-parent" onclick="shootBullet()">
-                <img class="profile-image">
-                <div id = "profile-image-background"> </div>
+                <div class="profile-image-background">
+                    <img class="profile-image"></img>
+                </div>
             </div>
 
             <div id="social-media-icons" onclick="">
@@ -25,14 +29,15 @@
                 <button class="social-media-button" onclick="window.open('https://www.linkedin.com/in/liam-carroll-3519402b5/', '_blank')"><img src="images/li.png" alt="linkedin" class="social-media-icon"></button>
                 <button class="social-media-button" onclick="window.open('https://drive.google.com/file/d/1YR7qzwJbZa9gDmIEPwozY79yY6IUSeNc/view', '_blank')"><img src="images/cv.png" alt="coverletter" class="social-media-icon"></button>
             </div>
+
+            <div id="content-container" onclick="shootBullet()">
+                <button class="page-button" id = "projects"><div style="position:relative;">Projects</div></button>
+                <button class="page-button" id = "games"><div style="position:relative;">Games</div></button>
+                <button class="page-button" id = "skills"><div style="position:relative;">Skills</div></button>
+                <button class="page-button" id = "about"><div style="position:relative;">About</div></button>
+            </div>
         </div>
-        
-        <div id="content-container" onclick="shootBullet()">
-            <button class="page-button" id = "projects"><div style="position:relative;">Projects</div></button>
-            <button class="page-button" id = "games"><div style="position:relative;">Games</div></button>
-            <button class="page-button" id = "skills"><div style="position:relative;">Skills</div></button>
-            <button class="page-button" id = "about"><div style="position:relative;">About</div></button>
-        </div>
+    
 
         <div id="player" class="player">
             <img id="playerobj" class="player-image">

@@ -42,7 +42,7 @@ function shootBullet() {
     //set the bullet position
     bulletPosition = (prevX - 0.21);
     bullet.style.left = bulletPosition + "%";
-    bullet.style.top = "90%";
+    bullet.style.top = "90vh";
 
 
     //booleans to check if the bullet is gonna hit a page button
@@ -68,7 +68,7 @@ function shootBullet() {
     //move the bullet upwards until it hits a page button or the top of the screen
     var bulletInterval = setInterval(function() {
         //parse top and height of bullet
-        bullet.style.top = (parseInt(bullet.style.top) - 1) + "%";
+        bullet.style.top = (parseInt(bullet.style.top) - 1) + "vh";
 
         //if the bullet is gonna hit a page button, clear the interval and remove the bullet
         switch(bullet.id) {
@@ -181,10 +181,13 @@ function DamageButton(buttonName) {
         newButton.children[0].remove();
 
         //set margins and width of the new button
-        newButton.style.left = "-25px";
-        newButton.style.marginRight = "3px";
-        newButton.style.width = "150px";
+        newButton.style.marginRight = "0%";
+        newButton.style.width = "12.5%";
+        newButton.style.maxWidth = "12.5%";
+        newButton.style.minWidth = "12.5%";
+        //background size
         newButton.style.zIndex = "1";
+        newButton.style.scale = ".6";
 
         //add the new button to the document
         document.getElementById("content-container").insertBefore(newButton, prevButton);
@@ -196,9 +199,16 @@ function DamageButton(buttonName) {
         newButton1.children[0].remove();
 
         //set margin
-        newButton1.style.marginLeft = "3px";
-        newButton1.style.width = "150px";
+        newButton1.style.marginLeft = "0%";
+        newButton1.style.width = "12.5%";
+        newButton1.style.maxWidth = "12.5%";
+        newButton1.style.minWidth = "12.5%";
+        //background size
+
         newButton1.style.zIndex = "1";
+        //scale x only
+        newButton1.style.scale = ".6";
+
         
         newButton.className = "page-button-fall-left";
         newButton1.className = "page-button-fall-right";
@@ -207,11 +217,11 @@ function DamageButton(buttonName) {
         document.getElementById("content-container").insertBefore(newButton1, prevButton);
 
         document.getElementById("content-container").removeChild(prevButton);
-
         //set the new button to fall
         timeGone = 0;
         var buttonInterval = setInterval(function() {   
-            timeGone += 0.015;       
+            // timeGone += 0.015;       
+            timeGone += 0.013;       
             if (timeGone >= 1) {
                 clearInterval(buttonInterval);
                 
