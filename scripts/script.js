@@ -98,7 +98,7 @@ function DamageProfile() {
     if(dontShoot || spinning) return;
 
     //get the health of the profile
-    const element = document.querySelector("#profile-image-background");
+    const element = document.querySelector(".profile-image-background");
     health = parseInt(element.style.fontSize);
 
     //use font size to store health
@@ -112,12 +112,12 @@ function DamageProfile() {
     //set the new health visual
     if(health >= 50) {
         deg = -90 + ((100 - health) / 50) * 180;
-        element.style.cssText = "background: linear-gradient(" + deg +"deg, #bcaef5 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, transparent 50%); position: relative; width: 7.5vw; height: 7.5vw; margin-top: -98.5%; margin-left: -3.35%; border-radius: 50%; font-size: 0; z-index: 1; font-size: " + health + "%;";
+        element.style.cssText = "background: linear-gradient(" + deg +"deg, #bcaef5 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, transparent 50%); font-size: " + health + "%;";
     }else if (health < 50 && health > 0) {
         deg = -90 + ((50 - health) / 50) * 180;
-        element.style.cssText = "background: linear-gradient(" + deg +"deg, #c93131 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, #bcaef5 50%); position: relative; width: 7.5vw; height: 7.5vw; margin-top: -98.5%; margin-left: -3.35%; border-radius: 50%; font-size: 0; z-index: 1; font-size: " + health + "%;";
+        element.style.cssText = "background: linear-gradient(" + deg +"deg, #c93131 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, #bcaef5 50%); font-size: " + health + "%;";
     }else if(health <= 0){
-        element.style.cssText = "background: linear-gradient(90deg, #c93131 50%, #c93131 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, #bcaef5 50%); position: relative; width: 7.5vw; height: 7.5vw; margin-top: -98.5%; margin-left: -3.35%; border-radius: 50%; font-size: 0; z-index: 1; font-size: " + health + "%;";
+        element.style.cssText = "background: linear-gradient(90deg, #c93131 50%, #c93131 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, #bcaef5 50%); font-size: " + health + "%;";
     
         //spin element with class progile-image 360 10 times within 3 seconds
         var timeGone = 0;
@@ -132,15 +132,15 @@ function DamageProfile() {
             health +=  0.3;
             if(health >= 50) {
                 deg = -90 + ((100 - health) / 50) * 180;
-                element.style.cssText = "background: linear-gradient(" + deg +"deg, #bcaef5 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, transparent 50%); position: relative; width: 7.5vw; height: 7.5vw; margin-top: -98.5%; margin-left: -3.35%; border-radius: 50%; font-size: 0; z-index: 1; font-size: " + health + "%;";
+                element.style.cssText = "background: linear-gradient(" + deg +"deg, #bcaef5 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, transparent 50%); font-size: " + health + "%;";
             }else if (health < 50 && health > 0) {
                 deg = -90 + ((50 - health) / 50) * 180;
-                element.style.cssText = "background: linear-gradient(" + deg +"deg, #c93131 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, #bcaef5 50%); position: relative; width: 7.5vw; height: 7.5vw; margin-top: -98.5%; margin-left: -3.35%; border-radius: 50%; font-size: 0; z-index: 1; font-size: " + health + "%;";
+                element.style.cssText = "background: linear-gradient(" + deg +"deg, #c93131 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, #bcaef5 50%); font-size: " + health + "%;";
             }
 
             if (timeGone >= 5.0) {
                 clearInterval(spinInterval);
-                element.style.cssText = "background: linear-gradient(-90deg, #bcaef5 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, transparent 50%); position: relative; width: 7.5vw; height: 7.5vw; margin-top: -98.5%; margin-left: -3.35%; border-radius: 50%; font-size: 0; z-index: 1; font-size: " + health + "%;";
+                element.style.cssText = "background: linear-gradient(-90deg, #bcaef5 50%, transparent 50%), linear-gradient(-90deg, #c93131 50%, #bcaef5 50%), linear-gradient(90deg, #bcaef5 50%, transparent 50%); font-size: " + health + "%;";
                 elem.className = "profile-image";
                 spinning = false;
             }            

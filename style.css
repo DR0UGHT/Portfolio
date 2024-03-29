@@ -127,11 +127,15 @@
 }
 
 .profile-image-spin{
-    position: relative;
-    width: 7vw;
-    height: 7vw;
+    flex: 1;
+    width: 95%;
+    height: 95%;
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+
     z-index: 2;
     content: url("images/me.png");
+    
     animation: spin 5s ease-in-out;
 }
 
