@@ -99,7 +99,9 @@ function DamageProfile() {
 
     //get the health of the profile
     const element = document.querySelector(".profile-image-background");
-    health = parseInt(element.style.fontSize);
+    
+    health = 0;
+    if(element.style.fontSize) health = parseInt(element.style.fontSize);
 
     //use font size to store health
     if(element.style.fontSize == "") {
