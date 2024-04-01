@@ -1,0 +1,81 @@
+.titlePong{
+    font-size: 2vw;
+    text-align: center;
+    height: 4%;
+    margin-top: .5%;
+    margin-bottom: .5%;
+    color: white;
+}
+
+.score1{
+    font-size: 1.5vw;
+    text-align: center;
+    height: 4%;
+    margin-top: .5%;
+    margin-bottom: 5.0%;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    color: white;
+}
+
+.score2{
+    font-size: 1.5vw;
+    text-align: center;
+    height: 4%;
+    margin-top: .5%;
+    margin-bottom: 3.0%;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    color: white;
+}
+
+.myName{
+    font-size: 1.5vw;
+    text-align: center;
+    height: 4%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-top: .5%;
+    margin-bottom: .5%;
+    color: white;
+}
+
+.pongBody{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+#pongCenter{
+    position: absolute;
+    top: 50%;
+    left: 50.3%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.313) ;
+    width: .5%;
+    height: 100%;
+}
+
+#winner{
+    font-size: 3vw;
+    text-align: center;
+    height: 2%;
+    color: white;
+    position: absolute;
+    margin-top: 50vh;
+    width: 100%;
+}
+
+#instructions{
+    font-size: 1vw;
+    text-align: center;
+    height: 4%;
+    margin-top: .5%;
+    margin-bottom: .5%;
+    color: white;
+    width: 100%;
+}
