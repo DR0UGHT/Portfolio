@@ -1,7 +1,7 @@
 //# for transparent is #
 const sandColors = ["rgba(0, 0, 0, 0)", "#c2b280", "#b3a67d", "#a69b7a", "#978f77", "#888472", "#797868", "#6a6d65", "#5b6162", "#4c555f", "#3d4a5c", "#2e3e59", "#1f3356", "#102754", "#002c51"];
-const sandArrayWidth = 700;
-const sandArrayHeight = 700;
+const sandArrayWidth = 600;
+const sandArrayHeight = 600;
 
 var needRedraw = false;
 
@@ -19,7 +19,9 @@ var mouseY = 0;
 var sandColorIndex = 0;
 var sandLineObject = [];
 
-var tallestSand = 0;
+var tallestSand = sandArrayHeight - 1;
+var sandCount = 0;
+var killSim = false;
 
 window.onload = function(){
     //create the sand array
@@ -52,14 +54,30 @@ window.onload = function(){
 
     document.body.onkeyup = function(e){
         if(e.keyCode == 32){
+            // UpdateSandUpgraded();
             console.log(GetPeaksAndTroughs());
+            ReDraw();
+            // killSim = true;
         }
     }
 
     //start the sand update loop
-    DropSand();
+    //wait 2 seconds before starting the sand drop
+    setTimeout(function(){
+        DropSand();
+        GetSandCount();
+    }, 2000);
+    
 }
-var sandCount = 0;
+
+function GetSandCount(){
+    setInterval(function(){
+        sandCount = sandArray.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + (val2 > 0 ? 1 : 0), 0), 0);
+        document.getElementsByClassName("sandCount")[0].innerHTML = "Sand Count: " + sandCount;
+    }
+    , 1000);
+
+}
 
 function DropSand(){
 
@@ -72,7 +90,7 @@ function DropSand(){
             
             var count = 0;
             for(var xM = -10; xM < 10; xM++){
-                for(var yM = -10; yM < 0; yM++){
+                for(var yM = -10; yM < 10; yM++){
                     if(x + xM >= 0 && x + xM < sandArrayWidth && y + yM >= 0 && y + yM < sandArrayHeight && sandArray[x + xM][y] == 0){
                         sandArray[x + xM][y + yM] = sandColorIndex;
                         sandArrayOptimizerX[x + xM]++;
@@ -83,24 +101,80 @@ function DropSand(){
                 }
             }
 
-            if(count > 0){
-                sandCount += count;
-                document.getElementsByClassName("sandCount")[0].innerHTML = "Sand Count: " + sandCount;
+            if(y < tallestSand){
+                tallestSand = y;
             }
-            UpdateSand();
+            UpdateSandUpgraded();
         }else{
-            UpdateSand();
+            if(killSim){
+                clearInterval(interval);
+                return;
+            }
+            UpdateSandUpgraded();
         }
     }, 1);
 }
 
 function UpdateSand(){
     needRedraw = false;
+    for(var i = sandArrayWidth-1; i > 0; i--){
+        if(sandArrayOptimizerX[i] == 0 && sandArrayOptimizerWasTrue[i] == 0 && !mouseDown){
+            continue;
+        }
+        for(var j = sandArrayHeight - 1; j >= 0; --j){
+            if(sandArray[i][j] > 0 && sandArray[i][j] < sandColors.length){
+                if(j + 1 < sandArrayHeight){
+                    if(sandArray[i][j + 1] == 0){
+                        sandArray[i][j + 1] = sandArray[i][j];
+                        sandArray[i][j] = 0;
 
-    // peaks = GetPeaks();
+                        sandArrayOptimizerY[j]--;
+                        sandArrayOptimizerY[j + 1]++;
+
+                        needRedraw = true;
+                    }else{
+                        var rand = Math.floor(Math.random() * 2);
+                        if(rand == 0){
+                            if(TryDropSandLeft(i, j)){
+                                
+                            }else if(TryDropSandRight(i, j)){
+
+                            }else{//if the left and right are not empty, set sand to the bottom
+                                KillSand(i, j);
+                            }
+
+                        }else{
+                            if(TryDropSandRight(i, j)){
+
+                            }else if(TryDropSandLeft(i, j)){
+
+                            }else{//if the left and right are not empty, set sand to the bottom
+                                KillSand(i, j);
+                            }
+                        }
+                    }
+                }else{
+                    KillSand(i, j);
+                }
+            }
+        }
+    }   
     
-    // for(var xx = 0; xx < peaks.length - 1; xx++){
-        for(var i = sandArrayWidth-1; i > 0; i--){
+    
+    if(needRedraw){
+        ReDraw();
+    }
+}
+
+
+function UpdateSandUpgraded(){
+    needRedraw = false;
+
+    peaks = GetPeaksAndTroughs();
+
+    for(var xx = 0; xx < peaks.length-2; xx++){
+        // for(var i = Math.max(peaks[xx]-1, 0); i < Math.min(peaks[xx+1], sandArrayWidth-1); i++){
+        for(var i = peaks[xx+1]; i >= peaks[xx]; i--){
             if(sandArrayOptimizerX[i] == 0 && sandArrayOptimizerWasTrue[i] == 0 && !mouseDown){
                 continue;
             }
@@ -142,44 +216,140 @@ function UpdateSand(){
                 }
             }
         }   
-    // }
+        // for(var i = Math.min(peaks[xx+2]+1, sandArrayWidth-1); i < Math.max(peaks[xx+1]-1, 0); i--){
+        for(var i = peaks[xx+1]+1; i < peaks[xx+2]; i++){
+            if(sandArrayOptimizerX[i] == 0 && sandArrayOptimizerWasTrue[i] == 0 && !mouseDown){
+                continue;
+            }
+            for(var j = sandArrayHeight - 1; j >= 0; --j){
+                if(sandArray[i][j] > 0 && sandArray[i][j] < sandColors.length){
+                    if(j + 1 < sandArrayHeight){
+                        if(sandArray[i][j + 1] == 0){
+                            sandArray[i][j + 1] = sandArray[i][j];
+                            sandArray[i][j] = 0;
+
+                            sandArrayOptimizerY[j]--;
+                            sandArrayOptimizerY[j + 1]++;
+
+                            needRedraw = true;
+                        }else{
+                            var rand = Math.floor(Math.random() * 2);
+                            if(rand == 0){
+                                if(TryDropSandLeft(i, j)){
+
+                                }else if(TryDropSandRight(i, j)){
+
+                                }else{//if the left and right are not empty, set sand to the bottom
+                                    KillSand(i, j);
+                                }
+
+                            }else{
+                                if(TryDropSandRight(i, j)){
+
+                                }else if(TryDropSandLeft(i, j)){
+
+                                }else{//if the left and right are not empty, set sand to the bottom
+                                    KillSand(i, j);
+                                }
+                            }
+                        }
+                    }else{
+                        KillSand(i, j);
+                    }
+                }
+            }
+        }  
+
+
+    }
     
+    if(!DoesRowHaveSand(tallestSand) && tallestSand < sandArrayHeight - 1){
+        tallestSand = Math.min(tallestSand+1, sandArrayHeight - 1);
+    }
     if(needRedraw){
         ReDraw();
     }
 }
+
+function DoesRowHaveSand(row){
+    for(var i = 0; i < sandArrayWidth; i++){
+        if(sandArray[i][row] != 0){
+            return true;
+        }
+    }
+    return false;
+}
+
+
 //while the column size is increasing, skip, then when it starts decreasing, add the peak, repeat
-// function GetPeaksAndTroughs(){
-//     var peaks = [];
-//     var troughs = [];
+function GetPeaksAndTroughs(){
     
-//     var start = 0;
-//     var end = sandArray.length - 1;
+    var peaks = [];
+    var troughs = [];
+    var peaksAndTroughs = [];
+    var start = 0;
+    var end = sandArray.length - 1;
 
-//     for(var i = 1; i < sandArray.length - 2; i++){
-//         var current = GetHighestSandInColumn(i);
-//         var next = GetHighestSandInColumn(i + 1);
-//         var last = GetHighestSandInColumn(i - 1);
+    var startIndex = FindFirstNonEmptyColumn();
+    if(startIndex == -1) return [0, sandArrayWidth /2, sandArrayWidth - 1];
 
-//         if(current < next && current <= last){
-//             peaks.push(i);
-//         }else if(current > next && current >= last){
-//             troughs.push(i);
-//         }
+    let prev =  sandArrayHeight - GetHighestSandInColumn(Math.max(startIndex - 1, 0)) - 1;
+    let curr =  sandArrayHeight - GetHighestSandInColumn(startIndex) - 1;
+    let next =  sandArrayHeight - GetHighestSandInColumn(Math.min(startIndex + 1, sandArray.length - 1)) - 1;
 
-//     }
+    var currentlyIncreasing = curr > prev ? 1 : (curr < prev ? -1 : 0);
+
+    peaksAndTroughs.push(0);
     
+    for(var i = startIndex; i < sandArray.length - 2; i++){
+        curr =  sandArrayHeight - GetHighestSandInColumn(i) - 1;
+        next =  sandArrayHeight - GetHighestSandInColumn(Math.min(i + 1, sandArray.length - 1)) - 1;
 
-//     return {peaks: peaks, troughs: troughs};
-// }
+        if(currentlyIncreasing == 1){
+            if(curr > next){
+                currentlyIncreasing = -1;      
+                peaks.push(i);
+                peaksAndTroughs.push(i);
+            }
+        }else if(currentlyIncreasing == -1){
+            if(curr < next){
+                currentlyIncreasing = 1;
+                troughs.push(i);
+                peaksAndTroughs.push(i);
+            }else if(curr == next && curr == 0){
+                currentlyIncreasing = 0;
+                troughs.push(i);
+                peaksAndTroughs.push(i);
+            }
+        }else if(currentlyIncreasing == 0){
+            if(curr < next){
+                currentlyIncreasing = 1;
+                troughs.push(i);
+                peaksAndTroughs.push(i);
 
+            }
+        }
+    }
+    peaksAndTroughs.push(sandArray.length - 1);
+
+    return peaksAndTroughs;
+}
+
+function FindFirstNonEmptyColumn(){
+    for(var i = 0; i < sandArrayWidth; i++){
+        if(sandArray[i][sandArrayHeight-1] != 0){
+            return i;
+        }
+    }
+    return -1;
+}
 function GetHighestSandInColumn(i){
-    for(var j = sandArrayHeight - 1; j >= 0; j--){
+    for(var j = sandArrayHeight - 1; j > 0; j--){
         if(sandArray[i][j] == 0){
             return j;
         }
     }
-    return 0;
+    return -1;
 }
 
 function TryDropSandLeft(i, j){
@@ -196,9 +366,9 @@ function TryDropSandLeft(i, j){
         
         needRedraw = true;
         return true;
-    }else{
-        return false;
     }
+    
+    return false;
 }
 
 function TryDropSandRight(i, j){
@@ -216,9 +386,9 @@ function TryDropSandRight(i, j){
 
         needRedraw = true;
         return true;
-    }else{
-        return false;
     }
+      
+    return false;
 }
 
 function KillSand(i, j){
@@ -240,7 +410,8 @@ function ReDraw(){
         var lastColor = 0;
         var setEnd = false;
         cssText += sandColors[0] + " 0%, ";
-        for(var k = GetHighestSand(); k < sandArrayHeight; k++){
+
+        for(var k = tallestSand; k < sandArrayHeight; k++){
             var percent = percentNext * k;
 
             if(sandArray[i][k] != lastColor || k == sandArrayHeight - 1){
@@ -254,63 +425,3 @@ function ReDraw(){
     }
 }
 
-function GetHighestSand(){
-    return 0;
-}
-
-
-
-
-
-
-// function UpdateSand(){
-//     for(var i = sandArrayWidth - 1; i >= 0; i--){
-//         for(var j = sandArrayHeight - 1; j >= 0; j--){
-//             if(sandArrayOptimizer[j] == 0){
-//                 continue;
-//             }
-
-//             if(sandArray[i][j] == 1){
-//                 if(j + 1 < sandArrayHeight){
-//                     if(sandArray[i][j + 1] == 0){
-//                         sandArray[i][j] = 0;
-//                         sandArray[i][j + 1] = 1;
-//                         sandLineObject
-//                         sandArrayOptimizer[j]--;
-//                         sandArrayOptimizer[j + 1]++;
-//                     }else{
-//                         var random = Math.floor(Math.random() * 2);
-//                         if(random == 0){
-//                             if(i + 1 < sandArrayWidth){
-//                                 if(sandArray[i + 1][j + 1] == 0){
-//                                     sandArray[i][j] = 0;
-//                                     sandArray[i + 1][j + 1] = 1;
-//                                     document.getElementById(i + "," + j).style.top = (j + 1) * (100 / sandArrayHeight) + "%";
-//                                     document.getElementById(i + "," + j).style.left = (i + 1) * (100 / sandArrayWidth) + "%";
-//                                     document.getElementById(i + "," + j).setAttribute("id", (i + 1) + "," + (j + 1));
-
-//                                     sandArrayOptimizer[j]--;
-//                                     sandArrayOptimizer[j + 1]++;
-
-//                                 }
-//                             }
-//                         }else{
-//                             if(i - 1 >= 0){
-//                                 if(sandArray[i - 1][j + 1] == 0){
-//                                     sandArray[i][j] = 0;
-//                                     sandArray[i - 1][j + 1] = 1;
-//                                     document.getElementById(i + "," + j).style.top = (j + 1) * (100 / sandArrayHeight) + "%";
-//                                     document.getElementById(i + "," + j).style.left = (i - 1) * (100 / sandArrayWidth) + "%";
-//                                     document.getElementById(i + "," + j).setAttribute("id", (i - 1) + "," + (j + 1));
-
-//                                     sandArrayOptimizer[j]--;
-//                                     sandArrayOptimizer[j + 1]++;
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }

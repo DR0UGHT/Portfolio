@@ -159,12 +159,12 @@ function MoveCPUPaddle() {
     var ballY = ball.style.top ? parseFloat(ball.style.top) : 50.25;
 
     var paddle = document.getElementById("pongPaddleCPU");
-    var paddleY = paddle.style.top ? parseFloat(paddle.style.top) : 50;
-    var paddleHeight = paddle.style.height ? parseFloat(paddle.style.height) : 25;
+    var paddleY = paddle.style.top ? parseFloat(paddle.style.top) : 50.0;
+    var paddleHeight = paddle.style.height ? parseFloat(paddle.style.height) : 25.0;
 
-    if(ballY < paddleY - paddleHeight / 2) {
+    if(ballY < paddleY - paddleHeight / 2.0) {
         paddleY -= difficulty;
-    }else if(ballY > paddleY + paddleHeight / 2) {
+    }else if(ballY > paddleY + paddleHeight / 2.0) {
         paddleY += difficulty;
     }
 
