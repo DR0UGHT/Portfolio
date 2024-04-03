@@ -131,7 +131,7 @@ function UpdateAccuracy(x, y) {
         sum += 100 - Math.abs(distance - startRadius) / startRadius * 100;
     });
     //average the sum
-    currentAccuracy = sum / totalPoints;
+    currentAccuracy = lerp(0, 100, sum / totalPoints) / 100;
 }
 
 function DistanceFromCenter(x, y) {
