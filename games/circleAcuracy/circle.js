@@ -10,14 +10,22 @@ var lastAngle = -1;
 var originalAngle = 0;
 
 window.onload = function() {
-    window.onmousemove = function(e) { mousePos = { x: (e.clientX / window.innerWidth).toFixed(3) * 100, y: (e.clientY / window.innerHeight).toFixed(3) * 100 }; }
+    //set mousePos to the percentage of "circle" div in the window
+    window.onmousemove = function(e) { 
+        const rect = document.getElementsByClassName("circle")[0].getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const x = Math.max(0, Math.min(1, mouseX / rect.width));
+        const y = Math.max(0, Math.min(1, mouseY / rect.height));
+        mousePos = { x: x * 100, y: y * 100 };
+    }
+
     window.onmousedown = function() { 
         mouseDown = true; 
 
-        xPosToScreenPercent = (mousePos.x / window.innerWidth) * 100;
-        yPosToScreenPercent = (mousePos.y / window.innerHeight) * 100;
 
-        startRadius = Math.sqrt(Math.pow(xPosToScreenPercent - 50, 2) + Math.pow(yPosToScreenPercent - 50, 2));
+        startRadius = DistanceFromCenter(mousePos.x, mousePos.y);
 
         if(currentAccuracy > bestAccuracy) {
             bestAccuracy = currentAccuracy;
@@ -60,9 +68,9 @@ function DrawCircle() {
         }
 
 
-        var angle = Math.atan2(mousePos.y - 50, mousePos.x - 50) * 180 / Math.PI;
+        var angle = Math.atan2(mousePos.y-50, mousePos.x-50) * 180 / Math.PI;
+
         if(originalAngle == 0){
-            startRadius = Math.sqrt(Math.pow(mousePos.x - 50, 2) + Math.pow(mousePos.y - 50, 2));
             originalAngle = angle;
         }
         angle -= originalAngle;
@@ -115,39 +123,46 @@ function UserMoved() {
     return (lastMousePos.x != mousePos.x || lastMousePos.y != mousePos.y) && mouseDown;
 }
 function UpdateAccuracy(x, y) {
-    let distanceFromCenter = Math.sqrt(Math.pow(x - 50, 2) + Math.pow(y - 50, 2));
-    allDistances.push(distanceFromCenter);
+    allDistances.push(DistanceFromCenter(x, y));
     totalPoints++;
-    currentAccuracy = allDistances.reduce((a, b) => a + (b / startRadius) * 100, 0) / totalPoints;
+    let sum = 0;
+    allDistances.forEach(distance => {
+        //add to sum the percent difference between the distance from the center and the start radius
+        sum += 100 - Math.abs(distance - startRadius) / startRadius * 100;
+    });
+    //average the sum
+    currentAccuracy = sum / totalPoints;
+}
+
+function DistanceFromCenter(x, y) {
+    return Math.sqrt(Math.pow(x - 50, 2) + Math.pow(y - 50, 2));
 }
 
 function DrawNewPoint(x, y){
     var circle = document.createElement("div");
     circle.style.position = "absolute";
-    circle.id = "circle";
-    circle.style.width = "1%";
-    circle.style.height = "1%";
+    circle.setAttribute("name", "circleDot");
+    circle.style.width = "1vw";
+    circle.style.height = "1vw";
     circle.style.borderRadius = "50%";
 
     circle.style.left = x + "%";
     circle.style.top = y + "%";
-    circle.style.transform = "translate(-50%, -50%)";
+    // circle.style.transform = "translate(-50%, -50%)";
 
-    var distFromCenter = Math.sqrt(Math.pow(x - 50, 2) + Math.pow(y - 50, 2));
-    var color = Math.floor(lerp(0, 255, Math.abs(distFromCenter - startRadius) / 5.0));
+
+    var color = Math.floor(lerp(0, 255, Math.abs(DistanceFromCenter(x, y) - startRadius) / 5.0))
 
     circle.style.backgroundColor = "rgb(" + color + ", " + (255-color) + ", 0)";
-    document.body.appendChild(circle);
-
-    delete circle;
-    delete distFromCenter;
+    const circleContainer = document.getElementsByClassName("circle")[0];
+    circleContainer.appendChild(circle);
 }
 
 function ClearScreen() {
-    var circles = document.querySelectorAll("#circle");
-    circles.forEach(circle => {
-        document.body.removeChild(circle);
-    });
+    var elements = document.getElementsByName("circleDot");
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
 }
 
 function lerp(a, b, t) {

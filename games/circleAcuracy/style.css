@@ -1,3 +1,15 @@
+.circle{
+    position: absolute;
+    width: 100vh;
+    height: 100vh;
+    background-color: #005444;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
 #circleCenter{
     position: absolute;
     top: 50%;
@@ -8,8 +20,6 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
     user-select: none;
-
-
 }
 
 #instructions{
