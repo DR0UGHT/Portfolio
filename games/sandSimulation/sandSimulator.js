@@ -179,6 +179,7 @@ function UpdateSandUpgraded(){
                 continue;
             }
             for(var j = sandArrayHeight - 1; j >= 0; --j){
+            // for(var j = 0; j < sandArrayHeight; j++){
                 if(sandArray[i][j] > 0 && sandArray[i][j] < sandColors.length){
                     if(j + 1 < sandArrayHeight){
                         if(sandArray[i][j + 1] == 0){
@@ -222,6 +223,8 @@ function UpdateSandUpgraded(){
                 continue;
             }
             for(var j = sandArrayHeight - 1; j >= 0; --j){
+            // for(var j = 0; j < sandArrayHeight; j++){
+
                 if(sandArray[i][j] > 0 && sandArray[i][j] < sandColors.length){
                     if(j + 1 < sandArrayHeight){
                         if(sandArray[i][j + 1] == 0){

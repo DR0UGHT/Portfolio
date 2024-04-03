@@ -1,0 +1,76 @@
+#circleCenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: .5vw;
+    height: .5vw;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    user-select: none;
+
+
+}
+
+#instructions{
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1vw;
+    color: #fff;
+    user-select: none;
+
+}
+.circleBody{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+    
+}
+
+.titleCircle{
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2vw;
+    color: #fff;
+    user-select: none;
+
+}
+
+.myName{
+    position: absolute;
+    top: 95%;
+    left: 99%;
+    transform: translate(-50%, -50%);
+    font-size: 1.25vw;
+    width: 15%;
+    color: #fff;
+    user-select: none;
+}
+
+.score1{
+    position: absolute;
+    top: 8%;
+    font-size: 1.25vw;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    user-select: none;
+}
+
+.score2{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: 1.25vw;
+    width: 15%;
+    color: #fff;
+    user-select: none;
+}
