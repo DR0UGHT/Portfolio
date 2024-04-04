@@ -115,6 +115,8 @@ function caloriesCanFeed() {
                 var newDiv = document.createElement('div');
                 newDiv.className = 'feedItem';
                 newDiv.setAttribute('id', 'feedItem' + animalsFed.indexOf(animal));
+                newDiv.style.marginLeft = "1%";
+                newDiv.style.marginRight = "1%";
 
                 var title = document.createElement('h1');
                 title.className = 'feedItemTitle';

@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'typeRacer';
+    src: url('../fonts/vinque\ rg.otf') format('opentype');
+}
+
+.titleTypeRacer{
+    font-size: 2.5vw;
+    text-align: center;
+    height: 4%;
+    margin-top: .5%;
+    margin-bottom: .5%;
+    color: rgb(0, 0, 0);
+    font-family: 'typeRacer';
+    font-weight: 900;
+}
+
+
+.myName{
+    font-size: 1.5vw;
+    text-align: right;
+    height: 4%;
+    width: 10%;
+    right: 0;
+    margin-right: 1%;
+    position: absolute;
+    bottom: 0;
+    margin-top: .5%;
+    margin-bottom: .5%;
+    color: rgb(0, 0, 0);
+    font-family: 'typeRacer';
+}
+#currLetter{
+    background: rgba(165, 213, 228, 0.448);
+    width: 1%;
+    height: 1%;
+}
+
+.typeRacerInput{
+    width: 30%;
+    margin-left: 35%;
+    height: 5%;
+
+    font-size: 1.5vw;
+    white-space: pre;
+    border-radius: .4vw;
+    font-family: '';
+}
+
+#input{
+    font-size: 1.2vw;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    margin-left: 0%;
+    text-wrap: wrap;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    font-family: '';
+    position: relative;
+    background-color: rgba(0, 0, 255, 0);
+    border: none;
+    border-bottom: #000000 1px solid;
+    margin-left: -15%;
+}
+
+#input:focus{
+    outline: none;
+    border-bottom: #000000 1px solid;
+    color:rgba(0, 255, 255, 0);
+    caret-color: rgb(0, 0, 0);
+}
+
+#text{
+    font-size: 1.2vw;
+    text-align: center;
+    height: 94%;
+    margin-top: -2%;
+    margin-bottom: 0%;
+    text-wrap: wrap;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    font-family: '';
+    position: relative;
+}
+
+#instructions{
+    font-size: 1.5vw;
+    text-align: center;
+    height: 4%;
+    margin-top: -10.5%;
+    margin-bottom: .5%;
+    color: rgb(0, 0, 0);
+    font-family: 'typeRacer';
+    font-weight: 1;
+
+}
+.typeRacerBody{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(45deg, #bfbdbb 0%, #e8e3ce 100%);
+}
+
+.typeRacerStats{
+    width: 100%;
+    height: 5%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    white-space: pre;
+    font-family: 'typeRacer';
+}
+
+
+.typeRacerText{
+    width: 60%;
+    height: 14vw;
+    margin-left: 20%;
+    background: rgb(122, 116, 88);
+    justify-content: center;
+    align-items: center;
+    font-size: .75vw;
+    white-space: pre;
+    border-radius: .4vw;
+    font-family: 'typeRacer';
+}

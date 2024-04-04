@@ -13,5 +13,8 @@ function LoadGame(game) {
         case "Calorie Calculator":
             window.open('./calorieCarnival/calorie.html', '_blank');
             break;
+        case "Type Racer":
+            window.open('./typeRacer/typeRacer.html', '_blank');
+            break;
     }
 }
