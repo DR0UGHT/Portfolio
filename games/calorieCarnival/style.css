@@ -1,0 +1,584 @@
+.head{
+    height: 4%;
+    width: 70%;
+    margin-left: 15%;
+    background-color: #ffffff00;
+    color: #000000;
+    border: none;
+}
+.leftBar{
+    height: 80%;
+    width: .1%;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    color: #fff;
+    float: left;
+    margin-left: 14%;
+    margin-top: 5%;
+}
+
+.rightBar{
+    height: 80%;
+    width: .1%;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    right:0;
+    color: #fff;
+    float: right;
+    margin-right: 14%;
+    margin-top: 5%;
+}
+
+.calorieBody{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0%;
+    background: linear-gradient(45deg, #4284a7 0%, #1a1a73 100%);
+}
+
+.feeds{
+    height: 15vw;
+    margin-bottom: 3%;
+    width: 70%;
+    margin-left: 15%;
+    background: #00000043;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+.feedTitle{
+    font-size: 1vw;
+    color: #ffffff;
+    text-align: center;
+    width: 31%;
+    margin-left: 10%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: relative;
+
+}
+.titleCalorie{
+    font-size: 2vw;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    width: 100%;
+    position: relative;
+}
+.totalCalories{
+    font-size: 1.5vw;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    width: 100%;
+    position: relative;
+
+}
+.myName{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #000000;
+    font-size: 1.25vw;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+
+.content{
+    height: 250vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+}
+
+
+.calorieContent{
+    height: 40vw;
+    width: 70%;
+    margin-left: 15%;
+    background: #ffffff43;
+    overflow: hidden;
+    position: relative;
+}
+
+.itemGrid{
+    display: grid;
+    grid-template-columns: repeat(5, .196fr);
+    grid-template-rows: repeat(10, .01fr);
+    grid-gap: 1vw;
+    width: 100%;
+    height: 300vh;
+    overflow: hidden;
+}
+
+.item{
+    background-color: #1f1f1fa3;
+    border-radius: 10%;
+    width: 100%;
+    height: 15vw;
+    text-align: center;
+    margin-left: .5vw;
+    margin-right: .5vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.feedItem{
+    background-color: #1f1f1fa3;
+    border-radius: 10%;
+    width: 15%;
+    height: 15vw;
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 2%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+
+
+.itemTitle{
+    font-size: 1vw;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: relative;
+}
+
+.itemCalories{
+    font-size: 1vw;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: relative;
+}
+.itemImage{
+    width: 70%;
+    height: 70%;
+    position: relative;
+}
+
+.add{
+    background: url('../images/add.png');
+    background-size: cover;
+    border: none;
+    width: 10%;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+.subtract{
+    background: url('../images/subtract.png');
+    background-size: cover;
+    border: none;
+    width: 10%;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+.itemAmount{
+    font-size: 1vw;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
+    position: relative;
+}
+
+.feedItemTitle{
+    font-size: 1vw;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: relative;
+}
+
+.feedItemAmount{
+    font-size: 1vw;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: relative;
+}
+
+#apple{
+    content: url('../images/apple.png');
+    scale: 0.75;
+
+}
+
+#banana{
+    content: url('../images/banana.png');
+    height: 50%;
+    margin-top: 12%;
+    margin-bottom: 12%;
+}
+
+#orange{
+    content: url('../images/orange.png');
+    height: 60%;
+    margin-top: 10%;
+}
+
+#mango{
+    content: url('../images/mango.png');
+}
+
+#grapes{
+    content: url('../images/grapes.png');
+    width: 70%;
+}
+
+#pineapple{
+    content: url('../images/pineapple.png');
+    width: 60%;
+    scale: 0.75;
+
+}
+
+#watermelon{
+    content: url('../images/watermelon.png');
+    height : 30%;
+    margin-top: 22.5%;
+    margin-bottom: 22.5%;
+}
+
+#strawberries{
+    content: url('../images/strawberries.png');
+    height: 50%;
+    margin-top: 12%;
+    margin-bottom: 12%;
+}
+
+#blueberries{
+    content: url('../images/blueberries.png');
+    height: 45%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+#raspberries{
+    content: url('../images/raspberry.png');
+    height: 40%;
+    margin-top: 17%;
+    margin-bottom: 17%;
+}
+
+#kiwi{
+    content: url('../images/kiwi.png');
+    scale: 0.75;
+}
+
+#pear{
+    content: url('../images/pear.png');
+    scale: 0.75;
+}
+
+#peach{
+    content: url('../images/peach.png');
+}
+
+#plum{
+    content: url('../images/plum.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#gatorade{
+    content: url('../images/gatorade.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#coke{
+    content: url('../images/coke.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 50%;
+}
+
+#mcchicken{
+    content: url('../images/mcchicken.png');
+    height: 40%;
+    margin-top: 17%;
+    margin-bottom: 17%;
+}
+
+#bigmac{
+    content: url('../images/bigmac.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#fries{
+    content: url('../images/fries.png');
+}
+
+#hotchocolate{
+    content: url('../images/vsPeppermintHotChocolate.png');
+    height: 60%;
+    width: 50%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#frappuccino{
+    content: url('../images/vsMochaCookieCrumbleFrappuccino.png');
+    height: 50%;
+    width: 40%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#whopper{
+    content: url('../images/whopper.png');
+    width: 80%;
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#onionrings{
+    content: url('../images/onionRings.png');
+}
+
+#chickenfries{
+    content: url('../images/chickenFries.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#plutonium{
+    content: url('../images/plutonium.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#grass{
+    content: url('../images/grass.png');
+}
+
+#boost{
+    content: url('../images/boost.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#cheerios{
+    content: url('../images/cheerios.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#milk{
+    content: url('../images/milk.png');
+    height: 50%;
+    margin-top: 12%;
+    margin-bottom: 12%;
+}
+
+#oj{
+    content: url('../images/oj.png');
+}
+
+#aj{
+    content: url('../images/aj.png');
+}
+
+#beer{
+    content: url('../images/beer.png');
+}
+
+#wine{
+    content: url('../images/wine.png');
+    width: 30%;
+}
+
+#vodka{
+    content: url('../images/vodka.png');
+}
+
+#pb{
+    content: url('../images/pb.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#nutella{
+    content: url('../images/nutella.png');
+    height: 50%;
+    margin-top: 12%;
+    margin-bottom: 12%;
+}
+
+#meatball{
+    content: url('../images/meatballSub.png');
+}
+
+#chickenBaconRanch{
+    content: url('../images/chickenBaconRanch.png');
+    height: 30%;
+    width: 70%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+#steakCheese{
+    content: url('../images/steakCheese.png');
+}
+
+#tuna{
+    content: url('../images/tuna.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#feedhuman{
+    content: url('../images/human.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#feedwhale{
+    content: url('../images/whale.png');
+    height: 30%;
+    margin-top: 30%;
+    margin-bottom: 30%;
+}
+
+#feedelephant{
+    content: url('../images/elephant.png');
+    height: 60%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#feedcow{
+    content: url('../images/cow.png');
+    height: 50%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+#feedhorse{
+    content: url('../images/horse.png');
+    height: 70%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+#feedgorilla{
+    content: url('../images/gorilla.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#feedbengaltiger{
+    content: url('../images/bengalTiger.png');
+    height: 40%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+#feednasaastronaut{
+    content: url('../images/nasa.png');
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#feedpig{
+    content: url('../images/pig.png');
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#feeddog{
+    content: url('../images/dog.png');
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#feedduck{
+    content: url('../images/duck.png');
+    height: 40%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+#feedgoose{
+    content: url('../images/goose.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+#feedchicken{
+    content: url('../images/chicken.png');
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#feedcat{
+    content: url('../images/cat.png');
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#feedhamster{
+    content: url('../images/hamster.png');
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+#feedmouse{
+    content: url('../images/mouse.png');
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#feedant{
+    content: url('../images/ant.png');
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

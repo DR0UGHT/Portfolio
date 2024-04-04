@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calorie Carnival</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="calorie.js"></script>
+</head>
+<div class="leftBar"> </div>
+<div class="rightBar"> </div>
+<h1 class="myName">Liam Carroll</h1>
+
+<body class="calorieBody">
+    <div class = "content">
+        <div class="head">
+            <h1 class = "titleCalorie">Calorie Carnival</h1>
+            <h1 class = "totalCalories">Total Calories : 0</b>
+        </div>
+        <h1 class="feedTitle">For 1 day, you have enough calories to feed...</h1>
+        <div class="feeds">
+
+
+        </div>
+        <div class="calorieContent">
+            <div class="itemGrid">
+                <div class="item" id="item1"> 
+                    <h1 class="itemTitle">Apple</h1>
+                    <img class="itemImage" id = "apple">
+                    <h1 class="itemCalories">100 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('apple')"></button>
+                    <b class="itemAmount" id = "apple amount">0</b>
+                    <button class="add" onclick="AddCalories('apple')"></button>
+                </div>
+
+                <div class="item" id="item2"> 
+                    <h1 class="itemTitle">Banana</h1>
+                    <img class="itemImage" id = "banana">
+                    <h1 class="itemCalories">110 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('banana')"></button>
+                    <b class="itemAmount" id = "banana amount">0</b>
+                    <button class="add" onclick="AddCalories('banana')"></button>
+                </div>
+
+                <div class="item" id="item3"> 
+                    <h1 class="itemTitle">Orange</h1>
+                    <img class="itemImage" id = "orange">
+                    <h1 class="itemCalories">62 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('orange')"></button>
+                    <b class="itemAmount" id = "orange amount">0</b>
+                    <button class="add" onclick="AddCalories('orange')"></button>
+                </div>
+
+                <div class="item" id="item4"> 
+                    <h1 class="itemTitle">Mango</h1>
+                    <img class="itemImage" id = "mango">
+                    <h1 class="itemCalories">201 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('mango')"></button>
+                    <b class="itemAmount" id = "mango amount">0</b>
+                    <button class="add" onclick="AddCalories('mango')"></button>
+                </div>
+
+                <div class="item" id="item5"> 
+                    <h1 class="itemTitle">20 Grapes</h1>
+                    <img class="itemImage" id = "grapes">
+                    <h1 class="itemCalories">69 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('20 grapes')"></button>
+                    <b class="itemAmount" id = "20 grapes amount">0</b>
+                    <button class="add" onclick="AddCalories('20 grapes')"></button>
+                </div>
+
+                <div class="item" id="item6"> 
+                    <h1 class="itemTitle">Pineapple</h1>
+                    <img class="itemImage" id = "pineapple">
+                    <h1 class="itemCalories">452 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('pineapple')"></button>
+                    <b class="itemAmount" id = "pineapple amount">0</b>
+                    <button class="add" onclick="AddCalories('pineapple')"></button>
+                </div>
+
+                <div class="item" id="item7"> 
+                    <h1 class="itemTitle">Watermelon Slice</h1>
+                    <img class="itemImage" id = "watermelon">
+                    <h1 class="itemCalories">30 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('watermelon slice')"></button>
+                    <b class="itemAmount" id = "watermelon slice amount">0</b>
+                    <button class="add" onclick="AddCalories('watermelon slice')"></button>
+                </div>
+
+                <div class="item" id="item8"> 
+                    <h1 class="itemTitle">8 Strawberries</h1>
+                    <img class="itemImage" id = "strawberries">
+                    <h1 class="itemCalories">45 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('8 strawberies')"></button>
+                    <b class="itemAmount" id = "8 strawberies amount">0</b>
+                    <button class="add" onclick="AddCalories('8 strawberies')"></button>
+                </div>  
+
+                <div class="item" id="item9"> 
+                    <h1 class="itemTitle">40 Blueberries</h1>
+                    <img class="itemImage" id = "blueberries">
+                    <h1 class="itemCalories">31 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('40 blueberries')"></button>
+                    <b class="itemAmount" id = "40 blueberries amount">0</b>
+                    <button class="add" onclick="AddCalories('40 blueberries')"></button>
+                </div>
+
+                <div class="item" id="item10"> 
+                    <h1 class="itemTitle">60 Raspberries</h1>
+                    <img class="itemImage" id = "raspberries">
+                    <h1 class="itemCalories">65 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('60 raspberry')"></button>
+                    <b class="itemAmount" id = "60 raspberry amount">0</b>
+                    <button class="add" onclick="AddCalories('60 raspberry')"></button>
+                </div>
+
+                <div class="item" id="item11"> 
+                    <h1 class="itemTitle">Kiwi</h1>
+                    <img class="itemImage" id = "kiwi">
+                    <h1 class="itemCalories">42 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('kiwi')"></button>
+                    <b class="itemAmount" id = "kiwi amount">0</b>
+                    <button class="add" onclick="AddCalories('kiwi')"></button>
+                </div>
+
+                <div class="item" id="item12"> 
+                    <h1 class="itemTitle">Pear</h1>
+                    <img class="itemImage" id = "pear">
+                    <h1 class="itemCalories">102 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('pear')"></button>
+                    <b class="itemAmount" id = "pear amount">0</b>
+                    <button class="add" onclick="AddCalories('pear')"></button>
+                </div>
+
+                <div class="item" id="item13"> 
+                    <h1 class="itemTitle">Peach</h1>
+                    <img class="itemImage" id = "peach">
+                    <h1 class="itemCalories">59 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('peach')"></button>
+                    <b class="itemAmount" id = "peach amount">0</b>
+                    <button class="add" onclick="AddCalories('peach')"></button>
+                </div>
+
+                <div class="item" id="item14"> 
+                    <h1 class="itemTitle">Plum</h1>
+                    <img class="itemImage" id = "plum">
+                    <h1 class="itemCalories">30 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('plum')"></button>
+                    <b class="itemAmount" id = "plum amount">0</b>
+                    <button class="add" onclick="AddCalories('plum')"></button>
+                </div>
+
+                <div class="item" id="item15"> 
+                    <h1 class="itemTitle">Gatorade</h1>
+                    <img class="itemImage" id = "gatorade">
+                    <h1 class="itemCalories">140 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('gatorade')"></button>
+                    <b class="itemAmount" id = "gatorade amount">0</b>
+                    <button class="add" onclick="AddCalories('gatorade')"></button>
+                </div>
+
+                <div class="item" id="item16"> 
+                    <h1 class="itemTitle">Coke</h1>
+                    <img class="itemImage" id = "coke">
+                    <h1 class="itemCalories">140 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('coke')"></button>
+                    <b class="itemAmount" id = "coke amount">0</b>
+                    <button class="add" onclick="AddCalories('coke')"></button>
+                </div>
+
+                <div class="item" id="item17"> 
+                    <h1 class="itemTitle">McChicken</h1>
+                    <img class="itemImage" id = "mcchicken">
+                    <h1 class="itemCalories">400 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('mcchicken')"></button>
+                    <b class="itemAmount" id = "mcchicken amount">0</b>
+                    <button class="add" onclick="AddCalories('mcchicken')"></button>
+                </div>
+
+                <div class="item" id="item18"> 
+                    <h1 class="itemTitle">Big Mac</h1>
+                    <img class="itemImage" id = "bigmac">
+                    <h1 class="itemCalories">540 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('big mac')"></button>
+                    <b class="itemAmount" id = "big mac amount">0</b>
+                    <button class="add" onclick="AddCalories('big mac')"></button>
+                </div>
+
+                <div class="item" id="item19"> 
+                    <h1 class="itemTitle">Medium Fries</h1>
+                    <img class="itemImage" id = "fries">
+                    <h1 class="itemCalories">340 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('medium fries')"></button>
+                    <b class="itemAmount" id = "medium fries amount">0</b>
+                    <button class="add" onclick="AddCalories('medium fries')"></button>
+                </div>
+
+                <div class="item" id="item20"> 
+                    <h1 class="itemTitle">Venti Starbucks Peppermint Hot Chocolate</h1>
+                    <img class="itemImage" id = "hotchocolate">
+                    <h1 class="itemCalories">530 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('venti starbucks peppermint hot chocolate')"></button>
+                    <b class="itemAmount" id = "venti starbucks peppermint hot chocolate amount">0</b>
+                    <button class="add" onclick="AddCalories('venti starbucks peppermint hot chocolate')"></button>
+                </div>
+
+                <div class="item" id="item21"> 
+                    <h1 class="itemTitle">Venti Starbucks Mocha Cookie Crumble Frappuccino</h1>
+                    <img class="itemImage" id = "frappuccino">
+                    <h1 class="itemCalories">590 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('venti starbucks mocha cookie crumble frappuccino')"></button>
+                    <b class="itemAmount" id = "venti starbucks mocha cookie crumble frappuccino amount">0</b>
+                    <button class="add" onclick="AddCalories('venti starbucks mocha cookie crumble frappuccino')"></button>
+                </div>
+
+                <div class="item" id="item22"> 
+                    <h1 class="itemTitle">Burger King Whopper</h1>
+                    <img class="itemImage" id = "whopper">
+                    <h1 class="itemCalories">657 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('burger king whopper')"></button>
+                    <b class="itemAmount" id = "burger king whopper amount">0</b>
+                    <button class="add" onclick="AddCalories('burger king whopper')"></button>
+                </div>
+
+                <div class="item" id="item23"> 
+                    <h1 class="itemTitle">Burger King Onion Rings</h1>
+                    <img class="itemImage" id = "onionrings">
+                    <h1 class="itemCalories">410 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('burger onion rings')"></button>
+                    <b class="itemAmount" id = "burger onion rings amount">0</b>
+                    <button class="add" onclick="AddCalories('burger onion rings')"></button>
+                </div>
+
+                <div class="item" id="item24"> 
+                    <h1 class="itemTitle">Burger King Chicken Fries</h1>
+                    <img class="itemImage" id = "chickenfries">
+                    <h1 class="itemCalories">290 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('burger king chicken fries')"></button>
+                    <b class="itemAmount" id = "burger king chicken fries amount">0</b>
+                    <button class="add" onclick="AddCalories('burger king chicken fries')"></button>
+                </div>
+
+                <div class="item" id="item25"> 
+                    <h1 class="itemTitle">1g of Plutonium</h1>
+                    <img class="itemImage" id = "plutonium">
+                    <h1 class="itemCalories">20,000,000,000 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('1g of plutonium')"></button>
+                    <b class="itemAmount" id = "1g of plutonium amount">0</b>
+                    <button class="add" onclick="AddCalories('1g of plutonium')"></button>
+                </div>
+
+                <div class="item" id="item26"> 
+                    <h1 class="itemTitle">1lbs of Grass</h1>
+                    <img class="itemImage" id = "grass">
+                    <h1 class="itemCalories">64 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('1lbs of grass')"></button>
+                    <b class="itemAmount" id = "1lbs of grass amount">0</b>
+                    <button class="add" onclick="AddCalories('1lbs of grass')"></button>
+                </div>
+
+                <div class="item" id="item27"> 
+                    <h1 class="itemTitle">Boost Weight Gain</h1>
+                    <img class="itemImage" id = "boost">
+                    <h1 class="itemCalories">360 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('boost weight gain')"></button>
+                    <b class="itemAmount" id = "boost weight gain amount">0</b>
+                    <button class="add" onclick="AddCalories('boost weight gain')"></button>
+                </div>
+
+                <div class="item" id="item28"> 
+                    <h1 class="itemTitle">Bowl of Cheerios</h1>
+                    <img class="itemImage" id = "cheerios">
+                    <h1 class="itemCalories">224 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('bowl of cheerios')"></button>
+                    <b class="itemAmount" id = "bowl of cheerios amount">0</b>
+                    <button class="add" onclick="AddCalories('bowl of cheerios')"></button>
+                </div>
+
+                <div class="item" id="item29"> 
+                    <h1 class="itemTitle">Cup of 2% Milk</h1>
+                    <img class="itemImage" id = "milk">
+                    <h1 class="itemCalories">122 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('cup of 2% milk')"></button>
+                    <b class="itemAmount" id = "cup of 2% milk amount">0</b>
+                    <button class="add" onclick="AddCalories('cup of 2% milk')"></button>
+                </div>
+
+                <div class="item" id="item30"> 
+                    <h1 class="itemTitle">Cup of Orange Juice</h1>
+                    <img class="itemImage" id = "oj">
+                    <h1 class="itemCalories">112 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('cup of orange juice')"></button>
+                    <b class="itemAmount" id = "cup of orange juice amount">0</b>
+                    <button class="add" onclick="AddCalories('cup of orange juice')"></button>
+                </div>
+
+                <div class="item" id="item31"> 
+                    <h1 class="itemTitle">Cup of Apple Juice</h1>
+                    <img class="itemImage" id = "aj">
+                    <h1 class="itemCalories">114 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('cup of apple juice')"></button>
+                    <b class="itemAmount" id = "cup of apple juice amount">0</b>
+                    <button class="add" onclick="AddCalories('cup of apple juice')"></button>
+                </div>
+
+                <div class="item" id="item32"> 
+                    <h1 class="itemTitle">6 Pack of Beer</h1>
+                    <img class="itemImage" id = "beer">
+                    <h1 class="itemCalories">864 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('6 pack of beer')"></button>
+                    <b class="itemAmount" id = "6 pack of beer amount">0</b>
+                    <button class="add" onclick="AddCalories('6 pack of beer')"></button>
+                </div>
+
+                <div class="item" id="item33"> 
+                    <h1 class="itemTitle">Bottle of Wine</h1>
+                    <img class="itemImage" id = "wine">
+                    <h1 class="itemCalories">625 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('bottle of wine')"></button>
+                    <b class="itemAmount" id = "bottle of wine amount">0</b>
+                    <button class="add" onclick="AddCalories('bottle of wine')"></button>
+                </div>
+
+                <div class="item" id="item34"> 
+                    <h1 class="itemTitle">Bottle of Vodka</h1>
+                    <img class="itemImage" id = "vodka">
+                    <h1 class="itemCalories">1540 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('bottle of vodka')"></button>
+                    <b class="itemAmount" id = "bottle of vodka amount">0</b>
+                    <button class="add" onclick="AddCalories('bottle of vodka')"></button>
+                </div>
+
+                <div class="item" id="item35"> 
+                    <h1 class="itemTitle">Jar of Peanut Butter</h1>
+                    <img class="itemImage" id = "pb">
+                    <h1 class="itemCalories">5888 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('jar of peanut butter')"></button>
+                    <b class="itemAmount" id = "jar of peanut butter amount">0</b>
+                    <button class="add" onclick="AddCalories('jar of peanut butter')"></button>
+                </div>
+
+                <div class="item" id="item36"> 
+                    <h1 class="itemTitle">Jar of Nutella</h1>
+                    <img class="itemImage" id = "nutella">
+                    <h1 class="itemCalories">4000 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('jar of nutella')"></button>
+                    <b class="itemAmount" id = "jar of nutella amount">0</b>
+                    <button class="add" onclick="AddCalories('jar of nutella')"></button>
+                </div>
+
+                <div class="item" id="item37"> 
+                    <h1 class="itemTitle">Subway Meatball Sub</h1>
+                    <img class="itemImage" id = "meatball">
+                    <h1 class="itemCalories">480 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('subway meatball sub')"></button>
+                    <b class="itemAmount" id = "subway meatball sub amount">0</b>
+                    <button class="add" onclick="AddCalories('subway meatball sub')"></button>
+                </div>
+
+                <div class="item" id="item38"> 
+                    <h1 class="itemTitle">Subway Chicken Bacon Ranch</h1>
+                    <img class="itemImage" id = "chickenBaconRanch">
+                    <h1 class="itemCalories">620 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('subway chicken bacon ranch')"></button>
+                    <b class="itemAmount" id = "subway chicken bacon ranch amount">0</b>
+                    <button class="add" onclick="AddCalories('subway chicken bacon ranch')"></button>
+                </div>
+
+                <div class="item" id="item39"> 
+                    <h1 class="itemTitle">Subway Steak and Cheese</h1>
+                    <img class="itemImage" id = "steakCheese">
+                    <h1 class="itemCalories">380 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('subway steak and cheese')"></button>
+                    <b class="itemAmount" id = "subway steak and cheese amount">0</b>
+                    <button class="add" onclick="AddCalories('subway steak and cheese')"></button>
+                </div>
+
+                <div class="item" id="item40"> 
+                    <h1 class="itemTitle">Subway Tuna Melt</h1>
+                    <img class="itemImage" id = "tuna">
+                    <h1 class="itemCalories">480 Calories</h1>
+                    <button class="subtract" onclick="RemoveCalories('subway tuna')"></button>
+                    <b class="itemAmount" id = "subway tuna amount">0</b>
+                    <button class="add" onclick="AddCalories('subway tuna')"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
