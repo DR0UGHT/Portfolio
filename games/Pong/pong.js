@@ -1,18 +1,22 @@
+//ball vars
 var playing = false;
 var ballMove = { x: 0, y: 0 };
 var dir = -1;
 var ballSpeed = 0;
 
+//paddle vars
 let pongBallSizes = { width: 1, height: 1, posX: 50.25, posY: 50};
 let pongPaddleSizes = { width: 1, height: 25, posX: 0, posY: 50};
 
 let lastPaddleMoveSpeed = 0;
 let lastPaddlePos = 0;
 
-let waitingForRestart = false;
-
+//Scores
 var playerScore = 0;
 var cpuScore = 0;
+
+//bool to hold off on restarting the game
+let waitingForRestart = false;
 
 window.onload = function() {
     //bind mouse move to player paddle up and down movement
@@ -27,6 +31,11 @@ window.onload = function() {
     CreateCPUPaddle();
 }
 
+
+/**
+ * RestartGame resets the game to the starting state
+ * @returns nothing
+ */
 function RestartGame() {
     var ball = document.getElementById("pongBall");
     ball.style.left = "50.25vw";
@@ -45,6 +54,11 @@ function RestartGame() {
     playerPaddle.style.height = "25vh";
 }
 
+
+/**
+ * CreateBall creates the ball div and appends it to the pongContent div
+ * @returns nothing
+*/
 function CreateBall() {
     var ball = document.createElement("div");
     ball.id = "pongBall";
@@ -60,6 +74,10 @@ function CreateBall() {
     document.getElementsByClassName("pongContent")[0].appendChild(ball);
 }
 
+/**
+ * CreatePlayerPadle creates the player paddle div and appends it to the pongContent div
+ * @returns nothing
+*/
 function CreatePlayerPadle() {
     var paddle = document.createElement("div");
     paddle.id = "pongPaddlePlayer";
@@ -76,6 +94,10 @@ function CreatePlayerPadle() {
     document.getElementsByClassName("pongContent")[0].appendChild(paddle);
 }
 
+/**
+ * CreateCPUPaddle creates the cpu paddle div and appends it to the pongContent div
+ * @returns nothing
+*/
 function CreateCPUPaddle() {
     var paddle = document.createElement("div");
     paddle.id = "pongPaddleCPU";
@@ -92,6 +114,11 @@ function CreateCPUPaddle() {
     document.getElementsByClassName("pongContent")[0].appendChild(paddle);
 }
 
+/**
+ * MovePaddle moves the player paddle up and down based on the mouse position
+ * @param {MouseEvent} e - the mouse event
+ * @returns nothing
+*/
 function MovePaddle(e) {
     var y = e.clientY;
     var paddle = document.getElementById("pongPaddlePlayer")
@@ -107,6 +134,10 @@ function MovePaddle(e) {
     lastPaddlePos = y;
 }
 
+/**
+ * StartGame starts the pong game
+ * @returns nothing
+*/
 function StartGame() {
     if (playing) return;
 
@@ -124,6 +155,10 @@ function StartGame() {
     }, 1000 / 60);
 }
 
+/**
+ * GameLoop is the main game loop for the pong game
+ * @returns nothing
+*/
 function GameLoop() {
     console.log("GameLoop");
     //move the ball
@@ -139,6 +174,10 @@ function GameLoop() {
     CheckForWin();
 }
 
+/**
+ * MoveBall moves the ball div based on the ballMove object
+ * @returns nothing
+*/
 function MoveBall() {
     var ball = document.getElementById("pongBall");
     var ballX = ball.style.left ? parseFloat(ball.style.left) : 50.25;
@@ -153,6 +192,10 @@ function MoveBall() {
     ballSpeed += 0.00005;
 }
 
+/**
+ * MoveCPUPaddle moves the cpu paddle based on the ball position
+ * @returns nothing
+*/
 function MoveCPUPaddle() {
     var difficulty = 1.0; // Adjust the difficulty level here (0.1 - 1.0)
     var ball = document.getElementById("pongBall");
@@ -171,6 +214,10 @@ function MoveCPUPaddle() {
     paddle.style.top = paddleY + "vh";
 }
 
+/**
+ * CheckCollisions checks for collisions between the ball and the paddles or the top and bottom of the screen
+ * @returns nothing
+*/
 function CheckCollisions() {
     var ball = document.getElementById("pongBall");
     var ballX = ball.style.left ? parseFloat(ball.style.left) : pongBallSizes.posX;
@@ -206,6 +253,10 @@ function CheckCollisions() {
     playerPaddle.style.height = (playerPaddle.style.height ? parseFloat(playerPaddle.style.height) : pongPaddleSizes.height) - 0.002 + "vh";
 }
 
+/**
+ * CheckForWin checks if the ball has gone past the player or cpu paddles
+ * @returns nothing
+*/
 function CheckForWin() {
     var ball = document.getElementById("pongBall");
     var ballX = ball.style.left ? parseFloat(ball.style.left) : pongBallSizes.posX;
@@ -227,4 +278,3 @@ function CheckForWin() {
 
     }
 }
-

@@ -1,10 +1,13 @@
+//http request options
 const options = {method: 'GET', headers: {accept: 'application/json'}};
 
+//variables
 var debug = false;
 var canVote = false;
 var typeOfGame = "";
 var currScore = 0;
 
+//left and right movie objects
 var leftMovie = {
     title: "",
     poster: "",
@@ -21,6 +24,11 @@ var rightMovie = {
     budget: "",
 }
 
+/**
+ * StartGame sets the type of game and hides the menu
+ * @param {string} type - the type of game to play (Dates, Budgets, Ratings)
+ * @returns nothing
+ */
 function StartGame(type) {
     if(type != 'Again') typeOfGame = type;
 
@@ -34,42 +42,42 @@ function StartGame(type) {
     document.getElementById("hasRight").style.display = "none";
     document.getElementById("movieRatingRight").style.display = "none";
 
+    //show the buttons
     document.getElementById("higher").style.display = "block";
     document.getElementById("lower").style.display = "block";
 
+    //show the score
     document.getElementById("scoreText").style.display = "block";
 
-    if(typeOfGame == "Dates") {
-        document.getElementById("higher").innerHTML = "Newer";
-        document.getElementById("lower").innerHTML = "Older";
-        document.getElementById("has").innerHTML = "was released on"
-        document.getElementById("hasRight").innerHTML = "was released on"
-    }else if (typeOfGame == "Budgets") {
-        document.getElementById("higher").innerHTML = "Higher";
-        document.getElementById("lower").innerHTML = "Lower";
-        document.getElementById("has").innerHTML = "has a budget of"
-        document.getElementById("hasRight").innerHTML = "has a budget of"
-    }else{
-        document.getElementById("higher").innerHTML = "Higher";
-        document.getElementById("lower").innerHTML = "Lower";
-        document.getElementById("has").innerHTML = "has a rating of"
-        document.getElementById("hasRight").innerHTML = "has a rating of"
-    }
-
+    //set the buttons to the correct text
+    document.getElementById("higher").innerHTML = (typeOfGame == "Dates") ? "Newer" : "Higher";
+    document.getElementById("lower").innerHTML = (typeOfGame == "Dates") ? "Older" : "Lower";
+    document.getElementById("has").innerHTML = (typeOfGame == "Dates") ? "was released on" : (typeOfGame == "Budgets") ? "has a budget of" : "has a rating of";
+    document.getElementById("hasRight").innerHTML =  document.getElementById("has").innerHTML;
 }
 
+/**
+ * HideMenu hides the menu and shows the game
+ * @returns nothing
+*/
 function HideMenu() {
     document.getElementById("menu").style.display = "none";
     document.getElementById("game").style.display = "block";
 }
 
+/**
+ * ShowMenu shows the menu and hides the game
+ * @returns nothing
+*/
 function ShowMenu() {
     document.getElementById("menu").style.display = "flex";
     document.getElementById("game").style.display = "none";
 }
 
-
-
+/**
+ * VoteHigher checks if the right movie is higher than the right movie
+ * @returns nothing
+*/
 function VoteHigher() {
     if(!canVote) return;
     canVote = false;
@@ -109,6 +117,10 @@ function VoteHigher() {
     }
 }
 
+/**
+ * VoteLower checks if the right movie is lower than the right movie
+ * @returns nothing
+*/
 function VoteLower() {
     if(!canVote) return;
     canVote = false;
@@ -148,6 +160,12 @@ function VoteLower() {
     }
 }
 
+/**
+ * LessThan checks if the left value is less than the right value
+ * @param {string} left - the left value to compare
+ * @param {string} right - the right value to compare
+ * @returns {boolean} - if the left value is less than the right value
+*/
 function LessThan(left, right) {
     console.log(left + " " + right);
     if (typeOfGame == "Dates" && !Date1Earlier(left, right)) return true;
@@ -179,14 +197,16 @@ function loseScreen() {
     }, 10);
 }
 
-async function GetPicture() {
-    fetch('https://api.themoviedb.org/3/movie/157336?api_key=7d2a1aa3decd9987caef89b8479f5919', options)
-    .then(response => response.json())
-    .catch(err => console.error(err));
-
-    return "done";
-}
-
+/**
+ * GetMovie gets a random movie from the list of movies, usinf themoviedb api
+ * @returns {object} - the movie object
+ * @returns {string} title - the title of the movie
+ * @returns {string} poster - the poster of the movie
+ * @returns {string} rating - the rating of the movie
+ * @returns {string} releaseDate - the release date of the movie
+ * @returns {string} budget - the budget of the movie
+ * @returns {number} id - the id of the movie
+*/
 async function GetMovie() {
     var randomMovie = Math.floor(Math.random() * movies.length);
     // var randomMovie = 23;
@@ -231,6 +251,10 @@ async function GetMovie() {
     }
 }
 
+/**
+ * SetLeftMovie sets the left movie object
+ * @returns nothing
+*/
 async function SetLeftMovie() {
     if(leftMovie.title == "") {
         var returnedId = 0;
@@ -268,6 +292,10 @@ async function SetLeftMovie() {
     }
 }
 
+/**
+ * SetRightMovie sets the right movie object
+ * @returns nothing
+*/
 async function SetRightMovie() {
     GetMovie().then(temp => {
         if(leftMovie.title == temp.title){
@@ -302,6 +330,12 @@ async function SetRightMovie() {
     }).catch(err => console.error(err));
 }
 
+/**
+ * Date1Earlier checks if date1 is earlier than date2
+ * @param {string} date1 - the first date to compare
+ * @param {string} date2 - the second date to compare
+ * @returns {boolean} - if date1 is earlier than date2
+*/
 function Date1Earlier(date1, date2) {
     var date1Split = date1.split("-").map(Number);
     var date2Split = date2.split("-").map(Number);
@@ -318,6 +352,11 @@ function Date1Earlier(date1, date2) {
     }
     return false;
 }
+
+/**
+ * ShowLossScreen shows the loss screen in the html
+ * @returns nothing
+*/
 function ShowLossScreen() {
     document.getElementById("loseScreen").style.display = "flex";
     document.getElementById("leftMovieInfo").style.display = "none";
@@ -325,6 +364,10 @@ function ShowLossScreen() {
     document.getElementById("vs").style.display = "none";
 }
 
+/**
+ * HideLossScreen hides the loss screen in the html
+ * @returns nothing
+*/
 function HideLossScreen() {
     document.getElementById("loseScreen").style.display = "none";
     document.getElementById("leftMovieInfo").style.display = "flex";
@@ -332,6 +375,9 @@ function HideLossScreen() {
     document.getElementById("vs").style.display = "block";
     document.getElementById("vsText").innerHTML = "VS";
 }
+
+
+//list of movies
 const movies = [
     "The Shawshank Redemption",
     "The Godfather",

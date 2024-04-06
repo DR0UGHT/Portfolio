@@ -1,13 +1,18 @@
+//current mouse position and last mouse position, to check if the user moved
 var mousePos = { x: 0, y: 0 };
 var lastMousePos = { x: 0, y: 0 };
 var mouseDown = false;
+
+//start radius of the circle to calculate the accuracy
 var startRadius = 0;
-var allDistances = [];
 var totalPoints = 0;
 var currentAccuracy = 0;
 var bestAccuracy = 0;
 var lastAngle = -1;
 var originalAngle = 0;
+
+//all distances from the center of the circle
+var allDistances = [];
 
 window.onload = function() {
     //set mousePos to the percentage of "circle" div in the window
@@ -48,6 +53,10 @@ window.onload = function() {
     }
 }
 
+/**
+ * DrawCircle draws a circle on the screen
+ * @returns nothing
+*/
 function DrawCircle() {
     //interval 10ms
     var interval = setInterval(function() {
@@ -108,20 +117,47 @@ function DrawCircle() {
     }, 10);
 }
 
+/**
+ * NewAngleTooClose checks if the new angle is too close to the last angle
+ * @param {number} newAngle - the new angle
+ * @returns {boolean} whether the new angle is too close to the last angle
+*/
 function NewAngleTooClose(newAngle) {
     return Math.abs(newAngle - lastAngle) < 1;
 }
 
+/**
+ * NegativeAngle checks if the new angle is negative
+ * @param {number} newAngle - the new angle
+ * @returns {boolean} whether the new angle is negative
+*/
 function NegativeAngle(newAngle) {
     return newAngle < lastAngle
 }
 
+/**
+ * MaxPointsReached checks if the user reached the maximum amount of points
+ * @param {number} newAngle - the new angle
+ * @returns {boolean} whether the user reached the maximum amount of points
+*/
 function MaxPointsReached(newAngle) {
     return lastAngle > 270 && newAngle < 45;
 }
+
+/**
+ * UserMoved checks if the user moved
+ * @returns {boolean} whether the user moved
+*/
 function UserMoved() {
     return (lastMousePos.x != mousePos.x || lastMousePos.y != mousePos.y) && mouseDown;
 }
+
+/**
+ * UpdateAccuracy updates the accuracy of the user
+ * @param {number} x - the x position of the mouse
+ * @param {number} y - the y position of the mouse
+ * @returns nothing
+*/
 function UpdateAccuracy(x, y) {
     allDistances.push(DistanceFromCenter(x, y));
     totalPoints++;
@@ -134,10 +170,22 @@ function UpdateAccuracy(x, y) {
     currentAccuracy = lerp(0, 100, sum / totalPoints) / 100;
 }
 
+/**
+ * DistanceFromCenter calculates the distance from the center of the circle
+ * @param {number} x - the x position of the mouse
+ * @param {number} y - the y position of the mouse
+ * @returns {number} the distance from the center
+*/
 function DistanceFromCenter(x, y) {
     return Math.sqrt(Math.pow(x - 50, 2) + Math.pow(y - 50, 2));
 }
 
+/**
+ * DrawNewPoint draws a new point on the screen
+ * @param {number} x - the x position of the mouse
+ * @param {number} y - the y position of the mouse
+ * @returns nothing
+*/
 function DrawNewPoint(x, y){
     var circle = document.createElement("div");
     circle.style.position = "absolute";
@@ -148,8 +196,6 @@ function DrawNewPoint(x, y){
 
     circle.style.left = x + "%";
     circle.style.top = y + "%";
-    // circle.style.transform = "translate(-50%, -50%)";
-
 
     var color = Math.floor(lerp(0, 255, Math.abs(DistanceFromCenter(x, y) - startRadius) / 5.0))
 
@@ -158,6 +204,11 @@ function DrawNewPoint(x, y){
     circleContainer.appendChild(circle);
 }
 
+
+/**
+ * ClearScreen clears the screen of all points
+ * @returns nothing
+*/
 function ClearScreen() {
     var elements = document.getElementsByName("circleDot");
     while(elements.length > 0){
@@ -165,28 +216,59 @@ function ClearScreen() {
     }
 }
 
+/**
+ * lerp linearly interpolates between two values
+ * @param {number} a - the first value
+ * @param {number} b - the second value
+ * @param {number} t - the percentage to interpolate
+ * @returns {number} the interpolated value
+*/
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
+
+/**
+ * degToRad converts degrees to radians
+ * @param {number} deg - the degrees to convert
+ * @returns {number} the radians
+*/
 function degToRad(deg) {
     return deg * (Math.PI / 180);
 }
 
 
+/**
+ * NotGoodEnough displays a message to the user that they didn't draw a good enough circle
+ * @returns nothing
+*/
 function NotGoodEnough() {
     document.getElementsByClassName("score2")[0].innerHTML = "Not circular enough! Try again!";
 }
 
+/**
+ * ClearScore clears the score from the screen
+ * @returns nothing
+*/
 function ClearScore() {
     document.getElementsByClassName("score2")[0].innerHTML = "";
 }
 
+/**
+ * FinishedCircle displays the final score to the user
+ * @returns nothing
+*/
 function FinishedCircle() {
     document.getElementsByClassName("score2")[0].innerHTML = "Accuracy: " + currentAccuracy.toFixed(2) + "%";
     document.getElementsByClassName("score1")[0].innerHTML = "Best Accuracy: " + bestAccuracy.toFixed(2) + "%";
 }
 
+/**
+ * TooClose displays a message to the user that they are too close to the center
+ * @param {number} x - the x position of the mouse
+ * @param {number} y - the y position of the mouse
+ * @returns {boolean} whether the user is too close to the center
+*/
 function TooClose(x, y){
     var distanceFromCenter = Math.sqrt(Math.pow(x - 50, 2) + Math.pow(y - 50, 2));
     if(distanceFromCenter < 7.5){
@@ -196,6 +278,11 @@ function TooClose(x, y){
     return false;
 }
 
+
+/**
+ * DidntFinishCircle displays a message to the user that they didn't finish the circle
+ * @returns nothing
+*/
 function DidntFinishCircle() {
     document.getElementsByClassName("score2")[0].innerHTML = "Didn't finish the circle!";
 }

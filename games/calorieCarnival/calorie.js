@@ -1,9 +1,11 @@
+//scroll variables
 const SCROLL_SPEED = 4;
 var currScroll = 0;
 const MAX_SCROLL = 0;
 const MIN_SCROLL = -130;
 var movingDown = false;
 
+//food items to hold the calories and amount of each food
 var foodItems = {
     'apple': {calories: 95, amount: 0},
     'banana': {calories: 110, amount: 0},
@@ -47,6 +49,7 @@ var foodItems = {
     'subway tuna': {calories: 480, amount: 0},
 }
 
+//animals and the calories needed per day
 const animals = {
     //animal then calories needed per day
     'whale': 200000,
@@ -68,9 +71,20 @@ const animals = {
     'ant': 0.5,
 }
 
-
+//current calories to pass to the html
 var currentCalories = 0;
 
+window.onload = function () {
+    //bind scroll to a function
+    window.addEventListener('wheel', function(e){ ScrollBody(e.deltaY > 0); });
+    currScroll = MAX_SCROLL;
+}
+
+/**
+    * AddCalories adds the calories of the food to the current calories and updates the amount of the food
+    * @param {string} food - the food to add the calories of
+    * @returns nothing
+ */
 function AddCalories(food) {
     currentCalories += foodItems[food].calories;
     foodItems[food].amount += 1;
@@ -80,6 +94,11 @@ function AddCalories(food) {
     caloriesCanFeed();
 }
 
+/**
+ * RemoveCalories removes the calories of the food to the current calories and updates the amount of the food
+ * @param {string} food - the food to remove the calories of
+ * @returns nothing
+*/
 function RemoveCalories(food) {
     if(foodItems[food].amount == 0) return;
 
@@ -91,6 +110,10 @@ function RemoveCalories(food) {
     caloriesCanFeed();
 }
 
+/**
+ * caloriesCanFeed uses the current calories to feed the biggest animal first until there are no more calories
+ * @returns {array} animalsFed - the animals that were fed
+*/
 function caloriesCanFeed() {
     //use up the calories to feed the biggest animal first until there are no more calories
     var calories = currentCalories;
@@ -105,10 +128,10 @@ function caloriesCanFeed() {
         while (calories >= animals[animal]) {
             calories -= animals[animal];
 
-            //if animalsfed contains
             if(animalsFed.includes(animal)){
                 animalCount[animalsFed.indexOf(animal)] += 1;
             }else{
+                //create a new div for the animal
                 animalsFed.push(animal);
                 animalCount.push(1);
 
@@ -139,19 +162,18 @@ function caloriesCanFeed() {
         }
     }
 
+    //update the images of the animals with the amount fed
     for(var i = 0; i < animalsFed.length; i++){
         document.getElementById(animalsFed[i] + 'Amount').innerHTML = animalCount[i] + 'x';
     }
     return animalsFed;
 }
 
-
-window.onload = function () {
-    //bind scroll to a function
-    window.addEventListener('wheel', function(e){ ScrollBody(e.deltaY > 0); });
-    currScroll = MAX_SCROLL;
-}
-
+/**
+ * ScrollBody scrolls the body up or down
+ * @param {boolean} up - whether to scroll up or down
+ * @returns nothing
+*/
 function ScrollBody(up) {
     //prevent jittering
     if(up && movingDown){

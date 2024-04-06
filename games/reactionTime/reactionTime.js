@@ -1,12 +1,12 @@
+//variables for clicking and timing
 var started = false;
 var bestTime = 0;
 var totalTime = 0;
 var testnum = 0;
 
+//variables to handle mouse clicks
 var needToWait = false;
 var mouseDown = false;
-
-var clickedOutOfTurn = false;
 
 window.onload = function() {
     document.getElementsByClassName("reactionTimeBody")[0].addEventListener("click", OnClick);
@@ -14,6 +14,10 @@ window.onload = function() {
     document.getElementsByClassName("reactionTimeBody")[0].addEventListener("mouseup", function(){mouseDown = false;});
 }
 
+/**
+ * ResetPage resets the page to the starting state, updating the text and background color
+ * returns: void
+ */
 async function ResetPage(){
     testnum = 0;
     bestTime = 0;
@@ -39,6 +43,11 @@ async function ResetPage(){
 
     started = false;
 }
+
+/**
+ * ClickedTooEarly is called when the user clicks too early, updating the text and background color
+ * returns: void
+*/
 async function ClickedTooEarly(){
 
     document.getElementsByClassName("reactionTimeText")[0].innerHTML = "Too early!";
@@ -55,9 +64,13 @@ async function ClickedTooEarly(){
             clearInterval(inter);
         }
     }, 1);
-
-
 }
+
+/**
+ * OnClick is called when the user clicks the screen, updating the text and background color and starting the test
+ * Main function for the reaction time test
+ * returns: void
+*/
 async function OnClick(){
     if(!started && testnum < 5){
         testnum++;
@@ -69,7 +82,7 @@ async function OnClick(){
         document.getElementsByClassName("reactionTimeText")[0].innerHTML = "Wait for green...";
 
         //wait for random time between 1 and 7 seconds
-        clickedOutOfTurn = false;
+        var clickedOutOfTurn = false;
         var waitTime = RandomRange(1000, 7000);
         await new Promise(resolve => {
             var CheckEarlyClick = setInterval(function(){
@@ -155,10 +168,20 @@ async function OnClick(){
     }
 }
 
+/**
+ * RandomRange returns a random number between min and max
+ * min: the minimum number
+ * max: the maximum number
+ * returns: a random number between min and max
+*/
 function RandomRange(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * Finished is called when the user has completed all 5 tests, updating the text and displaying the average and best times
+ * returns: void
+*/
 async function Finished(){
     averageTime = Math.round(totalTime / 5);
 

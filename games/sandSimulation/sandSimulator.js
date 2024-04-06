@@ -1,30 +1,35 @@
-//# for transparent is #
+//arrays
 const sandColors = ["rgba(0, 0, 0, 0)", "#c2b280", "#b3a67d", "#a69b7a", "#978f77", "#888472", "#797868", "#6a6d65", "#5b6162", "#4c555f", "#3d4a5c", "#2e3e59", "#1f3356", "#102754", "#002c51"];
+
+var sandArray = [];
+var sandArrayOptimizerX = [];
+var sandArrayOptimizerY = [];
+var sandArrayOptimizerWasTrue = [];
+var sandLineObject = [];
+
+//array size
 const sandArrayWidth = 600;
 const sandArrayHeight = 600;
 
+//need to update the sand visual
 var needRedraw = false;
 
-var sandArray = [];
-
-var sandArrayOptimizerX = [];
-var sandArrayOptimizerY = [];
-
-var sandArrayOptimizerWasTrue = [];
-
+//keep track of mouse position and click
 var mouseDown = false;
 var mouseX = 0;
 var mouseY = 0;
 
+//current color of sand
 var sandColorIndex = 0;
-var sandLineObject = [];
-
+//tallest sand in the array
 var tallestSand = sandArrayHeight - 1;
+//how many sand particles are in the array
 var sandCount = 0;
+//kill the simualtion
 var killSim = false;
 
 window.onload = function(){
-    //create the sand array
+    //create the sand array X
     for(var i = 0; i < sandArrayWidth; i++){
         sandArray[i] = [];
         sandArrayOptimizerX[i] = 0;
@@ -32,14 +37,17 @@ window.onload = function(){
         sandArrayOptimizerWasTrue[i] = 0;
         sandLineObject[i] = document.createElement("div");
         
+        //what percent of the screen is the sand array, per column
         const percentNext = 100 / sandArrayWidth;
 
+        //create the sand array Y
         for(var j = 0; j < sandArrayHeight; j++){
             sandArray[i][j] = 0;
 
             var percent = percentNext * j;
         }
 
+        //give the info to html
         sandLineObject[i].id = "sandLineObject" + i;
         document.getElementsByClassName("sandContent")[0].appendChild(sandLineObject[i]);
     }
@@ -52,15 +60,6 @@ window.onload = function(){
         mouseY = e.clientY;
     }
 
-    document.body.onkeyup = function(e){
-        if(e.keyCode == 32){
-            // UpdateSandUpgraded();
-            console.log(GetPeaksAndTroughs());
-            ReDraw();
-            // killSim = true;
-        }
-    }
-
     //start the sand update loop
     //wait 2 seconds before starting the sand drop
     setTimeout(function(){
@@ -70,6 +69,11 @@ window.onload = function(){
     
 }
 
+
+
+/**
+ * Retrieves the count of sand particles and updates the HTML element with the count.
+ */
 function GetSandCount(){
     setInterval(function(){
         sandCount = sandArray.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + (val2 > 0 ? 1 : 0), 0), 0);
@@ -79,6 +83,10 @@ function GetSandCount(){
 
 }
 
+/**
+ * Drops sand at the current mouse position.
+ * If the mouse is still down after 10ms, another sand is dropped.
+ */
 function DropSand(){
 
     //wait 10ms, if mouse is still down, drop another sand
@@ -88,6 +96,7 @@ function DropSand(){
             var x = Math.floor(mouseX / (window.innerWidth / sandArrayWidth));
             var y = Math.floor(mouseY / (window.innerHeight / sandArrayHeight));
             
+            //create a 20x20 square of sand to drop
             var count = 0;
             for(var xM = -10; xM < 10; xM++){
                 for(var yM = -10; yM < 10; yM++){
@@ -101,85 +110,44 @@ function DropSand(){
                 }
             }
 
+            //set the tallest sand to optimize the sand update
             if(y < tallestSand){
                 tallestSand = y;
             }
+
+            //update the sand visual
             UpdateSandUpgraded();
         }else{
             if(killSim){
                 clearInterval(interval);
                 return;
             }
+
+            //update the sand visual
             UpdateSandUpgraded();
         }
     }, 1);
 }
 
-function UpdateSand(){
-    needRedraw = false;
-    for(var i = sandArrayWidth-1; i > 0; i--){
-        if(sandArrayOptimizerX[i] == 0 && sandArrayOptimizerWasTrue[i] == 0 && !mouseDown){
-            continue;
-        }
-        for(var j = sandArrayHeight - 1; j >= 0; --j){
-            if(sandArray[i][j] > 0 && sandArray[i][j] < sandColors.length){
-                if(j + 1 < sandArrayHeight){
-                    if(sandArray[i][j + 1] == 0){
-                        sandArray[i][j + 1] = sandArray[i][j];
-                        sandArray[i][j] = 0;
 
-                        sandArrayOptimizerY[j]--;
-                        sandArrayOptimizerY[j + 1]++;
-
-                        needRedraw = true;
-                    }else{
-                        var rand = Math.floor(Math.random() * 2);
-                        if(rand == 0){
-                            if(TryDropSandLeft(i, j)){
-                                
-                            }else if(TryDropSandRight(i, j)){
-
-                            }else{//if the left and right are not empty, set sand to the bottom
-                                KillSand(i, j);
-                            }
-
-                        }else{
-                            if(TryDropSandRight(i, j)){
-
-                            }else if(TryDropSandLeft(i, j)){
-
-                            }else{//if the left and right are not empty, set sand to the bottom
-                                KillSand(i, j);
-                            }
-                        }
-                    }
-                }else{
-                    KillSand(i, j);
-                }
-            }
-        }
-    }   
-    
-    
-    if(needRedraw){
-        ReDraw();
-    }
-}
-
-
+/**
+ * Updates the sand simulation with an upgraded algorithm.
+ * The sand will now trickle down optimally.
+ * The sand will now move left or right if the left or right is empty.
+ * The sand will now move to the bottom if the left and right are not empty.
+ */
 function UpdateSandUpgraded(){
     needRedraw = false;
 
     peaks = GetPeaksAndTroughs();
 
+    //loop through the peaks and make the sand trickle down optimally
     for(var xx = 0; xx < peaks.length-2; xx++){
-        // for(var i = Math.max(peaks[xx]-1, 0); i < Math.min(peaks[xx+1], sandArrayWidth-1); i++){
         for(var i = peaks[xx+1]; i >= peaks[xx]; i--){
             if(sandArrayOptimizerX[i] == 0 && sandArrayOptimizerWasTrue[i] == 0 && !mouseDown){
                 continue;
             }
             for(var j = sandArrayHeight - 1; j >= 0; --j){
-            // for(var j = 0; j < sandArrayHeight; j++){
                 if(sandArray[i][j] > 0 && sandArray[i][j] < sandColors.length){
                     if(j + 1 < sandArrayHeight){
                         if(sandArray[i][j + 1] == 0){
@@ -217,14 +185,12 @@ function UpdateSandUpgraded(){
                 }
             }
         }   
-        // for(var i = Math.min(peaks[xx+2]+1, sandArrayWidth-1); i < Math.max(peaks[xx+1]-1, 0); i--){
+
         for(var i = peaks[xx+1]+1; i < peaks[xx+2]; i++){
             if(sandArrayOptimizerX[i] == 0 && sandArrayOptimizerWasTrue[i] == 0 && !mouseDown){
                 continue;
             }
             for(var j = sandArrayHeight - 1; j >= 0; --j){
-            // for(var j = 0; j < sandArrayHeight; j++){
-
                 if(sandArray[i][j] > 0 && sandArray[i][j] < sandColors.length){
                     if(j + 1 < sandArrayHeight){
                         if(sandArray[i][j + 1] == 0){
@@ -265,15 +231,23 @@ function UpdateSandUpgraded(){
 
 
     }
-    
+
+    //if the tallest sand is not at the bottom, move it down
     if(!DoesRowHaveSand(tallestSand) && tallestSand < sandArrayHeight - 1){
         tallestSand = Math.min(tallestSand+1, sandArrayHeight - 1);
     }
+
+    //if the sand needs to be redrawn, redraw it
     if(needRedraw){
         ReDraw();
     }
 }
 
+/**
+ * Checks if a row has sand.
+ * @param {number} row The row to check.
+ * @returns {boolean} True if the row has sand, false otherwise.
+*/
 function DoesRowHaveSand(row){
     for(var i = 0; i < sandArrayWidth; i++){
         if(sandArray[i][row] != 0){
@@ -283,8 +257,11 @@ function DoesRowHaveSand(row){
     return false;
 }
 
-
-//while the column size is increasing, skip, then when it starts decreasing, add the peak, repeat
+/**
+ * Gets the peaks and troughs of the sand.
+ * @returns {number[]} The peaks and troughs of the sand.
+ * The peaks and troughs are the points where the sand is at its highest and lowest.
+*/
 function GetPeaksAndTroughs(){
     
     var peaks = [];
@@ -338,6 +315,11 @@ function GetPeaksAndTroughs(){
     return peaksAndTroughs;
 }
 
+/**
+ * Finds the first non-empty column in the sand array.
+ * @returns {number} The first non-empty column in the sand array.
+ * If no column is found, -1 is returned.
+*/
 function FindFirstNonEmptyColumn(){
     for(var i = 0; i < sandArrayWidth; i++){
         if(sandArray[i][sandArrayHeight-1] != 0){
@@ -346,6 +328,13 @@ function FindFirstNonEmptyColumn(){
     }
     return -1;
 }
+
+/**
+ * Gets the highest sand in a column.
+ * @param {number} i The column to check.
+ * @returns {number} The highest sand in the column.
+ * If no sand is found, -1 is returned.
+*/
 function GetHighestSandInColumn(i){
     for(var j = sandArrayHeight - 1; j > 0; j--){
         if(sandArray[i][j] == 0){
@@ -355,6 +344,12 @@ function GetHighestSandInColumn(i){
     return -1;
 }
 
+/**
+ * Tries to drop sand to the left.
+ * @param {number} i The column to check.
+ * @param {number} j The row to check.
+ * @returns {boolean} True if the sand was dropped to the left, false otherwise.
+*/
 function TryDropSandLeft(i, j){
     if(i + 1 < sandArrayWidth && sandArray[i + 1][j + 1] == 0){ //if the right is empty, move the sand to the right
         sandArray[i + 1][j + 1] = sandArray[i][j];
@@ -374,6 +369,12 @@ function TryDropSandLeft(i, j){
     return false;
 }
 
+/**
+ * Tries to drop sand to the right.
+ * @param {number} i The column to check.
+ * @param {number} j The row to check.
+ * @returns {boolean} True if the sand was dropped to the right, false otherwise.
+*/
 function TryDropSandRight(i, j){
     if(i - 1 >= 0 && sandArray[i - 1][j + 1] == 0){ //if the left is empty, move the sand to the left
         sandArray[i - 1][j + 1] = sandArray[i][j];
@@ -394,6 +395,12 @@ function TryDropSandRight(i, j){
     return false;
 }
 
+/**
+ * Kills the sand at the current position.
+ * @param {number} i The column to check.
+ * @param {number} j The row to check.
+ * If the sand is at the bottom, the sand is killed.
+*/
 function KillSand(i, j){
     if(sandArray[i][j] > sandColors.length || sandArrayOptimizerWasTrue[i] > 0) return;
 
@@ -404,6 +411,12 @@ function KillSand(i, j){
     
 }
 
+/**
+ * Redraws the sand.
+ * The sand is redrawn with the new positions.
+ * The sand is redrawn with the new colors.
+ * The sand is redrawn with the new heights.
+*/
 function ReDraw(){
     const percentNext = 100 / sandArrayWidth;
     for(var i = sandArrayWidth - 1; i >= 0; i--){

@@ -1,5 +1,5 @@
 const url= 'https://api.api-ninjas.com/v1/webscraper?url=https://randomword.com/paragraph';
-const headers = { 'X-Api-Key': 'Ml432Sl9mqBHGtRfXN8kBQ==nPc5X62r9yOpniLF' };
+const _0x1d2a12=_0x19c1;function _0x19c1(_0x24025b,_0x312fb1){const _0x3eb17f=_0x3eb1();return _0x19c1=function(_0x19c1f8,_0x281c32){_0x19c1f8=_0x19c1f8-0x104;let _0x4bb79a=_0x3eb17f[_0x19c1f8];return _0x4bb79a;},_0x19c1(_0x24025b,_0x312fb1);}(function(_0x1ae5b7,_0x13c54d){const _0x2db837=_0x19c1,_0x47c5d0=_0x1ae5b7();while(!![]){try{const _0x2da342=-parseInt(_0x2db837(0x104))/0x1+parseInt(_0x2db837(0x107))/0x2+-parseInt(_0x2db837(0x105))/0x3*(parseInt(_0x2db837(0x10a))/0x4)+-parseInt(_0x2db837(0x10f))/0x5+parseInt(_0x2db837(0x10b))/0x6*(-parseInt(_0x2db837(0x109))/0x7)+parseInt(_0x2db837(0x108))/0x8*(parseInt(_0x2db837(0x10c))/0x9)+parseInt(_0x2db837(0x10e))/0xa*(parseInt(_0x2db837(0x106))/0xb);if(_0x2da342===_0x13c54d)break;else _0x47c5d0['push'](_0x47c5d0['shift']());}catch(_0x4f0fa5){_0x47c5d0['push'](_0x47c5d0['shift']());}}}(_0x3eb1,0xd76c6));function _0x3eb1(){const _0x1a8a5a=['20452sKaYTT','21630OLLgNK','9lqeItZ','Ml432Sl9mqBHGtRfXN8kBQ==nPc5X62r9yOpniLF','4250loTGZS','8593190WJBIoq','573352vDbwPr','606YnYzRE','73436KOvqQi','3353126LqrSaf','8938416tBfllT','2765tEKGOe'];_0x3eb1=function(){return _0x1a8a5a;};return _0x3eb1();}const headers={'X-Api-Key':_0x1d2a12(0x10d)};
 const contentType = 'application/json';
 var currentlyWriting = false;
 var currentParagraph = "";
@@ -15,7 +15,7 @@ async function getWords() {
     let myPromise = new Promise((myResolve, myReject) => {
         let req = new XMLHttpRequest();
         req.open('GET', url, true);
-        req.setRequestHeader('X-Api-Key', 'Ml432Sl9mqBHGtRfXN8kBQ==nPc5X62r9yOpniLF');
+        req.setRequestHeader(_0x1d2a12);
         req.setRequestHeader('Content-Type', 'application/json');
         req.onload = () => {
             if (req.status == 200) {
