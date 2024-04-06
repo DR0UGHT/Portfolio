@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>popular Movie</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="popularMovie.js"></script>
+</head>
+<body class="movieBody">
+    <div id = "menu" style="display:flex">
+        <div class = "movieBackground"> </div>
+        <img id = "logo"> </img>
+        <button class = "menuButton" id = "dates" onclick="StartGame('Dates')"> <h1 class = "buttonText">Dates</h1> </button>
+        <button class = "menuButton" id = "popular" onclick="StartGame('Ratings')"> <h1 class = "buttonText">Popularity</h1> </button>
+        <button class = "menuButton" id = "budget" onclick="StartGame('Budgets')"> <h1 class = "buttonText">Budget</h1> </button>
+    </div>
+   
+    <div id = "game" style="display: none;">
+        <div id = "score"> <h1 id = "scoreText">Score : 0</h1></div>
+        <div id = "vs"> <h1 id = "vsText">Vs</h1></div>
+        <div class = "leftMovie">
+            <img id = "moviePosterLeft"> </img>
+            <div id="leftMovieInfo" style="display: none;">
+                <h1 id = "movieTitleLeft">"</h1>
+                <h1 id = "has">has a rating of</h1>
+                <h1 id = "movieRatingLeft"></h1>
+            </div>
+        </div>
+
+        <div class = "rightMovie">
+            <img id = "moviePosterRight"> </img>
+            <div id="rightMovieInfo" style="display: none;">
+                <h1 id = "movieTitleRight"></h1>
+                <button id = "higher" onclick="VoteHigher()"> <h1 id = "higherText">Higher</h1> </button>
+                <button id = "lower" onclick="VoteLower()"> <h1 id = "lowerText">Lower</h1> </button>
+
+                <h1 id = "hasRight" style="display: none;">has a rating of</h1>
+                <h1 id = "movieRatingRight" style="display:none"></h1>
+
+            </div>
+        </div>
+
+        <div id = "loseScreen" style="display: flex;">
+            <h1 id = "loseText">Your Score : <span id="fScore">0</span></h1>
+            <button id = "playAgain" onclick="StartGame('Again')"> <h1 id = "playAgainText">Play Again</h1> </button>
+            <button id = "menuAgain" onclick="ShowMenu()"> <h1 id = "goMenuText">Menu</h1> </button>
+        </div>  
+    </div>
+</body>
+</html>

@@ -16,5 +16,12 @@ function LoadGame(game) {
         case "Type Racer":
             window.open('./typeRacer/typeRacer.html', '_blank');
             break;
+        case "Wordle":
+            window.open('./wordle/wordle.html', '_blank');
+            break;
+        case "Popular Movie":
+            window.open('./popularMovie/popularMovie.html', '_blank');
+            break;
+        
     }
 }

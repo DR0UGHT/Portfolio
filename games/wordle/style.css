@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'typeRacer';
+    src: url('../fonts/vinque\ rg.otf') format('opentype');
+}
+
+.wordleBody{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(180deg, #131313 0%,15%, #000000 85%, #131313 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+#wordleLogo{
+    position: relative;
+    top: 1%;
+    left: 1%;
+    width: 15vw;
+    height: 3vw;
+    content: url('../images/wordleLogo.png');
+}
+
+#wordleRows{
+    position: relative;
+    top: 10%;
+    width: 100%;
+    height: 50%;
+    row-gap: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background: rgba(0, 0, 0, 0);
+    /* margin-bottom: 20vw; */
+}
+
+.WordleRow{
+    width: 20vw;
+    height: 3.6vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 2%;
+    row-gap: 0%;
+    background: rgba(255, 127, 127, 0);
+}
+
+#wordleInputImage{
+    width: 18%;
+    height: 100%;
+    background: rgb(111, 111, 111);
+    border-radius: .5vw;
+}
+
+.Keyboard{
+    position: relative;
+    width: 100%;
+    height: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1%;
+    row-gap: 1%;
+    margin-top: 5%;
+}
+
+.KeyboardRow{
+    width: 40%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1%;
+    row-gap: 1%;
+}
+
+#KeyboardRow2{
+    width: 36%;
+}
+
+.KeyboardButton{
+    width: 10%;
+    height: 100%;
+    background: rgb(111, 111, 111);
+    border-radius: .5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

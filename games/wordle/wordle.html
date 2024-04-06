@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wordle</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="wordle.js"></script>
+</head>
+<body class="wordleBody">
+   <img id="wordleLogo">
+   <div id ="wordleRows">
+        <div class="WordleRow" id ="wordleRow1">
+            <div id="wordleInputImage"><h1 id="Row1Box1"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row1Box2"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row1Box3"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row1Box4"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row1Box5"></h1></div>
+        </div>
+
+        <div class="WordleRow" id ="wordleRow2">
+            <div id="wordleInputImage"><h1 id="Row2Box1"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row2Box2"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row2Box3"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row2Box4"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row2Box5"></h1></div>
+        </div>
+
+        <div class="WordleRow" id ="wordleRow3">
+            <div id="wordleInputImage"><h1 id="Row3Box1"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row3Box2"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row3Box3"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row3Box4"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row3Box5"></h1></div>
+        </div>
+
+        <div class="WordleRow" id ="wordleRow4">
+            <div id="wordleInputImage"><h1 id="Row4Box1"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row4Box2"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row4Box3"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row4Box4"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row4Box5"></h1></div>
+        </div>
+
+        <div class="WordleRow" id ="wordleRow5">
+            <div id="wordleInputImage"><h1 id="Row5Box1"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row5Box2"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row5Box3"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row5Box4"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row5Box5"></h1></div>
+        </div>
+
+        <div class="WordleRow" id ="wordleRow6">
+            <div id="wordleInputImage"><h1 id="Row6Box1"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row6Box2"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row6Box3"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row6Box4"></h1></div>
+            <div id="wordleInputImage"><h1 id="Row6Box5"></h1></div>
+        </div>
+
+    </div>
+
+    <div class="Keyboard">
+        <div class="KeyboardRow" id = "KeyboardRow1">
+            <button class="KeyboardButton" id="Q" onclick="addLetter('Q')">Q</button>
+            <button class="KeyboardButton" id="W" onclick="addLetter('W')">W</button>
+            <button class="KeyboardButton" id="E" onclick="addLetter('E')">E</button>
+            <button class="KeyboardButton" id="R" onclick="addLetter('R')">R</button>
+            <button class="KeyboardButton" id="T" onclick="addLetter('T')">T</button>
+            <button class="KeyboardButton" id="Y" onclick="addLetter('Y')">Y</button>
+            <button class="KeyboardButton" id="U" onclick="addLetter('U')">U</button>
+            <button class="KeyboardButton" id="I" onclick="addLetter('I')">I</button>
+            <button class="KeyboardButton" id="O" onclick="addLetter('O')">O</button>
+            <button class="KeyboardButton" id="P" onclick="addLetter('P')">P</button>
+        </div>
+
+        <div class="KeyboardRow" id = "KeyboardRow2">
+            <button class="KeyboardButton" id="A" onclick="addLetter('A')">A</button>
+            <button class="KeyboardButton" id="S" onclick="addLetter('S')">S</button>
+            <button class="KeyboardButton" id="D" onclick="addLetter('D')">D</button>
+            <button class="KeyboardButton" id="F" onclick="addLetter('F')">F</button>
+            <button class="KeyboardButton" id="G" onclick="addLetter('G')">G</button>
+            <button class="KeyboardButton" id="H" onclick="addLetter('H')">H</button>
+            <button class="KeyboardButton" id="J" onclick="addLetter('J')">J</button>
+            <button class="KeyboardButton" id="K" onclick="addLetter('K')">K</button>
+            <button class="KeyboardButton" id="L" onclick="addLetter('L')">L</button>
+        </div>
+
+        <div class="KeyboardRow" id = "KeyboardRow3">
+            <button class="KeyboardButton" id="ENTER" onclick="addLetter('ENTER')">ENTER</button>
+            <button class="KeyboardButton" id="Z" onclick="addLetter('Z')">Z</button>
+            <button class="KeyboardButton" id="X" onclick="addLetter('X')">X</button>
+            <button class="KeyboardButton" id="C" onclick="addLetter('C')">C</button>
+            <button class="KeyboardButton" id="V" onclick="addLetter('V')">V</button>
+            <button class="KeyboardButton" id="B" onclick="addLetter('B')">B</button>
+            <button class="KeyboardButton" id="N" onclick="addLetter('N')">N</button>
+            <button class="KeyboardButton" id="M" onclick="addLetter('M')">M</button>
+            <button class="KeyboardButton" id="BACKSPACE" onclick="addLetter('BACKSPACE')">BACKSPACE</button>
+        </div>
+   </div>
+</body>
+</html>
