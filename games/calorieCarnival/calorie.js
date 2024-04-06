@@ -1,7 +1,7 @@
 const SCROLL_SPEED = 4;
 var currScroll = 0;
 const MAX_SCROLL = 0;
-const MIN_SCROLL = -210;
+const MIN_SCROLL = -130;
 var movingDown = false;
 
 var foodItems = {
@@ -166,5 +166,5 @@ function ScrollBody(up) {
 
     currScroll += SCROLL_SPEED * (up ? -1 : 1);
     currScroll = Math.max(MIN_SCROLL, Math.min(MAX_SCROLL, currScroll));
-    document.getElementsByClassName('itemGrid')[0].style.transform = 'translateY(' + currScroll + 'vh)';
+    document.getElementsByClassName('itemGrid')[0].style.transform = 'translateY(' + currScroll + 'vw)';
 }

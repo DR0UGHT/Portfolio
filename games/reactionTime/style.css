@@ -1,0 +1,64 @@
+.reactionTimeBody{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+}
+
+.reactionTimeImage{
+    width: 101%;
+    height: 101%;
+    margin-left: -0.5%;
+    background: #878787;
+    border: none;
+    position: relative;
+}
+
+.reactionTimeText{
+    position: absolute;
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.reactionTimeText1{
+    position: absolute;
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    top: 56%;
+    transform: translateY(-50%);
+}
+
+.reactionTimeBest{
+    position: absolute;
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    top: 62%;
+    transform: translateY(-50%);
+}
+
+.reactionTimeAverage{
+    position: absolute;
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    top: 68%;
+    transform: translateY(-50%);
+}
