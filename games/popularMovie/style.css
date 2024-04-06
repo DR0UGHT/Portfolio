@@ -26,6 +26,7 @@
     border: none;
     /* blur inwards */
     filter: blur(.6vw);
+    margin-top: 15%;
 }
 
 #logo{

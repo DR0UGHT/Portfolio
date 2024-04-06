@@ -1,5 +1,5 @@
-const url= '"https://api.themoviedb.org/3/discover/movie?api_key=7d2a1aa3decd9987caef89b8479f5919';
 const options = {method: 'GET', headers: {accept: 'application/json'}};
+
 var debug = false;
 var canVote = false;
 var typeOfGame = "";
@@ -87,13 +87,25 @@ function VoteHigher() {
         compareRight = rightMovie.rating;
     }
 
-    if((typeOfGame == "Dates" && !Date1Earlier(compareLeft, compareRight) || ((typeOfGame != "Dates") && compareLeft < compareRight))) {
+    if(LessThan(compareLeft, compareRight)) {
         loseScreen();
     }else{
         currScore++;
         document.getElementById("scoreText").innerHTML = "Score : " + currScore;
-        SetLeftMovie();
-        SetRightMovie();
+        var fillAmount = 0;
+        var vs = document.getElementById("vs");
+        var increaseSize = setInterval(() => {
+            fillAmount += 1;
+            if(fillAmount <= 100){
+                vs.style.background = "linear-gradient(to top, #74cf64 " + fillAmount + "%, #FFFFFF " + fillAmount + "%)";
+            }else if(fillAmount == 250) {
+                SetLeftMovie();
+                SetRightMovie();
+            }else if(fillAmount > 325) {
+                vs.style.background = "linear-gradient(to top, #FFFFFF " + fillAmount + "%, #FFFFFF " + fillAmount + "%)";
+                clearInterval(increaseSize);
+            }
+        }, 10); 
     }
 }
 
@@ -101,8 +113,8 @@ function VoteLower() {
     if(!canVote) return;
     canVote = false;
 
-    var compareLeft;
-    var compareRight;
+    var compareLeft = "";
+    var compareRight = "";
     if(typeOfGame == "Dates") {
         compareLeft = leftMovie.releaseDate;
         compareRight = rightMovie.releaseDate;
@@ -114,15 +126,35 @@ function VoteLower() {
         compareRight = rightMovie.rating;
     }
 
-    if((typeOfGame == "Dates" && Date1Earlier(compareLeft, compareRight) || ((typeOfGame != "Dates") && compareLeft < compareRight))) {
+    if(LessThan(compareRight, compareLeft)) {
         loseScreen();
     }else{
         currScore++;
         document.getElementById("scoreText").innerHTML = "Score : " + currScore;
-        SetLeftMovie();
-        SetRightMovie();
+        var fillAmount = 0;
+        var vs = document.getElementById("vs");
+        var increaseSize = setInterval(() => {
+            fillAmount += 1;
+            if(fillAmount <= 100){
+                vs.style.background = "linear-gradient(to top, #74cf64 " + fillAmount + "%, #FFFFFF " + fillAmount + "%)";
+            }else if(fillAmount == 250) {
+                SetLeftMovie();
+                SetRightMovie();
+            }else if(fillAmount > 325) {
+                vs.style.background = "linear-gradient(to top, #FFFFFF " + fillAmount + "%, #FFFFFF " + fillAmount + "%)";
+                clearInterval(increaseSize);
+            }
+        }, 10);        
     }
 }
+
+function LessThan(left, right) {
+    console.log(left + " " + right);
+    if (typeOfGame == "Dates" && !Date1Earlier(left, right)) return true;
+    else if (left > right) return true;
+ 
+     return false;
+ }
 
 function loseScreen() {
     var vs = document.getElementById("vs");
@@ -162,6 +194,7 @@ async function GetMovie() {
     var returnedRating = "";
     var returnedReleaseDate = "";
     var returnedBudget = "";
+    var returnedId = 0;
 
     console.log(movies[randomMovie]);
     fetch('https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=' + movies[randomMovie], options)
@@ -171,8 +204,17 @@ async function GetMovie() {
         returnedRating = response.results[0].vote_average;
         returnedRating = Math.round(returnedRating * 10) / 10;
         returnedReleaseDate = response.results[0].release_date;
-        returnedBudget = response.results[0].budget;
+        returnedId = response.results[0].id;
     })
+    .catch(err => console.error(err));
+
+    while(returnedId == 0){
+        await new Promise(r => setTimeout(r, 500));
+    }
+
+    fetch('https://api.themoviedb.org/3/movie/' + returnedId + '?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb')
+    .then(response => response.json())
+    .then(response => returnedBudget = response.budget)
     .catch(err => console.error(err));
 
     while(returnedPosterURL == "" || returnedRating == "" || returnedReleaseDate == "" || returnedBudget == "") {
@@ -185,18 +227,38 @@ async function GetMovie() {
         rating: returnedRating,
         releaseDate: returnedReleaseDate,
         budget: returnedBudget,
+        id: returnedId
     }
 }
 
 async function SetLeftMovie() {
     if(leftMovie.title == "") {
+        var returnedId = 0;
         GetMovie().then(temp => {
             leftMovie.title = temp.title;
             leftMovie.poster = temp.poster;
             leftMovie.rating = temp.rating;
             leftMovie.releaseDate = temp.releaseDate;
-            leftMovie.budget = temp.budget;
+            returnedId = temp.id;
         }).catch(err => console.error(err));
+
+        while(returnedId == 0){
+            await new Promise(r => setTimeout(r, 500));
+        }
+    
+        fetch('https://api.themoviedb.org/3/movie/' + returnedId + '?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb')
+        .then(response => response.json())
+        .then(response => leftMovie.budget = response.budget)
+        .catch(err => console.error(err));
+
+        while(leftMovie.budget == 0){
+            await new Promise(r => setTimeout(r, 500));
+        }
+
+        if(typeOfGame=="Budgets"){
+            //make budget have commas to show money
+            document.getElementById("movieRatingLeft").innerHTML = "$" + leftMovie.budget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     }else{
         leftMovie.title = rightMovie.title;
         leftMovie.poster = rightMovie.poster;
@@ -223,8 +285,8 @@ async function SetRightMovie() {
             document.getElementById("movieRatingLeft").innerHTML = leftMovie.releaseDate;
             document.getElementById("movieRatingRight").innerHTML = rightMovie.releaseDate;
         } else if(typeOfGame == "Budgets") {
-            document.getElementById("movieRatingLeft").innerHTML = "$" + leftMovie.budget;
-            document.getElementById("movieRatingRight").innerHTML = "$" + rightMovie.budget;
+            document.getElementById("movieRatingLeft").innerHTML = "$" + leftMovie.budget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById("movieRatingRight").innerHTML = "$" + rightMovie.budget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         } else{
             document.getElementById("movieRatingLeft").innerHTML = leftMovie.rating;
             document.getElementById("movieRatingRight").innerHTML = rightMovie.rating;
