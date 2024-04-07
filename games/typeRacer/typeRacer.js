@@ -6,7 +6,7 @@ var currentParagraph = "";
 var currentUpParagraph = "";
 
 var incorrectPositions = [];
-var debug = true;
+var debug = false;
 window.onload = async function() {
     SetNewWords();
 }
