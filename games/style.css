@@ -5,6 +5,15 @@
     margin-top: 2%;
 }
 
+#version{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1vw;
+    color: #333;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
 .gameGrid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
