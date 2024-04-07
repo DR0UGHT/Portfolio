@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Target Practice</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="targetPractice.js"></script>
+</head>
+
+<body class="body">
+    <div class="menu" style="display: block;">
+        <button class="startButton" onclick="startGame()">Start Game
+            <div class="pin" style = "margin-left: 2%; margin-top: -20%;"> </div>
+            <div class="pin" style = "margin-left: 90%; margin-top: -20%;"> </div>
+        </button>
+    </div>
+
+    <div class="game" style="display: none;">
+        <h1 class="timer">0.00s</h1>
+        <h1 class="targetsHit">0/30</h1>
+        <h1 class="countdown">3</h1>
+        <button class="targetPracticeButton"></button>
+    </div>
+
+    <div class="gameOver" style="display: none;">
+        <h1 class="gameOverText">Finished!</h1>
+        <h2 class="finalScore">Time : 0.00s</h2>
+        <button class="restartButton" onclick="restartGame()">Restart Game</button>
+    </div>
+
+    <div class="pins" style="display: block;"></div>
+</body>
+</html>

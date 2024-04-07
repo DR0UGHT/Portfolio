@@ -6,7 +6,7 @@ var currentParagraph = "";
 var currentUpParagraph = "";
 
 var incorrectPositions = [];
-var debug = false;
+var debug = true;
 window.onload = async function() {
     SetNewWords();
 }
@@ -15,7 +15,7 @@ async function getWords() {
     let myPromise = new Promise((myResolve, myReject) => {
         let req = new XMLHttpRequest();
         req.open('GET', url, true);
-        req.setRequestHeader(_0x1d2a12);
+        req.setRequestHeader('X-Api-Key', _0x1d2a12(0x10d));
         req.setRequestHeader('Content-Type', 'application/json');
         req.onload = () => {
             if (req.status == 200) {

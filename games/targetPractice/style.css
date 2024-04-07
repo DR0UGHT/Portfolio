@@ -1,0 +1,49 @@
+.body{
+    background: #444444;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: url('../images/cpaper.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+.targetPracticeButton{
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    border: none;
+    cursor: pointer;
+    background: url('../images/target.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 50;
+
+}
+.pin{
+    position: absolute;
+    width: 1vw;
+    height: 1.5vw;
+    background: url('../images/pin.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.menu{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.startButton{
+    position: absolute;
+    width: 20vw;
+    height: 10vh;
+    top: 45vh;
+    left: 40vw;
+    background: url('../images/paperButton.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    font-size: 2vw;
+}
