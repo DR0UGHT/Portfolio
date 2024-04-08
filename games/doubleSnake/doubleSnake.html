@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Double Snake</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="doubleSnake.js"></script>
+</head>
+<body class="doubleSnakeBody">
+    <div class="leftSide">
+
+    </div>
+
+    <div class="rightSide">
+    
+    </div>
+
+    <div class="centerLine">
+
+    </div>
+
+    <div class="loseScreen" id = "loseScreen" style="display: none; z-index: 100;">
+        <h1 class="loseText">You Died!</h1>
+        <h1 class="leftScore">Left Score : 0</h1>
+        <h1 class="rightScore">Right Score : 0</h1>
+        <h1 class="totalScore">Total : 0</h1>
+        <button class="playAgainButton" onclick="ResetGame()">Play Again</button>
+    </div>
+
+    <div class="Controls">
+        <button class="openClose" onclick="OpenCloseControls()"><h1 class ="oc">Controls</h1></button>
+        <h1 class="controlText">Controls</h1>
+        <h1 class="controlText">Left Snake</h1>
+        <h1 class="controlText">Up : W</h1>
+        <h1 class="controlText">Down : S</h1>
+        <h1 class="controlText">Left : A</h1>
+        <h1 class="controlText">Avoid Red Bombs</h1>
+        <h1 class="controlText">Green zones tripple next food</h1>
+    </div>
+    <h1 class = "myName">Liam Carroll</h1>
+</body>
+</html>
