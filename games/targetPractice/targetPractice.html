@@ -7,24 +7,36 @@
 </head>
 
 <body class="body">
+    <h1 class="MyName">Liam Carroll</h1>
     <div class="menu" style="display: block;">
-        <button class="startButton" onclick="startGame()">Start Game
+        <button class="startButton">Start Game
             <div class="pin" style = "margin-left: 2%; margin-top: -20%;"> </div>
             <div class="pin" style = "margin-left: 90%; margin-top: -20%;"> </div>
         </button>
     </div>
 
     <div class="game" style="display: none;">
-        <h1 class="timer">0.00s</h1>
-        <h1 class="targetsHit">0/30</h1>
-        <h1 class="countdown">3</h1>
-        <button class="targetPracticeButton"></button>
+        <div class="postIt">
+            <h1 class="timer">0.00s</h1>
+            <h1 class="targetsHit">0/30</h1>
+        </div>
+        <div class = "postIt2" id = "note1"><h1 class="cd">3</h1></div>
+        <div class = "postIt2" id = "note2"><h1 class="cd">2</h1></div>
+        <div class = "postIt2" id = "note3"><h1 class="cd">1</h1></div>
+        <button class="targetPracticeButton" style="display: none;"></button>
     </div>
 
     <div class="gameOver" style="display: none;">
+        <div class="pin" style = "margin-left: 2%; margin-top: 5%;"> </div>
+        <div class="pin" style = "margin-left: 90%; margin-top: 12%;"> </div>
+        <div class="pin" style = "margin-left: 30%; margin-top: 40%; z-index: 100;"> </div>
+        <div class="pin" style = "margin-left: 70%; margin-top: 40%; z-index: 100;"> </div>
+        
         <h1 class="gameOverText">Finished!</h1>
-        <h2 class="finalScore">Time : 0.00s</h2>
-        <button class="restartButton" onclick="restartGame()">Restart Game</button>
+        <h2 class="finalScore">Average Time : 100ms</h2>
+        <button class="restartButton">Restart Game</button>
+        <button class="menuButton">Menu</button>
+
     </div>
 
     <div class="pins" style="display: block;"></div>

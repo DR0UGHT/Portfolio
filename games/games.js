@@ -22,6 +22,9 @@ function LoadGame(game) {
         case "Popular Movie":
             window.open('./popularMovie/popularMovie.html', '_blank');
             break;
+        case "Target Practice":
+            window.open('./targetPractice/targetPractice.html', '_blank');
+            break;
         
     }
 }

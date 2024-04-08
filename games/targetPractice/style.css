@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'pencil';
+    src: url('../fonts/pencil.ttf') format('truetype');
+}
+
 .body{
     background: #444444;
     width: 100vw;
@@ -6,6 +11,8 @@
     background: url('../images/cpaper.jpg');
     background-size: cover;
     background-repeat: repeat;
+    font-family: 'pencil';
+    user-select: none;
 }
 
 .targetPracticeButton{
@@ -18,8 +25,77 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: 50;
-
 }
+.postIt2{
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+    background: url('../images/posIt2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-left: 50vw;
+    margin-top: 50vh;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+}
+
+#note1{
+    animation: fall1 1s forwards 1;
+    animation-delay: 1s;
+    z-index: 50;
+}
+
+#note2{
+    animation: fall2 1s forwards 1;
+    animation-delay: 2s;
+    z-index: 40;
+}
+
+#note3{
+    animation: fall3 1s forwards 1;
+    animation-delay: 3s;
+    z-index: 30;
+}
+.cd{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    margin-top: 35%;
+    margin-bottom: 40%;
+    z-index: 50;
+    font-size: 1.5vw;
+    text-align: center;
+}
+.timer{
+    position: relative;
+    width: 100%;
+    height: 3vw;
+    font-size: 1.5vw;
+    text-align: center;
+    z-index: 50;
+    margin-top: 30%;
+    margin-bottom: 0%;
+}
+
+.targetsHit{
+    position: relative;
+    width: 100%;
+    height: 10vw;
+    text-align: center;
+    z-index: 50;
+    font-size: 1.5vw;
+    margin-top: 10%;
+}
+.postIt{
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+    background: url('../images/postIt.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 50;
+}
+
 .pin{
     position: absolute;
     width: 1vw;
@@ -45,5 +121,119 @@
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
+    font-size: 3vw;
+    font-family: 'pencil';
+}
+
+.gameOver{
+    position: absolute;
+    width: 30vw;
+    height: 30vh;
+    margin-top: 35vh;
+    margin-left: 35vw;
+    background: url('../images/cardboard.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 50;
+}
+
+.gameOverText{
+    position: absolute;
+    width: 100%;
+    height: 100%;
     font-size: 2vw;
+    text-align: center;
+    margin-top: 10%;
+    font-weight:40;
+    font-family: 'pencil';
+}
+
+.finalScore{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 2vw;
+    font-weight: 200;
+    text-align: center;
+    margin-top: 25%;
+    font-family: 'pencil';
+}
+
+.MyName{
+    position: absolute;
+    width: 20%;
+    height: 4%;
+    font-size: 2vw;
+    font-weight: 200;
+    text-align: right;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    right: 0;
+    bottom: 0;
+    font-family: 'pencil';
+
+}
+
+.restartButton{
+    background: url('../images/paperButton.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    font-size: 2vw;
+    font-family: 'pencil';
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    top: 60%;
+    text-align: center;
+    font-size: 1.4vw;
+    margin-left: 10%;
+    transform: rotate(-2deg);
+
+}
+
+.menuButton{
+    background: url('../images/paperButton.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    font-size: 2vw;
+    font-family: 'pencil';
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    top: 60%;
+    text-align: center;
+    font-size: 1.4vw;
+    margin-left: 55%;
+    transform: rotate(4deg);
+}
+
+@keyframes fall1 {
+    0%{
+        transform: translate(-50%, -50%) translateY(0vh) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -50%) translateY(100vh) rotate(360deg);
+    }
+}
+
+@keyframes fall2 {
+    0%{
+        transform: translate(-50%, -50%) translateY(0vh) rotate(0deg);
+    }
+    100%{
+        transform: translate(150%, -50%) translateY(100vh) rotate(-360deg);
+    }
+}
+
+@keyframes fall3 {
+    0%{
+        transform: translate(-50%, -50%) translateY(0vh) rotate(0deg);
+    }
+    100%{
+        transform: translate(-250%, -50%) translateY(100vh) rotate(-140deg);
+    }
 }
