@@ -1,0 +1,40 @@
+.sortingAlgorithmBody{
+    font-size: 2vw;
+    text-align: center;
+    height: 4%;
+    margin-top: .5%;
+    margin-bottom: .5%;
+    background: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lines{
+    position: relative;
+    height: 60%;
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: auto;
+
+}
+
+.arrayCompare{
+    position: absolute;
+}
+
+.arrayAccess{
+    position: absolute;
+}
+
+.title{
+    position: absolute;
+}

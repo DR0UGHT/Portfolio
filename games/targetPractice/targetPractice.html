@@ -26,16 +26,20 @@
         <button class="targetPracticeButton" style="display: none;"></button>
     </div>
 
-    <div class="gameOver" style="display: none;">
+    <div class="gameOver" style="display: block;">
         <div class="pin" style = "margin-left: 2%; margin-top: 5%;"> </div>
         <div class="pin" style = "margin-left: 90%; margin-top: 12%;"> </div>
-        <div class="pin" style = "margin-left: 30%; margin-top: 40%; z-index: 100;"> </div>
-        <div class="pin" style = "margin-left: 70%; margin-top: 40%; z-index: 100;"> </div>
         
         <h1 class="gameOverText">Finished!</h1>
         <h2 class="finalScore">Average Time : 100ms</h2>
-        <button class="restartButton">Restart Game</button>
-        <button class="menuButton">Menu</button>
+        <div class ="buttons">
+            <button class="restartButton">Restart Game
+                <div class="pin" style = "margin-left: 70%; margin-top: -26%; z-index: 100;"> </div>
+            </button>
+            <button class="menuButton">Menu
+                <div class="pin" style = "margin-left: 30%; margin-top: -25%; z-index: 100;"> </div>
+            </button>
+        </div>
 
     </div>
 
