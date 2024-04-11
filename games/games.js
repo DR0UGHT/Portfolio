@@ -25,6 +25,9 @@ function LoadGame(game) {
         case "Target Practice":
             window.open('./targetPractice/targetPractice.html', '_blank');
             break;
+        case "Double Snake":
+            window.open('./doubleSnake/doubleSnake.html', '_blank');
+            break;
         
     }
 }
