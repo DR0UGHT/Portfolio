@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sorting Algorithm</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="sortingAlgorithm.js"></script>
+</head>
+<body class="sortingAlgorithmBody">
+    <div class = "top">
+        <h1 class="title">Sorting Algorithm Visualizer</h1>
+        <h1 class="arrayCompare">Array Compares : <span id = "ac">0</span></h1>
+        <h1 class="arrayAccess">Array Accesses : <span id = "aa">0</span></h1>
+    </div>
+    <div class = "lines">
+
+    </div>
+
+    <div class = "bottom">
+        <div class = "slidecontainer">
+            <p class ="sliderText">Array Size</p>
+            <input type="range" min="10" max="500" value="100" class="slider" id="as" oninput="ChangeArraySize()">
+            <p class ="sliderText">Sorting Delay</p>
+            <input type="range" min="1" max="100" value="10" class="slider" id="sd" oninput="ChangeSortingDelay()">
+        </div>
+        <button class="button" onclick = "Shuffle()">Shuffle</button>
+        <button class="button" onclick = "BubbleSort()">Bubble Sort</button>
+        <button class="button" onclick = "SelectionSort()">Selection Sort</button>
+        <button class="button" onclick = "MergeSortMain()">Merge Sort</button>
+        <button class="button" onclick = "InsertionSort()">Insertion Sort</button>
+        <button class="button" onclick = "QuickSortMain()">Quick Sort</button>
+        <button class="button" onclick = "HeapSortMain()">Heap Sort</button>
+        <button class="button" onclick = "ShellSort()">Shell Sort</button>
+        <button class="button" onclick = "CocktailSort()">Cocktail Sort</button>
+        <button class="button" onclick = "BogoSort()">BOGO Sort</button>
+    </div>
+</body>
+</html>

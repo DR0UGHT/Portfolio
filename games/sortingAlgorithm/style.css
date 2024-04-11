@@ -1,0 +1,117 @@
+.sortingAlgorithmBody{
+    font-size: 2vw;
+    text-align: center;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    background: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.slidecontainer{
+    position: relative;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    width: 10%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: auto;
+
+}
+
+.lines{
+    position: relative;
+    height: 60%;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: auto;
+
+}
+
+.button{
+    position: relative;
+    background-color: rgb(68, 65, 65);
+    font-size: 0.75vw;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    width: 8%;
+    height: 30%;
+    text-align: center;
+    color: rgb(192, 174, 190);
+    border: .2vw solid rgb(255, 255, 255);
+
+}
+.arrayCompare{
+    position: absolute;
+    color: white;
+    font-size: 1.25vw;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    margin-left: 52%;
+    width: 50%;
+    height: 5%;
+    text-align: left;
+}
+
+.arrayAccess{
+    position: absolute;
+    color: white;
+    font-size: 1.25vw;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    margin-left: 0%;
+    width: 48%;
+    height: 5%;
+    text-align: right;
+}
+
+.title{
+    position: absolute;
+    color: white;
+    font-size: 3vw;
+    margin-top: 0%;
+    margin-bottom: 1%;
+    width: 100%;
+    height: 5%;
+    text-align: center;
+}
+
+.top{
+    height: 20%;
+    width: 100%;
+}
+
+.bottom{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: auto;
+    flex-direction: row;
+}
+
+.sliderText{
+    position: relative;
+    color: white;
+    font-size: 1.25vw;
+    margin-top: 0%;
+    margin-bottom: 1%;
+    margin-left: 0%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
