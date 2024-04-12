@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="chess.js"></script>
+</head>
+<body class="chessBody">
+    <div class = "chessBoard">
+        <div class = "row" id = "row8">
+            <h1 class = "rowNum">8</h1>
+            <div class = "whiteSquare" id ="a8">
+                <img src="../images/blackRook.png" class="piece" id="blackRookA8">
+            </div>
+            <div class = "blackSquare" id ="b8">
+                <img src="../images/blackKnight.png" class="piece" id="blackKnightB8">
+            </div>
+            <div class = "whiteSquare" id ="c8">
+                <img src="../images/blackBishop.png" class="piece" id="blackBishopC8">
+            </div>
+            <div class = "blackSquare" id ="d8">
+                <img src="../images/blackQueen.png" class="piece" id="blackQueenD8">
+            </div>
+            <div class = "whiteSquare" id ="e8">
+                <img src="../images/blackKing.png" class="piece" id="blackKingE8">
+            </div>
+            <div class = "blackSquare" id ="f8">
+                <img src="../images/blackBishop.png" class="piece" id="blackBishopF8">
+            </div>
+            <div class = "whiteSquare" id ="g8">
+                <img src="../images/blackKnight.png" class="piece" id="blackKnightG8">
+            </div>
+            <div class = "blackSquare" id ="h8">
+                <img src="../images/blackRook.png" class="piece" id="blackRookH8">
+            </div>
+        </div>
+        <div class = "row" id = "row7">
+            <h1 class = "rowNum">7</h1>
+            <div class = "blackSquare" id ="a7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnA7">
+            </div>
+            <div class = "whiteSquare" id ="b7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnB7">
+            </div>
+            <div class = "blackSquare" id ="c7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnC7">
+            </div>
+            <div class = "whiteSquare" id ="d7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnD7">
+            </div>
+            <div class = "blackSquare" id ="e7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnE7">
+            </div>
+            <div class = "whiteSquare" id ="f7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnF7">
+            </div>
+            <div class = "blackSquare" id ="g7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnG7">
+            </div>
+            <div class = "whiteSquare" id ="h7">
+                <img src="../images/blackPawn.png" class="piece" id="blackPawnH7">
+            </div>
+        </div>
+
+        <div class = "row" id = "row6">
+            <h1 class = "rowNum">6</h1>
+            <div class = "whiteSquare" id ="a6"></div>
+            <div class = "blackSquare" id ="b6"></div>
+            <div class = "whiteSquare" id ="c6"></div>
+            <div class = "blackSquare" id ="d6"></div>
+            <div class = "whiteSquare" id ="e6"></div>
+            <div class = "blackSquare" id ="f6"></div>
+            <div class = "whiteSquare" id ="g6"></div>
+            <div class = "blackSquare" id ="h6"></div>
+        </div>
+
+        <div class = "row" id = "row5">
+            <h1 class = "rowNum">5</h1>
+            <div class = "blackSquare" id ="a5"></div>
+            <div class = "whiteSquare" id ="b5"></div>
+            <div class = "blackSquare" id ="c5"></div>
+            <div class = "whiteSquare" id ="d5"></div>
+            <div class = "blackSquare" id ="e5"></div>
+            <div class = "whiteSquare" id ="f5"></div>
+            <div class = "blackSquare" id ="g5"></div>
+            <div class = "whiteSquare" id ="h5"></div>
+        </div>
+
+        <div class = "row" id = "row4">
+            <h1 class = "rowNum">4</h1>
+            <div class = "whiteSquare" id ="a4"></div>
+            <div class = "blackSquare" id ="b4"></div>
+            <div class = "whiteSquare" id ="c4"></div>
+            <div class = "blackSquare" id ="d4"></div>
+            <div class = "whiteSquare" id ="e4"></div>
+            <div class = "blackSquare" id ="f4"></div>
+            <div class = "whiteSquare" id ="g4"></div>
+            <div class = "blackSquare" id ="h4"></div>
+        </div>
+
+        <div class = "row" id = "row3">
+            <h1 class = "rowNum">3</h1>
+            <div class = "blackSquare" id ="a3"></div>
+            <div class = "whiteSquare" id ="b3"></div>
+            <div class = "blackSquare" id ="c3"></div>
+            <div class = "whiteSquare" id ="d3"></div>
+            <div class = "blackSquare" id ="e3"></div>
+            <div class = "whiteSquare" id ="f3"></div>
+            <div class = "blackSquare" id ="g3"></div>
+            <div class = "whiteSquare" id ="h3"></div>
+        </div>  
+
+        <div class = "row" id = "row2">
+            <h1 class = "rowNum">2</h1>
+            <div class = "whiteSquare" id ="a2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnA2" onclick="ClickAPiece('P', 'a2')">
+            </div>
+            <div class = "blackSquare" id ="b2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnB2" onclick="ClickAPiece('P', 'b2')">
+            </div>
+            <div class = "whiteSquare" id ="c2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnC2" onclick="ClickAPiece('P', 'c2')">
+            </div>
+            <div class = "blackSquare" id ="d2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnD2" onclick="ClickAPiece('P', 'd2')">
+            </div>
+            <div class = "whiteSquare" id ="e2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnE2" onclick="ClickAPiece('P', 'e2')">
+            </div>
+            <div class = "blackSquare" id ="f2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnF2" onclick="ClickAPiece('P', 'f2')">
+            </div>
+            <div class = "whiteSquare" id ="g2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnG2" onclick="ClickAPiece('P', 'g2')">
+            </div>
+            <div class = "blackSquare" id ="h2">
+                <img src="../images/whitePawn.png" class="piece" id="whitePawnH2" onclick="ClickAPiece('P', 'h2')">
+            </div>
+        </div>
+
+        <div class = "row" id = "row1">
+            <h1 class = "rowNum">1</h1>
+            <div class = "blackSquare" id ="a1">
+                <img src="../images/whiteRook.png" class="piece" id="whiteRookA1">
+            </div>
+            <div class = "whiteSquare" id ="b1">
+                <img src="../images/whiteKnight.png" class="piece" id="whiteKnightB1">
+            </div>
+            <div class = "blackSquare" id ="c1">
+                <img src="../images/whiteBishop.png" class="piece" id="whiteBishopC1">
+            </div>
+            <div class = "whiteSquare" id ="d1">
+                <img src="../images/whiteQueen.png" class="piece" id="whiteQueenD1">
+            </div>
+            <div class = "blackSquare" id ="e1">
+                <img src="../images/whiteKing.png" class="piece" id="whiteKingE1">
+            </div>
+            <div class = "whiteSquare" id ="f1">
+                <img src="../images/whiteBishop.png" class="piece" id="whiteBishopF1">
+            </div>
+            <div class = "blackSquare" id ="g1">
+                <img src="../images/whiteKnight.png" class="piece" id="whiteKnightG1">
+            </div>
+            <div class = "whiteSquare" id ="h1">
+                <img src="../images/whiteRook.png" class="piece" id="whiteRookH1">
+            </div>
+        </div>
+
+        <div class = "rowColNums" id = "colNums">
+            <h1 class = "colNum">A</h1>
+            <h1 class = "colNum">B</h1>
+            <h1 class = "colNum">C</h1>
+            <h1 class = "colNum">D</h1>
+            <h1 class = "colNum">E</h1>
+            <h1 class = "colNum">F</h1>
+            <h1 class = "colNum">G</h1>
+            <h1 class = "colNum">H</h1>
+        </div>
+    </div>
+</body>
+</html>

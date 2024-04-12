@@ -34,23 +34,3 @@ function LoadGame(game) {
         
     }
 }
-
-window.onload = function () {
-
-    GetVersionFromGithub();
-
-}
-
-function GetVersionFromGithub() {
-    const headers = { 'X-Api-Key': 'Ml432Sl9mqBHGtRfXN8kBQ==nPc5X62r9yOpniLF' };
-    var url = "https://api.api-ninjas.com/v1/webscraper?url=https://github.com/DR0UGHT/Portfolio";
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.send();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var data = JSON.parse(xhr.responseText);
-            console.log(data);
-        }
-    }
-}

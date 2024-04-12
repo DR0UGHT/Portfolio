@@ -1,0 +1,90 @@
+.chessBody{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    user-select: none;
+    overflow: hidden;
+}
+
+.chessBoard{
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 60vh;
+    height: 60vh;
+}
+
+.whiteSquare{
+    background-color: #e0c79f;
+    width: 100%;
+    height: 100%;
+}
+
+.blackSquare{
+    background-color: #b58863;
+    width: 100%;
+    height: 100%;
+}
+
+.row{
+    width: 100%;
+    height: 12.5%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.rowNum{
+    position: relative;
+    width: 0%;
+    height: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    font-size: 2vh;
+}
+
+.colNum{
+    position:relative;
+    width: 0%;
+    height: 0%;
+    margin-left: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-right: 0%;
+    font-size: 2vh;
+}
+
+.rowColNums{
+    width: 100%;
+    height: 0%;
+    margin-top: -1%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.colNum{
+    width: 12.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vh;
+}
+#colNums{
+    margin-left: 4.5%;
+}
+
+.piece{
+    width: 70%;
+    height: 70%;
+
+    margin-top: 15%;
+    margin-left: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
