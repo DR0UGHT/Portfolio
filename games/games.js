@@ -31,6 +31,9 @@ function LoadGame(game) {
         case "Sorting Algorithm":
             window.open('./sortingAlgorithm/sortingAlgorithm.html', '_blank');
             break;
+        case "Reaction Time":
+            window.open('./reactionTime/reactionTime.html', '_blank');
+            break;
         
     }
 }

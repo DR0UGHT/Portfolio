@@ -21,12 +21,14 @@
     background-color: #e0c79f;
     width: 100%;
     height: 100%;
+    user-select: none;
 }
 
 .blackSquare{
     background-color: #b58863;
     width: 100%;
     height: 100%;
+    user-select: none;
 }
 
 .row{
@@ -87,4 +89,23 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    user-select: none;
+}
+
+.dotBoard{
+    width: 60vh;
+    height: 60vh;
+    flex-wrap: wrap;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.dot{
+    width: 80%;
+    height: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+    border-radius: 50%;
 }

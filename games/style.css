@@ -64,6 +64,9 @@
 #game8{
     content: url('./images/targetLogo.png');
 }
+#game9{
+    content: url('./images/reactionTime.png');
+}
 
 #game10{
     content: url('./images/doubleSnake.png');
