@@ -10,8 +10,9 @@ let inGame = false;
 let whiteInCheck = false;
 let blackInCheck = false;
 let showAttack = false;
+var startDepth = 1;
 
-var stockfish = new Worker("stockfish.js-Stockfish11/src/stockfish.js");
+var stockfish = new Worker("stockfish.js");
 
 let chessGrid = [
     ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
@@ -34,9 +35,50 @@ window.onload = function () {
             showAttack = !showAttack;
         }
     }
+    console.log(chessGridToFen(chessGrid));
+    LoadFen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
+    //console.log(chessGridToFen(chessGrid));
+    //CheckForStalemate('b');
 
-    var stockfish = stockfish();
-    stockfish.postMessage('uci');
+}
+
+function LoadFen(fen){
+    let fenParts = fen.split(' ');
+    let board = fenParts[0];
+    let turn = fenParts[1];
+    let castling = fenParts[2];
+    let enPassant = fenParts[3];
+    let halfMove = fenParts[4];
+    let fullMove = fenParts[5];
+
+    let boardRows = board.split('/');
+    for(let i = 0; i < boardRows.length; i++){
+        let row = boardRows[i];
+        let col = 1;
+        for(let j = 0; j < row.length; j++){
+            let piece = row[j];
+            if(isNaN(piece)){
+                chessGrid[i][col-1] = piece;
+                col++;
+            }else{
+                for(let k = 0; k < parseInt(piece); k++){
+                    chessGrid[i][col-1] = '--';
+                    col++;
+                }
+            }
+        }
+    }
+
+    currentTurn = turn;
+    whiteCanCastleKingSide = castling.includes('K');
+    whiteCanCastleQueenSide = castling.includes('Q');
+    blackCanCastleKingSide = castling.includes('k');
+    blackCanCastleQueenSide = castling.includes('q');
+    enPassant = enPassant;
+    halfMoveClock = parseInt(halfMove);
+    fullMoveNumber = parseInt(fullMove);
+
+    console.log(chessGrid);
 }
 
 async function ComputerMove(){
@@ -49,7 +91,7 @@ async function ComputerMove(){
             await new Promise(r => setTimeout(r, 1000));
         }
 
-        let move = await GetStockfishMove();
+        let move = await GetStockfishMove(startDepth);
 
         let from = move.substring(0, 2);
         let to = move.substring(2, 4);
@@ -57,6 +99,7 @@ async function ComputerMove(){
         MovePieces(from, to);
     }
 }
+
 function chessGridToFen(chessGrid) {
     let fen = '';
     for (let i = chessGrid.length-1; i >= 0; i--) {
@@ -144,6 +187,37 @@ function MovePieces(from, to){
     EnablePieceClicks(currentTurn == 'w');
 }
 
+async function CheckForStalemate(whosturn){
+    //give me a FEN for stalemate
+    let fen = 'k1Q5/8/1QK5/8/8/8/8/8 ' + whosturn + ' - - 0 1'
+    ret = '';
+
+    stockfish.onmessage = function(event) { 
+        if(event.data.startsWith('bestmove')){
+            ret = event.data.split(' ')[1];
+        }
+        console.log(event.data);
+    };
+    // stockfish.postMessage('position fen ' + chessGridToFen(chessGrid));
+    console.log(fen);
+    stockfish.postMessage('position fen ' + fen);
+    stockfish.postMessage('go depth 20');
+
+    while(ret === ''){
+        await new Promise(r => setTimeout(r, 100));
+    }
+
+    if(ret === '(none)'){
+        console.log(IsInCheck('black'));
+        if(IsInCheck(whosturn === 'w' ? 'white' : 'black')){
+            console.log("White wins");
+        }else if(IsInCheck('white')){
+            console.log("Black wins");
+        }else{
+            console.log("Stalemate");
+        }
+    }
+}
 function CheckForConditions(from, to){
     let fromRow = algebraicToRowCol(from)[0];
     let fromCol = algebraicToRowCol(from)[1];
@@ -223,12 +297,19 @@ function CheckForConditions(from, to){
         }
     }
 
+    
     if(piece === 'P' && fromRow === 2 && toRow === 4){
         enPassant = rowColToAlgebraic(fromRow+1, fromCol);
     }else if(piece === 'p' && fromRow === 7 && toRow === 5){
         enPassant = rowColToAlgebraic(fromRow-1, fromCol);
     }else{
         enPassant = '-';
+    }
+
+    if(piece === 'P' || piece === 'p'){
+        if(toRow === 8 || toRow === 1){
+            piece = piece === 'P' ? 'Q' : 'q';
+        }
     }
 }
 
@@ -244,32 +325,81 @@ function ClearDots(){
 }
 function ClieckedPiece(pieceType, row, col){
     let placesToMarker = [];
+    var isInCheck = IsInCheck(currentTurn === 'w' ? 'white' : 'black');
     switch(pieceType){
         case 'P':
             if(row == 2){
-                if(GetPieceColorAtPosition(row+1, col) === 'none' && GetPieceColorAtPosition(row+2, col) === 'none'){
-                    placesToMarker.push([row+1, col]);
-                    placesToMarker.push([row+2, col]);
+                if(GetPieceColorAtPosition(row+2, col) === 'none' && GetPieceColorAtPosition(row+1, col) === 'none'){
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row+2, col)){
+                            placesToMarker.push([row+2, col]);
+                        }
+
+                        if(DoesMoveStopCheck(row, col, row+1, col)){
+                            placesToMarker.push([row+1, col]);
+                        }
+                    }else{
+                        placesToMarker.push([row+1, col]);
+                        placesToMarker.push([row+2, col]);
+                    }
+                }else if(GetPieceColorAtPosition(row+1, col) === 'none'){
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row+1, col)){
+                            placesToMarker.push([row+1, col]);
+                        }
+                    }else{
+                        placesToMarker.push([row+1, col]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row+1, col-1) === 'black'){
-                    placesToMarker.push([row+1, col-1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row+1, col-1)){
+                            placesToMarker.push([row+1, col-1]);
+                        }
+                    }else{
+                        placesToMarker.push([row+1, col-1]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row+1, col+1) === 'black'){
-                    placesToMarker.push([row+1, col+1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row+1, col+1)){
+                            placesToMarker.push([row+1, col+1]);
+                        }
+                    }else{
+                        placesToMarker.push([row+1, col+1]);
+                    }
                 }
             }else{
                 if(GetPieceColorAtPosition(row+1, col) === 'none'){
-                    placesToMarker.push([row+1, col]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row+1, col)){
+                            placesToMarker.push([row+1, col]);
+                        }
+                    }else{
+                        placesToMarker.push([row+1, col]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row+1, col-1) === 'black'){
-                    placesToMarker.push([row+1, col-1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row+1, col-1)){
+                            placesToMarker.push([row+1, col-1]);
+                        }
+                    }else{
+                        placesToMarker.push([row+1, col-1]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row+1, col+1) === 'black'){
-                    placesToMarker.push([row+1, col+1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row+1, col+1)){
+                            placesToMarker.push([row+1, col+1]);
+                        }
+                    }else{
+                        placesToMarker.push([row+1, col+1]);
+                    }
                 }
             }
             break;
@@ -279,11 +409,22 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                        console.log('black piece on square' + rowColToAlgebraic(newPos[0], newPos[1]));
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         break;
                     }else{
                         break;
@@ -296,7 +437,13 @@ function ClieckedPiece(pieceType, row, col){
         case 'N':
             for(const newPos of [[row+2, col+1], [row+2, col-1], [row-2, col+1], [row-2, col-1], [row+1, col+2], [row+1, col-2], [row-1, col+2], [row-1, col-2]]){
                 if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                    placesToMarker.push(newPos);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                            placesToMarker.push(newPos);
+                        }
+                    }else{
+                        placesToMarker.push(newPos);
+                    }
                 }
             }
             break;
@@ -306,10 +453,22 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         break;
                     }else{
                         break;
@@ -324,10 +483,23 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
+
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                          placesToMarker.push(newPos);
+                        }
                         break;
                     }else{
                         break;
@@ -341,10 +513,23 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
+
                         break;
                     }else{
                         break;
@@ -362,24 +547,40 @@ function ClieckedPiece(pieceType, row, col){
                 }
             }
             for(const newPos of [[row+1, col], [row-1, col], [row, col+1], [row, col-1], [row+1, col+1], [row+1, col-1], [row-1, col+1], [row-1, col-1]]){
-                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none' && !PositionInArray(attackedSquaresBlack, newPos)){
-                    placesToMarker.push(newPos);
+                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none' && !PositionInArray(attackedSquaresBlack, newPos)){;
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                            placesToMarker.push(newPos);
+                        }
+                    }else{
+                        placesToMarker.push(newPos);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black' && !PositionInArray(attackedSquaresBlack, newPos)){
-                    placesToMarker.push(newPos);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                            placesToMarker.push(newPos);
+                        }
+                    }else{
+                        placesToMarker.push(newPos);
+                    }
                 }
             }
 
-            if(whiteCanCastleKingSide && GetPieceColorAtPosition(1, 6) === 'none' && GetPieceColorAtPosition(1, 7) === 'none' && GetPieceColorAtPosition(1, 5) === 'none'){
+            if(whiteCanCastleKingSide && GetPieceColorAtPosition(1, 6) === 'none' && GetPieceColorAtPosition(1, 7) === 'none'){
                 if(!CanPieceAttackSquare(1, 8, 'black') && !CanPieceAttackSquare(1, 7, 'black')){
-                    placesToMarker.push([1, 7]);
+                    if(!isInCheck){
+                        placesToMarker.push([1, 7]);
+                    }
                 }
             }
 
-            if(whiteCanCastleQueenSide && GetPieceColorAtPosition(1, 2) === 'none' && GetPieceColorAtPosition(1, 3) === 'none' && GetPieceColorAtPosition(1, 4) === 'none' && GetPieceColorAtPosition(1, 5) === 'none'){
+            if(whiteCanCastleQueenSide && GetPieceColorAtPosition(1, 2) === 'none' && GetPieceColorAtPosition(1, 3) === 'none' && GetPieceColorAtPosition(1, 4) === 'none'){
                 if(!CanPieceAttackSquare(1, 1, 'black') && !CanPieceAttackSquare(1, 2, 'black') && !CanPieceAttackSquare(1, 3, 'black')){
-                    placesToMarker.push([1, 3]);
+                    if(!isInCheck){
+                        placesToMarker.push([1, 3]);
+                    }
                 }
             }
 
@@ -387,29 +588,69 @@ function ClieckedPiece(pieceType, row, col){
         case 'p':
             if(row === 7){
                 if(GetPieceColorAtPosition(row-1, col) === 'none' && GetPieceColorAtPosition(row-2, col) === 'none'){
-                    placesToMarker.push([row-1, col]);
-                    placesToMarker.push([row-2, col]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row-2, col)){
+                            placesToMarker.push([row-2, col]);
+                        }
+
+                        if(DoesMoveStopCheck(row, col, row-1, col)){
+                            placesToMarker.push([row-1, col]);
+                        }
+                    }else{
+                        placesToMarker.push([row-1, col]);
+                        placesToMarker.push([row-2, col]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row-1, col-1) === 'white'){
-                    placesToMarker.push([row-1, col-1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row-1, col-1)){
+                            placesToMarker.push([row-1, col-1]);
+                        }
+                    }else{
+                        placesToMarker.push([row-1, col-1]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row-1, col+1) === 'white'){
-                    placesToMarker.push([row-1, col+1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row-1, col+1)){
+                            placesToMarker.push([row-1, col+1]);
+                        }
+                    }else{
+                        placesToMarker.push([row-1, col+1]);
+                    }
                 }
 
             }else{
                 if(GetPieceColorAtPosition(row-1, col) === 'none'){
-                    placesToMarker.push([row-1, col]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row-1, col)){
+                            placesToMarker.push([row-1, col]);
+                        }
+                    }else{
+                        placesToMarker.push([row-1, col]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row-1, col-1) === 'white'){
-                    placesToMarker.push([row-1, col-1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row-1, col-1)){
+                            placesToMarker.push([row-1, col-1]);
+                        }
+                    }else{
+                        placesToMarker.push([row-1, col-1]);
+                    }
                 }
 
                 if(GetPieceColorAtPosition(row-1, col+1) === 'white'){
-                    placesToMarker.push([row-1, col+1]);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, row-1, col+1)){
+                            placesToMarker.push([row-1, col+1]);
+                        }
+                    }else{
+                        placesToMarker.push([row-1, col+1]);
+                    }
                 }
             }
 
@@ -420,10 +661,23 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
+
                         break;
                     }else{
                         break;
@@ -435,7 +689,13 @@ function ClieckedPiece(pieceType, row, col){
         case 'n':
             for(const newPos of [[row+2, col+1], [row+2, col-1], [row-2, col+1], [row-2, col-1], [row+1, col+2], [row+1, col-2], [row-1, col+2], [row-1, col-2]]){
                 if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                    placesToMarker.push(newPos);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                            placesToMarker.push(newPos);
+                        }
+                    }else{
+                        placesToMarker.push(newPos);
+                    }
                 }
             }
             break;
@@ -445,10 +705,23 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
+
                         break;
                     }else{
                         break;
@@ -463,10 +736,22 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
                         break;
                     }else{
                         break;
@@ -480,10 +765,24 @@ function ClieckedPiece(pieceType, row, col){
                 var newPos = [row + direction[0]*num, col + direction[1]*num];
                 while(true){
                     if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
+
                         num++;
                     }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                        placesToMarker.push(newPos);
+                        if(isInCheck){
+                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                                placesToMarker.push(newPos);
+                            }
+                        }else{
+                            placesToMarker.push(newPos);
+                        }
+
                         break;
                     }else{
                         break;
@@ -497,19 +796,29 @@ function ClieckedPiece(pieceType, row, col){
 
             for(const newPos of [[row+1, col], [row-1, col], [row, col+1], [row, col-1], [row+1, col+1], [row+1, col-1], [row-1, col+1], [row-1, col-1]]){
                 if((GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white') && !PositionInArray(attackedSquaresWhite, newPos)){
-                    placesToMarker.push(newPos);
+                    if(isInCheck){
+                        if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
+                            placesToMarker.push(newPos);
+                        }
+                    }else{
+                        placesToMarker.push(newPos);
+                    }
                 }
             }
 
             if(blackCanCastleKingSide && GetPieceColorAtPosition(8, 8) === 'none' && GetPieceColorAtPosition(8, 7) === 'none'){
                 if(!CanPieceAttackSquare(8, 7, 'white') && !CanPieceAttackSquare(8, 6, 'white') && !CanPieceAttackSquare(8, 5, 'white')){
-                    placesToMarker.push([8, 7]);
+                    if(!isInCheck){
+                        placesToMarker.push([8, 7]);
+                    }
                 }
             }
 
             if(blackCanCastleQueenSide && GetPieceColorAtPosition(8, 2) === 'none' && GetPieceColorAtPosition(8, 3) === 'none' && GetPieceColorAtPosition(8, 4) === 'none' && GetPieceColorAtPosition(8, 5) === 'none'){
                 if(!CanPieceAttackSquare(8, 1, 'white') && !CanPieceAttackSquare(8, 2, 'white') && !CanPieceAttackSquare(8, 3, 'white')){
-                    placesToMarker.push([8, 3]);
+                    if(!isInCheck){
+                        placesToMarker.push([8, 3]);
+                    }
                 }
             }
 
@@ -518,6 +827,85 @@ function ClieckedPiece(pieceType, row, col){
 
     return placesToMarker;
 }
+
+function IsInCheck(pieceColor){
+    let kingPos = [];
+    for(let i = 1; i < 9; i++){
+        for(let j = 1; j < 9; j++){
+            if(GetPieceAtPosition(i, j) === (pieceColor === 'white' ? 'K' : 'k')){
+                kingPos = [i, j];
+                break;
+            }
+        }
+    }
+
+    console.log(kingPos);
+
+    if(pieceColor === 'white'){
+        return CanPieceAttackSquare(kingPos[0], kingPos[1], 'black');
+    }else{
+        return CanPieceAttackSquare(kingPos[0], kingPos[1], 'white');
+    }
+}
+
+function DoesMoveStopCheck(from, to){
+    let fromRow = algebraicToRowCol(from)[0];
+    let fromCol = algebraicToRowCol(from)[1];
+    let toRow = algebraicToRowCol(to)[0];
+    let toCol = algebraicToRowCol(to)[1];
+
+    if(fromRow-1 == 0 || fromCol-1 == 0 || toRow-1 == 0 || toCol-1 == 0){
+        return false;
+    }
+
+    let piece = chessGrid[fromRow-1][fromCol-1];
+    let pieceColor = piece.charCodeAt(0) < 91 ? 'white' : 'black';
+
+    let tempGrid = CopyArray(chessGrid);
+    chessGrid[fromRow-1][fromCol-1] = '--';
+    chessGrid[toRow-1][toCol-1] = piece;
+
+    if(IsInCheck(pieceColor)){
+        chessGrid = tempGrid;
+        return false;
+    }else{
+        chessGrid = tempGrid;
+        return true;
+    }
+    
+}
+
+function CopyArray(array){
+    let newArray = [];
+    for(let i = 0; i < array.length; i++){
+        newArray.push(array[i].slice());
+    }
+
+    return newArray;
+}
+
+function DoesMoveStopCheck(fromx, fromy, tox, toy){
+    if(fromx-1 < 0 || fromy-1 < 0 || tox-1 < 0 || toy-1 < 0){
+        console.log("bad");
+        return false;
+    }
+
+    let piece = chessGrid[fromx-1][fromy-1];
+    let pieceColor = piece.charCodeAt(0) < 91 ? 'white' : 'black';
+    let tempGrid = CopyArray(chessGrid);
+    chessGrid[fromx-1][fromy-1] = '--';
+    chessGrid[tox-1][toy-1] = piece;
+
+    if(IsInCheck(pieceColor)){
+        chessGrid = tempGrid;
+        return false;
+    }else{
+        chessGrid = tempGrid;
+        return true;
+    }
+}
+
+
 
 function GetPieceColorAtPosition(row, col){
     if(row > 8 || row < 1 || col > 8 || col < 1){
@@ -531,23 +919,19 @@ function GetPieceColorAtPosition(row, col){
 
 
 function CanPieceAttackSquare(row, col, pieceColor){
-    for(let i = 1; i < 9; i++){
-        for(let j = 1; j < 9; j++){
-            if(GetPieceColorAtPosition(i, j) === pieceColor){
-                let placesToMarker = ClieckedPiece(GetPieceAtPosition(i, j), i, j, true);
-                for(let k = 0; k < placesToMarker.length; k++){
-                    if(placesToMarker[k][0] === row && placesToMarker[k][1] === col){
-                        return true;
-                    }
-                }
-            }
+    let attackedSquares = GetAllAttackedSquares(pieceColor);
+    for(let i = 0; i < attackedSquares.length; i++){
+        if(PositionInArray(attackedSquares, [row, col])){
+            return true;
         }
     }
+
+    return false;
 }
 
 function GetAllAttackedSquares(pieceColor){
     let placesToMarker = [];
-    for(var i = 1; i < 9; i++){
+    for(var i = 1; i < 9; i++){ 
         for(var j = 1; j < 9; j++){
             if(GetPieceColorAtPosition(i, j) === pieceColor){
                 let pieceType = GetPieceAtPosition(i, j);
@@ -573,7 +957,6 @@ function GetAllAttackedSquares(pieceColor){
                                     placesToMarker.push(newPos);
                                     num++;
                                 }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                                    console.log('black piece on square' + rowColToAlgebraic(newPos[0], newPos[1]));
                                     placesToMarker.push(newPos);
                                     break;
                                 }else{
@@ -885,7 +1268,6 @@ function HideDots(pos){
     document.getElementsByClassName('dotBoard')[0].style.display = 'none';
 
     if(pos){
-        console.log(pos);
         let row = algebraicToRowCol(pos)[0];
         let col = algebraicToRowCol(pos)[1];
         if(GetPieceAtPosition(row, col) !== '--'){
@@ -907,30 +1289,44 @@ function PositionInArray(array, pos){
     return false;
 }
 
-async function GetStockfishMove(){
-    var fen = chessGridToFen(chessGrid);
-    const url = 'https://chess-stockfish-16-api.p.rapidapi.com/chess/api';
-    const options = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': 'a4536a0c3fmshdb526c9a987fe7bp1a3098jsna0cb810db21c',
-            'X-RapidAPI-Host': 'chess-stockfish-16-api.p.rapidapi.com'
-        },
-        body: new URLSearchParams({
-            fen: fen,
-        })
-    };
 
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result);
-        return result.bestmove;
-    } catch (error) {
-        await new Promise(r => setTimeout(r, 1000));
-        return GetStockfishMove();
+async function GetStockfishMove(depth){
+    ret = '';
+    retBack = '';
+    stockfish.onmessage = function(event) { 
+        if(event.data.includes('bestmove')){
+            ret = event.data.split(' ')[1];
+            retBack = event.data.split(' ')[3];
+        }
+        console.log(event.data);
+    };
+    stockfish.postMessage('position fen ' + chessGridToFen(chessGrid));
+    stockfish.postMessage('go depth ' + depth);
+    
+
+    while(ret === ''){
+        await new Promise(r => setTimeout(r, 100));
     }
 
-    return '';
+    //if the move from is equal to the move to, then the move is a promotion
+    if(ret.substring(0, 2) === ret.substring(2, 4)){
+        ret = retback;
+    }
+
+    if(ret.substring(0, 2) === ret.substring(2, 4)){
+        return await GetStockfishMove(depth+1);
+    }else{
+        return ret;
+    }
+}
+
+function SetSkillLevel(skill){
+    //NOTE: Stockfish level 20 does not make errors (intentially), so these numbers have no effect on level 20.
+    // Level 0 starts at 1
+    err_prob = Math.round((skill * 6.35) + 1);
+    // Level 0 starts at 10
+    max_err = Math.round((skill * -0.5) + 10);
+    stockfish.postMessage('setoption name Skill Level value ' + skill);
+    stockfish.postMessage('setoption name Skill Level Maximum Error value ' + max_err);
+    stockfish.postMessage('setoption name Skill Level Probability value ' + err_prob);
 }

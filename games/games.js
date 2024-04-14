@@ -34,6 +34,9 @@ function LoadGame(game) {
         case "Reaction Time":
             window.open('./reactionTime/reactionTime.html', '_blank');
             break;
+        case "dvd":
+            window.open('./dvdLogo/dvd.html', '_blank');
+            break;
         
     }
 }
