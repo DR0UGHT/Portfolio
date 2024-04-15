@@ -12,6 +12,9 @@ let blackInCheck = false;
 let showAttack = false;
 var startDepth = 1;
 
+var showWhiteAttack = false;
+var showBlackAttack = false;
+
 var stockfish = new Worker("stockfish.js");
 
 let chessGrid = [
@@ -34,52 +37,31 @@ window.onload = function () {
             // console.log(chessGridToFen(chessGrid));
             showAttack = !showAttack;
         }
-    }
-    console.log(chessGridToFen(chessGrid));
-    LoadFen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
-    //console.log(chessGridToFen(chessGrid));
-    //CheckForStalemate('b');
 
-}
-
-function LoadFen(fen){
-    let fenParts = fen.split(' ');
-    let board = fenParts[0];
-    let turn = fenParts[1];
-    let castling = fenParts[2];
-    let enPassant = fenParts[3];
-    let halfMove = fenParts[4];
-    let fullMove = fenParts[5];
-
-    let boardRows = board.split('/');
-    for(let i = 0; i < boardRows.length; i++){
-        let row = boardRows[i];
-        let col = 1;
-        for(let j = 0; j < row.length; j++){
-            let piece = row[j];
-            if(isNaN(piece)){
-                chessGrid[i][col-1] = piece;
-                col++;
-            }else{
-                for(let k = 0; k < parseInt(piece); k++){
-                    chessGrid[i][col-1] = '--';
-                    col++;
-                }
+        //if key is Q, show white attack
+        if(e.keyCode == 81){
+            var attackedSquaresBlack = GetAllAttackedSquares('white');
+            console.log(attackedSquaresBlack);
+            ShowDots();
+            for(let i = 0; i < attackedSquaresBlack.length; i++){
+                let dot = document.getElementById('dot'+rowColToAlgebraic(attackedSquaresBlack[i][0], attackedSquaresBlack[i][1]));
+                dot.style.backgroundColor = 'rgba(0, 255, 0, 0.5)';
+            }
+        }else if(e.keyCode == 87){
+            var attackedSquaresBlack = GetAllAttackedSquares('black');
+            console.log(attackedSquaresBlack);
+            ShowDots();
+            for(let i = 0; i < attackedSquaresBlack.length; i++){
+                let dot = document.getElementById('dot'+rowColToAlgebraic(attackedSquaresBlack[i][0], attackedSquaresBlack[i][1]));
+                dot.style.backgroundColor = 'rgba(0, 255, 0, 0.5)';
             }
         }
     }
+    // let fen = '8/P7/8/8/4kp2/8/8/K7 w - - 0 1'
+    // LoadFen(fen);
 
-    currentTurn = turn;
-    whiteCanCastleKingSide = castling.includes('K');
-    whiteCanCastleQueenSide = castling.includes('Q');
-    blackCanCastleKingSide = castling.includes('k');
-    blackCanCastleQueenSide = castling.includes('q');
-    enPassant = enPassant;
-    halfMoveClock = parseInt(halfMove);
-    fullMoveNumber = parseInt(fullMove);
-
-    console.log(chessGrid);
 }
+
 
 async function ComputerMove(){
     while(!inGame){
@@ -91,12 +73,27 @@ async function ComputerMove(){
             await new Promise(r => setTimeout(r, 1000));
         }
 
+        if(await CheckForGameOver()){
+            inGame = false;
+            console.log("Game over");
+            break;
+        }
+        console.log("Computer move");
         let move = await GetStockfishMove(startDepth);
 
         let from = move.substring(0, 2);
         let to = move.substring(2, 4);
 
         MovePieces(from, to);
+
+        if(await CheckForGameOver()){
+            inGame = false;
+            console.log("Game over");
+            break;
+        }
+
+        currentTurn = 'w';
+        EnablePieceClicks(true);
     }
 }
 
@@ -155,6 +152,79 @@ function ClickAPiece(pieceType, pos){
     }
 }
 
+function LoadFen(fen){
+    let fenParts = fen.split(' ');
+    let chessGridNew = [
+        ['--', '--', '--', '--', '--', '--', '--', '--'],
+        ['--', '--', '--', '--', '--', '--', '--', '--'],
+        ['--', '--', '--', '--', '--', '--', '--', '--'],
+        ['--', '--', '--', '--', '--', '--', '--', '--'],
+        ['--', '--', '--', '--', '--', '--', '--', '--'],
+        ['--', '--', '--', '--', '--', '--', '--', '--'],
+        ['--', '--', '--', '--', '--', '--', '--', '--'],
+        ['--', '--', '--', '--', '--', '--', '--', '--']
+    ]
+    for(var i = 0; i < 8; i++){
+        let row = fenParts[0].split('/')[7 - i];
+        let col = 1;
+        for(let j = 0; j < row.length; j++){
+            if(!isNaN(row[j])){
+                col += parseInt(row[j]);
+            }else{
+                chessGridNew[i][col-1] = row[j];
+                col++;
+            }
+        }
+    }
+
+    currentTurn = fenParts[1];
+    whiteCanCastleKingSide = fenParts[2].includes('K');
+    whiteCanCastleQueenSide = fenParts[2].includes('Q');
+    blackCanCastleKingSide = fenParts[2].includes('k');
+    blackCanCastleQueenSide = fenParts[2].includes('q');
+    enPassant = fenParts[3];
+    halfMoveClock = fenParts[4];
+    fullMoveNumber = fenParts[5];
+
+    chessGrid = chessGridNew;
+
+    for(const letter of ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']){
+        for(let i = 1; i < 9; i++){
+            let cell = document.getElementById(letter + (9 - i));
+            while(cell.children.length > 0){
+                cell.removeChild(cell.children[0]);
+            }
+            let p = gridToPiece(chessGrid[8-i][letter.charCodeAt(0)-97]);
+            if(p === 'empty'){
+                continue
+            }
+            var newPiece = document.createElement('img');
+            newPiece.src = '../images/' + p + '.png';
+            newPiece.className = 'piece';
+            newPiece.setAttribute('id', (p + letter + i));
+            newPiece.setAttribute('onclick', 'ClickAPiece(\''+chessGrid[i-1][letter.charCodeAt(0)-97]+'\', \''+letter+i+'\')');
+            cell.appendChild(newPiece);
+        }
+    }
+}
+
+function gridToPiece(piece){
+    if(piece === '--'){
+        return 'empty';
+    }else if (piece === 'P') return 'whitePawn';
+    else if (piece === 'R') return 'whiteRook';
+    else if (piece === 'N') return 'whiteKnight';
+    else if (piece === 'B') return 'whiteBishop';
+    else if (piece === 'Q') return 'whiteQueen';
+    else if (piece === 'K') return 'whiteKing';
+    else if (piece === 'p') return 'blackPawn';
+    else if (piece === 'r') return 'blackRook';
+    else if (piece === 'n') return 'blackKnight';
+    else if (piece === 'b') return 'blackBishop';
+    else if (piece === 'q') return 'blackQueen';
+    else if (piece === 'k') return 'blackKing';
+}
+
 function MovePieces(from, to){
     CheckForConditions(from, to);
     inGame = true;
@@ -183,25 +253,23 @@ function MovePieces(from, to){
 
     ClearDots();
 
-    currentTurn = (currentTurn === 'w' ? 'b' : 'w');
-    EnablePieceClicks(currentTurn == 'w');
+    if(currentTurn === 'w'){
+        currentTurn = 'b';
+        EnablePieceClicks(false);
+    }
 }
 
-async function CheckForStalemate(whosturn){
-    //give me a FEN for stalemate
-    let fen = 'k1Q5/8/1QK5/8/8/8/8/8 ' + whosturn + ' - - 0 1'
+async function CheckForGameOver(){
     ret = '';
 
     stockfish.onmessage = function(event) { 
         if(event.data.startsWith('bestmove')){
             ret = event.data.split(' ')[1];
         }
-        console.log(event.data);
+        // console.log(event.data);
     };
-    // stockfish.postMessage('position fen ' + chessGridToFen(chessGrid));
-    console.log(fen);
-    stockfish.postMessage('position fen ' + fen);
-    stockfish.postMessage('go depth 20');
+    stockfish.postMessage('position fen ' + chessGridToFen(chessGrid));
+    stockfish.postMessage('go depth 10');
 
     while(ret === ''){
         await new Promise(r => setTimeout(r, 100));
@@ -209,13 +277,17 @@ async function CheckForStalemate(whosturn){
 
     if(ret === '(none)'){
         console.log(IsInCheck('black'));
-        if(IsInCheck(whosturn === 'w' ? 'white' : 'black')){
+        if(IsInCheck(currentTurn === 'w' ? 'white' : 'black')){
             console.log("White wins");
         }else if(IsInCheck('white')){
             console.log("Black wins");
         }else{
             console.log("Stalemate");
         }
+
+        return true;
+    }else{
+        return false;
     }
 }
 function CheckForConditions(from, to){
@@ -308,7 +380,9 @@ function CheckForConditions(from, to){
 
     if(piece === 'P' || piece === 'p'){
         if(toRow === 8 || toRow === 1){
-            piece = piece === 'P' ? 'Q' : 'q';
+            chessGrid[fromRow-1][fromCol-1] = piece === 'P' ? 'Q' : 'q';
+            document.getElementById(from).children[0].src = '../images/' + (piece === 'P' ? 'whiteQueen' : 'blackQueen') + '.png';
+            document.getElementById(from).children[0].setAttribute('onclick', 'ClickAPiece(\''+(piece === 'P' ? 'Q' : 'q')+'\', \''+from+'\')');
         }
     }
 }
@@ -323,116 +397,43 @@ function ClearDots(){
     }
     HideDots();
 }
+
+function GetAllPiecesPositions(color){
+    let positions = [];
+    for(let i = 0; i < 8; i++){
+        for(let j = 0; j < 8; j++){
+            if(GetPieceColorAtPosition(i+1, j+1) === color){
+                positions.push([i+1, j+1]);
+            }
+        }
+    }
+    return positions;
+}
 function ClieckedPiece(pieceType, row, col){
+    console.log(pieceType, row, col);
     let placesToMarker = [];
     var isInCheck = IsInCheck(currentTurn === 'w' ? 'white' : 'black');
     switch(pieceType){
         case 'P':
-            if(row == 2){
-                if(GetPieceColorAtPosition(row+2, col) === 'none' && GetPieceColorAtPosition(row+1, col) === 'none'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row+2, col)){
-                            placesToMarker.push([row+2, col]);
-                        }
-
-                        if(DoesMoveStopCheck(row, col, row+1, col)){
-                            placesToMarker.push([row+1, col]);
-                        }
-                    }else{
-                        placesToMarker.push([row+1, col]);
-                        placesToMarker.push([row+2, col]);
-                    }
-                }else if(GetPieceColorAtPosition(row+1, col) === 'none'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row+1, col)){
-                            placesToMarker.push([row+1, col]);
-                        }
-                    }else{
-                        placesToMarker.push([row+1, col]);
+            var allWhitePositions = GetAllPiecesPositions('white');
+            GetAllPawnMoves(row, col, 'white', false, true).forEach(move => {
+                if(!PositionInArray(allWhitePositions, move)){
+                    if(!isInCheck || DoesMoveStopCheck(row, col, move[0], move[1])){
+                        placesToMarker.push(move);
                     }
                 }
-
-                if(GetPieceColorAtPosition(row+1, col-1) === 'black'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row+1, col-1)){
-                            placesToMarker.push([row+1, col-1]);
-                        }
-                    }else{
-                        placesToMarker.push([row+1, col-1]);
-                    }
-                }
-
-                if(GetPieceColorAtPosition(row+1, col+1) === 'black'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row+1, col+1)){
-                            placesToMarker.push([row+1, col+1]);
-                        }
-                    }else{
-                        placesToMarker.push([row+1, col+1]);
-                    }
-                }
-            }else{
-                if(GetPieceColorAtPosition(row+1, col) === 'none'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row+1, col)){
-                            placesToMarker.push([row+1, col]);
-                        }
-                    }else{
-                        placesToMarker.push([row+1, col]);
-                    }
-                }
-
-                if(GetPieceColorAtPosition(row+1, col-1) === 'black'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row+1, col-1)){
-                            placesToMarker.push([row+1, col-1]);
-                        }
-                    }else{
-                        placesToMarker.push([row+1, col-1]);
-                    }
-                }
-
-                if(GetPieceColorAtPosition(row+1, col+1) === 'black'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row+1, col+1)){
-                            placesToMarker.push([row+1, col+1]);
-                        }
-                    }else{
-                        placesToMarker.push([row+1, col+1]);
-                    }
-                }
-            }
+            });
             break;
         case 'R':
-            for(const direction of [[1, 0], [-1, 0], [0, 1], [0, -1]]){
-                let num = 1;
-                var newPos = [row + direction[0]*num, col + direction[1]*num];
-                while(true){
-                    if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                        if(isInCheck){
-                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
-                                placesToMarker.push(newPos);
-                            }
-                        }else{
-                            placesToMarker.push(newPos);
-                        }
-                        num++;
-                    }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                        if(isInCheck){
-                            if(DoesMoveStopCheck(row, col, newPos[0], newPos[1])){
-                                placesToMarker.push(newPos);
-                            }
-                        }else{
-                            placesToMarker.push(newPos);
-                        }
-                        break;
-                    }else{
-                        break;
-                    }
+            var allWhitePositions = GetAllAttackedSquares('white');
 
-                    newPos = [row + direction[0]*num, col + direction[1]*num];
+            GetAllRookMoves(row, col, 'white', false, true).forEach(move => {
+                if(!PositionInArray(allWhitePositions, move)){
+                    if(!isInCheck || DoesMoveStopCheck(row, col, move[0], move[1])){
+                        placesToMarker.push(move);
+                    }
                 }
-            }
+            });
             break;
         case 'N':
             for(const newPos of [[row+2, col+1], [row+2, col-1], [row-2, col+1], [row-2, col-1], [row+1, col+2], [row+1, col-2], [row-1, col+2], [row-1, col-2]]){
@@ -586,74 +587,14 @@ function ClieckedPiece(pieceType, row, col){
 
             break;
         case 'p':
-            if(row === 7){
-                if(GetPieceColorAtPosition(row-1, col) === 'none' && GetPieceColorAtPosition(row-2, col) === 'none'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row-2, col)){
-                            placesToMarker.push([row-2, col]);
-                        }
-
-                        if(DoesMoveStopCheck(row, col, row-1, col)){
-                            placesToMarker.push([row-1, col]);
-                        }
-                    }else{
-                        placesToMarker.push([row-1, col]);
-                        placesToMarker.push([row-2, col]);
+            let allBlackPositions = GetAllPiecesPositions('black');
+            GetAllPawnMoves(row, col, 'black', false, true).forEach(move => {
+                if(!PositionInArray(allBlackPositions, move)){
+                    if(!isInCheck || DoesMoveStopCheck(row, col, move[0], move[1])){
+                        placesToMarker.push(move);
                     }
                 }
-
-                if(GetPieceColorAtPosition(row-1, col-1) === 'white'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row-1, col-1)){
-                            placesToMarker.push([row-1, col-1]);
-                        }
-                    }else{
-                        placesToMarker.push([row-1, col-1]);
-                    }
-                }
-
-                if(GetPieceColorAtPosition(row-1, col+1) === 'white'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row-1, col+1)){
-                            placesToMarker.push([row-1, col+1]);
-                        }
-                    }else{
-                        placesToMarker.push([row-1, col+1]);
-                    }
-                }
-
-            }else{
-                if(GetPieceColorAtPosition(row-1, col) === 'none'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row-1, col)){
-                            placesToMarker.push([row-1, col]);
-                        }
-                    }else{
-                        placesToMarker.push([row-1, col]);
-                    }
-                }
-
-                if(GetPieceColorAtPosition(row-1, col-1) === 'white'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row-1, col-1)){
-                            placesToMarker.push([row-1, col-1]);
-                        }
-                    }else{
-                        placesToMarker.push([row-1, col-1]);
-                    }
-                }
-
-                if(GetPieceColorAtPosition(row-1, col+1) === 'white'){
-                    if(isInCheck){
-                        if(DoesMoveStopCheck(row, col, row-1, col+1)){
-                            placesToMarker.push([row-1, col+1]);
-                        }
-                    }else{
-                        placesToMarker.push([row-1, col+1]);
-                    }
-                }
-            }
-
+            });
             break;
         case 'r':
             for(const direction of [[1, 0], [-1, 0], [0, 1], [0, -1]]){
@@ -839,8 +780,6 @@ function IsInCheck(pieceColor){
         }
     }
 
-    console.log(kingPos);
-
     if(pieceColor === 'white'){
         return CanPieceAttackSquare(kingPos[0], kingPos[1], 'black');
     }else{
@@ -939,196 +878,41 @@ function GetAllAttackedSquares(pieceColor){
                 var col = j;
                 switch(pieceType){
                     case 'P':
-                        if(GetPieceColorAtPosition(i+1, j-1) !== 'bad'){
-                            placesToMarker.push([i+1, j-1]);
-                        }
-
-                        if(GetPieceColorAtPosition(i+1, j+1) !== 'bad'){
-                            placesToMarker.push([i+1, j+1]);
-                        }
-
+                        //WORK ON THIS
+                        GetAllPawnMoves(row, col, 'white', true).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'R':
-                        for(const direction of [[1, 0], [-1, 0], [0, 1], [0, -1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
+                        GetAllRookMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'N':
-                        for(const newPos of [[row+2, col+1], [row+2, col-1], [row-2, col+1], [row-2, col-1], [row+1, col+2], [row+1, col-2], [row-1, col+2], [row-1, col-2]]){
-                            if(GetPieceColorAtPosition(newPos[0], newPos[1]) !== 'bad'){
-                                placesToMarker.push(newPos);
-                            }
-                        }
+                        GetAllKnightMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'B':
-                        for(const direction of [[1, 1], [-1, -1], [1, -1], [-1, 1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
+                        GetAllBishopMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'Q':
-                        for(const direction of [[1, 0], [-1, 0], [0, 1], [0, -1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
-
-                        for(const direction of [[1, 1], [-1, -1], [1, -1], [-1, 1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
+                        GetAllQueenMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'K':
-                        for(const newPos of [[row+1, col], [row-1, col], [row, col+1], [row, col-1], [row+1, col+1], [row+1, col-1], [row-1, col+1], [row-1, col-1]]){
-                            if(GetPieceColorAtPosition(newPos[0], newPos[1]) !== 'bad'){
-                                placesToMarker.push(newPos);
-                            }
-                        }
+                        GetAllKingMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'p':
-                        if(GetPieceColorAtPosition(row-1, col-1) !== 'bad'){
-                            placesToMarker.push([row-1, col-1]);
-                        }
-
-                        if(GetPieceColorAtPosition(row-1, col+1) !== 'bad'){
-                            placesToMarker.push([row-1, col+1]);
-                        }
-
+                        GetAllPawnMoves(row, col, 'black', true).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'r':
-                        for(const direction of [[1, 0], [-1, 0], [0, 1], [0, -1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
+                        GetAllRookMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'n':
-                        for(const newPos of [[row+2, col+1], [row+2, col-1], [row-2, col+1], [row-2, col-1], [row+1, col+2], [row+1, col-2], [row-1, col+2], [row-1, col-2]]){
-                            if(GetPieceColorAtPosition(newPos[0], newPos[1]) !== 'bad'){
-                                placesToMarker.push(newPos);
-                            }
-                        }
+                        GetAllKnightMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'b':
-                        for(const direction of [[1, 1], [-1, -1], [1, -1], [-1, 1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
+                        GetAllBishopMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'q':
-                        for(const direction of [[1, 0], [-1, 0], [0, 1], [0, -1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
-
-                        for(const direction of [[1, 1], [-1, -1], [1, -1], [-1, 1]]){
-                            let num = 1;
-                            var newPos = [row + direction[0]*num, col + direction[1]*num];
-                            while(true){
-                                if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
-                                    placesToMarker.push(newPos);
-                                    num++;
-                                }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
-                                    placesToMarker.push(newPos);
-                                    break;
-                                }else{
-                                    break;
-                                }
-                                newPos = [row + direction[0]*num, col + direction[1]*num];
-                            }
-                        }
+                        GetAllQueenMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                     case 'k':
-                        for(const newPos of [[row+1, col], [row-1, col], [row, col+1], [row, col-1], [row+1, col+1], [row+1, col-1], [row-1, col+1], [row-1, col-1]]){
-                            if(GetPieceColorAtPosition(newPos[0], newPos[1]) !== 'bad'){
-                                placesToMarker.push(newPos);
-                            }
-                        }
-
+                        GetAllKingMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
                         break;
                 }
             }
@@ -1138,7 +922,157 @@ function GetAllAttackedSquares(pieceColor){
     return placesToMarker;
 }
 
+function GetAllKingMoves(row, col){
+    let placesToMarker = [];
+    for(const newPos of [[row+1, col], [row-1, col], [row, col+1], [row, col-1], [row+1, col+1], [row+1, col-1], [row-1, col+1], [row-1, col-1]]){
+        if(GetPieceColorAtPosition(newPos[0], newPos[1]) !== 'bad'){
+            placesToMarker.push(newPos);
+        }
+    }
 
+    return placesToMarker;
+}
+
+function GetStraightlineMoves(row, col){
+    let placesToMarker = [];
+    for(const direction of [[1, 0], [-1, 0], [0, 1], [0, -1]]){
+        let num = 1;
+        var newPos = [row + direction[0]*num, col + direction[1]*num];
+        while(true){
+            if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
+                placesToMarker.push(newPos);
+                num++;
+            }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
+                placesToMarker.push(newPos);
+                break;
+            }else{
+                break;
+            }
+            
+            newPos = [row + direction[0]*num, col + direction[1]*num];
+        }
+    }
+
+    return placesToMarker;
+}
+
+function GetCrookedlineMoves(row, col){
+    let placesToMarker = [];
+    for(const direction of [[1, 1], [-1, -1], [1, -1], [-1, 1]]){
+        let num = 1;
+        var newPos = [row + direction[0]*num, col + direction[1]*num];
+        while(true){
+            if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'none'){
+                placesToMarker.push(newPos);
+                num++;
+            }else if(GetPieceColorAtPosition(newPos[0], newPos[1]) === 'white' || GetPieceColorAtPosition(newPos[0], newPos[1]) === 'black'){
+                placesToMarker.push(newPos);
+                break;
+            }else{
+                break;
+            }
+
+            newPos = [row + direction[0]*num, col + direction[1]*num];
+        }
+    }
+
+    return placesToMarker;
+}
+
+function GetAllKnightMoves(row, col){
+    let placesToMarker = [];
+    for(const newPos of [[row+2, col+1], [row+2, col-1], [row-2, col+1], [row-2, col-1], [row+1, col+2], [row+1, col-2], [row-1, col+2], [row-1, col-2]]){
+        if(GetPieceColorAtPosition(newPos[0], newPos[1]) !== 'bad'){
+            placesToMarker.push(newPos);
+        }
+    }
+
+    return placesToMarker;
+}
+function GetAllRookMoves(row, col){
+    return GetStraightlineMoves(row, col);
+}
+
+function GetAllPawnMoves(row, col, pieceColor, attackOnly = false, eatOnly = false){
+    let placesToMarker = [];
+    if(!attackOnly){
+        if(pieceColor === 'white' || pieceColor === 'w'){
+            if(row === 2){
+                if(GetPieceColorAtPosition(row+1, col) === 'none' && GetPieceColorAtPosition(row+2, col) === 'none'){
+                    placesToMarker.push([row+2, col]);
+                    placesToMarker.push([row+1, col]);
+                }else if(GetPieceColorAtPosition(row+1, col) === 'none'){
+                    placesToMarker.push([row+1, col]);
+                }
+            }else{
+                if(GetPieceColorAtPosition(row+1, col) === 'none'){
+                    placesToMarker.push([row+1, col]);
+                }
+            }
+        }else{
+            if(row === 7){
+                if(GetPieceColorAtPosition(row-1, col) === 'none' && GetPieceColorAtPosition(row-2, col) === 'none'){
+                    placesToMarker.push([row-2, col]);
+                    placesToMarker.push([row-1, col]);
+                }else if(GetPieceColorAtPosition(row-1, col) === 'none'){
+                    placesToMarker.push([row-1, col]);
+                }
+            }else{
+                if(GetPieceColorAtPosition(row-1, col) === 'none'){
+                    placesToMarker.push([row-1, col]);
+                }
+            }
+        }
+    }
+
+    if(pieceColor === 'white' || pieceColor === 'w'){
+        if(!eatOnly){
+            if(GetPieceColorAtPosition(row+1, col-1) !== 'bad'){
+                placesToMarker.push([row+1, col-1]);
+            }
+            if(GetPieceColorAtPosition(row+1, col+1) !== 'bad'){
+                placesToMarker.push([row+1, col+1]);
+            }
+        }else{
+            if(GetPieceColorAtPosition(row+1, col-1) === 'black'){
+                placesToMarker.push([row+1, col-1]);
+            }
+            if(GetPieceColorAtPosition(row+1, col+1) === 'black'){
+                placesToMarker.push([row+1, col+1]);
+            }
+        }
+
+    }else{
+        if(!eatOnly){
+            if(GetPieceColorAtPosition(row-1, col-1) !== 'bad'){
+                placesToMarker.push([row-1, col-1]);
+            }
+            if(GetPieceColorAtPosition(row-1, col+1) !== 'bad'){
+                placesToMarker.push([row-1, col+1]);
+            }
+        }else{
+            if(GetPieceColorAtPosition(row-1, col-1) === 'white'){
+                placesToMarker.push([row-1, col-1]);
+            }
+            if(GetPieceColorAtPosition(row-1, col+1) === 'white'){
+                placesToMarker.push([row-1, col+1]);
+            }
+        }
+    }
+
+    return placesToMarker;
+}
+function GetAllQueenMoves(row, col){
+    let placesToMarker = [];
+    GetStraightlineMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
+    GetCrookedlineMoves(row, col).forEach((newPos) => { placesToMarker.push(newPos); });
+
+    return placesToMarker;
+}
+
+function GetAllBishopMoves(row, col){
+    return  GetCrookedlineMoves(row, col);
+}
 
 function GetAllAttackingSquares(pieceType){
     let attackingSquares = [];
@@ -1236,7 +1170,7 @@ function EnablePieceClicks(isWhite){
     let pieces = document.getElementsByClassName('piece');
     //if a piece is not the same color as the current turn, set the onclick to null
     for(let i = 0; i < pieces.length; i++){
-        if((pieces[i].id.includes('white') && isWhite) || (!pieces[i].id.includes('white') && !isWhite)){
+        if((pieces[i].id.includes('white') && isWhite)){
             let row = pieces[i].parentNode.id[0];
             let col = pieces[i].parentNode.id[1];
             let pieceType = 
@@ -1318,15 +1252,4 @@ async function GetStockfishMove(depth){
     }else{
         return ret;
     }
-}
-
-function SetSkillLevel(skill){
-    //NOTE: Stockfish level 20 does not make errors (intentially), so these numbers have no effect on level 20.
-    // Level 0 starts at 1
-    err_prob = Math.round((skill * 6.35) + 1);
-    // Level 0 starts at 10
-    max_err = Math.round((skill * -0.5) + 10);
-    stockfish.postMessage('setoption name Skill Level value ' + skill);
-    stockfish.postMessage('setoption name Skill Level Maximum Error value ' + max_err);
-    stockfish.postMessage('setoption name Skill Level Probability value ' + err_prob);
 }

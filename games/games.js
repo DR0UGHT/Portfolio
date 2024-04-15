@@ -37,6 +37,9 @@ function LoadGame(game) {
         case "dvd":
             window.open('./dvdLogo/dvd.html', '_blank');
             break;
+        case "Chess1":
+            window.open('./chess/chess.html', '_blank');
+            break;
         
     }
 }
