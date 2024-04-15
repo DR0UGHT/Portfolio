@@ -1,0 +1,248 @@
+.chessBody{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    user-select: none;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.chessBoard{
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 60vh;
+    height: 60vh;
+}
+
+.myName{
+    width: 20vh;
+    height: 1vh;
+    font-size: 2.25vh;
+    color: black;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+.chessTitle{
+    width: 60vh;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    color: black;
+    margin-top: 2%;
+    margin-bottom: 0%;
+    position: absolute;
+    top: 0;
+}
+
+.fenText{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vh;
+    color: black;
+    margin-top: 85vh;
+    margin-bottom: 0%;
+    position: absolute;
+
+}
+.chessTurn{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vh;
+    color: black;
+    margin-top: 80vh;
+    margin-bottom: 0%;
+    position: absolute;
+    /* margin-right: 21%; */
+}
+.gameOver{
+    width: 60vh;
+    height: 0vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    z-index: 1;
+}
+
+.gameOverBg{
+    width: 60vh;
+    height: 30vh;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.gameOverButton{
+    width: 40%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b58863;
+    color: rgb(0, 0, 0);
+    font-size: 3vh;
+    margin-top: 8%;
+    margin-bottom: 2%;
+    cursor: pointer;
+    border: .2vh solid rgb(0, 0, 0);
+
+}
+
+.gameOverText{
+    width: 100%;
+    height: 20%; 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 2%;
+    margin-top: 0%;
+    font-size: 5vh;
+    color: white;
+}
+
+.removedBlackPieces{
+    width: 60vh;
+    height: 4vh;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.removedWhitePieces{
+    width: 60vh;
+    height: 4vh;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.removedPiece{
+    position: relative;
+    width: auto;
+    height: 60%;
+    margin-left: 0%;
+    margin-right: 2%;
+    margin-bottom: 0%;
+    margin-top: 1.5%;
+}
+.whiteSquare{
+    background-color: #e0c79f;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+
+.blackSquare{
+    background-color: #b58863;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+
+.row{
+    width: 100%;
+    height: 12.5%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.rowNum{
+    position: relative;
+    width: 0%;
+    height: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    font-size: 2vh;
+}
+
+.colNum{
+    position:relative;
+    width: 0%;
+    height: 0%;
+    margin-left: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-right: 0%;
+    font-size: 2vh;
+}
+
+.rowColNums{
+    width: 100%;
+    height: 0%;
+    margin-top: -1%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.colNum{
+    width: 12.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vh;
+}
+#colNums{
+    margin-left: 4.5%;
+}
+
+.piece{
+    width: 70%;
+    height: 70%;
+
+    margin-top: 15%;
+    margin-left: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    user-select: none;
+}
+
+.dotBoard{
+    width: 60vh;
+    height: 60vh;
+    flex-wrap: wrap;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.dot{
+    width: 80%;
+    height: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+    border-radius: 50%;
+}
