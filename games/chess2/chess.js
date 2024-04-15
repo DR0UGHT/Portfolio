@@ -1269,7 +1269,12 @@ async function GetStockfishMove(depth){
         }
         // console.log(event.data);
     };
-    stockfish.postMessage('position fen ' + chessGridToFen(chessGrid));
+
+    let fen = chessGridToFen(chessGrid);
+    if(fen.includes(' w ')){
+        fen = fen.replace(' w ', ' b ');
+    }
+    stockfish.postMessage('position fen ' + fen);
     stockfish.postMessage('go depth ' + depth);
     
 
