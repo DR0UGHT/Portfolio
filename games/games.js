@@ -40,6 +40,9 @@ function LoadGame(game) {
         case "Chess1":
             window.open('./chess/chess.html', '_blank');
             break;
+        case "Chess2":
+            window.open('./chess2/chess.html', '_blank');
+            break;
         
     }
 }
