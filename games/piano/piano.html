@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Piano</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="piano.js"></script>
+</head>
+<body class="pianoBody">
+    <h1 class="pianoTitle">Piano</h1>
+    <h1 class="myName">Liam Carroll</h1>
+    <div id = "upload">
+        <button class="but" onclick="setSFX('note.mp3')">Piano</button>
+        <button class="but" onclick="setSFX('dogBark.mp3')">Dog</button>
+        <button class="but" onclick="setSFX('crowbar.mp3')">Half-Life Crowbar</button>
+        <button class="but" onclick="setSFX('bell.mp3')">Bell</button>
+        <button class="but" onclick="setSFX('batman.mp3')">Batman</button>
+        <button class="but" onclick="setSFX('windows error.mp3')">Windows Error</button>
+    </div>
+    <div class="piano">
+        <div class="pianoKeys">
+            <div class="whiteKey" id="C" onclick="playNote(-855)">
+                <h1 class="keyText">C</h1>
+            </div>
+            <div class="whiteKey" id="D" onclick="playNote(-684)">
+                <h1 class="keyText">D</h1>
+            </div>
+            <div class="whiteKey" id="E" onclick="playNote(-513)">
+                <h1 class="keyText">E</h1>
+            </div>
+            <div class="whiteKey" id="F" onclick="playNote(-342)">
+                <h1 class="keyText">F</h1>
+            </div>
+            <div class="whiteKey" id="G" onclick="playNote(-171)">
+                <h1 class="keyText">G</h1>
+            </div>
+            <div class="whiteKey" id="A" onclick="playNote(0)">
+                <h1 class="keyText">A</h1>
+            </div>
+            <div class="whiteKey" id="B" onclick="playNote(171)">
+                <h1 class="keyText">B</h1>
+            </div>
+            <div class="whiteKey" id="C2" onclick="playNote(342)">
+                <h1 class="keyText">C</h1>
+            </div>
+            <div class="whiteKey" id="D2" onclick="playNote(513)">
+                <h1 class="keyText">D</h1>
+            </div>
+            <div class="whiteKey" id="E2" onclick="playNote(684)">
+                <h1 class="keyText">E</h1>
+            </div>
+            <div class="whiteKey" id="F2" onclick="playNote(855)">
+                <h1 class="keyText">F</h1>
+            </div>
+            <div class="whiteKey" id="G2" onclick="playNote(1026)">
+                <h1 class="keyText">G</h1>
+            </div>
+            <div class="whiteKey" id="A2" onclick="playNote(1200)">
+                <h1 class="keyText">A</h1>
+            </div>
+            <div class="whiteKey" id="B2" onclick="playNote(1371)">
+                <h1 class="keyText">B</h1>
+            </div>
+            <div class="whiteKey" id="C3" onclick="playNote(1542)">
+                <h1 class="keyText">C</h1>
+            </div>
+            <div class="whiteKey" id="D3" onclick="playNote(1713)">
+                <h1 class="keyText">D</h1>
+            </div>
+            <div class="whiteKey" id="E3" onclick="playNote(1884)">
+                <h1 class="keyText">E</h1>
+            </div>
+            <div class="whiteKey" id="F3" onclick="playNote(2055)">
+                <h1 class="keyText">F</h1>
+            </div>
+            <div class="whiteKey" id="G3" onclick="playNote(2226)">
+                <h1 class="keyText">G</h1>
+            </div>
+            <div class="whiteKey" id="A3" onclick="playNote(2400)">
+                <h1 class="keyText">A</h1>
+            </div>
+            <div class="whiteKey" id="B3" onclick="playNote(2571)">
+                <h1 class="keyText">B</h1>
+            </div>
+            <div class="whiteKey" id="C4" onclick="playNote(2742)">
+                <h1 class="keyText">C</h1>
+            </div>
+        </div>
+        <div class="pianoKeys2">
+            <div class="blackKey" id="C#" onclick="playNote(-769.5)"></div>
+            <div class="blackKey" id="D#" onclick="playNote(-598.5)"></div>
+            <div class="blackKeySkip"></div>
+            <div class="blackKey" id="F#" onclick="playNote(-256.5)"></div>
+            <div class="blackKey" id="G#" onclick="playNote(-85.5)"></div>
+            <div class="blackKey" id="A#" onclick="playNote(85.5)"></div>
+            <div class="blackKeySkip"></div>
+            <div class="blackKey" id="C#2" onclick="playNote(427.5)"></div>
+            <div class="blackKey" id="D#2" onclick="playNote(598.5)"></div>
+            <div class="blackKeySkip"></div>
+            <div class="blackKey" id="F#2" onclick="playNote(941.5)"></div>
+            <div class="blackKey" id="G#2" onclick="playNote(1113)"></div>
+            <div class="blackKey" id="A#2" onclick="playNote(1285.5)"></div>
+            <div class="blackKeySkip"></div>
+            <div class="blackKey" id="C#3" onclick="playNote(1627.5)"></div>
+            <div class="blackKey" id="D#3" onclick="playNote(1799.5)"></div>
+            <div class="blackKeySkip"></div>
+            <div class="blackKey" id="F#3" onclick="playNote(2163)"></div>
+            <div class="blackKey" id="G#3" onclick="playNote(2334)"></div>
+            <div class="blackKey" id="A#3" onclick="playNote(2505)"></div>
+            <div class="blackKeySkip"></div>
+        </div>
+    </div>
+</body>
+</html>

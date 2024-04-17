@@ -18,7 +18,7 @@
 .gameGrid{
     display: grid;
     grid-template-columns: repeat(3, .32fr);
-    grid-gap: 5%;
+    grid-gap: 0% 5%;
     margin-top: 0;
     width: 75vw;
     height: 90vh;
@@ -44,6 +44,8 @@
     height: 10vw;
     margin-right: 10%;
     margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     text-align: center;
 }
 
@@ -100,4 +102,8 @@
 
 #game14{
     content: url('./images/ChessLogo2.jpeg');
+}
+
+#game15{
+    content: url('./images/pianoLogo.jpeg');
 }

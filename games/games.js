@@ -43,6 +43,9 @@ function LoadGame(game) {
         case "Chess2":
             window.open('./chess2/chess.html', '_blank');
             break;
+        case "Piano":
+            window.open('./piano/piano.html', '_blank');
+            break;
         
     }
 }
