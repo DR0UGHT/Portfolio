@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Of Life</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="gameOfLife.js"></script>
+</head>
+<body class="GameOfLifeBody">
+    <div class="grid">  
+        
+    </div>
+    
+    <div class="controls">
+        <div class="buttonHolder">
+            <button class="openCloseButton" onclick="toggleOptions()">Open/Close Controls</button>
+        </div>
+
+        <div class="buttonsHolder">
+            <button class="button" onclick="startGame()">Start</button>
+            <button class="button" onclick="stopGame()">Stop</button>
+            <button class="button" onclick="clearGame()">Clear</button>
+            <button class="button" onclick="randomGame()">Random</button>
+            <input type="range" min="1" max="75" value="10" class="slider" id="randomChance">
+            <p style="margin-top: -1%;">Random Chance: <span id="randomChanceValue">10</span>%</p>
+            <!-- <button class="button" onclick="showCodex()">Codex</button> -->
+            <h1 class="scroll">Scroll Wheel - Zoom In/Out</h1>
+        </div>
+    </div>
+    <h1 class="myName">Liam Carroll</h1>
+    <!-- <div class="codex">
+        <div class="topBarHolder">
+            <div class="topBar">
+                <h1 style="color: white;"">Codex</h1>
+            </div>
+            <button class="closeCodex" onclick="openCloseCodex()">X</button>
+        </div>
+        <div class="scrollArea">
+
+        </div>
+    </div>     -->
+</body>
+</html>

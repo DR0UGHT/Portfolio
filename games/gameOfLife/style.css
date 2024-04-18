@@ -1,0 +1,150 @@
+.GameOfLifeBody{
+    user-select: none;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.grid{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.controls{
+    position: absolute;
+    width: 10%;
+    height: 40%;
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.openCloseButton{
+    width: 100vw;
+    height: 4vh;
+    font-size: .5vw;
+}
+
+.buttonHolder{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    width: 40%;
+    height: 0%;
+    margin-left: 100%;
+}
+
+.buttonsHolder{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+    gap: 5%;
+    width: 100%;
+    height: 100%;
+}
+
+.button{
+    
+    width: 100%;
+    height: 13%;
+    font-size: 1vw;
+    background: rgba(18, 29, 54, 0.5);
+    cursor: pointer;
+    border: none;
+    color: rgb(255, 255, 255);
+}
+
+.scroll{
+    font-size: .79vw;
+    text-align: left;
+    width: 95%;
+    height: 5%;
+    color: rgb(255, 255, 255);
+}
+
+.codex{
+    left: 15vw;
+    top: 10vh;
+    position: absolute;
+    width: 70vw;
+    height: 80vh;
+    background: rgb(57, 57, 57);
+    display: block;
+    flex:none;
+}
+
+.closeCodex{
+    width: 5%;
+    height: 100%;
+    font-size: 1vw;
+    background: rgba(18, 29, 54, 0.5);
+    cursor: pointer;
+    border: none;
+    color: rgb(255, 255, 255);
+    position: relative;
+}
+
+.slider{
+    appearance: none;
+    background: rgba(86, 108, 161, 0.5);
+    width: 95%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myName{
+    right: 0;
+    color: rgb(255, 255, 255);
+    width: 40%;
+    text-align: right;
+    margin-right: 1%;
+    bottom: 0;
+    position: absolute;
+}
+.slider::-webkit-slider-thumb{
+    width: .7em;
+    -webkit-appearance: none;
+    height: 2em;
+    cursor: pointer;
+    background: #434343;
+}
+.topBar{
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 8, 16, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollArea{
+    width: 100%;
+    height: 94%;
+    overflow-y: hidden;
+}
+
+.topBarHolder{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    height: 5%;
+}
