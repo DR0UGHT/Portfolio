@@ -46,6 +46,9 @@ function LoadGame(game) {
         case "Piano":
             window.open('./piano/piano.html', '_blank');
             break;
+        case "Blackjack":
+            window.open('./blackjack/blackjack.html', '_blank');
+            break;
         
     }
 }
