@@ -1,6 +1,6 @@
 var totalBalance = 1000;
 var didAction = false;
-var debug = true;
+var debug = false;
 var players = {
     player1: {
         position: 1,
