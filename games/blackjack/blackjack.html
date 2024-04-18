@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>blackjack</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="blackjack.js"></script>
+</head>
+<body class="bjBody">
+    <div class="dealer">
+        <button class = "play">Deal</button>
+        <h1 class="title">Blackjack<br>Pays 3 To 2</h1>
+        <h1 class="balance">Balance : $1000</h1>
+        <div class="dealerSpot">
+            <h1 class="dealerHandValue" id="handValue6">0</h1>
+            <div class="dealerCardStack" id="cardStack6">
+
+            </div>
+        </div>
+
+        <div class="deck"></div>
+    </div>
+    <div class = "insurance">
+        <h1 class="dealerMustHit">Dealer Must Draw On 16 And Stand On 17</h1>
+        <h1 class = "ins">2 To 1 <img class = "diamond"> <span style="color: red;">Insurance Pays</span> <img class = "diamond"> 2 To 1</h1>
+    </div>
+
+    <div class="player">
+        <div class="playSpots">
+            <div class ="fullSpot">
+                <div class="outcome" style="display: none;" id="player1Outcome">
+                    <h1 class="outcomeText" id="outcomeText1">Winner!</h1>
+                </div>
+                <h1 class="handValue" id="handValue1">0</h1>
+                <div class="playSpot" id="spot1">
+                    <div class="cardStack" id="cardStack1">
+                        
+                    </div>
+                </div>
+                
+                <div class = "buttons" style="display: none;" id = "buttons1">
+                    <button class="actionButtonG" id ="hit">Hit</button>
+                    <button class="actionButtonG" id ="stand">Stand</button>
+                    <button class="actionButtonG" id ="double">Double</button>
+                    <button class="actionButtonG" id ="insurance" style="display: none;">Insurance</button>
+                </div>
+
+                <div class = "buttonsBet" id = "buttonsBet1">
+                    <button class="actionButton" id ="betUp" onclick="IncreaseBet(1)">+</button>
+                    <button class="actionButton" id ="betDown" onclick="DecreaseBet(1)">-</button>
+                </div>
+                <h1 class="handMoneyValue" id="handMoneyValue1">$0</h1>
+            </div>
+
+            <div class ="fullSpot">
+                <div class="outcome" style="display: none;" id="player2Outcome">
+                    <h1 class="outcomeText" id="outcomeText1">Winner!</h1>
+                </div>
+                <h1 class="handValue" id="handValue2">0</h1>
+
+                <div class="playSpot" id="spot2">
+                    <div class="cardStack" id="cardStack2">
+                        
+                    </div>
+                </div>
+
+                <div class = "buttons" style="display: none;" id = "buttons2">
+                    <button class="actionButtonG" id ="hit">Hit</button>
+                    <button class="actionButtonG" id ="stand">Stand</button>
+                    <button class="actionButtonG" id ="double">Double</button>
+                    <button class="actionButtonG" id ="insurance" style="display: none;">Insurance</button>
+                </div>
+
+                <div class = "buttonsBet" id = "buttonsBet2">
+                    <button class="actionButton" id ="betUp" onclick="IncreaseBet(2)">+</button>
+                    <button class="actionButton" id ="betDown" onclick="DecreaseBet(2)">-</button>
+                </div>
+                <h1 class="handMoneyValue" id="handMoneyValue2">$0</h1>
+
+            </div>
+
+
+            <div class ="fullSpot">
+                <div class="outcome" style="display: none;" id="player3Outcome">
+                    <h1 class="outcomeText" id="outcomeText1">Winner!</h1>
+                </div>
+                <h1 class="handValue" id="handValue3">0</h1>
+
+                <div class="playSpot" id="spot3">
+                    <div class="cardStack" id="cardStack3">
+                        
+                    </div>
+                </div>
+
+                <div class = "buttons" style="display: none;" id = "buttons3">
+                    <button class="actionButtonG" id ="hit">Hit</button>
+                    <button class="actionButtonG" id ="stand">Stand</button>
+                    <button class="actionButtonG" id ="double"">Double</button>
+                    <button class="actionButtonG" id ="insurance" style="display: none;">Insurance</button>
+                </div>
+
+                <div class = "buttonsBet" id = "buttonsBet3">
+                    <button class="actionButton" id ="betUp" onclick="IncreaseBet(3)">+</button>
+                    <button class="actionButton" id ="betDown" onclick="DecreaseBet(3)">-</button>
+                </div>
+                <h1 class="handMoneyValue" id="handMoneyValue3">$0</h1>
+            </div>
+
+            <div class ="fullSpot">
+                <div class="outcome" style="display: none;" id="player4Outcome">
+                    <h1 class="outcomeText" id="outcomeText1">Winner!</h1>
+                </div>
+                <h1 class="handValue" id="handValue4">0</h1>
+
+                <div class="playSpot" id="spot4">
+                    <div class="cardStack" id="cardStack4">
+                        
+                    </div>
+                </div>
+
+                <div class = "buttons" style="display: none;" id = "buttons4">
+                    <button class="actionButtonG" id ="hit">Hit</button>
+                    <button class="actionButtonG" id ="stand">Stand</button>
+                    <button class="actionButtonG" id ="double">Double</button>
+                    <button class="actionButtonG" id ="insurance" style="display: none;">Insurance</button>
+                </div>
+
+                <div class = "buttonsBet" id = "buttonsBet4">
+                    <button class="actionButton" id ="betUp" onclick="IncreaseBet(4)">+</button>
+                    <button class="actionButton" id ="betDown" onclick="DecreaseBet(4)">-</button>
+                </div>
+                <h1 class="handMoneyValue" id="handMoneyValue4">$0</h1>
+
+            </div>
+
+            <div class ="fullSpot">
+                <div class="outcome" style="display: none;" id="player5Outcome">
+                    <h1 class="outcomeText" id="outcomeText1">Winner!</h1>
+                </div>
+                <h1 class="handValue" id="handValue5">0</h1>
+
+                <div class="playSpot" id="spot5">
+                    <div class="cardStack" id="cardStack5">
+                        
+                    </div>
+                </div>
+
+                <div class = "buttons" style="display: none;" id = "buttons5">
+                    <button class="actionButtonG" id ="hit">Hit</button>
+                    <button class="actionButtonG" id ="stand">Stand</button>
+                    <button class="actionButtonG" id ="double">Double</button>
+                    <button class="actionButtonG" id ="insurance" style="display: none;">Insurance</button>
+                </div>
+
+                <div class = "buttonsBet" id = "buttonsBet5">
+                    <button class="actionButton" id ="betUp" onclick="IncreaseBet(5)">+</button>
+                    <button class="actionButton" id ="betDown" onclick="DecreaseBet(5)">-</button>
+                </div>
+                <h1 class="handMoneyValue" id="handMoneyValue5">$0</h1>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

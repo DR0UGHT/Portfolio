@@ -1,0 +1,496 @@
+.bjBody{
+    width: 100vw;
+    height: 100vh;
+    background-color: #00796B;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ins{
+    width: 100%;
+    margin-bottom: 0%;
+    border: .4vw solid rgb(183, 181, 45);
+    border-radius: 25%/150%;
+    height: 50%;
+
+}
+
+.insurance{
+    position: relative;
+    height: 10%;
+    max-height: 10%;
+    min-height: 10%;
+    width: 25%;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .75vw;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 2vw;
+    color: white;
+    text-align: center;
+    margin-top: -2%;
+    height: 25%;
+}
+
+.dealer{
+    width: 100%;
+    height: 30%;
+    max-height: 30%;
+    min-height: 30%;
+    flex: 1;
+}
+
+.player{
+    width: 100%;
+    height: 55%;
+    max-height: 55%;
+    min-height: 55%;
+    flex: 1;
+}
+
+.diamond{
+    position: relative;
+    content: url(../images/diamond.png);
+    width: 1%;
+    height: 30%;
+}
+
+.playSpots{
+    margin-top: 2%;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.playSpot{
+    width: 100%;
+    height: 100%;
+    border: .5vw solid rgb(183, 181, 45);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullSpot{
+    width: 12%;
+    height: auto;
+    aspect-ratio: 1/1.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.play{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 5%;
+    margin-right: 5%;
+    width: 7%;
+    height: 3%;
+    background-color: #a78352;
+    color: white;
+    font-size: 1vw;
+    border: none;
+}
+.balance{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 1.5vw;
+}
+.outcome{
+    background-color: #34404996;
+    width: 100%;
+    height: 0%;
+    margin-bottom: 0%;
+    position:static;
+    z-index: 100;
+}
+
+.outcomeText{
+    font-size: 1.5vw;
+    color: rgb(235, 255, 10);
+    text-align: center;
+    margin-top: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #34404996;
+    width: 100%;
+    height: 8vh;
+    z-index: 100;
+}
+.buttons{
+    width: 120%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    flex-direction: row;
+}
+
+.buttonsBet{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+#stand{
+    background-color: #9b4a4a;
+}
+
+#hit{
+    background-color: #4a9b4a;
+}
+
+#double{
+    background-color: #4a4a9b;
+}
+
+#split{
+    background-color: #9b9b4a;
+}
+
+#betUp{
+    font-size: 2vw;
+    text-align: center;
+    background-color: #4a9b9b;
+}
+
+#betDown{
+    font-size: 2vw;
+    text-align: center;
+    background-color: #9b4a9b;
+}
+.actionButton{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    border: .1vw solid #000000;
+    border-radius: 10%/10%;
+}
+
+.actionButtonG{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    border: .1vw solid #000000;
+    border-radius: 10%/10%;
+}
+.dealerMustHit{
+    bottom: 0;
+    width: 800%;
+    height: 30%;
+    margin-bottom: 0%;
+    margin-top: 0%;
+}
+
+.card{
+    background: url(../images/cards.png);
+    width: 90%;
+    height: 90%;
+    background-size: 1380% 420%;
+    border-radius: 20%/10%;
+    margin-left: -40%;
+}
+
+.firstCard{
+    background: url(../images/cards.png);
+    width: 90%;
+    height: 90%;
+    background-size: 1380% 420%;
+    border-radius: 20%/10%;
+    margin-left: 0%;
+}
+
+.cardStack{
+    width: 100%;
+    height: 100%;
+    border-radius: 25% / 20%;
+    display: flex;
+}
+.dealerCardStack{
+    width: 10%;
+    height: 100%;
+    border-radius: 25% / 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.dealerHandValue{
+    height: 10%;
+    margin-top: 0% !important;
+    margin-bottom: 0% !important;
+}
+.dealerSpot{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0%;
+}
+.deck{
+    margin-top: 7%;
+    width: auto;
+    height: 30%;
+    aspect-ratio: 1/1.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: url(../images/cardBack.jpg);
+    position: absolute;
+    right: 0;
+    margin-right: 5%;
+    top: 0;
+}
+
+#aceOfClubs{
+    background-position: .2% .8%;
+}
+
+#twoOfClubs{
+    background-position: 8.6% .8%;
+}
+
+#threeOfClubs{
+    background-position: 16.8% .8%;
+}
+
+#fourOfClubs{
+    background-position: 25.1% .8%;
+}
+
+#fiveOfClubs{
+    background-position: 33.3% .8%;
+}
+
+#sixOfClubs{
+    background-position: 41.5% .8%;
+}
+
+#sevenOfClubs{
+    background-position: 49.9% .8%;
+}
+
+#eightOfClubs{
+    background-position: 58.2% .8%;
+}
+
+#nineOfClubs{
+    background-position: 66.5% .8%;
+}
+
+#tenOfClubs{
+    background-position: 74.8% .8%;
+}
+
+#jackOfClubs{
+    background-position: 83.1% .8%;
+}
+
+#queenOfClubs{
+    background-position: 91.4% .8%;
+}
+
+#kingOfClubs{
+    background-position: 99.7% .8%;
+}
+
+#aceOfSpades{
+    background-position: .2% 33.5%;
+}
+
+#twoOfSpades{
+    background-position: 8.6% 33.5%;
+}
+
+#threeOfSpades{
+    background-position: 16.8% 33.5%;
+}
+
+#fourOfSpades{
+    background-position: 25.1% 33.5%;
+}
+
+#fiveOfSpades{
+    background-position: 33.3% 33.5%;
+}
+
+#sixOfSpades{
+    background-position: 41.5% 33.5%;
+}
+
+#sevenOfSpades{
+    background-position: 49.9% 33.5%;
+}
+
+#eightOfSpades{
+    background-position: 58.2% 33.5%;
+}
+
+#nineOfSpades{
+    background-position: 66.5% 33.5%;
+}
+
+#tenOfSpades{
+    background-position: 74.8% 33.5%;
+}
+
+#jackOfSpades{
+    background-position: 83.1% 33.5%;
+}
+
+#queenOfSpades{
+    background-position: 91.4% 33.5%;
+}
+
+#kingOfSpades{
+    background-position: 99.7% 33.5%;
+}
+
+#aceOfHearts{
+    background-position: .2% 66.2%;
+}
+
+#twoOfHearts{
+    background-position: 8.6% 66.2%;
+}
+
+#threeOfHearts{
+    background-position: 16.8% 66.2%;
+}
+
+#fourOfHearts{
+    background-position: 25.1% 66.2%;
+}   
+#fiveOfHearts{
+    background-position: 33.3% 66.2%;
+}
+
+#sixOfHearts{
+    background-position: 41.5% 66.2%;
+}
+
+#sevenOfHearts{
+    background-position: 49.9% 66.2%;
+}
+
+#eightOfHearts{
+    background-position: 58.2% 66.2%;
+}
+
+#nineOfHearts{
+    background-position: 66.5% 66.2%;
+}
+
+#tenOfHearts{
+    background-position: 74.8% 66.2%;
+}
+
+#jackOfHearts{
+    background-position: 83.1% 66.2%;
+}
+
+#queenOfHearts{
+    background-position: 91.4% 66.2%;
+}
+
+#kingOfHearts{
+    background-position: 99.7% 66.2%;
+}
+
+#aceOfDiamonds{
+    background-position: .2% 99%;
+}
+
+#twoOfDiamonds{
+    background-position: 8.6% 99%;
+}
+
+#threeOfDiamonds{
+    background-position: 16.8% 99%;
+}
+
+#fourOfDiamonds{
+    background-position: 25.1% 99%;
+}
+
+#fiveOfDiamonds{
+    background-position: 33.3% 99%;
+}
+
+#sixOfDiamonds{
+    background-position: 41.5% 99%;
+}
+
+#sevenOfDiamonds{
+    background-position: 49.9% 99%;
+}
+
+#eightOfDiamonds{
+    background-position: 58.2% 99%;
+}
+
+#nineOfDiamonds{
+    background-position: 66.5% 99%;
+}
+
+#tenOfDiamonds{
+    background-position: 74.8% 99%;
+}
+
+#jackOfDiamonds{
+    background-position: 83.1% 99%;
+}
+
+#queenOfDiamonds{
+    background-position: 91.4% 99%;
+}
+
+#kingOfDiamonds{
+    background-position: 99.7% 99%;
+}
+
+#backOfCard{
+    content: url(../images/cardBack.jpg);
+    background-size: 100% 100%;   
+}
+
+
+
+
