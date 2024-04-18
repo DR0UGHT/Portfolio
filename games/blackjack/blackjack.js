@@ -1,6 +1,6 @@
 var totalBalance = 1000;
 var didAction = false;
-var debug = false;
+
 var players = {
     player1: {
         position: 1,
@@ -85,11 +85,6 @@ function ShuffleDeck(deck) {
             deck[i] = deck[randomIndex];
             deck[randomIndex] = temp;
         }
-    }
-
-    if(debug){
-        deck[50] = "aceOfSpades";
-        console.log(deck[50]);
     }
 }
 
