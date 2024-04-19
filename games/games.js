@@ -49,6 +49,9 @@ function LoadGame(game) {
         case "Blackjack":
             window.open('./blackjack/blackjack.html', '_blank');
             break;
+        case "Game Of Life":
+            window.open('./gameOfLife/gameOfLife.html', '_blank');
+            break;
         
     }
 }
