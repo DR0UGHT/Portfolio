@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="minesweeper.js"></script>
+</head>
+<body class="minesweeperBody">
+    <h1 class="title">Minesweeper</h1>
+    <div class="info">
+        <div class="flags">
+            <img class="flagImage">
+            <h1 class="flag">00</h1>
+        </div>
+        <div class="analogClock">
+            <h1 class="analog">00</h1>
+        </div>
+
+        <div class="bombs">
+            <h1 class="bomb">00</h1>
+            <img class="bombImage">
+        </div>
+    </div>
+    <h1 class="myName">Liam Carroll</h1>
+    <div class="grid">
+    </div>
+
+    <div class = "winner" style="display: none;">
+        <h1 class="winnerText">You Win!</h1>
+    </div>
+
+    <div class="difficulty">
+        <button class="button" onclick="ResetupGame('easy')">Easy</button>
+        <button class="button" onclick="ResetupGame('medium')">Medium</button>
+        <button class="button" onclick="ResetupGame('hard')">Hard</button>
+    </div>
+</body>
+</html>

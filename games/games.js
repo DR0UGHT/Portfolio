@@ -52,6 +52,9 @@ function LoadGame(game) {
         case "Game Of Life":
             window.open('./gameOfLife/gameOfLife.html', '_blank');
             break;
+        case "Minesweeper":
+            window.open('./minesweeper/minesweeper.html', '_blank');
+            break;
         
     }
 }
