@@ -50,72 +50,76 @@
 }
 
 #game1{
-    content: url('./images/sand.jpg');
+    content: url('./images/logos/sand.jpg');
 }
 
 #game2{
-    content: url('./images/pong.jpg');
+    content: url('./images/logos/pong.jpg');
 }
 
 #game3{
-    content: url('./images/circleAccuracy.jpg');
+    content: url('./images/logos/circleAccuracy.jpg');
 }
 
 #game4{
-    content: url('./images/CalorieCarnival.jpg');
+    content: url('./images/logos/CalorieCarnival.jpg');
 }
 
 #game5{
-    content: url('./images/typeracer.jpeg');
+    content: url('./images/logos/typeracer.jpeg');
 }
 
 #game6{
-    content: url('./images/Wordle.jpg');
+    content: url('./images/logos/Wordle.jpg');
 }
 
 #game7{
-    content: url('./images/popularMovie.png');
+    content: url('./images/logos/popularMovie.png');
 }
 
 #game8{
-    content: url('./images/targetLogo.png');
+    content: url('./images/logos/targetLogo.png');
 }
 #game9{
-    content: url('./images/reactionTime.png');
+    content: url('./images/logos/reactionTime.png');
 }
 
 #game10{
-    content: url('./images/doubleSnake.png');
+    content: url('./images/logos/doubleSnake.png');
 }
 
 #game11{
-    content: url('./images/sortingAlgorithm.png');
+    content: url('./images/logos/sortingAlgorithm.png');
 }
 
 #game12{
-    content: url('./images/dvdlogo.png');
+    content: url('./images/logos/dvdlogo.png');
 }
 
 #game13{
-    content: url('./images/ChessLogo.jpeg');
+    content: url('./images/logos/ChessLogo.jpeg');
 }
 
 #game14{
-    content: url('./images/ChessLogo2.jpeg');
+    content: url('./images/logos/ChessLogo2.jpeg');
 }
 
 #game15{
-    content: url('./images/pianoLogo.jpeg');
+    content: url('./images/logos/pianoLogo.jpeg');
 }
 
 #game16{
-    content: url('./images/bjLogo.png');
+    content: url('./images/logos/bjLogo.png');
 }
 
 #game17{
-    content: url('./images/gameOfLifeLogo.png');
+    content: url('./images/logos/gameOfLifeLogo.png');
 }
 
 #game18{
-    content: url('./images/minesweeper.jpeg');
+    content: url('./images/logos/minesweeper.jpeg');
+}
+
+#game19{
+    content: url('./images/logos/bouncingBallsLogo.png');
 }

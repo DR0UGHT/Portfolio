@@ -55,6 +55,9 @@ function LoadGame(game) {
         case "Minesweeper":
             window.open('./minesweeper/minesweeper.html', '_blank');
             break;
+        case "Bouncing Balls":
+            window.open('./bouncyBalls/bouncyBalls.html', '_blank');
+            break;
         
     }
 }
