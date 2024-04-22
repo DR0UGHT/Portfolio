@@ -71,7 +71,7 @@ window.onload = function() {
         else var neededColor = 'none';
         if(circleStarts.includes(x + y * width)) var foundColor = colorIndex.find((element) => element.index === x + y * width).color || 'none';
         else var foundColor = 'none';
-        if(!circleStarts.includes(index) || (startCircle.x == x && startCircle.y == y) || (currentDrawPath.length > 2 && !IsLinePossible(x, y, currentDrawPath[currentDrawPath.length - 2].x, currentDrawPath[currentDrawPath.length - 2].y)) || neededColor !== foundColor || finishedCircles.includes(index) || cancelDraw){
+        if(!circleStarts.includes(index) || (startCircle.x == x && startCircle.y == y) || (currentDrawPath.length > 2 && !IsLinePossible(x, y, currentDrawPath[currentDrawPath.length - 2].x, currentDrawPath[currentDrawPath.length - 2].y)) || neededColor !== foundColor || finishedCircles.includes(index)){
             currentDrawPath.forEach((point) => {
                 RemoveLine(point.x, point.y);
                 occupied.forEach((index) => {
@@ -89,6 +89,7 @@ window.onload = function() {
             return;
         }
 
+        console.log('drawn');
         //check to see if we need to replace the last path with a corner
         finishedCircles.push(index);
         finishedCircles.push(startCircle.x + startCircle.y * width);
@@ -161,8 +162,8 @@ function Draw(x, y) {
 
     if(circleStarts.includes(x + y * width)){
         if(startCircle.x !== x || startCircle.y !== y){
+            cancelDraw = true;
             if(color !== colorIndex.find((element) => element.index === x + y * width).color){
-                cancelDraw = true;
                 return;
             }
         }
