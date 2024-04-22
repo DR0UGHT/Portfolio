@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'Cheerio';
+    src: url('../fonts/Cheerio.ttf') format('truetype');
+
+}
+
+.flowBody{
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Cheerio';
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.flowTitle{
+    font-size: 4vmin;
+    letter-spacing: 1vmin;
+    text-align: center;
+    margin: 0;
+    padding: 0.5em;
+    position: absolute;
+    top: 0;
+    color: #ffffff;
+}
+
+.myName{
+    position: absolute;
+    font-size: 3vmin;
+    bottom: 0;
+    right: 0;
+    margin: .5vmin;
+    letter-spacing: 0.5vmin;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+
+    width: 40vw;
+    height: 40vw;
+    max-height: 70vh;
+    max-width: 70vh;
+    aspect-ratio: 1/1;
+    border: .5vmin solid #ffffff;
+    margin-right: 20vw;
+}
+
+.levelSelect{
+    width: 90%;
+    margin-left: 10%;
+    margin-top: 15vmin;
+    position: relative;
+    left: 0;
+}
+
+.levelButton{
+    width: 10vmin;
+    height: 3vmin;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 2vmin;
+    border: none;
+    margin: 0.5vmin;
+}
+
+.left{
+    width: 20vw;
+    height: 100vh;
+}
+
+.right{
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle{
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    margin: 10%;
+}

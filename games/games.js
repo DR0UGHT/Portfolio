@@ -58,6 +58,9 @@ function LoadGame(game) {
         case "Bouncing Balls":
             window.open('./bouncyBalls/bouncyBalls.html', '_blank');
             break;
+        case "Flow":
+            window.open('./flow/flow.html', '_blank');
+            break;
         
     }
 }
