@@ -1,6 +1,6 @@
 var squares = [];
 var circleStarts = [];
-var width = 10;
+var width = 5;
 var colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'brown', 'black', 'white'];
 var occupied = [];
 var lastMousePos = {x: -1, y: -1};
@@ -9,26 +9,11 @@ var startCircle = {x: -1, y: -1};
 var cancelDraw = false;
 var finishedCircles = [];
 var colorIndex = [];
+var currentLevel = 1;
+var maxLevel = 1;
+
 window.onload = function() {
-
     let grid = document.querySelector('.grid');
-
-    for (let i = 0; i < width * width; i++) {
-        let square = document.createElement('div');
-        square.classList.add('square');
-        square.id = i;
-        square.style.backgroundColor = 'black';
-        square.style.width = '100%';
-        square.style.height = '100%';
-        square.style.border = '1px solid white';
-        square.style.display = 'flex';
-        square.style.justifyContent = 'center';
-        square.style.alignItems = 'center';
-        grid.appendChild(square);
-        squares.push(square);
-    }
-
-    SetupLevel1();
 
     //on mouse move within grid, set mouse pos to grid square
     grid.addEventListener('mousemove', function(e) {
@@ -41,6 +26,7 @@ window.onload = function() {
         y = Math.max(0, Math.min(width - 1, y));
 
         let index = x + y * width;
+
         if(occupied.includes(index)) return;
         if(lastMousePos.x === x && lastMousePos.y === y) return;
 
@@ -71,7 +57,15 @@ window.onload = function() {
         else var neededColor = 'none';
         if(circleStarts.includes(x + y * width)) var foundColor = colorIndex.find((element) => element.index === x + y * width).color || 'none';
         else var foundColor = 'none';
-        if(!circleStarts.includes(index) || (startCircle.x == x && startCircle.y == y) || (currentDrawPath.length > 2 && !IsLinePossible(x, y, currentDrawPath[currentDrawPath.length - 2].x, currentDrawPath[currentDrawPath.length - 2].y)) || neededColor !== foundColor || finishedCircles.includes(index)){
+        if(currentDrawPath.length > 1){
+            var isLinePossible = IsLinePossible(x, y, currentDrawPath[currentDrawPath.length - 2].x, currentDrawPath[currentDrawPath.length - 2].y);
+        }else if(currentDrawPath.length === 1){
+            var isLinePossible = IsLinePossible(x, y, currentDrawPath[0].x, currentDrawPath[0].y);
+        }else{
+            var isLinePossible = false;
+        }
+
+        if(!circleStarts.includes(index) || (startCircle.x == x && startCircle.y == y) || !isLinePossible || neededColor !== foundColor || finishedCircles.includes(index)){
             currentDrawPath.forEach((point) => {
                 RemoveLine(point.x, point.y);
                 occupied.forEach((index) => {
@@ -89,17 +83,145 @@ window.onload = function() {
             return;
         }
 
-        console.log('drawn');
-        //check to see if we need to replace the last path with a corner
         finishedCircles.push(index);
         finishedCircles.push(startCircle.x + startCircle.y * width);
         startCircle.x = -1;
         startCircle.y = -1;
         cancelDraw = false;
         currentDrawPath = [];
+
+        CheckForWin();
+    });
+
+
+    CookieLoad();
+
+    //bind q to clear cookies
+    window.addEventListener('keydown', function(e) {
+        if(e.key === 'q'){
+            document.cookie = 'maxLevel=1';
+            location.reload();
+        }
     });
 }
 
+function CookieLoad(){
+    let cookie = document.cookie.split(';');
+    cookie.forEach((element) => {
+        let split = element.split('=');
+        if(split[0] === 'maxLevel'){
+            maxLevel = parseInt(split[1]);
+        }
+    });
+
+    for(let i = 1; i <= maxLevel; i++){
+        if(document.getElementById('lock' + i)) document.getElementById('lock' + i).style.display = 'none';
+    }
+
+    loadLevel(maxLevel);
+}
+function SetupBoard(size) {
+    width = size;
+    let grid = document.querySelector('.grid');
+    grid.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${width}, 1fr)`;
+    for (let i = 0; i < width * width; i++) {
+        let square = document.createElement('div');
+        square.classList.add('square');
+        square.id = i;
+        square.style.backgroundColor = 'black';
+        square.style.width = '100%';
+        square.style.height = '100%';
+        square.style.border = '1px solid white';
+        square.style.display = 'flex';
+        square.style.justifyContent = 'center';
+        square.style.alignItems = 'center';
+        grid.appendChild(square);
+        squares.push(square);
+    }
+
+}
+
+function loadLevel(level) {
+    if(level > maxLevel) return;
+
+    document.querySelector('.level').innerText = 'Level ' + level;
+    currentLevel = level;
+    ResetBoard();
+}
+function ResetBoard() {
+    occupied = [];
+    finishedCircles = [];
+    squares = [];
+    startCircle = {x: -1, y: -1};
+    currentDrawPath = [];
+    cancelDraw = false;
+    circleStarts = [];
+    colorIndex = [];
+
+    let grid = document.querySelector('.grid');
+    grid.innerHTML = '';
+    SetupBoard(currentLevel < 7 || currentLevel == 19 ? 5 : currentLevel < 13 ? 7 : currentLevel < 19 ? 10 : 12);
+    switch(currentLevel){
+        case 1:
+            SetupLevel1();
+            break;
+        case 2:
+            SetupLevel2();
+            break;
+        case 3:
+            SetupLevel3();
+            break;
+        case 4:
+            SetupLevel4();
+            break;
+        case 5:
+            SetupLevel5();
+            break;
+        case 6:
+            SetupLevel6();
+            break;
+        case 7:
+            SetupLevel7();
+            break;
+        case 8:
+            SetupLevel8();
+            break;
+        case 9:
+            SetupLevel9();
+            break;
+        case 10:
+            SetupLevel10();
+            break;
+        case 11:
+            SetupLevel11();
+            break;
+        case 12:
+            SetupLevel12();
+            break;
+        case 13:
+            SetupLevel13();
+            break;
+        case 14:
+            SetupLevel14();
+            break;
+        case 15:
+            SetupLevel15();
+            break;
+        case 16:
+            SetupLevel16();
+            break;
+        case 17:
+            SetupLevel17();
+            break;
+        case 18:
+            SetupLevel18();
+            break;
+        case 19:
+            SetupLevel1();
+            break;
+    }
+}
 function lerpbase(a, b, t) {
     return a + (b - a) * t;
 }
@@ -107,23 +229,248 @@ function lerpbase(a, b, t) {
 function lerp(a, b, t) {
     return Math.max(a, Math.min(b, lerpbase(a, b, t)));
 }
+
 function SetupLevel1() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 4, y: 4, color: 'blue'}, {x: 0, y: 1, color: 'red'}, {x: 3, y: 4, color: 'red'}, {x: 1, y: 1, color: 'yellow'}, {x: 3, y: 3, color: 'yellow'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel2() {
+    for(const pos of [{x: 3, y: 0, color: 'blue'}, {x: 1, y: 3, color: 'blue'}, {x: 1, y: 0, color: 'red'}, {x: 2, y: 2, color: 'red'}, {x: 0, y: 0, color: 'yellow'}, {x: 4, y: 0, color: 'yellow'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel3() {
+    for(const pos of [{x: 2, y: 1, color: 'blue'}, {x: 2, y: 3, color: 'blue'}, {x: 1, y: 1, color: 'red'}, {x: 3, y: 1, color: 'red'}, {x: 1, y: 3, color: 'yellow'}, {x: 3, y: 3, color: 'yellow'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel4() {
+    for(const pos of [{x: 2, y: 1, color: 'blue'}, {x: 2, y: 3, color: 'blue'}, {x: 0, y: 2, color: 'red'}, {x: 4, y: 2, color: 'red'}, {x: 1, y: 3, color: 'yellow'}, {x: 4, y: 4, color: 'yellow'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel5() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 0, y: 4, color: 'blue'}, {x: 0, y: 1, color: 'red'}, {x: 0, y: 3, color: 'red'}, {x: 0, y: 2, color: 'yellow'}, {x: 2, y: 2, color: 'yellow'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel6() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 1, y: 4, color: 'blue'}, {x: 2, y: 0, color: 'red'}, {x: 1, y: 3, color: 'red'}, {x: 2, y: 1, color: 'yellow'}, {x: 2, y: 4, color: 'yellow'}, {x: 4, y: 0, color: 'purple'}, {x: 3, y: 3, color: 'purple'}, {x: 4, y: 1, color: 'orange'}, {x: 3, y: 4, color: 'orange'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel7() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 1, y: 5, color: 'blue'}, {x: 6, y: 0, color: 'teal'}, {x: 6, y: 5, color: 'teal'}, {x: 3, y: 3, color: 'red'}, {x: 4, y: 4, color: 'red'}, {x: 3, y: 4, color: 'yellow'}, {x: 4, y: 5, color: 'yellow'}, {x: 5, y: 1, color: 'orange'}, {x: 1, y: 4, color: 'orange'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel8() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 2, y: 4, color: 'blue'}, {x: 6, y: 0, color: 'teal'}, {x: 6, y: 6, color: 'teal'}, {x: 3, y: 3, color: 'red'}, {x: 4, y: 4, color: 'red'}, {x: 3, y: 4, color: 'yellow'}, {x: 4, y: 5, color: 'yellow'}, {x: 2, y: 5, color: 'orange'}, {x: 1, y: 4, color: 'orange'}, {x: 2, y: 2, color: 'purple'}, {x: 5, y: 5, color: 'purple'}, {x: 0, y: 3, color: 'pink'}, {x: 5, y: 6, color: 'pink'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+function SetupLevel9() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 2, y: 4, color: 'blue'}, {x: 1, y: 1, color: 'red'}, {x: 3, y: 5, color: 'red'}, {x: 0, y: 1, color: 'lightgreen'}, {x: 3, y: 0, color: 'lightgreen'}, {x: 5, y: 1, color: 'pink'}, {x: 5, y: 5, color: 'pink'}, {x: 5, y: 2, color: 'purple'}, {x: 5, y: 6, color: 'purple'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+
+//same amount of pos as level 9, but randomize positions X and Y to a number between 0 and 6
+function SetupLevel10() {
+    for(const pos of [{x: 1, y: 3, color: 'blue'}, {x: 6, y: 3, color: 'blue'}, {x: 1, y: 1, color: 'red'}, {x: 1, y: 5, color: 'red'}, {x: 2, y: 1, color: 'lightgreen'}, {x: 2, y: 5, color: 'lightgreen'}, {x: 4, y: 1, color: 'pink'}, {x: 4, y: 6, color: 'pink'}, {x: 5, y: 1, color: 'purple'}, {x: 5, y: 5, color: 'purple'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * 7].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * 7);
+        colorIndex.push({index: pos.x + pos.y * 7, color: pos.color});
+    }            
+}
+
+//same amount of pos as level 9, but randomize positions X and Y to a number between 0 and 6
+function SetupLevel11() {
+    for(const pos of [{x: 1, y: 0, color: 'blue'}, {x: 1, y: 4, color: 'blue'}, {x: 0, y: 5, color: 'red'}, {x: 5, y: 5, color: 'red'}, {x: 2, y: 2, color: 'lightgreen'}, {x: 3, y: 5, color: 'lightgreen'}, {x: 5, y: 1, color: 'pink'}, {x: 5, y: 4, color: 'pink'}, {x: 2, y: 0, color: 'purple'}, {x: 0, y: 6, color: 'purple'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * 7].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * 7);
+        colorIndex.push({index: pos.x + pos.y * 7, color: pos.color});
+    }            
+}
+
+function SetupLevel12() {
+    for(const pos of [{x: 1, y: 0, color: 'blue'}, {x: 4, y: 0, color: 'blue'}, {x: 5, y: 0, color: 'red'}, {x: 6, y: 2, color: 'red'}, {x: 3, y: 4, color: 'lightgreen'}, {x: 6, y: 6, color: 'lightgreen'}, {x: 4, y: 2, color: 'pink'}, {x: 5, y: 5, color: 'pink'}, {x: 1, y: 5, color: 'purple'}, {x: 5, y: 6, color: 'purple'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * 7].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * 7);
+        colorIndex.push({index: pos.x + pos.y * 7, color: pos.color});
+    }            
+}   
+function SetupLevel13() {
     for(const pos of [{x: 1, y: 1, color: 'blue'}, {x: 7, y: 1, color: 'blue'}, {x: 2, y: 4, color: 'red'}, {x: 5, y: 6, color: 'red'}, {x: 4, y: 3, color: 'yellow'}, {x: 5, y: 4, color: 'yellow'}, {x: 2, y: 3, color: 'pink'}, {x: 5, y: 5, color: 'pink'}, {x: 9, y: 4, color: 'green'}, {x: 9, y: 9, color: 'green'}, {x: 0, y: 3, color: 'purple'}, {x: 7, y: 4, color: 'purple'}, {x: 0, y: 4, color: 'teal'}, {x: 8, y: 7, color: 'teal'}, {x: 2, y: 6, color: 'orange'}, {x: 7, y: 5, color: 'orange'}, {x: 8, y: 1, color: 'brown'}, {x: 5, y: 3, color: 'brown'}]) {
         let circle = document.createElement('div');
         circle.classList.add('circle');
         circle.style.backgroundColor = pos.color;
 
         squares[pos.x + pos.y * width].appendChild(circle);
-        // squares[pos.x + pos.y * width].style.backgroundColor = 'white';
-
-        // occupied.push(pos.x + pos.y * width);
         circleStarts.push(pos.x + pos.y * width);
-
-        //push index position and its color
         colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
     }    
 }
 
+function SetupLevel14() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 8, y: 9, color: 'blue'}, {x: 1, y: 4, color: 'red'}, {x: 6, y: 6, color: 'red'}, {x: 7, y: 2, color: 'yellow'}, {x: 5, y: 4, color: 'yellow'}, {x: 4, y: 3, color: 'pink'}, {x: 6, y: 5, color: 'pink'}, {x: 8, y: 6, color: 'green'}, {x: 9, y: 9, color: 'green'}, {x: 0, y: 2, color: 'purple'}, {x: 2, y: 1, color: 'purple'}, {x: 3, y: 5, color: 'teal'}, {x: 9, y: 7, color: 'teal'}, {x: 1, y: 6, color: 'orange'}, {x: 2, y: 8, color: 'orange'}, {x: 5, y: 2, color: 'brown'}, {x: 7, y: 3, color: 'brown'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * width].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * width);
+        colorIndex.push({index: pos.x + pos.y * width, color: pos.color});
+    }    
+}
+//all colors: red, blue, green, yellow, purple, orange, pink, brown, black, white, teal, lightorange, lightgreen, lightblue, lightred, lightpurple, lightpink, lightbrown, lightteal
+function SetupLevel15() {
+    for(const pos of [{x: 0, y: 1, color: 'blue'}, {x: 2, y: 1, color: 'blue'}, {x: 1, y: 1, color: 'red'}, {x: 5, y: 2, color: 'red'}, {x: 3, y: 2, color: 'teal'}, {x: 8, y: 2, color: 'teal'}, {x: 9, y: 0, color: 'yellow'}, {x: 9, y: 2, color: 'yellow'}, {x: 4, y: 2, color: 'green'}, {x: 7, y: 2, color: 'green'}, {x: 0, y: 2, color: 'white'}, {x: 1, y: 9, color: 'white'}, {x: 1, y: 5, color: 'pink'}, {x: 6, y: 2, color: 'pink'}, {x: 6, y: 7, color: 'brown'}, {x: 9, y: 9, color: 'brown'}, {x: 2, y: 6, color: 'orange'}, {x: 4, y: 8, color: 'orange'}, {x: 7, y: 5, color: 'teal'}, {x: 4, y: 7, color: 'teal'}, {x: 1, y: 3, color: 'darkblue'}, {x: 3, y: 6, color: 'darkblue'}, {x: 3, y: 4, color: 'darkred'}, {x: 8, y: 7, color: 'darkred'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * 10].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * 10);
+        colorIndex.push({index: pos.x + pos.y * 10, color: pos.color});
+    }    
+}
+
+function SetupLevel16() {
+    for(const pos of [{x: 0, y: 5, color: 'blue'}, {x: 6, y: 4, color: 'blue'}, {x: 1, y: 1, color: 'red'}, {x: 1, y: 3, color: 'red'}, {x: 4, y: 1, color: 'teal'}, {x: 5, y: 9, color: 'teal'}, {x: 2, y: 4, color: 'yellow'}, {x: 6, y: 9, color: 'yellow'}, {x: 8, y: 9, color: 'green'}, {x: 9, y: 8, color: 'green'}, {x: 1, y: 7, color: 'white'}, {x: 2, y: 6, color: 'white'}, {x: 1, y: 4, color: 'pink'}, {x: 4, y: 5, color: 'pink'}, {x: 1, y: 8, color: 'brown'}, {x: 2, y: 5, color: 'brown'}, {x: 6, y: 8, color: 'tan'}, {x: 7, y: 7, color: 'tan'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * 10].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * 10);
+        colorIndex.push({index: pos.x + pos.y * 10, color: pos.color});
+    }
+}
+
+function SetupLevel17() {
+    for(const pos of [{x: 9, y: 0, color: 'blue'}, {x: 2, y: 9, color: 'blue'}, {x: 9, y: 1, color: 'red'}, {x: 2, y: 8, color: 'red'}, {x: 9, y: 2, color: 'teal'}, {x: 6, y: 5, color: 'teal'}, {x: 5, y: 2, color: 'yellow'}, {x: 8, y: 2, color: 'yellow'}, {x: 3, y: 3, color: 'green'}, {x: 4, y: 5, color: 'green'}, {x: 7, y: 3, color: 'white'}, {x: 8, y: 4, color: 'white'}, {x: 6, y: 3, color: 'pink'}, {x: 8, y: 5, color: 'pink'}, {x: 3, y: 5, color: 'brown'}, {x: 6, y: 8, color: 'brown'}, {x: 5, y: 6, color: 'tan'}, {x: 8, y: 8, color: 'tan'}]) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * 10].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * 10);
+        colorIndex.push({index: pos.x + pos.y * 10, color: pos.color});
+    }
+}
+
+
+function SetupLevel18() {
+    for(const pos of [{x: 0, y: 0, color: 'blue'}, {x: 0, y: 9, color: 'blue'}, {x: 2, y: 0, color: 'red'}, {x: 6, y: 3, color: 'red'}, {x: 9, y: 5, color: 'teal'}, {x: 5, y: 6, color: 'teal'}, {x: 1, y: 4, color: 'yellow'}, {x: 1, y: 9, color: 'yellow'}, {x: 2, y: 6, color: 'green'}, {x: 3, y: 9, color: 'green'}, {x: 2, y: 5, color: 'white'}, {x: 4, y: 9, color: 'white'}, {x: 3, y: 0, color: 'pink'}, {x: 4, y: 2, color: 'pink'}, {x: 4, y: 0, color: 'brown'}, {x: 9, y: 4, color: 'brown'}, {x: 6, y: 8, color: 'tan'}, {x: 9, y: 8, color: 'tan'}, {x: 2, y: 1, color: 'darkblue'}, {x: 9, y: 9, color: 'darkblue'}, {x: 5, y: 1, color: 'orange'}, {x: 7, y: 6, color: 'orange'}]) { 
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.backgroundColor = pos.color;
+
+        squares[pos.x + pos.y * 10].appendChild(circle);
+        circleStarts.push(pos.x + pos.y * 10);
+        colorIndex.push({index: pos.x + pos.y * 10, color: pos.color});
+    }
+}
+
+
+function CheckForWin() {
+    if(occupied.length + circleStarts.length === width * width){
+        if(currentLevel === maxLevel){
+            maxLevel = Math.min(maxLevel+1, 18);
+            document.cookie = "maxLevel=" + maxLevel;
+
+
+            if(document.getElementById('lock' + maxLevel))
+            document.getElementById('lock' + maxLevel).style.display = 'none';
+        }
+
+        document.querySelector('.win').style.display = 'flex';
+    }
+}
+
+function nextLevel(){
+    if(currentLevel === maxLevel) return;
+    document.querySelector('.win').style.display = 'none';
+
+    if(currentLevel === 18) loadLevel(1);
+    else loadLevel(currentLevel + 1);
+}
 function IsLinePossible(x1, y1, x2, y2) {
     if(x2 == x1){
         if(Math.abs(y1 - y2) == 1) return true;
@@ -168,7 +515,7 @@ function Draw(x, y) {
             }
         }
 
-        if(startCircle.x !== x && startCircle.y !== y){
+        if(startCircle.x !== x || startCircle.y !== y){
             let last = currentDrawPath[currentDrawPath.length - 1] || {x: -1, y: -1};
             if(last.x != secondLast.x){
                 if(thirdLast.y < last.y && secondLast.x > last.x){
@@ -194,16 +541,15 @@ function Draw(x, y) {
                 }else{
                     return;
                 }
-            }else{
-                return;                    
             }
+
             RemoveLine(secondLast.x, secondLast.y, false);
             DrawLineCorner(secondLast.x, secondLast.y, color, rotNeeded);
-
         }
         return;
 
     }
+
     occupied.push(x + y * width);
 
     //using currentDrawPath, draw the current latest line, and see if it is horizontal or vertical, or corner
@@ -295,7 +641,7 @@ function DrawLineHorizontal(x, y, color) {
     line.style.position = 'relative';
     line.style.margin = '0';
     line.style.marginRight = '1%';
-    squares[x + y*10].appendChild(line);
+    squares[x + y*width].appendChild(line);
 }
 
 function DrawLineVertical(x, y, color) {
@@ -308,7 +654,7 @@ function DrawLineVertical(x, y, color) {
     line.style.position = 'relative';
     line.style.margin = '0';
     line.style.marginRight = '1%';
-    squares[x + y*10].appendChild(line);
+    squares[x + y*width].appendChild(line);
 }
 
 function DrawLineCorner(x, y, color, rot) {
@@ -360,5 +706,5 @@ function DrawLineCorner(x, y, color, rot) {
         holder.style.marginTop = '-25%';
         holder.style.transform = 'rotate(-270deg)';
     }
-    squares[x + y*10].appendChild(holder);
+    squares[x + y*width].appendChild(holder);
 }
