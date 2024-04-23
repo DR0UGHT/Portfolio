@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flow</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="flow.js"></script>
+</head>
+<body class="flowBody">
+    <h1 class="flowTitle">Flow Version 2.0</h1>
+    <h1 class="myName">Liam Carroll</h1>
+    <div class="left">
+        <div class="levelSelect">
+            <h1 class="levelTitle">5x5</h1>
+            <button class="levelButton" onclick="loadLevel(1)">
+                <h1 class="levelText">Level 1</h1>
+            </button>
+            <button class="levelButton" onclick="loadLevel(2)">
+                <h1 class="levelText">Level 2</h1>
+                <div class="lock" id="lock2"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(3)">
+                <h1 class="levelText">Level 3</h1>
+                <div class="lock" id="lock3"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(4)">
+                <h1 class="levelText">Level 4</h1>
+                <div class="lock" id="lock4"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(5)">
+                <h1 class="levelText">Level 5</h1>
+                <div class="lock" id="lock5"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(6)">
+                <h1 class="levelText">Level 6</h1>
+                <div class="lock" id="lock6"></div>
+            </button>
+            <h1 class="levelTitle">7x7</h1>
+            <button class="levelButton" onclick="loadLevel(7)">
+                <h1 class="levelText">Level 7</h1>
+                <div class="lock" id="lock7"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(8)">
+                <h1 class="levelText">Level 8</h1>
+                <div class="lock" id="lock8"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(9)">
+                <h1 class="levelText">Level 9</h1>
+                <div class="lock" id="lock9"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(10)">
+                <h1 class="levelText">Level 10</h1>
+                <div class="lock" id="lock10"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(11)">
+                <h1 class="levelText">Level 11</h1>
+                <div class="lock" id="lock11"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(12)">
+                <h1 class="levelText">Level 12</h1>
+                <div class="lock" id="lock12"></div>
+            </button>
+            <h1 class="levelTitle">10x10</h1>
+            <button class="levelButton" onclick="loadLevel(13)">
+                <h1 class="levelText">Level 13</h1>
+                <div class="lock" id="lock13"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(14)">
+                <h1 class="levelText">Level 14</h1>
+                <div class="lock" id="lock14"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(15)">
+                <h1 class="levelText">Level 15</h1>
+                <div class="lock" id="lock15"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(16)">
+                <h1 class="levelText">Level 16</h1>
+                <div class="lock" id="lock16"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(17)">
+                <h1 class="levelText">Level 17</h1>
+                <div class="lock" id="lock17"></div>
+            </button>
+            <button class="levelButton" onclick="loadLevel(18)">
+                <h1 class="levelText">Level 18</h1>
+                <div class="lock" id="lock18"></div>
+            </button>
+        </div>
+    </div>
+    <div class="right">
+        <div class="topBar">
+            <h1 class="level">Level 1</h1>
+            <button class="resetButton" onclick="ResetBoard()">Reset</button>
+        </div>
+        <div class="grid"> </div>
+        <div class="win" style="display: none;">
+            <h1 class="winText">You Win!</h1>
+            <button class="levelButton" id="cent" onclick="nextLevel()">Next Level</button>
+        </div>
+    </div>
+</body>
+</html>

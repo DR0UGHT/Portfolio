@@ -61,6 +61,9 @@ function LoadGame(game) {
         case "Flow":
             window.open('./flow/flow.html', '_blank');
             break;
+        case "Flow2":
+            window.open('./flow2/flow.html', '_blank');
+            break;
         
     }
 }
