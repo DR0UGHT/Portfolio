@@ -1,0 +1,423 @@
+.psBody{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #222221;
+    user-select: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topBar1{
+    height: 15vmin;
+    width: 100vw;
+    background-color: #272727;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+}
+.topBar2{
+    height: 3vmin;
+    width: 100vw;
+    background-color: #222221;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+}
+
+#canvas{
+    background: rgb(255, 255, 255);
+    margin: 0;
+    position: relative;
+    border: .2vw solid #222a656a;
+}
+
+#grid{
+    background: rgba(255, 255, 255, 0);
+    margin: 0;
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+}
+
+#select{
+    background: rgba(255, 255, 255, 0);
+    margin: 0;
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+}
+
+
+.conformation{
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    background-color: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.confText{
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    top: 0;
+}
+
+.confButton{
+    width: 300%;
+    margin: 3%;
+    height: 100%;
+    font-size: 1vw;
+    background: #797979;
+    border: none;
+    color: white;
+}
+.topButton{
+    background-color: #39393900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: .5% 1%;
+    text-align: center;
+    text-decoration: none;
+    font-size: .6vw;
+    cursor: pointer;
+    margin-right: .2%;
+    margin-left: .2%;
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.topButton:hover{
+    background-color: #393939b1;
+}
+
+.separator{
+    background-color: #00000084;
+    width: .1%;
+    height: 70%;
+    margin: 0;
+    margin-top: .3%;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.separator1{
+    background-color: #00000084;
+    width: .1%;
+    height: 70%;
+    margin: 0;
+    border-radius: 50%;
+}
+#save{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/save.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#save:hover{
+    background-color: #393939b1;
+}
+
+#undo{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/undoredo.png);
+    background-size: 40% 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#undo:hover{
+    background-color: #393939b1;
+}
+
+#redo{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/undoredo.png);
+    background-size: 40% 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scaleX(-1);
+}
+
+#redo:hover{
+    background-color: #393939b1;
+}
+
+.slider{
+    width: 100%;
+    height: 20%;
+    background-color: #39393900;
+    border: none;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.slider:hover{
+    background-color: #393939b1;
+    border-radius: 5%/20%;
+}
+
+.selectionText{
+    width: 90%;
+    height: 0%;
+    max-height: 0%;
+    margin-bottom: 10%;
+    margin-top: 0%;
+    background-color: #39393900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    pointer-events: none;
+    user-select: none;
+}
+
+#selection{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    background: url(../images/selection.png);
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+#paint{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    background: url(../images/paintbrush.png);
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+
+.selectionButton{
+    width: 10%;
+    height: 100%;
+    background-color: #ffffff00;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+}
+
+.selectionButton:hover{
+    background-color: #393939b1;
+}
+
+
+
+.dropdown{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 25vmin;
+    width: 10%;
+    background: #484848;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-radius: 5%/6%;
+    z-index: 100;
+    margin-top: 3vmin;
+}
+
+.dropButton{
+    width: 98%;
+    flex: 1;
+    margin: 2% 1% 2% 1%;
+    max-height: 20%;
+    border-radius: 5%/20%;
+    background-color: #39393900;
+    border: none;
+    color: white;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dropButton:hover{
+    background-color: #414141b1;
+}
+
+.dropButton1{
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    border-radius: 5%/20%;
+    border: none;
+    color: white;
+    text-align: left;
+    background: transparent;
+}
+
+.dropImg{
+    width: auto !important;
+    height: 70% !important;
+    aspect-ratio: 1/.8;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+#print{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/printer.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cut{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/scissors.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#copy{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/copy.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#paste{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/paste.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#zoomin{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/zoomin.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#zoomout{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/zoomout.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#fullscreen{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/fullscreen.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#showGrid{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/grid.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#open{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/file.png);
+    background-size: 50% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#new{
+    width: 1.5vw;
+    height: 100%;
+    background: url(../images/folder.png);
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#fileDropdown{
+    margin-left: .3%;
+}
+
+#editDropdown{
+    margin-left: 3.5%;
+}
+
+#viewDropdown{
+    margin-left: 7%;
+
+}
+
+.canvasHolder{
+    width: 99%;
+    height: 80%;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    margin-top: 1%;
+    margin-left: 1%;
+    overflow: auto;
+    scrollbar-width: thin;
+    background: #222221;
+    scrollbar-color: #cecece #484848;
+    scroll-margin: 100% 100%;
+}

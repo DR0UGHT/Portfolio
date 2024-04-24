@@ -64,6 +64,9 @@ function LoadGame(game) {
         case "Flow2":
             window.open('./flow2/flow.html', '_blank');
             break;
+        case "Paint":
+            window.open('./paintStudio/paintStudio.html', '_blank');
+            break;
         
     }
 }
