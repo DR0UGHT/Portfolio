@@ -67,6 +67,9 @@ function LoadGame(game) {
         case "Paint":
             window.open('./paintStudio/paintStudio.html', '_blank');
             break;
+        case "FPSVisualizer":
+            window.open('./fpsVisualizer/fpsVisualizer.html', '_blank');
+            break;
         
     }
 }

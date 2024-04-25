@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paint Studio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="paintStudio.js"></script>
+</head>
+<body class="psBody">
+    <div class="topBar2">
+        <button class="topButton" onclick="OpenCloseFileDropdown()">File</button>
+        <button class="topButton" onclick="OpenCloseEditDropdown()">Edit</button>
+        <button class="topButton" onclick="OpenCloseViewDropdown()">View</button>
+        <div class="separator"></div>
+        <button class="topButton" onclick="SaveFile()" id="save"></button>
+        <div class="separator"></div>
+        <button class="topButton" onclick="Undo()" id="undo"></button>
+        <button class="topButton" onclick="Redo()" id="redo"></button>
+    </div>
+
+    <div class="dropdown" id="fileDropdown" style="display: none;">
+        <div class="dropButton">
+            <div class="dropImg" id="new"></div>
+            <button class="dropButton1" onclick="NewStructure()">New</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="open"></div>
+            <button class="dropButton1" onclick="OpenFile()">Open</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="save"></div>
+            <button class="dropButton1" onclick="SaveFile()">Save</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="print"></div>
+            <button class="dropButton1" onclick="PrintFile()">Print</button>
+        </div>
+    </div>
+    
+
+    <div class="dropdown" id="editDropdown" style="display: none;">
+        <div class="dropButton">
+            <div class="dropImg" id="undo"></div>
+            <button class="dropButton1" onclick="Undo()">Undo</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="redo"></div>
+            <button class="dropButton1" onclick="Redo()">Redo</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="cut"></div>
+            <button class="dropButton1" onclick="Cut()">Cut</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="copy"></div>
+            <button class="dropButton1" onclick="Copy()">Copy</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="paste"></div>
+            <button class="dropButton1" onclick="Paste()">Paste</button>
+        </div>
+
+
+    </div>
+
+    <div class="dropdown" id="viewDropdown" style="display: none;">
+        <div class="dropButton">
+            <div class="dropImg" id="zoomin"></div>
+            <button class="dropButton1" onclick="ZoomIn()">Zoom In</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="zoomout"></div>
+            <button class="dropButton1" onclick="ZoomOut()">Zoom Out</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="fullscreen"></div>
+            <button class="dropButton1" onclick="FullScreen()">Full Screen</button>
+        </div>
+        <div class="dropButton">
+            <div class="dropImg" id="showGrid"></div>
+            <button class="dropButton1" onclick="ShowGrid()">Show Grid</button>
+        </div>
+        <div class="slider">
+            <input type="range" min="1" max="100" value="50" class="slider1" id="gridSize" oninput="UpdateGridSize()">
+            <p style="margin-top: -1%;">Grid Size: <span id="gridSizeValue">50</span>%</p>
+        </div>      
+    </div>
+
+
+    <div class="topBar1">
+        <div class="selectionButton" id="selectI">
+            <button id ="selection" onclick="Select()"></button>
+            <h1 class="selectionText">Select</h1>
+        </div>
+        <div class="separator1"></div>
+
+        <div class="imageOptions">
+            <div class="imageOptButton" id="cropImg" onclick="Crop()">
+
+            </div>
+            <div class="imageOptButton" id="rotateImg" onclick="Rotate()">
+
+            </div>
+            <div class="imageOptButton" id="flipImg" onclick="Flip()">
+
+            </div>
+        </div>
+        <div class="separator1"></div>
+        <div class="selectionButton" id="drawI">
+            <button id ="paint" onclick="Draw()"></button>
+            <h1 class="selectionText">Draw</h1>
+        </div>
+    </div>
+    
+    <div class="canvasHolder">
+        <canvas id="canvas"></canvas>
+        <canvas id="grid" style="z-index: 10;"></canvas>
+        <canvas id="select" style="z-index: 11;"></canvas>
+        
+    </div>
+
+    <div class="conformation" style="display: none;">
+        <h1 class="confText">Are you sure you want to clear the canvas?</h1>
+        <div style="flex-direction: row; display: flex; width: 100%;height: 30%;">
+            <button class="confButton" onclick="ConfirmYes()">Yes</button>
+            <button class="confButton" onclick="ConfirmNo()">No</button>
+        </div>
+    </div>
+</body>
+</html>

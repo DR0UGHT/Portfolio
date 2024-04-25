@@ -1,0 +1,102 @@
+.header{
+    width: 100%;
+    height: 10%;
+    background: #575757;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+}
+.fpsBody{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #626262;
+    overflow: hidden;
+    user-select: none;
+    margin: 0;
+}
+
+.visuals{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #626262;
+    overflow: hidden;
+    user-select: none;
+    margin: 0;
+}
+
+.box{
+    background-color: #7d7d7d;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.myName{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+    font-size: 1.5vw;
+    margin: 0.5%;
+}
+
+.fpsFormula{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    font-size: 1vw;
+    margin: 0.5%;
+}
+
+.title{
+    width: 100%;
+    height: 10%;
+    background: #323232;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.titleText{
+    color: white;
+    font-size: 1vw;
+    margin-left: 2%;
+}
+
+.FPSDiv{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+}
+
+.fpsBall{
+    height: 50%;
+    max-height: 10vw;
+    width: auto;
+    aspect-ratio: 1/1;
+    background: rgb(0, 0, 0);
+    border-radius: 50%;
+}
+
+.fpsText{
+    color: white;
+    font-size: 2vmin;
+    margin: 0% 0% .5% 2%;
+    width: auto;
+    height: auto;
+}
