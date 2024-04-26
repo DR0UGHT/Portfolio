@@ -70,6 +70,9 @@ function LoadGame(game) {
         case "FPSVisualizer":
             window.open('./fpsVisualizer/fpsVisualizer.html', '_blank');
             break;
+        case "Unreal Scene":
+            window.open('./unrealScene/unrealScene.html', '_blank');
+            break;
         
     }
 }

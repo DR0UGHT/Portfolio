@@ -1,0 +1,37 @@
+.unrealBody{
+    background-color: #131313;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#myVideo{
+    position: absolute;
+    height: 70vmin;
+    width: auto;
+    object-fit: cover;
+}
+
+.myName{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1vmin;
+    font-size: 2vmin;
+    color: wheat;
+}
+
+.title{
+    position: absolute;
+    top: 0;
+    margin: 4vmin;
+    font-size: 4vmin;
+    color: wheat;
+}
