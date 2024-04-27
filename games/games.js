@@ -73,6 +73,9 @@ function LoadGame(game) {
         case "Unreal Scene":
             window.open('./unrealScene/unrealScene.html', '_blank');
             break;
+        case "Alphabetic To Morse":
+            window.open('./alphabetic/alphabetic.html', '_blank');
+            break;
         
     }
 }
