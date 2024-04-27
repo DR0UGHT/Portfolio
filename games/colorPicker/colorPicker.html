@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Picker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="colorPicker.js"></script>
+</head>
+<body class="colorPBody">
+    <h1 class="myName">Liam Carroll</span></h1>
+
+    <div class="header">
+        <h1 class="title">Color Picker</h1>
+    </div>
+
+    <div class="bottom">
+        <div class="info">
+            <div class="left">
+                <div class="imgHolder">
+                    <canvas class = "image" id="canvas""></canvas>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="selectedColor">
+                    <h1 class="head1">Selected Color</h1>
+                    <div class="colorBox" id="colorBox"></div>
+                </div>  
+                <div class="colorInfo">
+                    <div class = "colorHolder">
+                        <h1 class="head">RGBA</h1>
+                        <p class="text" id="R">R: ?</p>
+                        <p class="text" id="G">G: ?</p>
+                        <p class="text" id="B">B: ?</p>
+                        <p class="text" id="A">A: ?</p>
+                    </div>
+
+                    <div class = "colorHolder">
+                        <h1 class="head">HEX</h1>
+                        <p class="text" id="HEX">HEX: ?</p>
+                    </div>
+                    
+                    <div class = "colorHolder">
+                        <h1 class="head">HSL</h1>
+                        <p class="text" id="H">H: ?</p>
+                        <p class="text" id="S">S: ?</p>
+                        <p class="text" id="L">L: ?</p>
+                    </div>
+
+                    <div class = "colorHolder">
+                        <h1 class="head">HSV</h1>
+                        <p class="text" id="HSVH">H: ?</p>
+                        <p class="text" id="HSVS">S: ?</p>
+                        <p class="text" id="HSVV">V: ?</p>
+                    </div>
+
+                    <div class = "colorHolder">
+                        <h1 class="head">CMYK</h1>
+                        <p class="text" id="C">C: ?</p>
+                        <p class="text" id="M">M: ?</p>
+                        <p class="text" id="Y">Y: ?</p>
+                        <p class="text" id="K">K: ?</p>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <div class="imageUploader">
+            <input type="file" id="fileInput" accept="image/*"></input>
+            <button id="uploadButton" onclick="LoadImageToCanvas()">Upload Image</button>
+        </div>
+    </div>
+
+
+    <div class="zoompixels" style="display: none;">
+        <canvas class = "zoom" id="zoom">
+
+        </canvas>
+    </div>
+</body>
+</html>

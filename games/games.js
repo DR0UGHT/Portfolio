@@ -76,6 +76,9 @@ function LoadGame(game) {
         case "Alphabetic To Morse":
             window.open('./alphabetic/alphabetic.html', '_blank');
             break;
+        case "Color Picker":
+            window.open('./colorPicker/colorPicker.html', '_blank');
+            break;
         
     }
 }
