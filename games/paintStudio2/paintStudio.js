@@ -1,5 +1,7 @@
 var painting = false;
 var selecting = false;
+var editSelecting = false;
+
 var strokes = [];
 var redo = [];
 var isFullScreen = false;
@@ -86,12 +88,7 @@ window.onload = function() {
 
             if(!isPenOnCanvas) return;
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            //draw the selection box
-            //dotted line
-            ctx.setLineDash([5, 5]);
-            ctx.lineWidth = 2;
-            ctx.strokeRect(selectStart.x, selectStart.y, w, h);     
+          DrawSelectionBox(false)     
             
             selectEnd.x = xOnCanvas;
             selectEnd.y = yOnCanvas;
@@ -121,6 +118,8 @@ window.onload = function() {
         if(painting){
             strokes.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
             redo = [];
+        }else if(selecting){
+            DrawSelectionBox(true);
         }
 
 
@@ -170,6 +169,38 @@ window.onload = function() {
     document.addEventListener('fullscreenchange', function() {
         isFullScreen = !isFullScreen;
     });
+}
+
+function DrawSelectionBox(needDragDots){
+    var canvasSel = document.getElementById('select');
+    var ctx = canvasSel.getContext('2d');
+
+    let w = selectEnd.x - selectStart.x;
+    let h = selectEnd.y - selectStart.y;
+
+    if(w == 0 || h == 0) return;
+
+    ctx.clearRect(0, 0, canvasSel.width, canvasSel.height);
+    ctx.setLineDash([5, 5]);
+    ctx.lineWidth = 2;
+    ctx.strokeRect(selectStart.x, selectStart.y, w, h);     
+
+    if(needDragDots){
+        //draw 4 drag dots in the 4 corners of the selection box
+        ctx.lineWidth = 5;
+        ctx.setLineDash([]);
+        ctx.strokeRect(selectStart.x - 5, selectStart.y - 5, 10, 10);
+        ctx.strokeRect(selectEnd.x - 5, selectStart.y - 5, 10, 10);
+        ctx.strokeRect(selectStart.x - 5, selectEnd.y - 5, 10, 10);
+        ctx.strokeRect(selectEnd.x - 5, selectEnd.y - 5, 10, 10);
+        //draw 4 dots in the middle of the 4 sides of the selection box
+        ctx.strokeRect(selectStart.x + w/2 - 5, selectStart.y - 5, 5, 5);
+        ctx.strokeRect(selectStart.x + w/2 - 5, selectEnd.y - 5, 5, 5);
+        ctx.strokeRect(selectStart.x - 5, selectStart.y + h/2 - 5, 5, 5);
+        ctx.strokeRect(selectEnd.x - 5, selectStart.y + h/2 - 5, 5, 5);
+        
+    }
+
 }
 
 function Select(){

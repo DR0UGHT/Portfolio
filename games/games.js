@@ -79,6 +79,9 @@ function LoadGame(game) {
         case "Color Picker":
             window.open('./colorPicker/colorPicker.html', '_blank');
             break;
+        case "Line Simulator":
+            window.open('./lineSim/lineSim.html', '_blank');
+            break;
         
     }
 }

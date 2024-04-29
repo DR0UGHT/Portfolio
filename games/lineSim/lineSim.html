@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Line Simulator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="lineSim.js"></script>
+</head>
+<body class="lineBody">
+    <canvas id="lineCanvas" width="800" height="600"></canvas>
+    <h1 class="myName">Liam Carroll</span></h1>
+    <div class="controls">
+        <div class="cont">
+            <label for="maxDots">Max Dots: </label>
+            <input type="range" id="maxDots" min="1" max="2000" value="200" step="1" oninput="updateMaxDots(this.value)">
+            <label id="maxDotsLabel">200</label>
+        </div>
+
+        <div class="cont">
+            <label for="dotSize">Dot Size: </label>
+            <input type="range" id="dotSize" min="1" max="20" value="5" step="1" oninput="updateDotSize(this.value)">
+            <label id="dotSizeLabel">5</label>
+        </div>
+
+        <div class="cont">
+            <label for="lineWidth">Line Width: </label>
+            <input type="range" id="lineWidth" min="1" max="20" value="1" step="1" oninput="updateLineWidth(this.value)">
+            <label id="lineWidthLabel">1</label>
+        </div>
+
+        <div class="cont">
+            <label for="maxLineLength">Max Line Length: </label>
+            <input type="range" id="maxLineLength" min="1" max="1000" value="50" step="1" oninput="updateMaxLineLength(this.value)">
+            <label id="maxLineLengthLabel">50</label>
+        </div>
+
+        <div class="cont">
+         <label for="maxLines">Max Lines: </label>
+            <input type="range" id="maxLines" min="1" max="1000" value="50" step="1" oninput="updateMaxLines(this.value)">
+            <label id="maxLinesLabel">50</label>
+        </div>
+    </div>
+</body>
+</html>
