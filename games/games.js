@@ -82,6 +82,9 @@ function LoadGame(game) {
         case "Line Simulator":
             window.open('./lineSim/lineSim.html', '_blank');
             break;
+        case "2048":
+            window.open('./2048/2048.html', '_blank');
+            break;
         
     }
 }

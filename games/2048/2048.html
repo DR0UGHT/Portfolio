@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2048</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="2048.js"></script>
+</head>
+<body id="Body">
+    <h1 id="myName">Liam Carroll</span></h1>
+
+    <div id="score-container">
+        <h1 id="game-title">2048</h1>
+        <div id="scores">
+            <div id="score">
+                <div class = "scoreTitle" id="score-title">Score</div>
+                <div class = "scoreNum" id="score-number">0</div>
+            </div>
+
+            <div id="score">
+                <div class = "scoreTitle" id="hscore-title">Best</div>
+                <div class = "scoreNum" id="best-score-number">0</div>
+            </div>
+        </div>
+
+        <div id="new-game">
+            <button id="new-game-button" onclick="ResetGame()">New Game</button>
+        </div>
+    </div>
+
+    <div id="game">
+        <div class="grid-container" style="z-index: 100;">
+            <div id="lose" style="display: none;">
+                <h1 id="lose-message">Game Over!</h1>
+                <button id="try-again-button" onclick="ResetGame()">Try Again</button>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div id="grid">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div id="gameGrid">
+            </div>
+        </div>
+    </div>
+
+    <div id="instructions">
+        <p style="font-size: 1vw; font-weight:lighter; width: 26%; justify-content: space-evenly; text-align: justify; text-justify:inter-cluster;"><span style="font-size: 1vw; font-weight: 1000;">How to play:</span> Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!</p>
+    </div>
+</body>
+</html>
