@@ -85,6 +85,9 @@ function LoadGame(game) {
         case "2048":
             window.open('./2048/2048.html', '_blank');
             break;
+        case "Dino Run":
+            window.open('./dinoRun/dinoRun.html', '_blank');
+            break;
         
     }
 }
