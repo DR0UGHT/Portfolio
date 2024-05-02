@@ -105,8 +105,8 @@ function spawnPipe(){
 
     let pipeHeight = (Math.random() * 40);
     
-    UpPipe.style.top = (-35 + pipeHeight + 75) + "%";
-    DownPipe.style.top = (-35 + pipeHeight) + "%";
+    UpPipe.style.top = (-pipeHeight + 82) + "%";
+    DownPipe.style.top = (0 - pipeHeight) + "%";
     UpPipe.style.left = "120%";
     DownPipe.style.left = "120%";
     
@@ -135,8 +135,8 @@ function movePipes() {
 function checkPipeCollision(){
     for(let i = 0; i < pipes.length; i+=2) {
         let birdTop = parseFloat(bird.style.top.replace("%", "")) || 0;
-        let pipeTop = parseFloat(pipes[i+1].style.top.replace("%", "")) + 51.4|| 0;
-        let pipeBottom = parseFloat(pipes[i].style.top.replace("%", "")) - 7 || 0;
+        let pipeTop = parseFloat(pipes[i+1].style.top.replace("%", "")) + 60 || 0;
+        let pipeBottom = parseFloat(pipes[i].style.top.replace("%", "")) - 4.5 || 0;
         let pipeInZone = parseFloat(pipes[i].style.left.replace("%", "")) < 51.5 && parseFloat(pipes[i].style.left.replace("%", "")) > 41.5;
         
         if(!pipeInZone){
@@ -150,6 +150,7 @@ function checkPipeCollision(){
         
         if(birdTop > pipeTop && birdTop < pipeBottom) continue;
 
+        console.log("Bird: " + birdTop + " PipeTop: " + pipeTop + " PipeBottom: " + pipeBottom);
         isPlaying = false;
         dying = true;
         ground.style.animationPlayState = "paused";
