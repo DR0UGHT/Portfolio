@@ -1,0 +1,211 @@
+@font-face{
+    font-family: 'flappyFont';
+    src: url(../fonts/PixeloidSans.otf) format('opentype');
+}
+
+.fpBody{
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/flappybirdBG.png) no-repeat;
+    background-size: cover;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'flappyFont';    
+}
+
+#score{
+    position: absolute;
+    top: 0;
+    margin-top: 2%;
+    color: rgb(0, 0, 0);
+    font-size: 6vw;
+    z-index: 1;
+
+}
+#bird{
+    width: 8vmin;
+    height: 5vmin;
+    position: absolute;
+    top: 50;
+    transform: translate(-50%, -50%);
+    content: url(../images/fb1.png);
+    background-size: cover;
+    animation: fly-idle .7s ease-in-out infinite;
+}
+
+
+.myName{
+    position: absolute;
+    width: 99%;
+    height: 2%;
+    margin-right: 1%;
+    color: rgb(0, 0, 0);
+    bottom: 0;
+    font-size: 2vw;
+    text-align: right;
+    z-index: 1;
+}
+
+
+#gameField{
+    width: 100%;
+    height: 10%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    overflow: hidden;
+    background: url(../images/flappybirdGround.png) repeat-x;
+    animation: ground 4.8s linear infinite;
+}
+
+.pipeDown{
+    width: 7%;
+    height: 50%;
+    position: absolute;
+    background: url(../images/fbpipe.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: -1;
+    margin: 0;
+}
+
+.pipeUp{
+    width: 7%;
+    height: 50%;
+    position: absolute;
+    background: url(../images/fbpipe.png) no-repeat;
+    background-size: 100% 100%;
+    rotate: 180deg;
+    z-index: -1;
+    margin: 0;
+}
+
+#lose{
+    position: absolute;
+    width: 30%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+#scoreKeep{
+    position: relative;
+    width: 20%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 2;
+    background: rgb(225, 218, 145);
+    border-radius: 15% / 7.5%;
+    border: .3vmin ridge rgb(0, 0, 0);
+}
+#playAgain{
+    margin-top: 10%;
+    border: .3vmin ridge rgb(255, 255, 255);
+    background-color: rgb(255, 128, 0);
+    width: 30%;
+    height: 10%;
+    font-size: 1.5vw;
+    font-family: 'flappyFont';
+}
+#finalScore{
+    font-size: 1vw;
+    margin: 0;
+    color: rgb(255, 128, 0);
+}
+
+#highScore{
+    font-size: 1vw;
+    margin: 0;
+    color: rgb(255, 128, 0);
+}
+
+#fScore{
+    font-size: 2vw;
+    margin: 0;
+    color: rgb(0, 0, 0);
+}
+
+#hScore{
+    font-size: 2vw;
+    margin: 0;
+    color: rgb(0, 0, 0);
+}
+
+#start{
+    position: absolute;
+    top: 40%;
+    font-size: 1.5vw;
+}
+#newHighScore{
+    font-size: 1vw;
+    margin: 0;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 128, 0);
+    border-radius: 15%;
+    border: .3vmin ridge rgb(0, 0, 0);
+    left: 75%;
+    width: 100%;    
+    top: -20%;
+    position: absolute;
+
+}
+@keyframes ground{
+    0%{
+        background-position-x: 100%
+    }
+    100%{
+        background-position-x: 0%;
+    }
+}
+
+@keyframes fly-idle{
+    0%{
+        transform: translateY(0);
+        content: url(../images/fb1.png);
+    }
+    25%{
+        content: url(../images/fb2.png);
+    }
+    50%{
+        transform: translateY(-2vmin);
+        content: url(../images/fb3.png);
+    }
+    75%{
+        content: url(../images/fb2.png);
+    }
+    100%{
+        transform: translateY(0);
+        content: url(../images/fb1.png);
+    }
+}
+
+@keyframes fly{
+    0%{
+        content: url(../images/fb1.png);
+    }
+    25%{
+        content: url(../images/fb2.png);
+    }
+    50%{
+        content: url(../images/fb3.png);
+    }
+    75%{
+        content: url(../images/fb2.png);
+    }
+    100%{
+        content: url(../images/fb1.png);
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="flappyBird.js"></script>
+</head>
+<body class="fpBody">
+    <h1 class="myName">LIAM CARROLL</span></h1>
+    <h1 id ="score">0</h1>
+    <img id="bird"></img>
+    <div id="gameField">
+        <div id="ground"></div>
+    </div>
+    <h1 id="start">Click to start!</h1>
+    <div id="pipes">
+
+    </div>
+
+    <div id="lose" style="display: none;">
+        <div id="scoreKeep">
+            <h1 id="finalScore">Score<br><span id="fScore">0</span></span></h1>
+            <h1 id="highScore">High Score<br><span id="hScore">0</span></span></h1>
+            <div id="newHighScore" style="display: none;">New High Score!</div>
+        </div>
+
+        <button id="playAgain" onclick="playAgain()">Restart</button>
+    </div>
+</body>
+</html>

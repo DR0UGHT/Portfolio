@@ -88,6 +88,9 @@ function LoadGame(game) {
         case "Dino Run":
             window.open('./dinoRun/dinoRun.html', '_blank');
             break;
+        case "Flappy Bird":
+            window.open('./flappyBird/flappyBird.html', '_blank');
+            break;
         
     }
 }
