@@ -91,6 +91,9 @@ function LoadGame(game) {
         case "Flappy Bird":
             window.open('./flappyBird/flappyBird.html', '_blank');
             break;
+        case "Shadow Caster 1":
+            window.open('./shadowCaster/shadowCaster.html', '_blank');
+            break;
         
     }
 }
