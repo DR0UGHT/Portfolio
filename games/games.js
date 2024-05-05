@@ -97,6 +97,9 @@ function LoadGame(game) {
         case "Shadow Caster 2":
             window.open('./shadowCaster2/shadowCaster.html', '_blank');
             break;
+        case "Number Shift":
+            window.open('./numberShift/numberShift.html', '_blank');
+            break;
         
     }
 }

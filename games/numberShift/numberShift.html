@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Shift</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="numberShift.js"></script>
+</head>
+<body class="nsBody">
+    <h1 class="myName">Liam Carroll</span></h1>
+    <h2 id="nsTitle">Number Shift</h2>
+    <div id="nsGrid"></div>
+
+    <div id="nsMessage">
+        <p id="nsMoves">Moves: 0</p>
+
+        <p id="nsTime">Time: 0:00</p>
+    </div>
+
+    <div id="nsWinMessage">
+        <p id="nsWinText">You Win!</p>
+        <p id="nsWinMoves">Moves: 0</p>
+        <p id="nsWinTime">Time: 0:00</p>
+        <button id="nsPlayAgain" onclick="ChangeGridSize()">Play Again</button>
+    </div>
+
+    <div id="nsButtons">
+        <button id="nsNewGame" onclick="ChangeGridSize()">New Game</button>
+        <input type="range" id="nsSize" min="3" max="10" value="3" oninput="changeSize(this.value)">
+        <label for="nsSize">Size : <span id ="gSize">3x3</span></label>
+    </div>
+        
+</body>
+</html>
