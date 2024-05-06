@@ -1,0 +1,177 @@
+@font-face {
+    font-family: "Cafe Francoise";
+    src: url("../fonts/Cafe\ Francoise_D.otf") format("opentype");
+}
+
+.tsBody{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #d6d3b6 0%, #592d2d 100%);
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: "Cafe Francoise";
+}
+
+
+.myName{
+    position: absolute;
+    width: 99%;
+    height: 2%;
+    margin-right: 1%;
+    color: white;
+    bottom: 0;
+    font-size: 1vw;
+    text-align: right;
+    z-index: 10;
+}
+
+#tsTitle{
+    font-size: 1em;
+    color: white;
+    position: absolute;
+    top: 5%;
+
+    text-shadow: 0 0 .2vw black;
+    text-align: center;
+    animation: title 1s forwards;
+}
+
+#tsScore{
+    font-size: 2em;
+    color: white;
+    position: absolute;
+    top: 10%;
+    text-shadow: 0 0 .5vw black;
+    text-align: center;
+
+}
+
+@keyframes title{
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+        scale: 1;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+        scale: 5;
+    }
+}
+.tsBar{
+    width: 18%;
+    height: 100%;
+    background: linear-gradient(90deg, #592d2d00 0%,#592d2d91 30%,  #341a1a 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1%;
+    position: absolute;
+}
+
+#leftBar{
+    left: 0;
+    rotate: 180deg;
+}
+
+#endScreen{
+    width: 35vmin;
+    height: 25vmin;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.5);
+    color: white;
+    text-shadow: 0 0 .5vw rgb(255, 115, 0);
+    z-index: 100;
+}
+#newBest{
+    position: absolute;
+    background: rgb(213, 170, 41);
+    width: 40%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: .2vmin solid white;
+    border-radius: 1vmin;
+    top: -10%;
+    right: -10%;
+    animation: newBest 6s ease-in-out infinite;
+}
+
+@keyframes newBest{
+    0%{
+        transform: rotate(0deg) scale(1);
+    }
+
+    30%{
+        transform: rotate(0deg) scale(1);
+    }
+    60%{
+        transform: rotate(0deg) scale(1);
+    }
+    70%{
+        transform: rotate(5deg) scale(1.1);
+    }
+    90%{
+        transform: rotate(-5deg) scale(1.1);
+    }
+    100%{
+        transform: rotate(0deg) scale(1);
+    }
+}
+.tsButton{
+    width: 50%;
+    height: 20%;
+    background: rgba(0,0,0,.5);
+    color: white;
+    border: .2vmin solid white;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+    z-index: 10;
+}
+
+.tsButton:hover{
+    transform: rotate(3deg) scale(1.1);
+    transition: .5s;
+}
+
+#rightBar{
+    right: 0;
+}
+
+.towerBrick{
+    width: 50%;
+    height: 5%;
+    background: white;
+    margin-top: 1%;
+    border: .15vmin solid black;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+}
+
+#towerStack{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    top: 0%;
+}

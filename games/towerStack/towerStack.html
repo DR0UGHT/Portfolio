@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tower Stack</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="towerStack.js"></script>
+</head>
+<body class="tsBody">
+    <h1 class="myName">Liam Carroll</span></h1>
+    <h1 id="tsTitle">Tower Stack</h1>
+    <h1 id="tsScore">Score: 0</h1>
+
+    <div id="endScreen" style="display: none;">
+        <h1 id="endTitle" style="font-size: 2vw; margin: 0%;">Game Over</h1>
+        <h1 id="endScore" style="font-size: 1vw; margin: 0%;"">Score: 0</h1>
+        <h1 id="endBest" style="font-size: 1vw; margin: 0%; margin-bottom: 5%;"">Best Score: 0</h1>
+        <div id="newBest">
+            <h1 style="font-size: 1vw; margin: 0%;">New Best Score!</h1>
+        </div>
+        <button id="endButton" class="tsButton" onclick="ResetGame()">Restart</button>
+    </div>
+
+    <div id="leftBar" class="tsBar"></div>
+    <div id="rightBar" class="tsBar"></div>
+    <div id="towerStack" style="top: 0%">
+        <div class="towerBrick" style="background-color: ff8080;"></div>
+    </div>
+</body>
+</html>
