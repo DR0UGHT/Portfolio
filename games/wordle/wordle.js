@@ -131,7 +131,7 @@ async function checkWord() {
             correct = false;
         }else{
             fadeInBackgroundColor(letterBox, '217, 48, 48');
-            document.getElementById(letter.toUpperCase()).style.backgroundColor = 'rgba(0, 0, 40, 0.5)';
+            if(!word.includes(letter)) document.getElementById(letter.toUpperCase()).style.backgroundColor = 'rgba(0, 0, 40, 0.5)';
             correct = false;
             badLetters.push(letter);
         }

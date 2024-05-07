@@ -9,17 +9,17 @@
     <h1 id="myName">Liam Carroll</span></h1>
 
     <div id="score">
-        <h2 id="sB">Score:  <span id="scoreValue">0</span></h2>
-        <h2 id="sB">High Score:  <span id="highScoreValue">0</span></h2>
+        <h2 id="sB">Score:  <span id="scoreValue1">0</span></h2>
+        <h2 id="sB">High Score:  <span id="highScoreValue1">0</span></h2>
 
     </div>
 
     <div id="game">
         <div id="gameOver">
             <h2 id="aB">Game Over</h2>
-            <h2 id="aB">Score:  <span id="scoreValue">0</span></h2>
-            <h2 id="aB">High Score:  <span id="highScoreValue">0</span></h2>
-            <button id="restartButton" onclick="restart()">Restart</button>
+            <h2 id="aB">Score:  <span id="scoreValue2">0</span></h2>
+            <h2 id="aB">High Score:  <span id="highScoreValue2">0</span></h2>
+            <button id="restartButton" onclick="ResetGame()">Restart</button>
         </div>
         <div id="pieces">
         </div>
@@ -29,8 +29,6 @@
         <div id="gameBoard">
 
             <div class="piece1x4" id="template" style="z-index: 100;">
-
-                <!-- pale red -->
                 <div class="pieceCell" style="width: 25%; height: 100%; background: rgb(255, 91, 91);"></div>
                 <div class="pieceCell" style="margin-left: 25%;width: 25%; height: 100%;background: rgb(255, 91, 91);"></div>
                 <div class="pieceCell" style="margin-left: 50%;width: 25%; height: 100%;background: rgb(255, 91, 91);"></div>
@@ -82,10 +80,18 @@
                 <div class="pieceCell" style="margin-left:  66.6666%; margin-top:  66.6666%; width: 33.3333%; height: 33.3333%; background: rgb(82, 82, 215);"></div>
             </div>
 
+            <div class="piece3x3-1" id="template" style="z-index: 100;">
+                <div class="pieceCell" style="margin-left:   0%; margin-top:   0%; width: 33.3333%; height: 33.3333%; background: rgb(93, 191, 208);"></div>
+                <div class="pieceCell" style="margin-left:   0%; margin-top:  33.3333%; width: 33.3333%; height: 33.3333%; background: rgb(93, 191, 208);"></div>
+                <div class="pieceCell" style="margin-left:   0%; margin-top:  66.6666%; width: 33.3333%; height: 33.3333%; background: rgb(93, 191, 208);"></div>
+                <div class="pieceCell" style="margin-left:  33.3333%; margin-top:  66.6666%; width: 33.3333%; height: 33.3333%; background: rgb(93, 191, 208);"></div>
+                <div class="pieceCell" style="margin-left:  66.6666%; margin-top:  66.6666%; width: 33.3333%; height: 33.3333%; background: rgb(93, 191, 208);"></div>
+            </div>
+
             <div class="piece2x2" id="template" style="z-index: 100;">
                 <div class="pieceCell" style="margin-left:   0%; margin-top:   0%; width: 50%; height: 50%; background: rgb(98, 18, 98);"></div>
-                <div class="pieceCell" style="margin-left:  50%; margin-top:   0%; width: 50%; height: 50%; background: rgb(98, 18, 98);"></div>
                 <div class="pieceCell" style="margin-left:   0%; margin-top:  50%; width: 50%; height: 50%; background: rgb(98, 18, 98);"></div>
+                <div class="pieceCell" style="margin-left:  50%; margin-top:   0%; width: 50%; height: 50%; background: rgb(98, 18, 98);"></div>
                 <div class="pieceCell" style="margin-left:  50%; margin-top:  50%; width: 50%; height: 50%; background: rgb(98, 18, 98);"></div>
             </div>
 

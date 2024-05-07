@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "bubble";
+    src: url(../fonts/DreamyBubbleDEMO-DEMO.otf) format("opentype");
+}
 #body{
     width: 100vw;
     height: 100vh;
@@ -7,13 +11,15 @@
     flex-direction: column;
     overflow: hidden;
     margin: 0;
+    font-family: "bubble";
 }
 
 #myName{
     position: absolute;
     width: 99%;
     height: 2%;
-    margin-right: 1%;
+    margin-right: 2%;
+    margin-bottom: 2%;
     color: white;
     bottom: 0;
     font-size: 1.5vw;
@@ -169,6 +175,13 @@
     height: 10%;
     width: 10%;
 }
+
+.piece3x3-1{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+}
+
 
 #sB{
     width: 15%;

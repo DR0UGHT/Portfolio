@@ -103,6 +103,9 @@ function LoadGame(game) {
         case "Tower Stack":
             window.open('./towerStack/towerStack.html', '_blank');
             break;
+        case "1010":
+            window.open('./1010/1010.html', '_blank');
+            break;
         
     }
 }
