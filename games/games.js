@@ -100,6 +100,9 @@ function LoadGame(game) {
         case "Number Shift":
             window.open('./numberShift/numberShift.html', '_blank');
             break;
+        case "Tower Stack":
+            window.open('./towerStack/towerStack.html', '_blank');
+            break;
         
     }
 }
