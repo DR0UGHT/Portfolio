@@ -8,7 +8,10 @@ window.onload = function() {
     grid = Array.from({length: 3}, () => Array.from({length: 3}, () => ['none', 'none', 'none']));
     gameRings = document.getElementById("gameRings");
     window.onmousedown = function(event) {
+        
         if (event.target.classList.toString().includes("ringPlace") && !lost){
+            if(event.target.style.userSelect.toString() == "none") return;
+            
             dragElement(event.target);
         }
     }
@@ -68,13 +71,12 @@ function dragElement(elmnt) {
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
-
         let elemLeft = parseInt(elementFin.style.left);
         //in html I transformed it down 35%, so I need to add that back in
         let elemTop = parseInt(elementFin.style.top) + (.4 * window.innerHeight);
 
         //if within the bounds of gameRings
-        if (elemLeft > gameRings.offsetLeft-50 && elemLeft < gameRings.offsetLeft + gameRings.offsetWidth+50 && elemTop > gameRings.offsetTop-50 && elemTop < gameRings.offsetTop + gameRings.offsetHeight+50){
+        if (elemLeft > gameRings.offsetLeft-50 && elemLeft < gameRings.offsetLeft + gameRings.offsetWidth+50 && elemTop > gameRings.offsetTop && elemTop < gameRings.offsetTop + gameRings.offsetHeight){
             //convert to grid coordinates, grid is 3x3
             let x = Clamp(Math.round((elemLeft - gameRings.offsetLeft) / (gameRings.offsetWidth / 3)), 0, 2);
             let y = Clamp(Math.round((elemTop - gameRings.offsetTop) / (gameRings.offsetHeight / 3)), 0, 2);
@@ -112,7 +114,8 @@ function dragElement(elmnt) {
 
 
             elementFin.style.userSelect = "none";
-
+            elementFin.onmousedown = null;
+            elementFin.onmouseup = null;
             CheckForClears();
             SpawnPiece();
             console.log(grid);
