@@ -110,6 +110,9 @@ function dragElement(elmnt) {
                 grid[y][x][2] = BorderColorToText(rings.find(x => x.pos == "outer").childIndex == -1 ? elementFin.style.border : elementFin.children[rings.find(x => x.pos == "outer").childIndex].style.border);
             }
 
+
+            elementFin.style.userSelect = "none";
+
             CheckForClears();
             SpawnPiece();
             console.log(grid);
