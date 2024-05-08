@@ -373,7 +373,7 @@ function CheckForClears(){
         while(ring.children.length > 1){
             ring.children[1].remove();
         }
-        score+=25;
+        score += 50;
     }
     document.getElementById("scoreValue1").innerText = score;
 }
@@ -390,8 +390,8 @@ function RemoveColorFromStack(x, y, color){
 
     if(colorsRemoved == 0) return;
     if(colorsRemoved == 1) score+= 5;
-    if(colorsRemoved == 2) score+= 15;
-    if(colorsRemoved == 3) score+= 25;
+    if(colorsRemoved == 2) score+= 25;
+    if(colorsRemoved == 3) score+= 50;
 
     let ring = document.getElementById("ring" + ((x * 3 + y) + 1));
     if(ring.children.length == 1) return;
