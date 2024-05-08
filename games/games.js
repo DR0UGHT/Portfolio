@@ -106,6 +106,9 @@ function LoadGame(game) {
         case "1010":
             window.open('./1010/1010.html', '_blank');
             break;
+        case "Rings":
+            window.open('./rings/rings.html', '_blank');
+            break;
         
     }
 }
