@@ -1,0 +1,242 @@
+
+@font-face {
+    font-family: 'fontBold';
+    src: url('./fonts/Aleo-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'fontRegular';
+    src: url('./fonts/Aleo-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'fontLight';
+    src: url('./fonts/Aleo-Light.otf') format('opentype');
+}
+
+body{
+    background-color: #00000000;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+#background{
+    background: url(../images/bgMain.jpg);
+    background-size: cover;
+    filter: blur(5px) grayscale(100%) brightness(1.2) contrast(.95);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    position: absolute;
+}
+
+.mainText{
+    position: relative;
+    width: 100%;
+    height: 0%;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#portfolioTag{
+    font: 3vmin 'fontLight';
+    word-spacing: 0vmin;
+    filter: drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47)) drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47)) drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47)) drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47));
+    letter-spacing: .1vmin;
+    margin-top: .5%;
+
+}
+#portfolioName{
+    font: 5vmin 'fontBold';
+    word-spacing: .55vmin;
+    filter: drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47)) drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47)) drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47)) drop-shadow(0 0 2vmin rgba(0, 0, 25, 0.47));
+    letter-spacing: .1vmin;
+    transition: 0.5s;
+}
+
+#portfolioName::after{
+    color: #266DB6;
+    transition: width 0.5s;
+}
+#portfolioName::before{
+    color: #ffffff;
+    transition: width 0.5s;
+}
+
+
+#tagline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+    flex-direction: column;
+
+}
+
+#email{
+    background: #262626;
+    transition: 0.5s;
+}
+
+#email:hover{
+    margin-top: 0%;
+}
+
+#email-icon{
+    content: url("./images/em1.png");
+    width: 100%;
+    height: auto;
+    margin-top: 20%;
+
+}
+
+#github{
+    background: #333333;
+    transition: 0.5s;
+}
+
+#github:hover{
+    margin-top: 0%;
+}
+
+#github-icon{
+    content: url("./images/gh1.png");
+    width: 80%;
+    height: auto;
+    margin-top: 10%;
+}
+
+#linkedin{
+    background: #545454;
+    transition: 0.5s;
+}
+
+#linkedin:hover{
+    margin-top: 0%;
+}
+
+#linkedin-icon{
+    content: url("./images/li1.png");
+    width: 80%;
+    height: auto;
+    margin-top: 10%;
+}
+
+#cv{
+    background: #a6a6a6;
+    transition: 0.5s;
+}
+
+#cv:hover{
+    margin-top: 0%;
+}
+
+#cv-icon{
+    content: url("./images/cv1.png");
+    width: 80%;
+    height: auto;
+    margin-top: 10%;
+}
+
+#social-media-icons{
+    position: absolute;
+    width: 20%;
+    height: 5%;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: right;
+    align-items: bottom;
+    gap: 3%;
+    margin: 0;
+    margin-right: 1%;
+}
+
+.social-media-button{
+    width: auto;
+    height: 100%;
+    margin-top: 3%;
+    border: none;
+    aspect-ratio: 1/1;
+    background-size: contain !important;
+    display: flex;
+    justify-content: center;
+    align-items:start;
+}
+
+.profile-parent{
+    width: 15%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    transform: translate(50%, 50%);
+}
+
+#profileImage{
+    height: 20%;
+    width: auto;
+    aspect-ratio: 1/1;
+    content: url("./images/me.png");
+}
+
+.button-51 {
+  background-color: transparent;
+  border: 1px solid #266DB6;
+  box-sizing: border-box;
+  color: #00132C;
+  font-family: "Avenir Next LT W01 Bold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-51:hover,
+.button-51:active {
+  outline: 0;
+}
+
+.button-51:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-51:before {
+  background-color: #D5EDF6;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.button-51:hover:before {
+  background-color: #6DCFF6;
+}
+
+@media (min-width: 768px) {
+  .button-51 {
+    padding: 16px 32px;
+  }
+}
