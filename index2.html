@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<!-- <script src="./scripts/script.js"></script> -->
+<script src="./scripts/script1.js"></script>
 <html style="background-color: black;">
 <head>
     <title>Liam Carroll's Portfolio</title>
     <link rel="stylesheet" type="text/css" href="style1.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 
 <body>
     <div id="background"></div>
-    <div id="tagline">
-        <h1 class ="mainText" id="portfolioName">Liam Carroll's Game Developer Portfolio</h1>
-        <h2 class ="mainText" id="portfolioTag">From Concept to Controller</h2>
-    </div>
 
     <div class = "profile-parent">
         <div class="zeroWidthDiv">
             <img id="profileImage"></img>
         </div>
         <div class="zeroWidthDiv">
-            <img id="profileBG"></img>
+            <div id="profileBG"></div>
         </div>
     </div>
+
+    <div id="navBar">
+        <button class="navButtonCurrent" id="home"     onclick="changePage('home')">Home</button>
+        <button class="navButton" id="games"      onclick="changePage('games')">Games</button>
+        <button class="navButton" id="projects"   onclick="changePage('projects')">Projects</button>
+        <div id="dropDown">
+            <div id="drop">
+                <button class="navButtonDD1" id="projects1" style="font-size: .7vw;"     onclick="changePage('about')">Past<br>Projects</button>
+                <button class="navButtonDD1" id="projects2" style="font-size: .7vw;"     onclick="changePage('about')">100-Day<br>Project</button>
+            </div>
+        </div>
+        <button class="navButton" id="skills"     onclick="changePage('skills')">Skills</button>
+        <button class="navButton" id="about"      onclick="changePage('about')">About</button>
+    </div>
+
 
     <div id="social-media-icons">
         <button class="social-media-button" id="email"    onclick="window.open('mailto:tgmbstudio@gmail.com', '_blank')">
@@ -35,6 +47,134 @@
         <button class="social-media-button" id="cv"       onclick="window.open('https://drive.google.com/file/d/1YR7qzwJbZa9gDmIEPwozY79yY6IUSeNc/view', '_blank')">
             <img id="cv-icon"></img>
         </button>
+    </div>
+
+
+    <div id="content">
+        <div id="scroller">
+            <div id="tagline">
+                <h1 class ="mainText" id="portfolioName">Liam Carroll's Game Developer Portfolio</h1>
+                <h2 class ="mainText" id="portfolioTag">From Concept to Controller</h2>
+            </div>
+
+
+            <h1 class="portfolioTitle" id="portfolio-games">Games</h1>
+            <div id="gamesDiv">
+                <div class="GamePanel">
+                    <img class="game" id="glizzyGobblerNES">
+                    <button class="openOnSteam" id="ggSteam" onclick="window.open('https://store.steampowered.com/app/1102140/Glizzy_Gobbler/', '_blank')"></button> 
+                    <div class="info">
+                        <div class="infoBlock" id="block1">
+                            <p class="infoPanel" id="ggBuild">  Build Date  </p>
+                            <p class="infoText" id="ggBuildDate">  03-31-21  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block2">
+                            <p class="infoPanel" id="ggEngine">  Engine  </p>
+                            <p class="infoText" id="ggEngineType">  Unity  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block3">
+                            <p class="infoPanel" id="ggLanguage">  Language  </p>
+                            <p class="infoText" id="ggLanguageType">  C#  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block4">
+                            <p class="infoPanel" id="ggLevel">  Level Count  </p>
+                            <p class="infoText" id="ggLevelType">  2  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block5">
+                            <p class="infoPanel" id="ggCore">  Core Dynamic  </p>
+                            <p class="infoText" id="ggCoreType">  Story & Freeplay  </p>
+                        </div>
+                    </div>
+    
+                    <p class="gameDescriptionText">"Made for meat-lovers! Roll, devour and grow your glizzy to take your revenge on the humans who have eaten your kind. Unlock skills and achievements along your path to human destruction. But be careful, the dogs are on the hunt!"</p>
+
+                    <div class="slideshow">
+                        <div class="main-cell"></div>
+                        <div class="main-photo" id="ggPicture"></div>
+                        <div class="main-video">
+                            <video id="ggVideo" width="100%" height="100%" style="visibility: hidden;"controls>
+                                <source src="images/gg8.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="picture-cell">
+                            <div class="imageButton" id="b1" onclick="SetGlizzyPhoto('b1')"></div>
+                            <div class="imageButton" id="b2" onclick="SetGlizzyPhoto('b2')"></div>
+                            <div class="imageButton" id="b3" onclick="SetGlizzyPhoto('b3')"></div>
+                            <div class="imageButton" id="b4" onclick="SetGlizzyPhoto('b4')"></div>
+                            <div class="imageButton" id="b5" onclick="SetGlizzyPhoto('b5')"></div>
+                            <div class="imageButton" id="b6" onclick="SetGlizzyPhoto('b6')"></div>
+                            <div class="imageButton" id="b7" onclick="SetGlizzyPhoto('b7')"></div>
+                            <div class="imageButton" id="b8" onclick="SetGlizzyPhoto('b8')"></div>
+                            <div class="imageButton" id="b9" onclick="SetGlizzyPhoto('b9')"></div>
+                        </div>
+                        
+                    </div>
+    
+                </div>
+    
+                <button class="gameButton" id="gameButton" onclick="SwapGames()"><span id="glow">></span></button>
+                <div class="GamePanel">
+                    <img class="game" id="sirBallUpNES">
+                    <button class="openOnSteam" id="ggSteam" onclick="window.open('https://store.steampowered.com/app/1885700/Sir_BallUp/', '_blank')"></button> 
+
+                    <div class="info">
+                        <div class="infoBlock" id="block1">
+                            <p class="infoPanel" id="ggBuild">  Build Date  </p>
+                            <p class="infoText" id="ggBuildDate">  06-06-23  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block2">
+                            <p class="infoPanel" id="ggEngine">  Engine  </p>
+                            <p class="infoText" id="ggEngineType">  Unity  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block3">
+                            <p class="infoPanel" id="ggLanguage">  Language  </p>
+                            <p class="infoText" id="ggLanguageType">  C#  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block4">
+                            <p class="infoPanel" id="ggLevel">  Level Count  </p>
+                            <p class="infoText" id="ggLevelType">  5  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block5">
+                            <p class="infoPanel" id="ggCore">  Core Dynamic  </p>
+                            <p class="infoText" id="ggCoreType">Puzzle  &  Challange</p>
+                        </div>
+                    </div>
+
+                    <p class="gameDescriptionText">"Unrightfully imprisoned by his father, Sir. Ball-Up ventures up to confront his father and retake the throne which is rightfully his. A hardcore aimed adventure, join Sir. Ball-Up in his quest for repentance."</p>
+
+                    <div class="slideshow">
+                        <div class="main-cell"></div>
+                        <div class="main-photo" id="sbuPicture"></div>
+                        <div class="main-video">
+                            <video id="sbuVideo" width="100%" height="100%" style="visibility: hidden;"controls>
+                                <source src="images/sbu7.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="picture-cell">
+                            <div class="imageButton" id="sbub1" onclick="SetSBUPhoto('b1')"></div>
+                            <div class="imageButton" id="sbub2" onclick="SetSBUPhoto('b2')"></div>
+                            <div class="imageButton" id="sbub3" onclick="SetSBUPhoto('b3')"></div>
+                            <div class="imageButton" id="sbub4" onclick="SetSBUPhoto('b4')"></div>
+                            <div class="imageButton" id="sbub5" onclick="SetSBUPhoto('b5')"></div>
+                            <div class="imageButton" id="sbub6" onclick="SetSBUPhoto('b6')"></div>
+                            <div class="imageButton" id="sbub7" onclick="SetSBUPhoto('b7')"></div>
+                            <div class="imageButton" id="sbub7" style="visibility: hidden;"></div>
+    
+                        </div>
+                        
+                    </div>
+    
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

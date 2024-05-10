@@ -1,0 +1,334 @@
+
+@font-face {
+    font-family: 'fontBold';
+    src: url('./fonts/Aleo-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'fontRegular';
+    src: url('./fonts/Aleo-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'fontLight';
+    src: url('./fonts/Aleo-Light.otf') format('opentype');
+}
+
+#gamesDiv{
+    overflow: visible;
+    position: relative;
+    width: 135%;
+    height: auto;
+    aspect-ratio: 3/1;
+    display: flex;
+    flex-direction:row;
+    align-self:center;
+    justify-content: center;
+    user-select: none;
+    gap: 6%;
+    left: 20%;
+}
+
+.GamePanel{
+    width: 50%;
+    height: 100%;
+    max-height: 80%;
+    max-width: 50%;
+    aspect-ratio: 7/1;
+    background:rgba(0, 0, 0, 0.45);
+    box-shadow: #00000058 0px 0px 1vw 1vh;
+    position: relative;
+    left: 12%;
+}
+#glow{
+    filter: drop-shadow(0px 0px 1vw rgb(255, 255, 255));
+    transition: .5s;
+}
+#glow:hover{
+    filter: drop-shadow(0px 0px 2vw rgb(255, 255, 255));
+    transform: rotate(30deg);
+}
+.gameButton{
+    position: absolute;
+    width: 5%;
+    height: 80%;
+    right: 35%;
+    background: none;
+    border: none;
+    font-size: 4vw;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px .1vw rgb(255, 255, 255), 0px 0px .1vw rgb(255, 255, 255), 0px 0px .1vw rgb(255, 255, 255), 0px 0px .1vw rgb(255, 255, 255);
+    transition: .1s;
+}
+
+.gameButton:hover{
+    color: rgb(0, 0, 0);
+    transform: scale(1.1) rotateX(20deg)
+}
+#glizzyGobblerNES{
+    left: 10%;
+    top: 4%;
+    content: url("images/ggGame.png");
+    filter: drop-shadow(0px 0px 1vw rgb(255, 0, 0, 0.7));
+}
+#sirBallUpNES{
+    left: 10%;
+    top: 4%;
+    content: url("images/sbuGame.png");
+    filter: drop-shadow(0px 0px 1vw rgba(218, 83, 42, 0.7));
+}
+
+.portfolioTitle{
+    font-size: 2vw;
+    letter-spacing: 1.2vw;
+    color: rgb(255, 255, 255);
+    position: relative;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    top: 0%;
+    margin: 5%;
+    left: 3%;
+    text-align: left;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: "fontLight";
+    text-shadow: 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0);
+    filter: drop-shadow(0px 0px .2vw rgb(75, 144, 140));
+    /* underling */
+    text-decoration: underline rgb(255, 255, 255) solid .1vw;
+    text-underline-offset: 1.6vw;
+}
+
+.openOnSteam{
+    background: url("images/steam.png") no-repeat center center;
+    background-size: contain;
+    width: 10%;
+    height: auto;
+    aspect-ratio: 3/1;
+    top: 58%;
+    left: 17.5%;
+    position: absolute;
+    border: none;
+    filter: brightness(100%);
+    transform: scale(1);
+    transition: .5s;
+    z-index: 10;
+}
+.openOnSteam:hover{
+    filter: brightness(400%);
+    transform: scale(1.05);
+}
+.game{
+    width: 25%;
+    height: auto;
+    position: absolute;
+    z-index: 1;
+}
+
+.info{
+    position: absolute;
+    width: 35%;
+    height: 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: wrap;
+    justify-content: center;
+    user-select: none;
+    top: 65%;
+    left: 3.5%;
+    gap: 4%;
+}
+
+.infosbu{
+    position: relative;
+    width: 17%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: wrap;
+    justify-content: center;
+    user-select: none;
+    margin-top: 14%;
+    scale: 1.75;
+    margin-left: 70%;
+    font-family: "oi";
+}
+
+.infoPanel{
+    position: relative;
+    height: 100%;
+    background-color: rgb(67, 65, 69);
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    min-width: max-content;
+    max-width: 50%;
+    text-align: center;
+    font-size: .8vw;
+    color: white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: pre-wrap;
+}
+.infoText{
+    position: relative;
+    height: 100%;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+    min-width: max-content;
+    text-align: center;
+    font-size: .8vw;
+    color: white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: pre-wrap;
+}
+
+
+.gameDescriptionText{
+    position: absolute;
+    user-select: none;
+    width: 40%;
+    top: 73%;
+    left: 2%;
+    font-family: "";
+    text-align: justify;
+    text-justify: newspaper;
+    color: rgb(184, 184, 184);
+    bottom: 0;
+    letter-spacing: 3px;
+    font-size: 1vw;
+    font-family: "fontRegular";
+    text-shadow: 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0);
+
+    text-align-last: center;
+    line-clamp: 7;
+    -webkit-line-clamp: 7;
+}
+
+.infoBlock{
+    margin: 1%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+}
+#sbuDescription{
+    margin-left: 60% !important;
+}
+
+#ggBuildDate{
+    background-color: blueviolet;
+}
+
+#ggEngineType{
+    background-color: rgb(132, 37, 51);
+}
+
+#ggLanguageType{
+    background-color: rgb(77, 179, 135);
+}
+
+#ggLevelType{
+    background-color: rgb(185, 64, 155);
+}
+
+#ggCoreType{
+    background-color: rgb(125, 101, 43);
+}
+
+#block1{
+    width: 30%;
+}
+
+#block2{
+    width: 20%;
+}
+
+#block3{
+    width: 20%;
+}
+
+#block4{
+    width: 19%;
+}
+#block5{
+    width: 50%;
+}
+
+
+#sbuCoreType{
+    background-color: rgb(125, 101, 43);
+    border-top-right-radius: 3%;
+    border-bottom-right-radius: 3%;
+    width: 39%;
+}
+
+
+.slideshow{
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    top: 5%;
+    left: 40%;
+    right: 1;   
+    /* scale: .8; */
+}
+
+.main-cell{
+    width: 100%;
+    height: 1%;
+    flex: 1;
+}
+.picture-cell{
+    width: 100%;
+    height: 4%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    top: 95%;
+    position: absolute;
+    gap: 2%;
+    
+}
+
+.imageButton{
+    background: #ffffff;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    user-select: none;
+}
+.main-photo{
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    margin-top: -4%;
+    box-shadow: inset 0 0 8vh .26vh rgba(0, 0, 0, .923);
+    background-size: cover;
+}
+
+.main-video{
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    margin-top: -4%;
+    box-shadow: inset 0 0 8vh 2vh rgba(0, 0, 0, .923);
+}
