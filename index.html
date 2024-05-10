@@ -1,46 +1,590 @@
 <!DOCTYPE html>
-<script src="./scripts/script.js"></script>
-<html style="background-color: black;" onmousemove="movePlayer()">
-    <head>
-        <title>Liam Carroll's Portfolio</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
+<script src="./scripts/script1.js"></script>
+<html style="background-color: black;">
+<head>
+    <title>Liam Carroll's Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style1.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+</head>
 
+<body>
+    <div id="background"></div>
 
-    <div class="background" id="indexbg" onclick="shootBullet()"></div>
-    <div>
-        <h1 class="portfolio" id="portfolio-home">Liam Carroll's<br> Game Design Portfolio</h1>
+    <div class = "profile-parent">
+        <div class="zeroWidthDiv">
+            <img id="profileImage"></img>
+        </div>
+        <div class="zeroWidthDiv">
+            <div id="profileBG"></div>
+        </div>
     </div>
-    <body class="body">
-        <div id="header" onclick="shootBullet()">
-            <div class="nameHolder">
-                <h1 class="underline-animation" onclick="shootBullet()">Liam Carroll</h1>
-                <div id="underliner"></div>
+
+    <div id="navBar">
+        <button class="navButtonCurrent" id="home">Home</button>
+        <button class="navButton" id="games">Games</button>
+        <div id="dropDown">
+            <button class="navButtonDD" id="projects">Projects</button>
+            <div id="drop">
+                <button class="navButtonDD1" id="projects1" style="font-size: .7vw;">Past<br>Projects</button>
+                <button class="navButtonDD1" id="projects2" style="font-size: .7vw;">100-Day<br>Project</button>
             </div>
-            <div class = "profile-parent" onclick="shootBullet()">
-                <div class="profile-image-background">
-                    <img class="profile-image"></img>
+        </div>
+        <button class="navButton" id="skills">Skills</button>
+        <button class="navButton" id="about">About</button>
+    </div>
+
+
+    <div id="social-media-icons">
+        <button class="social-media-button" id="emailBottom"    onclick="window.open('mailto:tgmbstudio@gmail.com', '_blank')">
+            <img id="email-icon"></img>
+        </button>
+        <button class="social-media-button" id="githubBottom"   onclick="window.open('https://github.com/DR0UGHT?tab=repositories', '_blank')">
+            <img id="github-icon"></img>
+        </button>
+        <button class="social-media-button" id="linkedinBottom" onclick="window.open('https://www.linkedin.com/in/liam-carroll-3519402b5/', '_blank')">
+            <img id="linkedin-icon"></img>
+        </button>
+        <button class="social-media-button" id="cvBottom"       onclick="window.open('https://drive.google.com/file/d/1YR7qzwJbZa9gDmIEPwozY79yY6IUSeNc/view', '_blank')">
+            <img id="cv-icon"></img>
+        </button>
+    </div>
+
+
+    <div id="content">
+        <div id="scroller">
+
+            <!-- Opening title -->
+            <div id="tagline">
+                <h1 class ="mainText" id="portfolioName">Liam Carroll's Game Developer Portfolio</h1>
+                <h2 class ="mainText" id="portfolioTag">From Concept to Controller</h2>
+            </div>
+
+            <!-- Games -->
+            <h1 class="portfolioTitle" id="portfolio-games">Games</h1>
+            <div id="gamesDiv">
+                <div class="GamePanel">
+                    <img class="game" id="glizzyGobblerNES">
+                    <button class="openOnSteam" id="ggSteam" onclick="window.open('https://store.steampowered.com/app/1102140/Glizzy_Gobbler/', '_blank')"></button> 
+                    <div class="info">
+                        <div class="infoBlock" id="block1">
+                            <p class="infoPanel" id="ggBuild">  Build Date  </p>
+                            <p class="infoText" id="ggBuildDate">  03-31-21  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block2">
+                            <p class="infoPanel" id="ggEngine">  Engine  </p>
+                            <p class="infoText" id="ggEngineType">  Unity  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block3">
+                            <p class="infoPanel" id="ggLanguage">  Language  </p>
+                            <p class="infoText" id="ggLanguageType">  C#  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block4">
+                            <p class="infoPanel" id="ggLevel">  Level Count  </p>
+                            <p class="infoText" id="ggLevelType">  2  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block5">
+                            <p class="infoPanel" id="ggCore">  Core Dynamic  </p>
+                            <p class="infoText" id="ggCoreType">  Story & Freeplay  </p>
+                        </div>
+                    </div>
+    
+                    <p class="gameDescriptionText">"Made for meat-lovers! Roll, devour and grow your glizzy to take your revenge on the humans who have eaten your kind. Unlock skills and achievements along your path to human destruction. But be careful, the dogs are on the hunt!"</p>
+
+                    <div class="slideshow">
+                        <div class="main-cell"></div>
+                        <div class="main-photo" id="ggPicture"></div>
+                        <div class="main-video">
+                            <video id="ggVideo" width="100%" height="100%" style="visibility: hidden;"controls>
+                                <source src="images/gg8.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="picture-cell">
+                            <div class="imageButton" id="b1" onclick="SetGlizzyPhoto('b1')"></div>
+                            <div class="imageButton" id="b2" onclick="SetGlizzyPhoto('b2')"></div>
+                            <div class="imageButton" id="b3" onclick="SetGlizzyPhoto('b3')"></div>
+                            <div class="imageButton" id="b4" onclick="SetGlizzyPhoto('b4')"></div>
+                            <div class="imageButton" id="b5" onclick="SetGlizzyPhoto('b5')"></div>
+                            <div class="imageButton" id="b6" onclick="SetGlizzyPhoto('b6')"></div>
+                            <div class="imageButton" id="b7" onclick="SetGlizzyPhoto('b7')"></div>
+                            <div class="imageButton" id="b8" onclick="SetGlizzyPhoto('b8')"></div>
+                            <div class="imageButton" id="b9" onclick="SetGlizzyPhoto('b9')"></div>
+                        </div>
+                        
+                    </div>
+    
+                </div>
+    
+                <button class="gameButton" id="gameButton" onclick="SwapGames()"><span id="glow">></span></button>
+                <div class="GamePanel">
+                    <img class="game" id="sirBallUpNES">
+                    <button class="openOnSteam" id="ggSteam" onclick="window.open('https://store.steampowered.com/app/1885700/Sir_BallUp/', '_blank')"></button> 
+
+                    <div class="info">
+                        <div class="infoBlock" id="block1">
+                            <p class="infoPanel" id="ggBuild">  Build Date  </p>
+                            <p class="infoText" id="ggBuildDate">  06-06-23  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block2">
+                            <p class="infoPanel" id="ggEngine">  Engine  </p>
+                            <p class="infoText" id="ggEngineType">  Unity  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block3">
+                            <p class="infoPanel" id="ggLanguage">  Language  </p>
+                            <p class="infoText" id="ggLanguageType">  C#  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block4">
+                            <p class="infoPanel" id="ggLevel">  Level Count  </p>
+                            <p class="infoText" id="ggLevelType">  5  </p>
+                        </div>
+
+                        <div class="infoBlock" id="block5">
+                            <p class="infoPanel" id="ggCore">  Core Dynamic  </p>
+                            <p class="infoText" id="ggCoreType">Puzzle  &  Challange</p>
+                        </div>
+                    </div>
+
+                    <p class="gameDescriptionText">"Unrightfully imprisoned by his father, Sir. Ball-Up ventures up to confront his father and retake the throne which is rightfully his. A hardcore aimed adventure, join Sir. Ball-Up in his quest for repentance."</p>
+
+                    <div class="slideshow">
+                        <div class="main-cell"></div>
+                        <div class="main-photo" id="sbuPicture"></div>
+                        <div class="main-video">
+                            <video id="sbuVideo" width="100%" height="100%" style="visibility: hidden;"controls>
+                                <source src="images/sbu7.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="picture-cell">
+                            <div class="imageButton" id="sbub1" onclick="SetSBUPhoto('b1')"></div>
+                            <div class="imageButton" id="sbub2" onclick="SetSBUPhoto('b2')"></div>
+                            <div class="imageButton" id="sbub3" onclick="SetSBUPhoto('b3')"></div>
+                            <div class="imageButton" id="sbub4" onclick="SetSBUPhoto('b4')"></div>
+                            <div class="imageButton" id="sbub5" onclick="SetSBUPhoto('b5')"></div>
+                            <div class="imageButton" id="sbub6" onclick="SetSBUPhoto('b6')"></div>
+                            <div class="imageButton" id="sbub7" onclick="SetSBUPhoto('b7')"></div>
+                            <div class="imageButton" id="sbub7" style="visibility: hidden;"></div>
+    
+                        </div>
+                        
+                    </div>
+    
                 </div>
             </div>
 
-            <div id="social-media-icons" onclick="">
-                <button class="social-media-button" onclick="window.open('mailto:tgmbstudio@gmail.com', '_blank')"><img src="images/em.png" alt="email" class="social-media-icon"></button>
-                <button class="social-media-button" onclick="window.open('https://github.com/DR0UGHT?tab=repositories', '_blank')"><img src="images/gh.png" alt = "github" class="social-media-icon"></button>
-                <button class="social-media-button" onclick="window.open('https://www.linkedin.com/in/liam-carroll-3519402b5/', '_blank')"><img src="images/li.png" alt="linkedin" class="social-media-icon"></button>
-                <button class="social-media-button" onclick="window.open('https://drive.google.com/file/d/1YR7qzwJbZa9gDmIEPwozY79yY6IUSeNc/view', '_blank')"><img src="images/cv.png" alt="coverletter" class="social-media-icon"></button>
-            </div>
-
-            <div id="content-container" onclick="shootBullet()">
-                <button class="page-button" id = "projects"><div style="position:relative;">Projects</div></button>
-                <button class="page-button" id = "games"><div style="position:relative;">Games</div></button>
-                <button class="page-button" id = "skills"><div style="position:relative;">Skills</div></button>
-                <button class="page-button" id = "about"><div style="position:relative;">About</div></button>
-            </div>
-        </div>
+            <!-- Projects -->
+            <h1 class="portfolioTitle" id="portfolio-projects">Projects</h1>
+            <div class ="projects">
+           
+                <div class="ProjectPanel">
+                    <area class="sideWall" id="sideWallLeft"></area>
+                    <area class="sideWall" id="sideWallRight"></area>
+                    <area class="wallBottom"></area>
     
+                    <div class="infoProj">
+                        <p class="infoPanelProj" id="buildDateTextProj">Build Date</p>
+                        <p class="infoTextProj" id="buildDateProj">TBA</p>
+    
+                        <p class="infoPanelProj" id="categoryTextProj">Category</p>
+                        <p class="infoTextProj" id="categoryProj">Game</p>
+    
+                        <p class="infoPanelProj" id="engineTextProj">Engine</p>
+                        <p class="infoTextProj" id="engineProj">Unity</p>
+    
+                        <p class="infoPanelProj" id="languageTextProj">Language</p>
+                        <p class="infoTextProj" id="languageProj">C#</p>
+    
+                        <p class="infoPanelProj" id="coreTextProj">Core Dynamic</p>
+                        <p class="infoTextProj" id="coreProj">2D Boss Battles</p>
+                    </div>
+                    
+                    <h1 class="projectText" id="heartrateFinal">Upcoming Game 'As We Go Down'</h1>
+                    <h2 class="projectText" id="heartrateFinalSub">A 2D puzzle and fighting game concept</h2>
+                    <h3 class="projectText" id="webotsFinalGrade"></h3> 
+                    
+                    <img class="ProjectGif" id="aswegodown">
+                    <b class="projDesc" id="webotsDescription1">
+    "As We Go Down" is a game concept I am currently working on. The game is a 2D puzzle and fighting game with some fresh concepts and ideas. 
+    The game utilizes unique mechanics and allows the player to experience many of the aspects of 2D games that make them very entertaining.</b>
+                        
+                    <b class="projDesc" id="webotsDescription2">
+    This project marks my second adventure into 2D game development, and I'm thrilled to see where it leads. Currently, the game is in its early stages of
+    development, with a focus on refining core mechanics, crafting puzzles, and designing epic boss battles. It's being built in Unity and 
+    programmed in C#.</b>
+                    </b>                
+                </div> 
+    
+    
+                <div class="ProjectPanel">
+                    <area class="sideWall" id="sideWallLeft"></area>
+                    <area class="sideWall" id="sideWallRight"></area>
+                    <area class="wallBottom"></area>
+    
+                    <div class="infoProj">
+                        <p class="infoPanelProj" id="buildDateTextProj">Build Date</p>
+                        <p class="infoTextProj" id="buildDateProj">06-06-23</p>
+    
+                        <p class="infoPanelProj" id="categoryTextProj">Category</p>
+                        <p class="infoTextProj" id="categoryProj">AI</p>
+    
+                        <p class="infoPanelProj" id="engineTextProj">Engine</p>
+                        <p class="infoTextProj" id="engineProj">WeBot</p>
+    
+                        <p class="infoPanelProj" id="languageTextProj">Language</p>
+                        <p class="infoTextProj" id="languageProj">C++</p>
+    
+                        <p class="infoPanelProj" id="coreTextProj">Core Dynamic</p>
+                        <p class="infoTextProj" id="coreProj">AI Movement</p>
+                    </div>
+                    
+                    <h1 class="projectText" id="webotsFinal"> Cup Transport Final Project</h1>
+                    <h2 class="projectText" id="webotsFinalSub"> AI Robot Cup Transport Simulation using WeBots</h2>
+                    <h3 class="projectText" id="webotsFinalGrade"> Grade: 90% </h3> 
+                    
+                    <img class="ProjectGif" id="Robots">
+                    <b class="projDesc" id="webotsDescription1">
+    For this project, I was assigned the task of creating a simulation in WeBots where a robot clears a path in zone 3, retrieves a cup brought to the zone
+    by bots developed by my project partners, and then transports the cup to the designated drop-off zone. The robot needed to navigate the zone, 
+    avoid obstacles, and handle the cup delicately without knocking it over. Additionally, it had to detect both the cup and the drop-off zone. 
+    All of this was programmed using C++, and the simulation was entirely constructed within WeBots.</b>
+                                            
+                    <b class="projDesc" id="webotsDescription2">
+    The marking for this project involved a competition among all the groups in the class. Marks were based on the speed of the robot and its ability to complete 
+    the task in full. Our robot successfully completed the task in 3 minutes and 36 seconds, securing us a position in the top 20% of the class. </b>                
+                </div>
+    
+    
+                <div class="ProjectPanel">
+                    <area class="sideWall" id="sideWallLeft"></area>
+                    <area class="sideWall" id="sideWallRight"></area>
+                    <area class="wallBottom"></area>
+    
+    
+                    <div class="infoProj">
+                        <p class="infoPanelProj" id="buildDateTextProj">Build Date</p>
+                        <p class="infoTextProj" id="buildDateProj">03-29-23</p>
+    
+                        <p class="infoPanelProj" id="categoryTextProj">Category</p>
+                        <p class="infoTextProj" id="categoryProj">OOP</p>
+    
+                        <p class="infoPanelProj" id="engineTextProj">Software</p>
+                        <p class="infoTextProj" id="engineProj">Qt</p>
+    
+                        <p class="infoPanelProj" id="languageTextProj">Language</p>
+                        <p class="infoTextProj" id="languageProj">C++</p>
+    
+                        <p class="infoPanelProj" id="coreTextProj">Core Dynamic</p>
+                        <p class="infoTextProj" id="coreProj">Group Code Project</p>
+                    </div>
+                    
+                    <h1 class="projectText" id="heartrateFinal"> Heartrate Monitor Device OOP Final Project</h1>
+                    <h2 class="projectText" id="heartrateFinalSub"> Final project for Object-Oriantated Software Enginering</h2>
+                    <h3 class="projectText" id="heartrateFinalGrade"> Grade: 95% </h3> 
+                    
+                    <img class="ProjectGif" id="Heartrate">
+                    <b class="projDesc" id="webotsDescription1">
+    For my Object-Oriented Software Engineering class, our final project involved creating a device capable of monitoring a person's heart rate and breath rate.
+    The device needed to display both rates on a screen and detect if the individual was in danger or experiencing panic. Programmed in C++, the device's 
+    graphical user interface (GUI) was developed using Qt.</b>
+                        
+                    <b class="projDesc" id="webotsDescription2">
+    The assessment for this project was based on the functionality of the device, the quality of the code, and the GUI. Our group,
+    consisting of three members, successfully met all the requirements, resulting in a 95% grade. The professor found my idea 
+    of adding Snake as a mini-game to the device particularly amusing.</b>            
+                </div>
+    
+    
+    
+                <div class="ProjectPanel">
+                    <area class="sideWall" id="sideWallLeft"></area>
+                    <area class="sideWall" id="sideWallRight"></area>
+                    <area class="wallBottom"></area>
+    
+                    <div class="infoProj">
+                        <p class="infoPanelProj" id="buildDateTextProj">Build Date</p>
+                        <p class="infoTextProj" id="buildDateProj">04-19-21</p>
+    
+                        <p class="infoPanelProj" id="categoryTextProj">Category</p>
+                        <p class="infoTextProj" id="categoryProj">Music</p>
+    
+                        <p class="infoPanelProj" id="engineTextProj">Engine</p>
+                        <p class="infoTextProj" id="engineProj">Unity</p>
+    
+                        <p class="infoPanelProj" id="languageTextProj">Language</p>
+                        <p class="infoTextProj" id="languageProj">C#</p>
+    
+                        <p class="infoPanelProj" id="coreTextProj">Core Dynamic</p>
+                        <p class="infoTextProj" id="coreProj">Music Movement</p>
+                    </div>
+                    
+                    <h1 class="projectText" id="webotsFinal">Koch Fractal Music Visualizer</h1>
+                    <h2 class="projectText" id="heartrateFinalSub">Fractal movements to music with variable movement options</h2>
+                    <h3 class="projectText" id="webotsFinalGrade"></h3> 
+                    
+                    <img class="ProjectGif" id="Koch">
+                    <b class="projDesc" id="webotsDescription1">
+    The Koch Fractal Music Visualizer was a project I developed to delve into the realms of fractals and music. Built using Unity and programmed in C#, 
+    the visualizer was designed to synchronize fractal movements with music sourced from a YouTube URL. Users could manipulate various movement options
+    within the project. It served as an experimental platform to explore the interaction between fractals and music.</b>
+                        
+                    <b class="projDesc" id="webotsDescription2">
+                        The project was a solo endeavor completed within a tight two-week timeframe. It marked my initial foray into combining mathematics 
+                        and graphics in depth.
+                    </b>                
+                </div>                
+            </div>
 
-        <div id="player" class="player">
-            <img id="playerobj" class="player-image">
+            <!-- Skills -->
+            <h1 class="portfolioTitle" id="portfolio-skills">Skills</h1>
+            <div id="skillBG">
+                <!-- big title for skills -->
+                <h1 id="skillsProgramingLanguages">Below are my self-evaluated skill levels.</h1>
+                
+                <!-- skill sub titles -->
+                <!-- these are the sub titles for the different categories of skills -->
+                <div id="skillContainerMask">
+                    <div id="skillContainer">
+                        <h1 class="skillSub" id="skillsTools">Programing Languages</h1>
+                        <div class="slidecontainer">
+                            <div class="sliderHolder" id="s1">
+                                <p class="sliderText" id = "80">C++</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="s2">
+                                <p class="sliderText">C#</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="s3">
+                                <p class="sliderText">Java</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="s4">
+                                <p class="sliderText">Python</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="s5">
+                                <p class="sliderText">JavaScript</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="s6">
+                                <p class="sliderText">C</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+                            
+                            <div class="sliderHolder" id="s7">
+                                <p class="sliderText">HTML</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="s8">
+                                <p class="sliderText">CSS</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="s9">
+                                <p class="sliderText">Haskell</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+    
+                        </div>
+                        <h1 class="skillSub" id="skillsTools">Tools</h1>
+    
+                            <div class="sliderHolder" id="st1">
+                                <p class="sliderText">Visual Studio</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st2">
+                                <p class="sliderText">Git</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st3">
+                                <p class="sliderText">CMake</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st4">
+                                <p class="sliderText">InteliJ</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st5.5">
+                                <p class="sliderText">Gimp2.0</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st5">
+                                <p class="sliderText">Mixamo</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st6">
+                                <p class="sliderText">Eclipse</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st7">
+                                <p class="sliderText">Blender</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st8">
+                                <p class="sliderText">GameBench</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                            <div class="sliderHolder" id="st9">
+                                <p class="sliderText">Nuclino</p>
+                                <img class="slid" name="slid"></img>
+                                <p name="sliderVal" class="sliderVal">0</p>
+                            </div>
+    
+                        <h1 class="skillSub" id="skillsEngines">Engines</h1>
+    
+                        <div class="sliderHolder" id="se1">
+                            <p class="sliderText">Unity</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="se2">
+                            <p class="sliderText">Unreal Engine 4</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="se3">
+                            <p class="sliderText">Unreal Engine 5</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="se4">
+                            <p class="sliderText">GameMaker Studio</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="se6">
+                            <p class="sliderText">Godot</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <h1 class="skillSub" id="skillsGameDev">Game Development</h1>
+    
+                        <div class="sliderHolder" id="gd1">
+                            <p class="sliderText">Visual Scripting</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="gd2">
+                            <p class="sliderText">OpenGL</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="gd3">
+                            <p class="sliderText">Optimization</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="gd4">
+                            <p class="sliderText">Level Design</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="gd5">
+                            <p class="sliderText">AI</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+    
+                        <div class="sliderHolder" id="gd6">
+                            <p class="sliderText">3D Modeling</p>
+                            <img class="slid" name="slid"></img>
+                            <p name="sliderVal" class="sliderVal">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About -->
+            <h1 class="portfolioTitle" id="portfolio-about">About Me</h1>
+            <div id="aboutContainer">
+                <div id="aboutLeft">
+                    <image class="aboutPhoto" id="aboutPhoto1"></image>
+
+                    <h2 id="aboutSubtitle1" style="font-size: 1.4vw; font-weight: 100; margin-top: 28%;">Education</h2>
+                    <p id="aboutText"><b>2024</b>   |   Carleton University - Bachelor of Computer Science</p>
+                    <p id="aboutText"><b>2020</b>   |   SAL Comp Highschool - Graduated with Honours</p>
+                    <h2 id="aboutSubtitle1" style="font-size: 1.4vw; font-weight: 100;">Proffesional Interests</h2>
+                
+                    <p id="aboutText"> <b>• Gamplay programing</b> </p>
+                    <p id="aboutText"> <b>• Game development</b> </p>
+                    <p id="aboutText"> <b>• Level design</b> </p>
+                    <p id="aboutText"> <b>• Optimization</b> </p>
+                    <p id="aboutText"> <b>• AI Character programing</b> </p>
+                    <p id="aboutText"> <b>• Combat programing</b> </p>
+
+                    <div class="wip">
+                        <h1 id="rnp"><b>Right Now Im Playing...</b></h1>
+                        <p id="rnpText">Dark Souls Remasterd    |    Rocket League    |    God of War(ps2)    |    Lethal Company    |    Resident Evil 2 Remake    |    The Last Of Us Remasterd</p> 
+                        <p id="rnpText">Cyberpunk 2077    |    DOOM Eternal    |    Little Nightmares 2    |    Teardown    |    Beat Saber    |    Octodad: Dadliest Catch</p>
+                        <p id="rnpText">A Tale of Paper : Refolded    |    The Turing Test    |    Hydroneer    |    The Forest : Sons of the Forest</p>
+
+                        <h1 id="rnp"><b>All time Favourites...</b></h1>
+                        <p id="rnpText">Half-Life Alyx    |    It Takes Two    |    Uncharted 4    |    Uncharted Lost Legacy    |    God of War(2018)    |    CS:GO   |   Resident Evil 7   |    Resident Evil 8</p>
+                        <p id="rnpText">A Way Out    |    Amoung The Sleep    |    Portal 2    |    The Stanley Parable    |    Half-Life    |    Half-Life 2    |    Far Cry 4    |    Far Cry 5    |    Firewatch</p>
+                        <p id="rnpText">The Outlast Trials    |    SOMA    |    Assassin's Creed Odessey    |    Wolfenstein II: The New Colossus    |   Wolfenstein: The New Order   |    Until Dawn</p>
+                        <p id="rnpText">Brutal Legend    |    Days Gone    |    Elden Ring    |    Teardown    |    Bioshock Infinite    |    Bioshock 2    |    Bioshock    |    Bully</p>
+
+                    </div>
+                </div>
+                <div id="aboutRight">
+                    <h2 id="aboutSubtitle2">Passionate Game Developer</h2>
+                    <p id="aboutText2">Hey there, my name is Liam, and I am a dedicated game developer and programmer with a profound passion for all facets of gaming. Currently situated in Ottawa, Ontario, I hail from the vibrant city of Edmonton, Alberta. Throughout my journey, I have ardently pursued game development, whether independently or through collaborative projects during my academic tenure. Come June 2024, I will proudly hold a degree in Computer Science from Carleton University. My admiration for gaming encompasses all genres, yet I hold a particular fondness for narrative-driven experiences, as they possess the power to deeply resonate with players on various levels. Having immersed myself in gaming culture from a young age, I've found joy in every epoch of the industry's evolution - from classic space shooters like Space Invaders to groundbreaking FPS titles such as Half-Life, and onward to contemporary masterpieces like God of War, which seamlessly blended breathtaking visuals with compelling narratives, reshaping the industry in profound ways. I am eager to add my own unique spin to the gaming landscape, and I am excited to collaborate with like-minded individuals who share my passion for creating unforgettable gaming experiences. </p>
+                    <img id="divider1"></img>
+
+                    <image class="aboutPhoto" id="aboutPhoto2" style="margin-top: 14%;"></image>
+                
+                    <img id="divider2"></img>
+                </div>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

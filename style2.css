@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'oi';
+    src: url('fonts/SLABS\ THIN.otf') format('opentype');
+}
 
 @font-face {
     font-family: 'fontBold';
@@ -80,7 +84,6 @@
 
 .portfolioTitle{
     font-size: 2vw;
-    letter-spacing: 1.2vw;
     color: rgb(255, 255, 255);
     position: relative;
     width: 100%;
@@ -88,14 +91,12 @@
     text-align: center;
     top: 0%;
     margin: 5%;
-    left: 3%;
-    text-align: left;
+    text-align: center;
 
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    font-family: "fontLight";
-    text-shadow: 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0);
+    font-family: "oi";
     filter: drop-shadow(0px 0px .2vw rgb(75, 144, 140));
     /* underling */
     text-decoration: underline rgb(255, 255, 255) solid .1vw;
@@ -204,7 +205,7 @@
     bottom: 0;
     letter-spacing: 3px;
     font-size: 1vw;
-    font-family: "fontRegular";
+    font-family: "fontLight";
     text-shadow: 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0), 0px 0px .6vw rgb(0, 0, 0);
 
     text-align-last: center;
@@ -331,4 +332,737 @@
     height: 85%;
     margin-top: -4%;
     box-shadow: inset 0 0 8vh 2vh rgba(0, 0, 0, .923);
+}
+
+
+
+
+.projects{
+    overflow: hidden;
+    position: relative;
+    width: 65%;
+    height: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;   
+
+    top: 10%;
+}
+
+.ProjectPanel{
+    flex: 1;
+    position: relative;
+    margin-left: 2.5%;
+    width: 95%;
+    height: 35vw;
+    min-height: 35vw;
+    max-height: 35vw;
+    background:rgba(0, 0, 0, 0.45);
+    box-shadow: #00000058 0px 0px 1vw 1vh;
+    display: flex;
+    flex-direction: column;
+    align-self:flex-start;
+    justify-content: center;
+    user-select: none;
+    flex-wrap: nowrap;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.sideWall{
+    position: absolute;
+    width: .1%;
+    height: 90%;
+    background-color: #ffffff;
+    margin-top: 0%;
+    margin-right: 0%;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0) 100%);
+}
+
+.wallBottom{
+    position: absolute;
+    width: 100%;
+    height: .1vw;
+    background-color: #ffffff;
+    margin-top: 65%;
+    margin-right: 0%;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0) 100%);
+}
+
+#sideWallLeft{
+    margin-left: -2%;
+    left: 0;
+}
+
+#sideWallRight{
+    margin-right: -2%;
+    right: 0;
+}
+
+
+#portalTop{
+    position: absolute;
+    width: 3.3vw;
+    height: 3vw;
+    margin-top: 1%;
+    margin-right: 1%;
+    right:0;
+    content: url("images/orangePortal.png");
+}
+
+#portalBottom{
+    position: absolute;
+    width: 3.3vw;
+    height: 3vw;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    right:0;
+    bottom: 0;
+    content: url("images/bluePortal.png");
+}
+
+#portalMan{
+    position: absolute;
+    width: 3.3vw;
+    height: 3vw;
+    margin-right: 1%;
+    margin-top: 2%;
+    right:0;
+    scale: .75;
+    content: url("images/portalman.png");
+}
+
+.ProjectGif{
+    flex: 1 1 auto;
+    position: relative;
+    width: 50%;
+    height: auto;
+    margin-right: 0%;
+    margin-top: -11%;
+    margin-left: 50%;
+    scale: .8;
+}
+.projectText{
+    flex: 1 1 auto;
+    position: relative;
+    color: white;
+    text-align: center;
+    width: 56%;
+}
+#webotsFinal{
+    margin-top: 2%;
+    margin-bottom: 1%;
+    height: 4%;
+    font-size: 2.25vw;
+    font-family: "fontLight";
+}
+
+#webotsFinalSub{
+    margin-top: 1%;
+    height: 3%;
+    font-size: 1.0vw;
+    font-weight: lighter;
+}
+
+#webotsFinalGrade{
+    margin-top: 1%;
+    height: 1%;
+    max-height: 1%;
+    font-size: 1.0vw;
+    font-weight: lighter;
+    font-family: "fontLight";
+}
+
+#heartrateFinal{
+    margin-top: 2%;
+    margin-bottom: 0%;
+    height: 2%;
+    font-size: 1.7vw;
+    font-family: "fontLight";
+}
+
+#heartrateFinalSub{
+    margin-top: 0%;
+    height: 2%;
+    font-size: 1.0vw;
+    font-weight: lighter;
+}
+
+#heartrateFinalGrade{
+    margin-top: 0%;
+    height: 1%;
+    max-height: 1%;
+    font-size: 1.0vw;
+    font-weight: lighter;
+    font-family: "fontLight";
+}
+.projDesc{
+    flex: 1 1 auto;
+    position: relative;
+    color: white;
+    width: 100%;
+    font-size: .9vw;
+    text-align: center;
+    font-weight:bolder;
+    text-align: center;
+    text-justify: newspaper;
+    text-wrap: wrap;
+    white-space: pre;
+}
+#webotsDescription1{
+    height: 20%;
+    /* margin-top: 30%; */
+}
+
+#webotsDescription2{
+    height: 20%;
+    /* margin-top: 30%; */
+
+}
+#Robots{
+    content: url("images/robots.gif");
+}
+
+#Heartrate{
+    content: url("images/hearmonitor.gif");
+}
+
+#Koch{
+    content: url("images/koch.gif");
+}
+
+#aswegodown{
+    content: url("images/aswegodown.gif");
+}
+
+.infoProj{
+    flex: 1 1 auto;
+    position: relative;
+    width: 60%;
+    height: 6%;
+    max-height: 6%;
+    min-height: 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    user-select: none;
+    margin-top: 2%;
+    scale: 1.75;
+    margin-left: 20%;
+    font-family: "fontRegular";
+}
+
+
+.infoPanelProj{
+    position: relative;
+    height: 30%;
+    background-color: rgb(67, 65, 69);
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    width: 6%;
+    text-align: center;
+    font-size: .4vw;
+    color: white; 
+    margin-left: 2%;
+}
+.infoTextProj{
+    position: relative;
+    height: 30%;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+    width: 5%;
+    text-align: center;
+    font-size: .4vw;
+    color: white; 
+    /* margin-top: -.92%; */
+    /* margin-left: 6%; */
+}
+
+#buildDateTextProj{
+    width: 8%;
+}
+
+#buildDateProj{
+    background-color: blueviolet;
+    width: 7%;
+}
+
+#caregoryTextProj{
+    width: 10%;
+}
+
+#categoryProj{
+    background-color: rgb(132, 37, 51);
+    width: 10%;
+}
+
+#languageTextProj{
+    width: 8%;
+}
+
+#languageProj{
+    background-color: rgb(124, 65, 109);
+    width: 5%;
+}
+
+#categoryTextProj{
+    width: 8%;
+}
+
+#categoryProj{
+    background-color: rgb(77, 179, 135);
+    width: 5%;
+}
+
+#coreTextProj{
+    width: 10%;
+}
+
+#coreProj{
+    background-color: rgb(49, 98, 157);
+    width: 14%;
+}
+
+#engineTextProj{
+    width: 7%;
+}
+
+#engineProj{
+    background-color: rgb(222, 159, 72);
+    width: 10%;
+}
+
+
+
+#skillsProgramingLanguages{
+    position: relative;
+    width: 100%;
+    height: 5%;
+    margin-top: 1.5%;
+    margin-bottom: -1%;
+    text-align: center;
+    font-size: 1.5vw;
+    color: rgb(191, 195, 216);
+    z-index: 1;
+
+}
+#skillBG{
+    width: 70%;
+    height: 70%;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 1%;
+    box-shadow: 0 0 2vw .1vw rgba(10, 31, 44, 0.923);
+    top: 7.5%;
+    position: relative;
+    font-family: 'fontLight';
+    z-index: 1;
+}
+
+
+.skillScroll{
+    position: absolute;
+    width: .5%;
+    height: 80%;
+
+    right: 0;
+    margin-top: 0%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    writing-mode: vertical-lr;
+
+    -webkit-appearance: none;
+    appearance: none;
+    overflow: hidden;
+
+    background: #3d3d3dbb;
+    outline: none;
+    opacity: 1;
+
+    z-index: 100;
+
+}
+
+
+.skillSub{
+    position: relative;
+    width: 100%;
+    height: 4%;
+    color: rgb(191, 195, 216);
+    font-size: 1.5vw;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.sliderHolder{
+    display: flex;
+    width: 100%;
+    height: 2vw;
+}
+.sliderText{
+    flex: 1;
+    position: relative;
+    width: 13%;
+    max-width: 13%;
+    min-width: 13%;
+    height: 2%;
+    color: rgb(60, 72, 135);
+    text-align: left;
+    font-size: 1vw;
+    font-weight: 200;
+    margin-top: .5vw;
+    margin-bottom: .5vw;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    font-family: 'fontLight';
+}
+
+.slid{
+    position: relative;
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+    height: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    content: url("images/sliderBar.png");
+    clip-path: inset(100% 0% 0% 0%);
+}
+
+.sliderVal{
+    flex: 1;
+    position: relative;
+    width: 5%;
+    max-width: 5%;
+    min-width: 5%;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    color: rgb(60, 72, 135);
+    text-align: center;
+    font-size: 1vw;
+    font-weight: 200;
+    margin-top: .5vw;
+    margin-bottom: .5vw;
+    margin-left: -81%;
+    font-family: 'fontLight';
+}
+
+.slider{
+    flex: 1;
+    position: relative;
+    width: 100vw;
+    height: 1vw;
+    margin-top: 1%;
+    margin-left: 0%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.sliderBar{
+    position: relative;
+    height: 0%;
+    width: 0.28%;
+    max-width: 0.28%;
+    min-width: 0.28%;
+    background: #3f5a89;
+
+    border-radius: 1vw;
+    margin-top: 1.6%;
+    margin-left: 0.3%;
+    margin-right: 0.3%;
+    align-self: flex-end;
+    
+    flex: 1;
+    /* animation: barStart 5s cubic-bezier(0.19, 1, 0.22, 1) forwards; */
+}
+
+.sliderBarNormal{
+    position: relative;
+    height: 1%;
+    width: 0.3%;
+    max-width: 0.3%;
+    min-width: 0.3%;
+    background: #c93131;
+
+    border-radius: 1vw;
+    margin-top: 1.6%;
+    margin-left: 0.3%;
+    margin-right: 0.3%;
+    align-self: flex-end;
+    
+    flex: 1;
+}
+
+.aboutPhoto{
+    position: relative !important;
+    background-repeat: no-repeat !important;
+    background-size:contain !important;
+    z-index: 1 !important;
+}
+#aboutPhoto1{
+    content: url("images/me1.jpg");
+    width: 100%;
+    height: auto;
+    scale: .85;
+    margin-bottom: 0;
+}
+
+#aboutPhoto2{
+    content: url("images/me3.jpg");
+    width: 100%;
+    height: auto;
+    scale: .65;
+}
+
+#aboutPhoto3{
+    content: url("images/me2.jpg");
+    width: 100%;
+    height: auto;
+    scale: .65;
+    margin-top: 20%;
+}
+
+
+#aboutText{
+    width: 87%;
+    height: 10%;
+    max-height: 10%;
+    display: flex;
+
+    flex: 1;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-weight: 180;
+    font-size: .85vw;
+    text-align:justify;
+    text-justify: newspaper;
+}
+
+.wip{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 20%;
+
+    width: 200%;
+    max-width: 200%;
+    min-width: 200%;
+
+    color: white;
+    margin-top: 30%;
+    margin-bottom: 10%;
+    text-align: center;
+    font-size: 100%;
+    white-space: pre;
+    scale: 1;
+    text-decoration:dashed;
+}
+
+#rnpText{
+    margin-top: 0.2%;
+    margin-bottom: 0.2%;
+    margin-left: 0%;
+    width: 100%;
+    text-wrap: nowrap;
+    text-align: center;
+    font-size: .9vw;
+}
+#rnp{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1.5vw;
+}
+#hp{
+    position: relative;
+    flex: 1;
+
+    display: inline-block;
+    content: url("images/hp.png");
+
+
+    width: 12.5%;
+    max-width: 12.5%;
+    height: 100%;
+    border: none;
+}
+
+#divider1{
+    position: absolute;
+    flex: 1;
+    left: 25%;
+
+    background-color: #ffffffae;
+    border-radius: 50%;
+    width: 50%;
+
+    height: .05%;
+
+    margin-top: 27%;
+}
+
+#divider2{
+    position: absolute;
+    flex: 1;
+    left: 25%;
+
+    background-color: #ffffffae;
+    border-radius: 50%;
+    width: 50%;
+
+    height: .05%;
+
+    margin-top: 67%;
+}
+
+#skillContainerMask{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 85%;
+    margin-top: 2%;
+}
+
+
+#splitBar{
+    position: relative;
+    flex: 1;
+
+    background-color: #ff9d00ae;
+    width: 1.5%;
+    max-width: 1.5%;
+    height: 100%;
+    /* margin-bottom: .25vw; */ 
+}
+
+
+#aboutText{
+    width: 87%;
+    min-height: 30%;
+    margin-left: 15%;
+    display: flex;
+
+    flex: 1;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-weight: 180;
+    font-size: .85vw;
+    text-align:justify;
+    text-justify: newspaper;
+    text-align: center;
+    vertical-align: center;
+    white-space: pre;
+}
+
+#aboutText2{
+    height: 10%;
+    display: flex;
+
+    flex: 1;
+    color: rgb(255, 255, 255);
+    width: 75%;
+    text-align: left;
+    font-weight: 180;
+    font-size: .85vw;
+    text-align:justify;
+    text-justify: newspaper;
+    margin-left: -1.0vw;
+    margin-bottom: -14%;
+
+}
+
+
+#aboutSubtitle1{
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-weight: 260;
+    font-size: 2vw;
+    flex: 1;
+    width: 80%;
+    height: 6%;
+    max-height: 6%;
+    margin-top: 6%;
+    margin-bottom: 0%;
+    margin-left: 11%;
+}
+
+#aboutSubtitle2{
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-weight: 260;
+    font-size: 2vw;
+    flex: 1;
+    width: 80%;
+    height: 6%;
+    max-height: 6%;
+    margin-top: 4%;
+    margin-bottom: 0%;
+    margin-left: 2%;
+}
+
+
+
+
+#aboutLeft{
+    width: 50%;
+    height: 90%;
+    margin-top: 10%;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+}
+
+#aboutRight{
+    width: 50%;
+    height: 90%;
+    margin-top: 10%;
+    right: 0;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:start;
+}
+
+.aboutTitle{
+    position: absolute;
+    width: 22.85%;
+    flex: 1;
+    user-select: none;
+    margin-top: 2%;
+
+    font-weight: 300;
+    font-size: 2vw;
+    color: white;
+    text-align: center;
+    text-decoration:underline;
+
+}
+#aboutContainer{
+    align-self: center;
+    flex-direction: row;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius:  2%;
 }

@@ -715,6 +715,7 @@
     height: 25%;
     margin: 0px;
     position:relative;
+    font-family: "fontLight";
 }
 .page-button {
     margin-left: 1.75vw; 

@@ -116,7 +116,7 @@ body{
     margin-bottom: 35%;
 }
 
-#email{
+#emailBottom{
     background: #262626;
     animation: .5s popUp forwards;
     animation-delay: 1s;
@@ -124,8 +124,8 @@ body{
     transition: margin-top 0.5s ease-out;
 }
 
-#email:hover{
-    margin-top: 0%;
+#emailBottom:hover{
+    margin-top: 7%;
 }
 
 #email-icon{
@@ -136,7 +136,7 @@ body{
 
 }
 
-#github{
+#githubBottom{
     background: #333333;
     animation: .5s popUp forwards;
     animation-delay: 1.3s;
@@ -144,8 +144,8 @@ body{
     transition: margin-top 0.5s ease-out;
 }
 
-#github:hover{
-    margin-top: 0%;
+#githubBottom:hover{
+    margin-top: 7%;
 }
 
 #github-icon{
@@ -155,7 +155,7 @@ body{
     margin-top: 10%;
 }
 
-#linkedin{
+#linkedinBottom{
     background: #545454;
     animation: .5s popUp forwards;
     animation-delay: 1.6s;
@@ -163,8 +163,8 @@ body{
     transition: margin-top 0.5s ease-out;
 }
 
-#linkedin:hover{
-    margin-top: 0%;
+#linkedinBottom:hover{
+    margin-top: 7%;
 }
 
 #linkedin-icon{
@@ -174,7 +174,7 @@ body{
     margin-top: 20%;
 }
 
-#cv{
+#cvBottom{
     background: #a6a6a6;
     animation: .5s popUp forwards;
     animation-delay: 1.9s;
@@ -182,8 +182,8 @@ body{
     transition: margin-top 0.5s ease-out;
 }
 
-#cv:hover{
-    margin-top: 0%;
+#cvBottom:hover{
+    margin-top: 7%;
     transition: 0.5s;
 }
 
@@ -194,10 +194,63 @@ body{
     margin-top: 10%;
 }
 
+
+#cv{
+    background: #a6a6a6;
+    animation: .5s popDown1 forwards;
+    animation-delay: 1.9s;
+    transform: translateY(-200%);
+    transition: margin-top 0.5s ease-out;
+}
+
+#cv:hover{
+    margin-top: 12%;
+    transition: 0.5s;
+}
+
+#github{
+    background: #333333;
+    animation: .5s popDown1 forwards;
+    animation-delay: 1.3s;
+    transform: translateY(-200%);
+    transition: margin-top 0.5s ease-out;
+}
+
+#github:hover{
+    margin-top: 12%;
+    transition: 0.5s;
+}
+
+#linkedin{
+    background: #545454;
+    animation: .5s popDown1 forwards;
+    animation-delay: 1.6s;
+    transform: translateY(-200%);
+    transition: margin-top 0.5s ease-out;
+}
+
+#linkedin:hover{
+    margin-top: 12%;
+    transition: 0.5s;
+}
+
+#email{
+    background: #262626;
+    animation: .5s popDown1 forwards;
+    animation-delay: 1s;
+    transform: translateY(-200%);
+    transition: margin-top 0.5s ease-out;
+}
+
+#email:hover{
+    margin-top: 12%;
+    transition: 0.5s;
+}
+
 #social-media-icons{
     position: absolute;
-    width: 20%;
-    height: 5%;
+    width: 40%;
+    height: 10%;
     bottom: 0;
     right: 0;
     display: flex;
@@ -208,24 +261,71 @@ body{
     margin-right: 1%;
 }
 
-@keyframes popUp {
+@keyframes leaveDown {
     0% {
-        transform: translateY(100%);
+        transform: translateY(0%);
     }
     60% {
         transform: translateY(-20%);
     }
     100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes leaveUp {
+    0% {
         transform: translateY(0%);
+    }
+    60% {
+        transform: translateY(20%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes popUp {
+    0% {
+        transform: translateY(100%);
+    }
+    60% {
+        transform: translateY(-50%);
+    }
+    100% {
+        transform: translateY(-20%);
+    }
+}
+
+@keyframes popDown {
+    0% {
+        transform: translateY(-20%);
+    }
+    60% {
+        transform: translateY(-50%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+@keyframes popDown1 {
+    0% {
+        transform: translateY(-200%);
+    }
+    60% {
+        transform: translateY(-70%);
+    }
+    100% {
+        transform: translateY(-100%);
     }
 }
 
 .social-media-button{
     width: auto;
     height: 100%;
-    margin-top: 3%;
+    margin-top: 8%;
     border: none;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1.5;
     background-size: contain !important;
     display: flex;
     justify-content: center;
@@ -316,7 +416,7 @@ body{
     transition: .3s linear, color 0s, background-color 0s;
     outline: var(--b) solid #ffffff00;
     outline-offset: .2em;
-    width: max-content;
+    width: 100%;
     height: 33%;
 
     font-family: 'fontLight';
@@ -328,16 +428,60 @@ body{
     filter: drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1)) drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1)) drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1)) drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1));
 }
 
+.navButtonDDCurr{
+    --b: 2px;   /* border thickness */
+    --s: .3em; /* size of the corner */
+    --c: #ffcece00;
+    
+    padding: calc(.05em + var(--s)) calc(.3em + var(--s));
+    --_p: 0px;
+    background:
+      conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--c) 0)
+      var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    width: 100%;
+    height: 33%;
+    filter: drop-shadow(0 0 .7vmin rgba(74, 186, 246, 0.1)) drop-shadow(0 0 .7vmin rgba(74, 186, 246, 0.1)) drop-shadow(0 0 .7vmin rgba(74, 186, 246, 0.1)) drop-shadow(0 0 .7vmin rgba(74, 186, 246, 0.1));
+    color: rgb(255, 255, 255);
+    font-size: 2vmin;
+    cursor: pointer;
+    border: none;
+    margin: .1em;
+    outline: var(--b) solid #ffffff00;
+    outline-offset: .2em;
+    text-shadow: 0 0 1vmin rgb(74, 186, 246) , 0 0 1vmin rgb(74, 186, 246), 0 0 1vmin rgb(74, 186, 246), 0 0 1vmin rgb(74, 186, 246);
+    transition: .3s linear, background-color 0.5s;
+}
+
+.navButtonDDCurr:hover,
+.navButtonDDCurr:focus-visible{
+    --_p: var(--s);
+    --c: rgba(102, 102, 102, 0.902);
+    filter: drop-shadow(0 0 .5vmin rgba(74, 186, 246, 0.1)) drop-shadow(0 0 .5vmin rgba(74, 186, 246, 0.1)) drop-shadow(0 0 .5vmin rgba(74, 186, 246, 0.1)) drop-shadow(0 0 .5vmin rgba(74, 186, 246, 0.1));
+}
+
+.navButtonDDH:hover,
+.navButtonDDH:focus-visible{
+    --_p: 0px;
+    outline-color: var(--c);
+    outline-offset: .05em;
+}
+
+.navButtonDDH:active {
+    background: var(--c2);
+    color: rgb(0, 0, 0);
+}
+
+
 .navButtonDDH{
     position: relative;
     --b: 2px;   /* border thickness */
-    --s: 0px; /* size of the corner */
+    --s: .3px; /* size of the corner */
     --c: rgba(208, 234, 255, 0.902);
     --c2: rgba(208, 234, 255, 0.902);
     
     padding: calc(.05em + var(--s)) calc(.3em + var(--s));
     color: #ffffff;
-    --_p: var(--s);
+    --_p: 0px;
     background:
       conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--c) 0)
       var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
@@ -354,13 +498,6 @@ body{
     border: none;
     margin: .1em;
     filter: drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1)) drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1)) drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1)) drop-shadow(0 0 1vmin rgba(255, 255, 255, 0.1));
-}
-
-.navButtonDD:hover,
-.navButtonDD:focus-visible{
-    --_p: 0px;
-    outline-color: var(--c);
-    outline-offset: .05em;
 }
 
 
@@ -399,12 +536,12 @@ body{
 
 
 #dropDown{
-    position: absolute;
-    width: 0%;
-    height: 200%;
+    width: 30%;
+    height: 330%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
     gap: -10%;
     margin: .1em;
     --s: .3em; 
@@ -413,7 +550,7 @@ body{
 }
 
 #drop{
-    width: auto;
+    width: 100%;
     height: 0%;
     visibility: hidden;
     display: flex;
@@ -458,7 +595,7 @@ body{
     top: 10%;
     position: relative;
     overflow: hidden;
-    mask-image: linear-gradient(180deg, transparent 0%, #000 10%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
 }
 #scroller{
     width: 100%;
@@ -487,7 +624,7 @@ body{
     margin-right: 0%;
     animation: 1s MoveIn forwards;
     animation-delay: 0.75s;
-    flex: 1;
+
 }
 
 #games{
@@ -495,7 +632,6 @@ body{
     margin-right: 0%;
     animation: 1s MoveIn forwards;
     animation-delay: 1s;
-    flex: 1;
 }
 
 #dropDown{
@@ -503,7 +639,6 @@ body{
     margin-right: 0%;
     animation: 1s MoveIn forwards;
     animation-delay: 1.25s;
-    flex: 1;
 }
 
 #skills{
@@ -511,7 +646,6 @@ body{
     margin-right: 0%;
     animation: 1s MoveIn forwards;
     animation-delay: 1.5s;
-    flex: 1;
 }
 
 #about{
@@ -519,7 +653,6 @@ body{
     margin-right: 40%;
     animation: 3s MoveInLast forwards;
     animation-delay: 2s;
-    flex: 1;
 }
 
 @keyframes MoveIn {

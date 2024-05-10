@@ -112,6 +112,9 @@ function LoadGame(game) {
         case "Lights Out":
             window.open('./lightsOut/lightsOut.html', '_blank');
             break;
+        case "Website Update":
+            window.open('../index.html', '_blank');
+            break;
         
     }
 }

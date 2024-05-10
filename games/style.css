@@ -48,6 +48,7 @@
     margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
+    cursor: pointer;
 }
 
 #game1{
@@ -195,4 +196,8 @@
 
 #game37{
     content: url('./images/logos/lightsOutLogo.jpg');
+}
+
+#game38{
+    content: url('./images/logos/websiteUpdateLogo.jpg');
 }
