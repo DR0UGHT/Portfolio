@@ -115,6 +115,9 @@ function LoadGame(game) {
         case "Website Update":
             window.open('../index.html', '_blank');
             break;
+        case "Box Dots":
+            window.open('./boxDots/boxDots.html', '_blank');
+            break;
         
     }
 }

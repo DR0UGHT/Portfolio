@@ -27,7 +27,7 @@ window.onload = function() {
     DrawDots();
 
     canvas.addEventListener("mousedown", function(event){
-        if(!playerTurn) return;
+        if(!playerTurn || gameOver) return;
         //convert X and Y to a percentage of the canvas width and height, canvas is in the middle of the screen
         let x = (event.clientX - canvas.getBoundingClientRect().left) / canvas.getBoundingClientRect().width * 100;
         let y = (event.clientY - canvas.getBoundingClientRect().top) / canvas.getBoundingClientRect().height * 100;
@@ -40,15 +40,14 @@ window.onload = function() {
     });
 
     window.addEventListener("mouseup", function(event){
-        if(!playerTurn) return;
+        if(!playerTurn || gameOver) return;
         mousedown = false;
         if(mouse.startX == 0 && mouse.startY == 0) return;
         if(mouse.startX == mouse.endX && mouse.startY == mouse.endY ||
            mouse.startX < 0.1 || mouse.startX > 0.9 || mouse.startY < 0.1 || mouse.startY > 0.9 ||
            mouse.endX < 0.1 || mouse.endX > 0.9 || mouse.endY < 0.1 || mouse.endY > 0.9 ||
            boxDots.some((dot) => {
-                return dot.startX == mouse.startX && dot.startY == mouse.startY && dot.endX == mouse.endX && dot.endY == mouse.endY ||
-                         dot.startX == mouse.endX && dot.startY == mouse.endY && dot.endX == mouse.startX && dot.endY == mouse.startY;
+                return (Math.abs(dot.startX - mouse.startX) < 0.01 && Math.abs(dot.startY - mouse.startY) < 0.01 && Math.abs(dot.endX - mouse.endX) < 0.01 && Math.abs(dot.endY - mouse.endY) < 0.01) || (Math.abs(dot.endX - mouse.startX) < 0.01 && Math.abs(dot.endY - mouse.startY) < 0.01 && Math.abs(dot.startX - mouse.endX) < 0.01 && Math.abs(dot.startY - mouse.endY) < 0.01);
         }))
         {
             mouse = {startX: 0, startY: 0, endX: 0, endY: 0};
@@ -60,7 +59,6 @@ window.onload = function() {
 
         boxDots.push({startX: mouse.startX, startY: mouse.startY, endX: mouse.endX, endY: mouse.endY, color: "blue"});
         if(!CheckForNewBox()){
-            // console.log("Computer's turn");
             playerTurn = false;
             ComputerTurn();
         }
@@ -69,7 +67,7 @@ window.onload = function() {
     });
 
     canvas.addEventListener("mousemove", function(event){
-        if(!mousedown || !playerTurn) return;
+        if(!mousedown || !playerTurn || gameOver) return;
 
         let x = (event.clientX - canvas.getBoundingClientRect().left) / canvas.getBoundingClientRect().width * 100;
         let y = (event.clientY - canvas.getBoundingClientRect().top) / canvas.getBoundingClientRect().height * 100;
@@ -87,6 +85,12 @@ window.onload = function() {
         }
         if(mouse.startX != x && mouse.startY != y) return;
         if(Math.abs(mouse.startX - x) > .3 || Math.abs(mouse.startY - y) > .3) return;
+        if(boxDots.some((dot) => {
+            return (Math.abs(dot.startX - mouse.startX) < 0.01 && Math.abs(dot.startY - mouse.startY) < 0.01 && Math.abs(dot.endX - x) < 0.01 && Math.abs(dot.endY - y) < 0.01) || (Math.abs(dot.endX - mouse.startX) < 0.01 && Math.abs(dot.endY - mouse.startY) < 0.01 && Math.abs(dot.startX - x) < 0.01 && Math.abs(dot.startY - y) < 0.01);
+        }))
+        {
+            return;
+        }
 
         mouse = {startX: mouse.startX, startY: mouse.startY, endX: x, endY: y};
 
@@ -140,13 +144,31 @@ function DrawCurrentLine(){
     ctx.stroke();
 }
 
+function ResetGame(){
+    playerScore = 0;
+    computerScore = 0;
+    document.getElementById("pScore").innerText = playerScore;
+    document.getElementById("cScore").innerText = computerScore;
+    playerTurn = true;
+    gameOver = false;
+    boxDots = [];
+    linesInBox = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ];
+    ClearCanvas();
+    DrawDots();
+    document.getElementById("gameOver").style.display = "none";
+}
+
 function CheckForNewBox(){
     let newBox = 0
     let oldBox = 0;
     let oldDotBoxes = JSON.parse(JSON.stringify(boxDots));
     oldDotBoxes.pop();
 
-    console.log(boxDots);
 
     let linesX = 0;
     let linesY = 0;
@@ -201,9 +223,6 @@ function CheckForNewBox(){
         linesX++;
     }
 
-    console.log(linesInBox);
-    console.log("newBox: " + newBox);
-    console.log("oldBox: " + oldBox);
     if(oldBox != newBox){
         if(playerTurn){
             playerScore += newBox - oldBox;
@@ -212,7 +231,6 @@ function CheckForNewBox(){
             computerScore += newBox - oldBox;
             document.getElementById("cScore").innerText = computerScore;
         }
-        console.log("new box");
         return true;
     }
 
@@ -223,19 +241,21 @@ function CheckForNewBox(){
 function CheckForGameOver(){
     if(boxDots.length == 40){
         gameOver = true;
+        document.getElementById("gameOver").style.display = "flex";
         if(playerScore > computerScore){
-            alert("Player wins!");
+            document.getElementById("winnerText").innerText = "Winner is Player!";
         }else if(playerScore < computerScore){
-            alert("Computer wins!");
+            document.getElementById("winnerText").innerText = "Winner is Computer!";
         }else{
-            alert("Tie game!");
+            document.getElementById("winnerText").innerText = "Tie Game!";
         }
     }
 }
 
 function ComputerTurn(){
-    let bestMove = {x: 0, y: 0};
-    let bestMoveValue = 0;
+    if(gameOver) return;
+
+    let bestMoveValue = 2;
     let num3s = [];
     let num2s = [];
     let num1s = [];
@@ -245,33 +265,45 @@ function ComputerTurn(){
             if(linesInBox[y][x] == 3){
                 num3s.push({x: x, y: y});
                 if(bestMoveValue < 3) bestMoveValue = 3;
-
+            }else if(linesInBox[y][x] == 2){
+                num2s.push({x: x, y: y});
+            }else if(linesInBox[y][x] == 1){
+                num1s.push({x: x, y: y});
+                if(bestMoveValue != 3) bestMoveValue = 1;
+            }else if(linesInBox[y][x] == 0){
+                num0s.push({x: x, y: y});
+                if(bestMoveValue != 3) bestMoveValue = 0;
             }
         }
     }
 
-    if(bestMoveValue == 2){
-        let x = Math.floor(Math.random() * 4);
-        let y = Math.floor(Math.random() * 4);
-        while(linesInBox[y][x] == 4){
-            x = Math.floor(Math.random() * 4);
-            y = Math.floor(Math.random() * 4);
-        }
-        bestMove = {x: x, y: y};
+    let bestMove = {x: 0, y: 0};
+    if(bestMoveValue == 3){
+        bestMove = num3s[Math.floor(Math.random() * num3s.length)];
+    }else if(bestMoveValue == 2){
+        bestMove = num2s[Math.floor(Math.random() * num2s.length)];
+    }else if(bestMoveValue == 1 || bestMoveValue == 0){
+        let bestMoves1and0 = num1s.concat(num0s);
+        bestMove = bestMoves1and0[Math.floor(Math.random() * bestMoves1and0.length)];
     }
+    
 
     MakeLineInSquareWhenEmpty(bestMove.x * 0.2 + 0.1, bestMove.y * 0.2 + 0.1);
-    ClearCanvas();
-    DrawDots();
-    DrawPreviousLines();
-    CheckForNewBox();
-    CheckForGameOver();
-    playerTurn = true;
+    setTimeout(() => {
+        ClearCanvas();
+        DrawDots();
+        DrawPreviousLines();
+        if(CheckForNewBox()){
+            ComputerTurn();
+        }else{
+            playerTurn = true;
+        }
+        CheckForGameOver();
+    }, 100);
 }
 
 
 function MakeLineInSquareWhenEmpty(x, y){
-    console.log("x: " + x + " y: " + y);
     let topLineTaken = boxDots.some((dot) => {
         return Math.abs(dot.startX - x) < 0.01 && Math.abs(dot.startY - y) < 0.01 && Math.abs(dot.endX - x - 0.2) < 0.01 && Math.abs(dot.endY - y) < 0.01 || Math.abs(dot.endX - x) < 0.01 && Math.abs(dot.endY - y) < 0.01 && Math.abs(dot.startX - x - 0.2) < 0.01 && Math.abs(dot.startY - y) < 0.01;
     });
@@ -303,7 +335,5 @@ function MakeLineInSquareWhenEmpty(x, y){
             boxDots.push({startX: x + 0.2, startY: y, endX: x + 0.2, endY: y + 0.2, color: "red"});
             break;
         }
-
-        console.log("rand: " + rand);
     }
 }
