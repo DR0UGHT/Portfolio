@@ -198,7 +198,7 @@ window.addEventListener('mousewheel', function(e) {
         return;
     }
 
-    if(currScroll + e.wheelDelta/4 > 0){
+    if(currScroll + e.wheelDelta/4 >= 0){
         content.style.top = '0px';
         currScroll = 0;
         if(!bottomIconsShown){
@@ -220,6 +220,21 @@ window.addEventListener('mousewheel', function(e) {
             }, 1000);
             bottomIconsShown = true;
         }
+
+        if(prevButton != 2){
+            topButtons[prevButton].classList.remove("navButtonCurrent");
+            topButtons[prevButton].classList.add("navButton");
+        }else{
+            document.getElementById("projects").classList.remove("navButtonDDCurr");
+            document.getElementById("projects").classList.add("navButtonDD");
+        }
+        topButtons[0].classList.add("navButtonCurrent");
+        topButtons[0].classList.remove("navButton");
+        prevButton = 0;
+
+        console.log("top");
+        
+
         return;
     }else if (currScroll + e.wheelDelta/4 < heights[heights.length - 1] * content.clientHeight / 100){
         content.style.top = `${heights[heights.length - 1] * content.clientHeight / 100}px`;
