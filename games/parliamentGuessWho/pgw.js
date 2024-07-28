@@ -722,23 +722,21 @@ document.addEventListener('DOMContentLoaded', function() {
 function loadImages(){
     //add liberals and conservatives and NDP and green and bloc and independents
 
-    let numMembers = memberLoadOrder.length;
+    let numMembers = 0;
     let numToLoadAtOnce = 16;
-    var wait = 0;
     let thisInt = setInterval(() => {
         for(let i = 0; i < numToLoadAtOnce; i++){
-            if(numMembers == 0){
+            if(numMembers == memberLoadOrder.length){
                 clearInterval(thisInt);
                 return;
             }
 
-            var currentID = this.document.getElementById(memberLoadOrder[numMembers - 1] + 'NL');
+            var currentID = this.document.getElementById(memberLoadOrder[numMembers] + 'NL');
             var newID = currentID.id.substring(0, currentID.id.length - 2);
             currentID.id = newID;
-            numMembers--;
+            numMembers++;
         }
-        wait = 100;
-    }, wait);
+    }, 200);
     
 }
 
