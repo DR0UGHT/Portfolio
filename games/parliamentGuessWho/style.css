@@ -143,10 +143,12 @@ body{
 }
 .card{
     height: auto;
-    width: 74%;
-    margin-left: 13%;
+    width: 90%;
+    max-width: 90%;
+    min-width: 90%;
+    margin-left: 0%;
     margin-top: 5%;
-    object-fit: fill;
+    position: relative;
     aspect-ratio: 1/1.619;
     border: 1px solid #000000;
     border-radius: 10%;
@@ -205,7 +207,7 @@ body{
     border-radius: 10%;
     flex: 0 0 9.6%;
     width: auto;
-    height: 12.5vw;
+    height: 14.5vw;
     aspect-ratio: 1/1.5;
     border: 1px solid #000000;;
     box-sizing: border-box;
