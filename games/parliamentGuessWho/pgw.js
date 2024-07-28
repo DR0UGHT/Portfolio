@@ -6,6 +6,7 @@ var showGreen = true;
 var showBloc = true;
 var showIndependents = true;
 var showFlipped = true;
+var showPoliticalColor = true;
 
 
 let liberals = [
@@ -361,14 +362,343 @@ let green = [
     'MorriceMike'
 ]
 
-
-// any item with the class of "card", when clicked, slowly make the width aproach 0, this is a js script that does not use jQuery
-//if press E, reset all cards to original state
-window.addEventListener('keydown', function(e) {
-    if (e.key === 'e') {
-        ResetCards();
-    }
-});
+let memberLoadOrder = [
+    "AboultaifZiad",
+    "AitchisonScott",
+    "AlbasDan",
+    "AlghabraOmar",
+    "AliShafqat",
+    "AllisonDean",
+    "AnandAnita",
+    "AnandasangareeGary",
+    "AngusCharlie",
+    "ArnoldMel",
+    "ArseneaultRené",
+    "AryaChandra",
+    "AshtonNiki",
+    "AtwinJenica",
+    "BachrachTaylor",
+    "BadaweyVance",
+    "BainsParm",
+    "BakerYvan",
+    "BaldinelliTony",
+    "BarlowJohn",
+    "BarrettMichael",
+    "BarronLisaMarie",
+    "BarsalouDuvalXavier",
+    "BattisteJaime",
+    "BeaulieuMario",
+    "BeechTerry",
+    "BendayanRachel",
+    "BergeronStéphane",
+    "BertholdLuc",
+    "BérubéSylvie",
+    "BezanJames",
+    "BibeauMarieClaude",
+    "BittleChris",
+    "BlairBill",
+    "BlanchetteJoncasMaxime",
+    "BlanchetYvesFrançois",
+    "BlaneyRachel",
+    "BlockKelly",
+    "BloisKody",
+    "BoissonnaultRandy",
+    "BoulericeAlexandre",
+    "BradfordValerie",
+    "BragdonRichard",
+    "BrassardJohn",
+    "BrièreÉlisabeth",
+    "BrockLarry",
+    "BrunelleDuceppeAlexis",
+    "CalkinsBlaine",
+    "CanningsRichard",
+    "CaputoFrank",
+    "CarrBen",
+    "CarrieColin",
+    "CaseySean",
+    "ChabotLouise",
+    "ChaggerBardish",
+    "ChahalGeorge",
+    "ChambersAdam",
+    "ChampagneFrançoisPhilippe",
+    "ChampouxMartin",
+    "ChatelSophie",
+    "ChenShaun",
+    "ChiangPaul",
+    "ChongMichael",
+    "CollinsChad",
+    "CollinsLaurel",
+    "CooperMichael",
+    "CormierSerge",
+    "CoteauMichael",
+    "DabrusinJulie",
+    "DaltonMarc",
+    "DamoffPam",
+    "DanchoRaquel",
+    "DavidsonScot",
+    "DaviesDon",
+    "DeBellefeuilleClaude",
+    "DeltellGérard",
+    "dEntremontChris",
+    "DesbiensCaroline",
+    "DesiletsLuc",
+    "DesjarlaisBlake",
+    "DhaliwalSukh",
+    "DhillonAnju",
+    "DiabLenaMetlege",
+    "DohertyTodd",
+    "DongHan",
+    "DowdallTerry",
+    "DreeshenEarl",
+    "DrouinFrancis",
+    "DubourgEmmanuel",
+    "DuclosJeanYves",
+    "DuguidTerry",
+    "DuncanEric",
+    "DuncanKirsty",
+    "DzerowiczJulie",
+    "EhsassiAli",
+    "ElKhouryFayçal",
+    "EllisStephen",
+    "EppDave",
+    "ErskineSmithNathaniel",
+    "FalkRosemarie",
+    "FalkTed",
+    "FastEd",
+    "FergusGreg",
+    "FerreriMichelle",
+    "FillmoreAndy",
+    "FindlayKerryLynne",
+    "FisherDarren",
+    "FonsecaPeter",
+    "FortierMona",
+    "FortinRhéalÉloi",
+    "FragiskatosPeter",
+    "FraserSean",
+    "FreelandChrystia",
+    "FryHedy",
+    "GaheerIqwinder",
+    "GaineyAnna",
+    "GallantCheryl",
+    "GaronJeanDenis",
+    "GarrisonRandall",
+    "GaudreauMarieHélène",
+    "GazanLeah",
+    "GénéreuxBernard",
+    "GenuisGarnett",
+    "GerretsenMark",
+    "GillMarilène",
+    "GladuMarilyn",
+    "GodinJoël",
+    "GoodridgeLaila",
+    "GouldKarina",
+    "GourdeJacques",
+    "GrayTracy",
+    "GreenMatthew",
+    "GuilbeaultSteven",
+    "HajduPatty",
+    "HallanJasrajSingh",
+    "HanleyBrendan",
+    "HardieKen",
+    "HepfnerLisa",
+    "HobackRandy",
+    "HollandMark",
+    "HousefatherAnthony",
+    "HughesCarol",
+    "HussenAhmed",
+    "HutchingsGudie",
+    "IaconoAngelo",
+    "IdloutLori",
+    "IenMarci",
+    "JaczekHelena",
+    "JenerouxMatt",
+    "JivaniJamil",
+    "JohnsGord",
+    "JolyMélanie",
+    "JonesYvonne",
+    "JowhariMajid",
+    "JulianPeter",
+    "KayabagaArielle",
+    "KellowayMike",
+    "KellyPat",
+    "KhalidIqra",
+    "KhannaArpan",
+    "KheraKamal",
+    "KitchenRobert",
+    "KmiecTom",
+    "KoutrakisAnnie",
+    "KramMichael",
+    "KrampNeumanShelby",
+    "KurekDamien",
+    "KusieStephanie",
+    "KusmierczykIrek",
+    "KwanJenny",
+    "LakeMike",
+    "LalondeMarieFrance",
+    "LambropoulosEmmanuella",
+    "LamoureuxKevin",
+    "LantsmanMelissa",
+    "LapointeViviane",
+    "LaroucheAndréanne",
+    "LattanzioPatricia",
+    "LauzonStéphane",
+    "LawrencePhilip",
+    "LeBlancDominic",
+    "LebouthillierDiane",
+    "LehouxRichard",
+    "LemireSébastien",
+    "LeslieBranden",
+    "LewisChris",
+    "LewisLeslyn",
+    "LiepertRon",
+    "LightboundJoël",
+    "LloydDane",
+    "LobbBen",
+    "LongfieldLloyd",
+    "LongWayne",
+    "LouisTim",
+    "MacAulayLawrence",
+    "MacDonaldHeath",
+    "MacGregorAlistair",
+    "MacKinnonSteven",
+    "MaguireLarry",
+    "MajumdarShuvaloy",
+    "MaloneyJames",
+    "MartelRichard",
+    "MartinezFerradaSoraya",
+    "MasseBrian",
+    "MathyssenLindsay",
+    "MayBryan",
+    "MayElizabeth",
+    "MazierDan",
+    "McCauleyKelly",
+    "McDonaldKen",
+    "McGuintyDavid",
+    "McKayJohn",
+    "McKinnonRon",
+    "McLeanGreg",
+    "McLeodMichael",
+    "McPhersonHeather",
+    "MelilloEric",
+    "MendèsAlexandra",
+    "MendicinoMarco",
+    "MiaoWilson",
+    "MichaudKristina",
+    "MillerMarc",
+    "MooreRob",
+    "MorantzMarty",
+    "MorriceMike",
+    "MorrisonRob",
+    "MorrisseyRobert",
+    "MotzGlen",
+    "MurrayJoyce",
+    "MuysDan",
+    "NaqviYasir",
+    "NaterJohn",
+    "NgMary",
+    "NoormohamedTaleeb",
+    "NormandinChristine",
+    "OConnellJennifer",
+    "OliphantRobert",
+    "OReganSeamus",
+    "PatzerJeremy",
+    "PaulHusPierre",
+    "PauzéMonique",
+    "PerkinsRick",
+    "PerronYves",
+    "PetitpasTaylorGinette",
+    "PlamondonLouis",
+    "PoilievrePierre",
+    "PowlowskiMarcus",
+    "QualtroughCarla",
+    "RayesAlain",
+    "RedekoppBrad",
+    "ReidScott",
+    "RempelGarnerMichelle",
+    "RichardsBlake",
+    "RobertsAnna",
+    "RobillardYves",
+    "RodriguezPablo",
+    "RogersChurence",
+    "RomanadoSherry",
+    "RoodLianne",
+    "RotaAnthony",
+    "RuffAlex",
+    "SahotaRuby",
+    "SajjanHarjit",
+    "SaksYaara",
+    "SamsonDarrell",
+    "SaraiRandeep",
+    "SavardTremblaySimonPierre",
+    "ScarpaleggiaFrancis",
+    "ScheerAndrew",
+    "SchiefkePeter",
+    "SchmaleJamie",
+    "SeebackKyle",
+    "SerréMarc",
+    "SgroJudyA",
+    "ShanahanBrenda",
+    "SheehanTerry",
+    "ShieldsMartin",
+    "ShipleyDoug",
+    "SidhuManinder",
+    "SidhuSonia",
+    "SimardMario",
+    "SinclairDesgagnéNathalie",
+    "SinghJagmeet",
+    "SmallClifford",
+    "SorbaraFrancesco",
+    "SorokaGerald",
+    "SousaCharles",
+    "SteinleyWarren",
+    "SteMarieGabriel",
+    "StewartDon",
+    "StewartJake",
+    "StOngePascale",
+    "StrahlMark",
+    "StubbsShannon",
+    "SuddsJenna",
+    "TassiFilomena",
+    "TaylorRoyLeah",
+    "ThériaultLuc",
+    "TherrienAlain",
+    "ThomasRachael",
+    "ThompsonJoanne",
+    "TochorCorey",
+    "TolmieFraser",
+    "TrudeauJustin",
+    "TrudelDenis",
+    "TurnbullRyan",
+    "UppalTim",
+    "ValdezRechie",
+    "VanBynenTony",
+    "VandalDan",
+    "VandenbeldAnita",
+    "VanKoeverdenAdam",
+    "VanPoptaTako",
+    "VecchioKaren",
+    "VidalGary",
+    "VienDominique",
+    "ViersenArnold",
+    "VignolaJulie",
+    "VillemureRené",
+    "ViraniArif",
+    "VisBrad",
+    "VuongKevin",
+    "WagantallCathay",
+    "WarkentinChris",
+    "WaughKevin",
+    "WebberLen",
+    "WeilerPatrick",
+    "WilkinsonJonathan",
+    "WilliamsonJohn",
+    "WilliamsRyan",
+    "YipJean",
+    "ZahidSalma",
+    "ZarrilloBonita",
+    "ZimmerBob",
+    "ZuberiSameer"
+]
 
 document.addEventListener('DOMContentLoaded', function() {
     var cards = document.querySelectorAll('.item');
@@ -384,7 +714,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 950);
         });
     }
+
+    loadImages();
+    
 });
+
+function loadImages(){
+    //add liberals and conservatives and NDP and green and bloc and independents
+
+    let numMembers = memberLoadOrder.length;
+    let numToLoadAtOnce = 16;
+    var wait = 0;
+    let thisInt = setInterval(() => {
+        for(let i = 0; i < numToLoadAtOnce; i++){
+            if(numMembers == 0){
+                clearInterval(thisInt);
+                return;
+            }
+
+            var currentID = this.document.getElementById(memberLoadOrder[numMembers - 1] + 'NL');
+            var newID = currentID.id.substring(0, currentID.id.length - 2);
+            currentID.id = newID;
+            numMembers--;
+        }
+        wait = 100;
+    }, wait);
+    
+}
 
 function GrowCard(theCard, fromSize, toSize){
     let currSize = fromSize;
@@ -414,14 +770,20 @@ function FlipCard(theCard){
         theCard.querySelector('.card').style.display = 'none';
         //get the child of card with the class of "itemTitle" and hide it
         theCard.querySelector('.itemTitle').style.display = 'none';
-        theCard.style.cssText += 'background: url(https://www.gg.ca/sites/default/files/styles/pubreg_main_image/public/elementimages/v235_19950040_badge_commons.jpg?itok=Gk0Bq3iI) no-repeat center center; background-size: cover;';       
+        if(showPoliticalColor) theCard.style.color = theCard.style.backgroundColor;
+        theCard.style.background = 'url(https://www.gg.ca/sites/default/files/styles/pubreg_main_image/public/elementimages/v235_19950040_badge_commons.jpg?itok=Gk0Bq3iI) no-repeat center center';
+        theCard.style.backgroundSize = 'cover';
         theCard.id = "flipped";
         mpFliips++;
     }else{
-        theCard.querySelector('.card').style.display = 'block';
-        theCard.querySelector('.itemTitle').style.display = 'block';
+        theCard.querySelector('.card').style.display = '';
+        theCard.querySelector('.itemTitle').style.display = '';
         //remove background image
-        theCard.style.background = '';
+        if(showPoliticalColor){
+            theCard.style.background = theCard.style.color;
+        }else{
+            theCard.style.background = '1f1f1fa3';
+        }
         theCard.id = "";
         mpFliips--;
     }
@@ -461,7 +823,7 @@ function HideLiberals(){
 function ShowLiberals(){
     for(var i = 0; i < liberals.length; i++){
         var card = document.getElementById(liberals[i]).parentElement;
-        card.style.display = 'block';
+        card.style.display = '';
     }        
 }
 
@@ -481,7 +843,7 @@ function changeLiberals(){
 function ShowConservatives(){
     for(var i = 0; i < conservatives.length; i++){
         var card = document.getElementById(conservatives[i]).parentElement;
-        card.style.display = 'block';
+        card.style.display = '';
     }
 }
 
@@ -506,7 +868,7 @@ function changeConservatives(){
 function ShowNDP(){
     for(var i = 0; i < NDP.length; i++){
         var card = document.getElementById(NDP[i]).parentElement;
-        card.style.display = 'block';
+        card.style.display = '';
     }
 }
 
@@ -530,7 +892,7 @@ function changeNDP(){
 function ShowGreen(){
     for(var i = 0; i < green.length; i++){
         var card = document.getElementById(green[i]).parentElement;
-        card.style.display = 'block';
+        card.style.display = '';
     }
 }
 
@@ -554,7 +916,7 @@ function changeGreen(){
 function ShowBloc(){
     for(var i = 0; i < bloc.length; i++){
         var card = document.getElementById(bloc[i]).parentElement;
-        card.style.display = 'block';
+        card.style.display = '';
     } 
 }
 
@@ -579,7 +941,7 @@ function changeBloc(){
 function ShowIndependents(){
     for(var i = 0; i < independents.length; i++){
         var card = document.getElementById(independents[i]).parentElement;
-        card.style.display = 'block';
+        card.style.display = '';
     }   
 }
 
@@ -604,7 +966,7 @@ function ShowFlipped(){
     let cards = document.querySelectorAll('.item');
     for (var i = 0; i < cards.length; i++) {
         if(cards[i].id == "flipped"){
-            cards[i].style.display = 'block';
+            cards[i].style.display = '';
         }
     } 
 }
@@ -668,10 +1030,113 @@ function nameSearch(){
     for (var i = 0; i < cards.length; i++) {
         let name = cards[i].querySelector('.itemTitle').querySelector('.itemName').innerHTML.replace(' ', '');
         if(name.toLowerCase().includes(search.toLowerCase())){
-            cards[i].style.display = 'block';
+            cards[i].style.display = '';
         }else{
             cards[i].style.display = 'none';
         }
     }
 }
 
+function ShowPoliticalColor(){
+    let itemsAlreadyColored = document.getElementById(liberals[0]).parentElement.style.backgroundColor == "rgba(255, 0, 0, 0.682)";
+    
+    for(let i = 0; i < liberals.length; i++){
+        let card = document.getElementById(liberals[i]);
+
+        if(card == null){
+            console.log(liberals[i]);
+            continue;
+        }
+
+        if(card.parentElement.id == "flipped"){
+            card.parentElement.style.color = itemsAlreadyColored ? "#1f1f1fa3" : "#ff0000ae";
+        }else{
+            card.parentElement.style.backgroundColor = itemsAlreadyColored ? "#1f1f1fa3" : "#ff0000ae";
+        }
+    }
+
+    for(let i = 0; i < conservatives.length; i++){
+        let card = document.getElementById(conservatives[i]);
+
+        if(card == null){
+            console.log(conservatives[i]);
+            continue;
+        }
+
+        if(card.parentElement.id == "flipped"){
+            card.parentElement.style.color = itemsAlreadyColored ? "#1f1f1fa3" : "#0000ffae";
+        }else{
+            card.parentElement.style.backgroundColor = itemsAlreadyColored ? "#1f1f1fa3" : "#0000ffae";
+        }
+    }
+
+    for(let i = 0; i < NDP.length; i++){
+        let card = document.getElementById(NDP[i]);
+
+        if(card == null){
+            console.log(NDP[i]);
+            continue;
+        }
+
+        if(card.parentElement.id == "flipped"){
+            card.parentElement.style.color = itemsAlreadyColored ? "#1f1f1fa3" : "#ff6505e2";
+        }else{
+            card.parentElement.style.backgroundColor = itemsAlreadyColored ? "#1f1f1fa3" : "#ff6505e2";
+        }
+    }
+
+    for(let i = 0; i < green.length; i++){
+        let card = document.getElementById(green[i]);
+
+        if(card == null){
+            console.log(green[i]);
+            continue;
+        }
+
+        if(card.parentElement.id == "flipped"){
+            card.parentElement.style.color = itemsAlreadyColored ? "#1f1f1fa3" : "#198b19e2";
+        }else{
+            card.parentElement.style.backgroundColor = itemsAlreadyColored ? "#1f1f1fa3" : "#198b19e2";
+        }
+    }
+
+    for(let i = 0; i < bloc.length; i++){
+        let card = document.getElementById(bloc[i]);
+
+        if(card == null){
+            console.log(bloc[i]);
+            continue;
+        }
+
+        if(card.parentElement.id == "flipped"){
+            card.parentElement.style.color = itemsAlreadyColored ? "#1f1f1fa3" : "#16dbd4e2";
+        }else{
+            card.parentElement.style.backgroundColor = itemsAlreadyColored ? "#1f1f1fa3" : "#16dbd4e2";
+        }
+    }
+
+    for(let i = 0; i < independents.length; i++){
+        let card = document.getElementById(independents[i]);
+
+        if(card == null){
+            console.log(independents[i]);
+            continue;
+        }
+
+        if(card.parentElement.id == "flipped"){
+            card.parentElement.style.color = itemsAlreadyColored ? "#1f1f1fa3" : "#798888e2";
+        }else{
+            card.parentElement.style.backgroundColor = itemsAlreadyColored ? "#1f1f1fa3" : "#798888e2";
+        }
+    }
+
+}
+
+//reload image if there was an image error
+function tryAgain(img){
+    setTimeout(() => {
+        console.log("try again on " + img.id);
+        var src = img.src;
+        img.src = src;
+    }, 50);
+}
