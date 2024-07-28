@@ -20,7 +20,7 @@ body{
     width: 13%;
     aspect-ratio: 1/2.2;
     position: absolute;
-    margin-top: -282px;
+    margin-top: -50%;
     bottom: 0;
 }
 
@@ -68,8 +68,10 @@ body{
 .filter{
     margin-left: 15%;
     width: 65%;
-    flex-direction: row;
+    flex-direction: column;
     font-size: 1.5vmin;
+    flex-wrap: wrap;
+    display: flex;
 }
 
 .check{
@@ -85,7 +87,7 @@ body{
 
 
 #controlls{
-    height: 10vw;
+    height: auto;
     margin-bottom: 1%;
     width: 70%;
     margin-left: 15%;
@@ -96,17 +98,6 @@ body{
     flex-direction: row;
     color: #ffffff;
     
-}
-.feedTitle{
-    font-size: 1vw;
-    color: #ffffff;
-    text-align: center;
-    width: 31%;
-    margin-left: 10%;
-    margin-top: 0%;
-    margin-bottom: 0%;
-    position: relative;
-
 }
 .title{
     font-size: 1.4vw;
@@ -119,22 +110,13 @@ body{
     text-shadow: 2px 2px 4px #000000;
     line-height: 1.2;
 }
-.totalCalories{
-    font-size: 1.5vw;
-    color: #ffffff;
-    text-align: center;
-    margin-top: 0%;
-    margin-bottom: 0%;
-    width: 100%;
-    position: relative;
 
-}
 .myName{
     position: absolute;
     top: 0;
     right: 0;
     color: #000000;
-    font-size: 1vw;
+    font-size: 1.5vmax;
     margin: .25%;
 }
 
@@ -199,8 +181,14 @@ body{
     top: 0;
     left: 0;
     position: absolute;
-    font-size: 0.75vw;
+    font-size: 1vmax;
     margin: 0.2%;
+}
+#ff{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    width: 100%;
 }
 .item{
     background-color: #1f1f1fa3;
