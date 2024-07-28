@@ -1,0 +1,2143 @@
+@import url(https://fonts.googleapis.com/css?family=Martel:300,400);
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Martel', sans-serif;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0%;
+    background: linear-gradient(45deg, #016548 0%, #065a42 100%);
+    user-select: none;
+}
+
+.peaceTower{
+    content: url('https://www.ourcommons.ca/CommonElementsV4/images/ce-hoc-footer-peacetower.png');
+    height: auto;
+    width: 13%;
+    aspect-ratio: 1/2.2;
+    position: absolute;
+    margin-top: -282px;
+    bottom: 0;
+}
+
+#leftTower{
+    left: .5%;
+}
+
+#rightTower{
+    right: .5%;
+}
+
+.head{
+    height: 4vw;
+    width: 70%;
+    margin-left: 15%;
+    background-color: #ffffff00;
+    color: #000000;
+    border: none;
+}
+.leftBar{
+    height: 80%;
+    width: .1%;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    color: #fff;
+    float: left;
+    margin-left: 14%;
+    margin-top: 5%;
+}
+
+.rightBar{
+    height: 80%;
+    width: .1%;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    right:0;
+    color: #fff;
+    float: right;
+    margin-right: 14%;
+    margin-top: 5%;
+}
+
+.filter{
+    margin-left: 15%;
+    width: 65%;
+    flex-direction: row;
+    font-size: 1.5vmin;
+}
+
+.check{
+    margin-right: 0%;
+    width: 4%;
+}
+
+.count{
+    margin-left: 0%;
+    width: 16%;
+    font-size: 1.5vw;
+}
+
+
+#controlls{
+    height: 10vw;
+    margin-bottom: 1%;
+    width: 70%;
+    margin-left: 15%;
+    background: #00000043;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    color: #ffffff;
+    
+}
+.feedTitle{
+    font-size: 1vw;
+    color: #ffffff;
+    text-align: center;
+    width: 31%;
+    margin-left: 10%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: relative;
+
+}
+.title{
+    font-size: 1.4vw;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 0%;
+    width: 100%;
+    position: relative;
+    text-shadow: 2px 2px 4px #000000;
+    line-height: 1.2;
+}
+.totalCalories{
+    font-size: 1.5vw;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    width: 100%;
+    position: relative;
+
+}
+.myName{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #000000;
+    font-size: 1vw;
+    margin: .25%;
+}
+
+#HOCBackOfCard{
+    content: url('https://www.gg.ca/sites/default/files/styles/pubreg_main_image/public/elementimages/v235_19950040_badge_commons.jpg?itok=Gk0Bq3iI');
+}
+.card{
+    height: auto;
+    width: 74%;
+    margin-left: 13%;
+    margin-top: 5%;
+    object-fit: fill;
+    aspect-ratio: 1/1.619;
+    border: 1px solid #000000;
+    border-radius: 10%;
+}
+
+
+.content{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+}
+
+
+.calorieContent{
+    height: 65%;
+    width: 70%;
+    margin-left: 15%;
+    background: #ffffff43;
+    overflow: hidden;
+    position: relative;
+}
+
+.itemGrid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+
+.itemGrid::-webkit-scrollbar{
+    width: 10px;
+}
+.itemGrid::-webkit-scrollbar-thumb{
+    background: #000000;
+    border-radius: 10px;
+}
+
+.itemGrid::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.accuracy{
+    top: 0;
+    left: 0;
+    position: absolute;
+    font-size: 0.75vw;
+    margin: 0.2%;
+}
+.item{
+    background-color: #1f1f1fa3;
+    border-radius: 10%;
+    flex: 0 0 9.6%;
+    width: auto;
+    height: 12.5vw;
+    aspect-ratio: 1/1.5;
+    border: 1px solid #000000;;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 1%;
+    transition: 0.5s;
+}
+
+.item:hover{
+    background-color: #1f1f1fd9;
+    scale: 1.01;
+    transition: 0.5s;
+}
+
+
+.feedItem{
+    background-color: #9f3f3fa3;
+    border-radius: 10%;
+    width: 15%;
+    height: 15vw;
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 2%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+
+
+.itemTitle{
+    font-size: 1vw;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    /* margin-left: .125%; */
+    height: 34%;
+    font-size: 0.75vw;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    position: relative;
+    background: #31313100;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+
+.itemName{
+    font-size: .9rem;
+    color: #e3e3e3;
+    text-align: center;
+    width: 90%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: absolute;
+    word-break:keep-all;
+    hyphens:manual;
+    overflow-wrap: normal;
+    /* center text */
+
+}
+.itemCalories{
+    font-size: 1vw;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: relative;
+}
+.itemImage{
+    width: 70%;
+    height: 70%;
+    position: relative;
+}
+
+#AboultaifZiad{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AboultaifZiad_CPC.jpg');
+}
+
+#AitchisonScott{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AitchisonScott_CPC.jpg');
+}
+
+#AlbasDan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AlbasDan_CPC.jpg');
+}
+
+#AlghabraOmar{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AlghabraOmar_LIB.jpg');
+}
+
+#AliShafqat{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AliShafqat_LIB.jpg');
+}
+
+#AllisonDean{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AllisonDean_CPC.jpg');
+}
+
+#AnandAnita{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AnandAnita_LIB.jpg');
+}
+
+#AnandasangareeGary{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AnandasangareeGary_LIB.jpg');
+}
+
+#AngusCharlie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AngusCharlie_NDP.jpg');
+}
+
+#ArnoldMel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ArnoldMel_CPC.jpg');
+}
+
+#ArseneaultRené{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ArseneaultRené_LIB.jpg');
+}
+
+#AryaChandra{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AryaChandra_LIB.jpg');
+}
+
+#AshtonNiki{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AshtonNiki_NDP.jpg');
+}
+
+#AtwinJenica{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/AtwinJenica_LIB.jpg');
+}
+
+#BachrachTaylor{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BachrachTaylor_NDP.jpg');
+}
+
+#BadaweyVance{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BadaweyVance_LIB.jpg');
+}
+
+#BainsParm{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BainsParm_LIB.jpg');
+}
+
+#BakerYvan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BakerYvan_LIB.jpg');
+}
+
+#BaldinelliTony{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BaldinelliTony_CPC.jpg');
+}
+
+#BarlowJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BarlowJohn_CPC.jpg');
+}
+
+#BarrettMichael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BarrettMichael_CPC.jpg');
+}
+
+#BarronLisaMarie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BarronLisaMarie_NDP.jpg');
+}
+
+#BarsalouDuvalXavier{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BarsalouDuvalXavier_BQ.jpg');
+}
+
+#BattisteJaime{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BattisteJaime_LIB.jpg');
+}
+
+#BeaulieuMario{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BeaulieuMario_BQ.jpg');
+}
+
+#BeechTerry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BeechTerry_LIB.jpg');
+}
+
+#BendayanRachel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BendayanRachel_LIB.jpg');
+}
+
+#BergeronStéphane{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BergeronStéphane_BQ.jpg');
+}
+
+#BertholdLuc{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BertholdLuc_CPC.jpg');
+}
+
+#BérubéSylvie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BérubéSylvie_BQ.jpg');
+}
+
+#BezanJames{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BezanJames_CPC.jpg');
+}
+
+#BibeauMarieClaude{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BibeauMarie-Claude_Lib.jpg');
+}
+
+#BittleChris{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BittleChris_LIB.jpg');
+}
+
+#BlairBill{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BlairBill_LIB.jpg');
+}
+
+#BlanchetYvesFrançois{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BlanchetYves-Fran%C3%A7ois_BQ.jpg');
+}
+
+#BlanchetteJoncasMaxime{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/Blanchette-JoncasMaxime_BQ.jpg');
+}
+
+#BlaneyRachel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BlaneyRachel_NDP.jpg');
+}
+
+#BlockKelly{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BlockKelly_CPC.jpg');
+}
+
+#BloisKody{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BloisKody_LIB.jpg');
+}
+
+#BoissonnaultRandy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BoissonnaultRandy_LIB.jpg');
+}
+
+#BoulericeAlexandre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BoulericeAlexandre_NDP.jpg');
+}
+
+#BradfordValerie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BradfordValerie_LIB.jpg');
+}
+
+#BragdonRichard{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BragdonRichard_CPC.jpg');
+}
+
+#BrassardJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BrassardJohn_CPC.jpg');
+}
+
+#BrièreÉlisabeth{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BrièreÉlisabeth_LIB.jpg');
+}
+
+#BrockLarry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BrockLarry_CPC.jpg');
+}
+
+#BrunelleDuceppeAlexis{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/Brunelle-DuceppeAlexis_BQ.jpg');
+}
+
+#CalkinsBlaine{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CalkinsBlaine_CPC.jpg');
+}
+
+#CanningsRichard{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CanningsRichard_NDP.jpg');
+}
+
+#CaputoFrank{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CaputoFrank_CPC.jpg');
+}
+
+#CarrBen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CarrBen_LIB.jpg');
+}
+
+#CarrieColin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CarrieColin_CPC.jpg');
+}
+
+#CaseySean{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CaseySean_LIB.jpg');
+}
+
+#ChabotLouise{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChabotLouise_BQ.jpg');
+}
+
+#ChaggerBardish{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChaggerBardish_LIB.jpg');
+}
+
+#ChahalGeorge{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChahalGeorge_LIB.jpg');
+}
+
+#HallanJasrajSingh{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HallanJasrajSingh_CPC.jpg');
+}
+
+#ChambersAdam{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChambersAdam_CPC.jpg');
+}
+
+#ChampagneFrançoisPhilippe{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChampagneFrancoisPhilippe_Lib.jpg');
+}
+
+#ChampouxMartin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChampouxMartin_BQ.jpg');
+}
+
+#ChatelSophie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChatelSophie_LIB.jpg');
+}
+
+#ChenShaun{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChenShaun_LIB.jpg');
+}
+
+#ChiangPaul{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChiangPaul_LIB.jpg');
+}
+
+#ChongMichael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ChongMichaelD_CPC.jpg');
+}
+
+#CollinsChad{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CollinsChad_Lib.jpg');
+}
+
+#CollinsLaurel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CollinsLaurel_NDP.jpg');
+}
+
+#CooperMichael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CooperMichael_CPC.jpg');
+}
+
+#CormierSerge{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CormierSerge_LIB.jpg');
+}
+
+#CoteauMichael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/CoteauMichael_LIB.jpg');
+}
+
+#dEntremontChris{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DentremontChris_CPC.jpg');
+}
+
+#DabrusinJulie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DabrusinJulie_LIB.jpg');
+}
+
+#DaltonMarc{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DaltonMarc_CPC.jpg');
+}
+
+#DamoffPam{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DamoffPam_LIB.jpg');
+}
+
+#DanchoRaquel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DanchoRaquel_CPC.jpg');
+}
+
+#DavidsonScot{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DavidsonScot_CPC.jpg');
+}
+
+#DaviesDon{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DaviesDon_NDP.jpg');
+}
+
+#DeBellefeuilleClaude{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DeBellefeuilleClaude_BQ.jpg');
+}
+
+#DeltellGérard{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DeltellGérard_CPC.jpg');
+}
+
+#DesbiensCaroline{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DesbiensCaroline_BQ.jpg');
+}
+
+#DesiletsLuc{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DesiletsLuc_BQ.jpg');
+}
+
+#DesjarlaisBlake{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DesjarlaisBlake_NDP.jpg');
+}
+
+#DhaliwalSukh{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DhaliwalSukh_LIB.jpg');
+}
+
+#DhillonAnju{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DhillonAnju_LIB.jpg');
+}
+
+#DiabLenaMetlege{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DiabLenaMetlege_LIB.jpg');
+}
+
+#DohertyTodd{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DohertyTodd_CPC.jpg');
+}
+
+#DongHan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DongHan_LIB.jpg');
+}
+
+#DowdallTerry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DowdallTerry_CPC.jpg');
+}
+
+#DreeshenEarl{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DreeshenEarl_CPC.jpg');
+}
+
+#DrouinFrancis{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DrouinFrancis_LIB.jpg');
+}
+
+#DubourgEmmanuel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DubourgEmmanuel_LIB.jpg');
+}
+
+#DuclosJeanYves{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DuclosJeanYves_Lib.jpg');
+}
+
+#DuguidTerry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DuguidTerry_LIB.jpg');
+}
+
+#DuncanEric{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DuncanEric_CPC.jpg');
+}
+
+#DuncanKirsty{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DuncanKirsty_LIB.jpg');
+}
+
+#DzerowiczJulie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/DzerowiczJulie_LIB.jpg');
+}
+
+#EhsassiAli{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/EhsassiAli_LIB.jpg');
+}
+
+#ElKhouryFayçal{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ElKhouryFayçal_LIB.jpg');
+}
+
+#EllisStephen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/EllisStephen_CPC.jpg');
+}
+
+#EppDave{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/EppDave_CPC.jpg');
+}
+
+#ErskineSmithNathaniel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/Erskine-SmithNathaniel_Lib.jpg');
+}
+
+#FalkRosemarie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FalkRosemarie_CPC.jpg');
+}
+
+#FalkTed{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FalkTed_CPC.jpg');
+}
+
+#FastEd{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FastEd_CPC.jpg');
+}
+
+#FergusGreg{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FergusGreg_LIB.jpg');
+}
+
+#FerreriMichelle{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FerreriMichelle_CPC.jpg');
+}
+
+#FillmoreAndy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FillmoreAndy_LIB.jpg');
+}
+
+#FindlayKerryLynne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FindlayKerryLynne_CPC.jpg');
+}
+
+#FinniganPat{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FinniganPat_LIB.jpg');
+}
+
+#FisherDarren{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FisherDarren_LIB.jpg');
+}
+
+#FitzpatrickJennifer{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FitzpatrickJennifer_LIB.jpg');
+}
+
+#FlackLianne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FlackLianne_LIB.jpg');
+}
+
+#FletcherKerry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FletcherKerry_LIB.jpg');
+}
+
+#FloodBev{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FloodBev_LIB.jpg');
+}
+
+#FonsecaPeter{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FonsecaPeter_LIB.jpg');
+}
+
+#ForbesJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ForbesJohn_LIB.jpg');
+}
+
+#FortinSylvie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FortinSylvie_BQ.jpg');
+}
+
+#FortinRhéalÉloi{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FortinRh%C3%A9al_BQ.jpg');
+}
+
+#FragiskatosPeter{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FragiskatosPeter_LIB.jpg');
+}
+
+#FortierMona{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FortierMona_Lib.jpg');
+}
+
+#FraserSean{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FraserSean_LIB.jpg');
+}
+
+#FraserTerry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FraserTerry_CPC.jpg');
+}
+
+#FreelandChrystia{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FreelandChrystia_LIB.jpg');
+}
+
+#FryHedy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FryHedy_LIB.jpg');
+}
+
+#FuhrStephen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/FuhrStephen_LIB.jpg');
+}
+
+#GagnonBrigitte{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GagnonBrigitte_BQ.jpg');
+}
+
+#GallantRené{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GallantRené_LIB.jpg');
+}
+
+#GaheerIqwinder{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GaheerIqwinder_Lib.jpg');
+}
+
+#GarneauMarc{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GarneauMarc_LIB.jpg');
+}
+
+#GaineyAnna{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GaineyAnna_LIB.jpg');
+}
+#GarrisonRandall{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GarrisonRandall_NDP.jpg');
+}
+
+#GallantCheryl{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GallantCheryl_CPC.jpg');
+}
+
+#GénéreuxBernard{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GénéreuxBernard_CPC.jpg');
+}
+
+#GenuisGarnett{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GenuisGarnett_CPC.jpg');
+}
+
+#GerretsenMark{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GerretsenMark_LIB.jpg');
+}
+
+#GhoshJasraj{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GhoshJasraj_LIB.jpg');
+}
+#GaronJeanDenis{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GaronJeanDenis_BQ.jpg');
+}
+
+#GodinJoël{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GodinJo%C3%ABl_CPC.jpg');
+}
+#GoodridgeLaila{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GoodridgeLaila_CPC.jpg');
+}
+
+#GillAnju{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GillAnju_LIB.jpg');
+}
+
+#GaudreauMarieHélène{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GaudreauMarie-Hélène_BQ.jpg');
+}
+
+#GillMarilène{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GillMarilène_BQ.jpg');
+}
+
+#GillParm{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GillParm_LIB.jpg');
+}
+
+#GladuMarilyn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GladuMarilyn_CPC.jpg');
+}
+
+#GodinSylvain{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GodinSylvain_BQ.jpg');
+}
+
+#GoldsteinJoel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GoldsteinJoel_LIB.jpg');
+}
+
+#GoodaleRalph{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GoodaleRalph_LIB.jpg');
+}
+
+#GouldKarina{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GouldKarina_LIB.jpg');
+}
+
+#GourdeJacques{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GourdeJacques_CPC.jpg');
+}
+
+#GrayGary{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GrayGary_LIB.jpg');
+}
+
+#GreeneKim{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GreeneKim_LIB.jpg');
+}
+
+#GrayTracy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GrayTracy_CPC.jpg');
+}
+#GreenMatthew{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GreenMatthew_NDP.jpg');
+}
+#GuilbeaultSteven{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GuilbeaultSteven_LIB.jpg');
+}
+#HajduPatty{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HajduPatty_LIB.jpg');
+}
+#HajduPatty{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HajduPatty_LIB.jpg');
+}
+#HanleyBrendan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HanleyBrendan_Lib.jpg');
+}
+#GrewalRaj{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GrewalRaj_LIB.jpg');
+}
+
+#GazanLeah{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GazanLeah_NDP.jpg');
+}
+
+#GrosLouisJoël{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/GrosLouisJoël_BQ.jpg');
+}
+
+#HardcastleBrian{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HardcastleBrian_NDP.jpg');
+}
+
+#HarderRachael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HarderRachael_CPC.jpg');
+}
+
+#HarveyCarol{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HarveyCarol_BQ.jpg');
+}
+
+#HébertPierre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HébertPierre_BQ.jpg');
+}
+#HardieKen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HardieKen_LIB.jpg');
+}
+
+#HepfnerLisa{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HepfnerLisa_LIB.jpg');
+}
+#HobackRandy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HobackRandy_CPC.jpg');
+}
+#HébertSoraya{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HébertSoraya_LIB.jpg');
+}
+
+#HollandMark{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HollandMark_LIB.jpg');
+}
+
+#HousefatherAnthony{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HousefatherAnthony_LIB.jpg');
+}
+
+#HughesCarol{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HughesCarol_NDP.jpg');
+}
+
+#HussenAhmed{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HussenAhmedD_Lib.jpg');
+}
+
+#HutchingsGudie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HutchingsGudie_LIB.jpg');
+}
+
+#IdloutLori{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/IdloutLori_NDP.jpg');
+}
+#IenMarci{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/IenMarci_LIB.jpg');
+}
+#IaconoAngelo{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/IaconoAngelo_LIB.jpg');
+}
+
+#JenerouxMatt{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JenerouxMatt_CPC.jpg');
+}
+
+#JohnsGord{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JohnsGord_NDP.jpg');
+}
+
+#JaczekHelena{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JaczekHelena_LIB.jpg');
+}
+#JivaniJamil{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JivaniJamil_CPC.jpg ');
+}
+#JoliboisGeorgina{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JoliboisGeorgina_NDP.jpg');
+}
+#JolyMélanie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JolyMélanie_LIB.jpg');
+}
+#JonesYvonne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JonesYvonne_LIB.jpg');
+}
+#KayabagaArielle{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KayabagaArielle_LIB.jpg');
+}
+#KellowayMike{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KellowayMike_LIB.jpg');
+}
+#KellyPat{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KellyPat_CPC.jpg');
+}
+#JordanBernadette{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JordanBernadette_LIB.jpg');
+}
+#KhalidIqra{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KhalidIqra_LIB.jpg');
+}
+#KhannaArpan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KhannaArpan_CPC.jpg');
+}
+#JowhariMajid{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JowhariMajid_LIB.jpg');
+}
+
+#JulianPeter{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/JulianPeter_NDP.jpg');
+}
+
+#KangKamal{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KangKamal_LIB.jpg');
+}
+
+#KarasJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KarasJohn_LIB.jpg');
+}
+
+#KarygiannisJim{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KarygiannisJim_LIB.jpg');
+}
+
+#KellowayJaime{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KellowayJaime_LIB.jpg');
+}
+
+#KellyEmmett{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KellyEmmett_LIB.jpg');
+}
+
+#KentPeter{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KentPeter_CPC.jpg');
+}
+
+#KerrDoug{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KerrDoug_LIB.jpg');
+}
+
+#KhalidSalma{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KhalidSalma_LIB.jpg');
+}
+#KramMichael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KramMichael_CPC.jpg');
+}
+#KrampNeumanShelby{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KrampNeumanShelby_CPC.jpg');
+}
+#KurekDamien{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KurekDamien_CPC.jpg');
+}
+#KoutrakisAnnie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KoutrakisAnnie_LIB.jpg');
+}
+#KusieStephanie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KusieStephanie_CPC.jpg');
+}
+#KusmierczykIrek{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KusmierczykIrek_LIB.jpg');
+}
+#KitchenRobert{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KitchenRobert_CPC.jpg');
+}
+#KheraKamal{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KheraKamal_LIB.jpg');
+}
+
+#KitchenMike{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KitchenMike_LIB.jpg');
+}
+
+#KmiecTom{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KmiecTom_CPC.jpg');
+}
+
+#KwanJenny{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/KwanJenny_NDP.jpg');
+}
+
+#LamoureuxKevin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LamoureuxKevin_LIB.jpg');
+}
+
+#LauzonGuy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LauzonGuy_CPC.jpg');
+}
+
+#LaverdièreHélène{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LaverdièreHélène_NDP.jpg');
+}
+
+#LawrenceAlaina{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LawrenceAlaina_LIB.jpg');
+}
+
+#LeBlancDominic{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LeBlancDominic_LIB.jpg');
+}
+
+#LeBlancYves{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LeBlancYves_LIB.jpg');
+}
+#LakeMike{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LakeMike_CPC.jpg');
+}
+
+#LebouthillierDiane{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LebouthillierDiane_LIB.jpg');
+}
+#LantsmanMelissa{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LantsmanMelissa_CPC.jpg');
+}
+#LapointeViviane{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LaPointeViviane_Lib.jpg');
+}
+#LattanzioPatricia{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LattanzioPatricia_LIB.jpg');
+}
+#LauzonStéphane{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LauzonSt%C3%A9phane_Lib.jpg');
+}
+#LawrencePhilip{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LawrencePhilip_CPC.jpg');
+}
+#LehouxRichard{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LehouxRichard_CPC.jpg');
+}
+#LaroucheAndréanne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LaroucheAndréanne_BQ.jpg');
+}
+#LeefBen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LeefBen_CPC.jpg');
+}
+
+#LalondeMarieFrance{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LalondeMarieFrance_Lib.jpg');
+}
+#LambropoulosEmmanuella{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LambropoulosEmmanuella_LIB.jpg');
+}
+#LefebvrePaul{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LefebvrePaul_LIB.jpg');
+}
+#LemireSébastien{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LemireS%C3%A9bastien_BQ.jpg');
+}
+#LeslieBranden{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LeslieBranden_CPC.jpg');
+}
+#LemieuxPierre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LemieuxPierre_LIB.jpg');
+}
+#LewisChris{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LewisChris_CPC.jpg');
+}
+#LloydDane{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LloydDane_CPC.jpg');
+}
+#LongWayne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LongWayne_LIB.jpg');
+}
+#LightboundJoël{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LightboundJoël_LIB.jpg');
+}
+#LouisTim{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LouisTim_Lib.jpg');
+}
+#LewisLeslyn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LewisLeslyn_CPC.jpg');
+}
+#LemireMarcAndré{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LemireMarcAndré_BQ.jpg');
+}
+
+#LeslieAndrew{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LeslieAndrew_LIB.jpg');
+}
+
+#LevittMichael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LevittMichael_LIB.jpg');
+}
+
+#LiepertRon{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LiepertRon_CPC.jpg');
+}
+
+#LobbBen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LobbBen_CPC.jpg');
+}
+
+#LongfieldLloyd{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LongfieldLloyd_LIB.jpg');
+}
+
+#LongTamara{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LongTamara_LIB.jpg');
+}
+
+#LudwigRichard{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LudwigRichard_LIB.jpg');
+}
+
+#LukiwskiTom{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LukiwskiTom_CPC.jpg');
+}
+
+#LunneyJames{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/LunneyJames_CPC.jpg');
+}
+
+#MacGregorAlistair{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacGregorAlistair_NDP.jpg');
+}
+
+#MacKinnonSteven{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacKinnonSteven_LIB.jpg');
+}
+
+#MacKinnonWayne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacKinnonWayne_LIB.jpg');
+}
+
+#MacLellanSean{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacLellanSean_LIB.jpg');
+}
+
+#MacLeodCathy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacLeodCathy_CPC.jpg');
+}
+#MacAulayLawrence{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacAulayLawrence_LIB.jpg');
+}
+
+#MacDonaldHeath{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacDonaldHeath_CPC.jpg');
+}
+#MacGregorAlistair{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MacGregorAllistair_NDP.jpg');
+}
+#MajumdarShuvaloy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MajumdarShuvaloy_CPC.jpg');
+}
+#MaloneyJames{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MaloneyJames_LIB.jpg');
+}
+#MartelRichard{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MartelRichard_CPC.jpg');
+}
+#MartinezFerradaSoraya{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MartinezFerradaSoraya_LIB.jpg');
+}
+
+#MathyssenLindsay{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MathyssenLindsay_NDP.jpg');
+}
+#MayBryan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MayBryan_Lib.jpg');
+}
+#MayElizabeth{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MayElizabeth_GP.jpg');
+}
+#MaguireLarry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MaguireLarry_CPC.jpg');
+}
+
+#MalcolmsonSheila{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MalcolmsonSheila_NDP.jpg');
+}
+
+#MaloneyBryan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MaloneyBryan_LIB.jpg');
+}
+
+#MaloneyWayne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MaloneyWayne_LIB.jpg');
+}
+
+#MasseBrian{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MasseBrian_NDP.jpg');
+}
+
+#MathyssenIrene{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MathyssenIrene_NDP.jpg');
+}
+
+
+#McCrimmonKaren{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McCrimmonKaren_LIB.jpg');
+}
+
+#McDonaldKen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McDonaldKen_LIB.jpg');
+}
+
+#McDonaldScott{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McDonaldScott_LIB.jpg');
+}
+
+#McGuintyDavid{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McGuintyDavid_LIB.jpg');
+}
+
+#McKayJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McKayJohn_LIB.jpg');
+}
+
+#McLeodCathy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McLeodCathy_LIB.jpg');
+}
+
+#McLeodChris{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McLeodChris_LIB.jpg');
+}
+
+#McLeodHolly{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McLeodHolly_LIB.jpg');
+}
+
+#McLeodJamie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McLeodJamie_LIB.jpg');
+}
+
+#McPhersonDavid{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McPhersonDavid_LIB.jpg');
+}
+
+#MendicinoMarco{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MendicinoMarco_LIB.jpg');
+}
+
+#MendèsAlexandre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MendèsAlexandre_LIB.jpg');
+}
+
+#MenziesTed{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MenziesTed_CPC.jpg');
+}
+
+#MerrifieldRob{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MerrifieldRob_CPC.jpg');
+}
+
+#MillerLarry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MillerLarry_LIB.jpg');
+}
+
+#MillerWayne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MillerWayne_LIB.jpg');
+}
+
+#MillsRachel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MillsRachel_LIB.jpg');
+}
+
+#MorantzMarty{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MorantzMarty_CPC.jpg');
+}
+
+#MorrisseyWayne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MorrisseyWayne_LIB.jpg');
+}
+
+#MotzGlen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MotzGlen_CPC.jpg');
+}
+
+#MulcairThomas{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MulcairThomas_NDP.jpg');
+}
+
+#NantelPierre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NantelPierre_NDP.jpg');
+}
+
+#NassifAnita{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NassifAnita_LIB.jpg');
+}
+
+#NaterJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NaterJohn_CPC.jpg');
+}
+
+#NaultRobert{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NaultRobert_LIB.jpg');
+}
+
+#NenshiNaheed{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NenshiNaheed_LIB.jpg');
+}
+
+#NewlandsBlake{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NewlandsBlake_LIB.jpg');
+}
+
+#NicholsonRob{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NicholsonRob_CPC.jpg');
+}
+
+#NuttallAlex{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NuttallAlex_LIB.jpg');
+}
+
+#OConnellJennifer{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/OConnellJennifer_LIB.jpg');
+}
+
+#OliphantRob{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/OliphantRob_LIB.jpg');
+}
+
+#OliverJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/OliverJohn_CPC.jpg');
+}
+
+#OReganSeamus{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/OReganSeamus_LIB.jpg');
+}
+
+#OTooleErin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/OTooleErin_CPC.jpg');
+}
+
+#OuelletteRobertFalcon{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/OuelletteRobertFalcon_LIB.jpg');
+}
+
+#PapillonChristine{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PapillonChristine_BQ.jpg');
+}
+
+#PatzerJeremy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PatzerJeremy_CPC.jpg');
+}
+
+#PaulAngela{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PaulAngela_LIB.jpg');
+}
+
+#PauzéXavier{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/BarsalouDuvalXavier_BQ.jpg');
+}
+
+#PeschisolidoJoe{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PeschisolidoJoe_LIB.jpg');
+}
+
+#PetersonKyle{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PetersonKyle_LIB.jpg');
+}
+
+#PetitpasTaylorGinette{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PetitpasTaylorGinette_LIB.jpg');
+}
+
+#PicardMario{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PicardMario_BQ.jpg');
+}
+
+#PlamondonLouis{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PlamondonLouis_BQ.jpg');
+}
+
+#PoilievrePierre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PoilievrePierre_CPC.jpg');
+}
+
+#PolyviouChristine{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PolyviouChristine_LIB.jpg');
+}
+
+#QuachAnne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/QuachAnne_NDP.jpg');
+}
+
+#QualtroughCarla{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/QualtroughCarla_LIB.jpg');
+}
+
+#RatansiYasmin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RatansiYasmin_LIB.jpg');
+}
+
+#RaynaultMarilène{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RaynaultMarilène_BQ.jpg');
+}
+
+#ReidScott{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ReidScott_LIB.jpg');
+}
+
+#RempelGarnett{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RempelGarnett_CPC.jpg');
+}
+
+#RempelMichelle{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RempelMichelle_CPC.jpg');
+}
+
+#RichardsBlake{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RichardsBlake_CPC.jpg');
+}
+
+#RiouxSerge{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RiouxSerge_LIB.jpg');
+}
+
+#RobillardPablo{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RobillardPablo_LIB.jpg');
+}
+
+#RodriguezPablo{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RodriguezPablo_LIB.jpg');
+}
+
+#RogersBrenda{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RogersBrenda_LIB.jpg');
+}
+
+#RogersVance{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RogersVance_LIB.jpg');
+}
+
+#RuddKim{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RuddKim_LIB.jpg');
+}
+
+#RusnakBob{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RusnakBob_LIB.jpg');
+}
+
+#RutledgeLisa{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RutledgeLisa_LIB.jpg');
+}
+
+#SahotaRuby{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SahotaRuby_LIB.jpg');
+}
+
+#SainiRamesh{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SainiRamesh_LIB.jpg');
+}
+
+#SainiRuby{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SainiRuby_LIB.jpg');
+}
+
+#SajjanHarjit{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SajjanHarjit_LIB.jpg');
+}
+
+#SakariaJagmeet{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SakariaJagmeet_LIB.jpg');
+}
+
+#SanghaRamesh{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SanghaRamesh_LIB.jpg');
+}
+
+#SaroyaJagdish{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SaroyaJagdish_LIB.jpg');
+}
+
+#SassiFrancesco{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SassiFrancesco_LIB.jpg');
+}
+
+#SaxtonAndrew{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SaxtonAndrew_CPC.jpg');
+}
+
+#SchiefkePeter{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SchiefkePeter_LIB.jpg');
+}
+
+#SchmaleJamie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SchmaleJamie_CPC.jpg');
+}
+
+#SchulteKyle{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SchulteKyle_LIB.jpg');
+}
+
+#SchulteShannon{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SchulteShannon_LIB.jpg');
+}
+
+#SerréMarc{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SerréMarc_LIB.jpg');
+}
+
+#SgroJudy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SgroJudy_LIB.jpg');
+}
+
+#ShanahanBrendan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShanahanBrendan_LIB.jpg');
+}
+
+#ShanahanMatt{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShanahanMatt_LIB.jpg');
+}
+
+#ShanahanTom{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShanahanTom_LIB.jpg');
+}
+
+#ShanahanTommy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShanahanTommy_LIB.jpg');
+}
+
+#SheehanTerry{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SheehanTerry_LIB.jpg');
+}
+
+#ShieldsDouglas{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShieldsDouglas_CPC.jpg');
+}
+
+#SidhuRandeep{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SidhuRandeep_LIB.jpg');
+}
+
+#SikandGagan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SikandGagan_LIB.jpg');
+}
+
+#SimmsScott{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SimmsScott_LIB.jpg');
+}
+
+#SohiAmarjeet{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SohiAmarjeet_LIB.jpg');
+}
+
+#SorbaraFrancesco{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SorbaraFrancesco_LIB.jpg');
+}
+
+#SorbaraJudy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SorbaraJudy_LIB.jpg');
+}
+
+#SorensonKevin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SorensonKevin_CPC.jpg');
+}
+
+#SpengemannSven{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SpengemannSven_LIB.jpg');
+}
+
+#StantonJody{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StantonJody_LIB.jpg');
+}
+
+#StetskiWayne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StetskiWayne_NDP.jpg');
+}
+
+#StewartKennedy{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StewartKennedy_LIB.jpg');
+}
+
+#StewartKevin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StewartKevin_LIB.jpg');
+}
+
+#StrahlMark{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StrahlMark_CPC.jpg');
+}
+
+#StubbsShannon{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StubbsShannon_CPC.jpg');
+}
+
+#SweetAdam{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SweetAdam_LIB.jpg');
+}
+
+#TabbaraMarwan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TabbaraMarwan_LIB.jpg');
+}
+
+#TassiFilomena{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TassiFilomena_LIB.jpg');
+}
+
+#ThériaultMarilène{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ThériaultMarilène_BQ.jpg');
+}
+
+#ThériaultRémi{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ThériaultRémi_BQ.jpg');
+}
+
+#ThornthwaiteNola{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ThornthwaiteNola_LIB.jpg');
+}
+
+#TilsonDavid{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TilsonDavid_CPC.jpg');
+}
+
+#TollerKate{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TollerKate_LIB.jpg');
+}
+
+#TrudeauJustin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TrudeauJustin_LIB.jpg');
+}
+
+#TrudelRuthEllen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TrudelRuthEllen_NDP.jpg');
+}
+
+#VanBalkomLianne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VanBalkomLianne_LIB.jpg');
+}
+
+#VanKesterenDave{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VanKesterenDave_CPC.jpg');
+}
+
+#VandenbeldAnita{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VandenbeldAnita_LIB.jpg');
+}
+
+#VaughanAdam{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VaughanAdam_LIB.jpg');
+}
+
+#VecchioKaren{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VecchioKaren_CPC.jpg');
+}
+
+#ViersenArnold{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ViersenArnold_CPC.jpg');
+}
+
+#ViraniArif{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ViraniArif_LIB.jpg');
+}
+
+#VisBrad{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VisBrad_CPC.jpg');
+}
+
+#VuongKevin{
+    content: url('/Content/Parliamentarians/Images/OfficialMPPhotos/44/VuongKevin_Ind.jpg');
+}
+
+#WagantallCathay{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WagantallCathay_CPC.jpg');
+}
+
+#WarkentinChris{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WarkentinChris_CPC.jpg');
+}
+
+#WaughKevin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WaughKevin_CPC.jpg');
+}
+
+#WebberLen{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WebberLen_CPC.jpg');
+}
+
+#WeilerPatrick{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WeilerPatrick_LIB.jpg');
+}
+
+#WilkinsonJonathan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WilkinsonJonathan_LIB.jpg');
+}
+
+#WilliamsRyan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WilliamsRyan_CPC.jpg');
+}
+
+#WilliamsonJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/WilliamsonJohn_CPC.jpg');
+}
+
+#YipJean{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/YipJean_LIB.jpg');
+}
+
+#ZahidSalma{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ZahidSalma_LIB.jpg');
+}
+
+#ZarrilloBonita{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ZarrilloBonita_NDP.jpg');
+}
+
+#ZimmerBob{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ZimmerBob_CPC.jpg');
+}
+
+#ZuberiSameer{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ZuberiSameer_LIB.jpg');
+}
+
+#MazierDan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MazierDan_CPC.jpg');
+}
+
+#McCauleyKelly{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McCauleyKelly_CPC.jpg');
+}
+
+#McGuintyDavid{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McGuintyDavidJ._Lib.jpg');
+}
+
+#McKayJohn{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McKayJohn_LIB.jpg');
+}
+
+#McLeanGreg{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McLeanGreg_CPC.jpg');
+}
+
+#McLeodMichael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McLeodMichaelV_Lib.jpg');
+}
+
+#McKinnonRon{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McKinnonRon_LIB.jpg');
+}
+
+#McPhersonHeather{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/McPhersonHeather_NDP.jpg');
+}
+#MelilloEric{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MelilloEric_CPC.jpg');
+}
+
+#MendèsAlexandra{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/Mend%C3%A8sAlexandra_Lib.jpg');
+}
+
+#MiaoWilson{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MiaoWilson_Lib.jpg');
+}
+#MichaudKristina{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MichaudKristina_BQ.jpg');
+}
+
+#MillerMarc{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MillerMarc_Lib.jpg');
+}
+
+#MooreRob{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MooreRob_CPC.jpg');
+}
+
+#MorriceMike{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MorriceMike_GP.jpg');
+}
+
+#MorrisonRob{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MorrisonRob_CPC.jpg');
+}
+
+#MorrisseyRobert{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MorrisseyRobertJ._Lib.jpg');
+}
+
+#MurrayJoyce{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MurrayJoyce_LIB.jpg');
+}
+
+#MuysDan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/MuysDan_CPC.jpg');
+}
+
+#NaqviYasir{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NaqviYasir_LIB.jpg');
+}
+
+#NgMary{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NgMary_LIB.jpg');
+}
+
+#NoormohamedTaleeb{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NoormohamedTaleeb_LIB.jpg');
+}
+
+#NormandinChristine{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/NormandinChristine_BQ.jpg');
+}
+
+#OliphantRobert{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/OliphantRobert_LIB.jpg');
+}
+
+#PaulHusPierre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PaulHusPierre_CPC.jpg');
+}
+
+#PauzéMonique{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PauzéMonique_BQ.jpg');
+}
+
+#PerkinsRick{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PerkinsRick_CPC.jpg');
+}
+
+#PerronYves{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PerronYves_BQ.jpg');
+}
+
+#PowlowskiMarcus{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/PowlowskiMarcus_LIB.jpg');
+}
+
+#RayesAlain{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RayesAlain_CPC.jpg');
+}
+
+#RedekoppBrad{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RedekoppBrad_CPC.jpg');
+}
+
+#ReidScott{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ReidScott_CPC.jpg');
+}
+
+#RempelGarnerMichelle{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RempelMichelle_CPC.jpg');
+}
+
+#RobertsAnna{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RobertsAnna_CPC.jpg');
+}
+
+#RobillardYves{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RobillardYves_LIB.jpg');
+}
+
+#RogersChurence{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RogersChurence_Lib.jpg');
+}
+
+#RomanadoSherry
+{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RomanadoSherry_LIB.jpg');
+}
+
+#RoodLianne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RoodLianne_CPC.jpg');
+}
+
+#RotaAnthony{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RotaAnthony_LIB.jpg');
+}
+
+#RuffAlex{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/RuffAlex_CPC.jpg');
+}
+
+#SaksYaara{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SaksYaara_LIB.jpg');
+}
+
+#SamsonDarrell{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SamsonDarrell_LIB.jpg');
+}
+
+#SaraiRandeep{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SaraiRandeep_LIB.jpg');
+}
+
+#SavardTremblaySimonPierre{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SavardTremblaySimonPierre_BQ.jpg');
+}
+
+#ScarpaleggiaFrancis{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ScarpaleggiaFrancis_LIB.jpg');
+}
+
+#ScheerAndrew{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ScheerAndrew_CPC.jpg');
+}
+
+#SeebackKyle{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SeebackKyle_CPC.jpg');
+}
+
+#SgroJudyA{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SgroJudyA_Lib.jpg');
+}
+
+#ShanahanBrenda{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShanahanBrenda_Lib.jpg');
+}
+
+#ShieldsMartin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShieldsMartin_CPC.jpg');
+}
+
+#ShipleyDoug{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ShipleyDoug_CPC.jpg');
+}
+
+#SidhuManinder{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SidhuManinder_LIB.jpg');
+}
+
+#SidhuSonia{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SidhuSonia_LIB.jpg');
+}
+
+#SimardMario{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SimardMario_BQ.jpg');
+}
+
+#SinclairDesgagnéNathalie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SinclairDesgagnéNathalie_BQ.jpg');
+}
+
+#SinghJagmeet{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SinghJagmeet_NDP.jpg');
+}
+
+#SmallClifford{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SmallClifford_CPC.jpg');
+}
+
+#SorokaGerald{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SorokaGerald_CPC.jpg');
+}
+
+#SousaCharles{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SousaCharles_LIB.jpg');
+}
+
+#StOngePascale{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StOngePascale_Lib.jpg');
+}
+
+#SteMarieGabriel{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SteMarieGabriel_BQ.jpg');
+}
+
+#SteinleyWarren{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SteinleyWarren_CPC.jpg');
+}
+
+#StewartDon{
+    content: url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Don_Stewart_%28cropped%29.jpg');
+}
+
+#StewartJake{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/StewartJake_CPC.jpg');
+}
+
+#SuddsJenna{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/SuddsJenna_LIB.jpg');
+}
+
+#TaylorRoyLeah{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TaylorRoyLeah_Lib.jpg');
+}
+
+#ThériaultLuc{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ThériaultLuc_BQ.jpg');
+}
+
+#TherrienAlain{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TherrienAlain_BQ.jpg');
+}
+#ThomasRachael{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ThomasRachael_CPC.jpg');
+}
+#ThompsonJoanne{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ThompsonJoanne_LIB.jpg');
+}
+#TochorCorey{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TochorCorey_CPC.jpg');
+}
+
+#TolmieFraser{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TolmieFraser_CPC.jpg');
+}
+
+#TrudelDenis{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TrudelDenis_BQ.jpg');
+}
+
+#TurnbullRyan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/TurnbullRyan_CPC.jpg');
+}
+
+#UppalTim{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/UppalTim_CPC.jpg');
+}
+
+#ValdezRechie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/ValdezRechie_LIB.jpg');
+}
+
+#VanBynenTony{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VanBynenTony_LIB.jpg');
+}
+
+#VanPoptaTako{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VanPoptaTako_CPC.jpg');
+}
+
+#VanKoeverdenAdam{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VanKoeverdenAdam_LIB.jpg');
+}
+
+#VandalDan{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VandalDan_LIB.jpg');
+}
+
+#VidalGary{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VidalGary_CPC.jpg');
+}
+
+#VienDominique{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VienDominique_CPC.jpg');
+}
+
+#VignolaJulie{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VignolaJulie_BQ.jpg');
+}
+
+#VillemureRené{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VillemureRené_BQ.jpg');
+}
+
+#VuongKevin{
+    content: url('https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/VuongKevin_Ind.jpg');
+}
