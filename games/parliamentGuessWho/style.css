@@ -129,16 +129,16 @@ body{
     content: url('https://www.gg.ca/sites/default/files/styles/pubreg_main_image/public/elementimages/v235_19950040_badge_commons.jpg?itok=Gk0Bq3iI');
 }
 .card{
-    height: auto;
-    width: 90%;
-    max-width: 90%;
-    min-width: 90%;
+    height: 75%;
+    min-height: 66%;
+    width: auto;
     margin-left: 0%;
     margin-top: 5%;
     position: relative;
     aspect-ratio: 1/1.619;
     border: 1px solid #000000;
     border-radius: 10%;
+    flex: 1;
 }
 
 
@@ -204,15 +204,18 @@ body{
 .item{
     background-color: #1f1f1fa3;
     border-radius: 10%;
-    flex: 0 0 9.6%;
+    flex: 0 0 9.4%;
     width: auto;
     height: 14.5vw;
     aspect-ratio: 1/1.5;
     border: 1px solid #000000;;
     box-sizing: border-box;
     text-align: center;
-    margin: 1%;
+    margin: .8%;
     transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .item:hover{
@@ -237,23 +240,24 @@ body{
 
 
 .itemTitle{
-    font-size: 1vw;
+    font-size: .75vmin;
     color: #000000;
     text-align: center;
     width: 100%;
     /* margin-left: .125%; */
     height: 34%;
-    font-size: 0.75vw;
     margin-top: 5%;
     margin-bottom: 0%;
     position: relative;
     background: #31313100;
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
+    max-height: 34%;
+    min-height: 20%;
 }
 
 .itemName{
-    font-size: .9rem;
+    font-size: 1.5vmin;
     color: #e3e3e3;
     text-align: center;
     width: 90%;
@@ -263,6 +267,8 @@ body{
     word-break:keep-all;
     hyphens:manual;
     overflow-wrap: normal;
+    height: auto;
+    align-items: center;
     /* center text */
 
 }
